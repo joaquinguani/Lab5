@@ -25,7 +25,7 @@ TFecha* fecha;
 
 
 bool e = true;
-while(b) {
+while(e) {
 
     printf("      **MERCADO FING**\n");
     printf("            //MENU//\n\n");
