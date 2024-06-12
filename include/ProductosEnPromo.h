@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+#include "Producto (1).h"
 
 class ProductosEnPromo{
 private:

@@ -4,8 +4,9 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-#include "usuario.h"
+#include "Usuario (1).h"
 #include "ISuscripciones.h"
+#include "TNotificacion.h"
 
 class Cliente:public Usuario,public ISuscripciones {////// DUDA
     private: 
