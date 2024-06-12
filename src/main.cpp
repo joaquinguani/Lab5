@@ -30,8 +30,8 @@ while(e) {
     printf("      **MERCADO FING**\n");
     printf("            //MENU//\n\n");
     int TamañoColUsuarios = contUsu.sizeCol();
-    printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
-    printf("precione:\n");
+    printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliente por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
+    printf("presione:\n");
     printf("a: para dar de alta a un usuario\n");
     printf("b: Listado de usuarios\n");
     printf("c: Alta de producto\n");
@@ -55,7 +55,7 @@ while(e) {
     switch(tecla) {
         case 'a':
             printf("\nOpción 'a' seleccionada: Dar de alta a un usuario.\n");
-            printf("\nPrecione:\na: para ingresar un cliente\ncualquier otra tecla: para ingresar un vendedor\n");
+            printf("\nPresione:\na: para ingresar un cliente\ncualquier otra tecla: para ingresar un vendedor\n");
             char venOcli;
             scanf(" %c", &venOcli); 
             nick = "holaholhola";
