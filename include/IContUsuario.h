@@ -3,19 +3,24 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+//#include <sstream>
 
-class IContProducto {
+
+class IContUsuario {
 public:
-    virtual void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento) = 0;
-    virtual std::set<std::string> listarNicknamesVendedores() = 0;
-    virtual void seleccionarNickname(std::string nombre) = 0;
-    virtual std::set<TCodNomProd> listarProductosDisp() = 0;
-    virtual void confirmarAltaPromo() = 0;
-    virtual std::set<Producto> listarProductos() = 0;
-    virtual void ingresarProducto(std::string cod, int cantidad) = 0;
-    virtual Compra mostrarCompra() = 0;
-    virtual void eliminarComDeProd(std::string cod, int ID) = 0;
+    virtual void ingresarDatosUsuario(DataUsuario data) = 0;
+    virtual std::set<std::string> listarVendedores() = 0;
+    virtual void seleccionarCliente(Cliente cliente) = 0;
+    virtual std::set<std::string> listarNombreDeUsuarios() = 0;
+    virtual std::set<std::string> listarComDeUsuarios(std::string nombre) = 0;
+    virtual void eliminarComentario(int ID) = 0;
+    virtual std::set<std::string> listarNicknamesClientes() = 0;
+    virtual std::set<std::string> listarVendedoresNoSubsXCliente(std::string cli) = 0;
+    virtual void agregarSuscripcion() = 0;
+    virtual std::set<TNotificacio> listarNotificaciones(std::string nickname) = 0;
+    virtual std::set<std::string> listarVendSuscripto(std::string nickC) = 0;
+    virtual void eliminarSuscripciones() = 0;
 
-    virtual ~IContProducto(){}; //destructor
+    virtual ~IContUsuario(){}; //destructor 
 };
+

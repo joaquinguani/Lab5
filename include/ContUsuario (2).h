@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <sstream>
+#include "IContUsuario.h"
 
 class ContUsuario: public IContUsuario {
 public:
