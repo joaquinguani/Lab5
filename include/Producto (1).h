@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory>
 #include <sstream>
+#include "Promocion.h"
+#include "Comentario.h"
 
 
 class Producto {
@@ -16,6 +18,7 @@ private:
     std::string categoria;
     std::set<Comentario> *comentarios;
     Promocion *prodpromocion; //DUDA por doble multiplicidad 
+    
 
 public:
     // Constructor

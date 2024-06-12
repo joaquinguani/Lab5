@@ -5,7 +5,7 @@
 #include <memory>
 #include <sstream>
 
-class ContUsuario {
+class ContUsuario: public IContUsuario {
 public:
     //constructor
     ContUsuario();
