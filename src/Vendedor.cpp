@@ -5,10 +5,10 @@ Vendedor::Vendedor(std::string nickname ,std::string contrasena,TFecha fecha, st
     this->RUT = RUT;
 }
 
-Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContraseña(), data.getFecha()){
+Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContrasena(), data.getFecha()){
     this->RUT = data.getRut();
 };
 
 Usuario Vendedor::creadorUsuario(DataVendedor data){
-    return Vendedor(data.getNickname(), data.getContraseña(),data.getFecha(),data.getRut());
+    return Vendedor(data.getNickname(), data.getContrasena(),data.getFecha(),data.getRut());
 };

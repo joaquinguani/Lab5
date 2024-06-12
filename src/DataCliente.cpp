@@ -9,7 +9,7 @@
 #include "DataCliente.h"
 
 
-DataCliente::DataCliente(std::string nickname, std::string contraseña, TFecha fecha, TDireccion direccion, std::string ciudad): DataUsuario(nickname, contraseña, fecha), direccion(direccion){
+DataCliente::DataCliente(std::string nickname, std::string contrasena, TFecha fecha, TDireccion direccion, std::string ciudad): DataUsuario(nickname, contrasena, fecha), direccion(direccion){
     this->ciudad = ciudad;
 };
 

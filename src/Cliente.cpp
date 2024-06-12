@@ -9,11 +9,11 @@
 #include "Cliente.h"
 
 
-Cliente::Cliente(std::string nickname, std::string contraseña , TFecha fecha, TDireccion direccion,std::string ciudad):Usuario(nickname, contraseña, fecha), direccion(direccion){
+Cliente::Cliente(std::string nickname, std::string contrasena , TFecha fecha, TDireccion direccion,std::string ciudad):Usuario(nickname, contrasena, fecha), direccion(direccion){
     this->ciudad = ciudad;
 };
 
-Cliente::Cliente(DataCliente data):Usuario(data.getNickname(), data.getContraseña(), data.getFecha()), direccion(data.getDireccion()){
+Cliente::Cliente(DataCliente data):Usuario(data.getNickname(), data.getContrasena(), data.getFecha()), direccion(data.getDireccion()){
     this->ciudad = data.getCiudad();
 };
 
@@ -30,5 +30,5 @@ void Cliente::setDireccion(TDireccion& direccion){
 };
 
 Usuario Cliente::creadorUsuario(DataCliente data){
-    return Cliente(data.getNickname(), data.getContraseña(),data.getFecha(),data.getDireccion(),data.getCiudad());
+    return Cliente(data.getNickname(), data.getContrasena(),data.getFecha(),data.getDireccion(),data.getCiudad());
 };

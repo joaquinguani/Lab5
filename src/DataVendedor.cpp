@@ -9,7 +9,7 @@
 #include "DataVendedor.h"
 
 
-DataVendedor::DataVendedor(std::string nickname, std::string contraseña, TFecha fecha, std::string RUT): DataUsuario(nickname, contraseña, fecha){
+DataVendedor::DataVendedor(std::string nickname, std::string contrasena, TFecha fecha, std::string RUT): DataUsuario(nickname, contrasena, fecha){
     this->RUT = RUT;
 };
 
