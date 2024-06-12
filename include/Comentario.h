@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory>
 #include <sstream>
+#include <map>
+#include "Usuario.h"
 
 class Comentario {
 private:
@@ -13,13 +15,14 @@ private:
     bool tienePadre;
     int IDPadre;
     int CodigoProd;
-    //algoordenado<Comentario> *respuestas; //no se el tipo
+    std::map<int,Comentario*> respuestas;
+    Usuario *usuario;
 public:
     // Constructor
-    Comentario(int id, std::string txt, TFecha fec, bool tPadre, int idPadre, int codProd)
+    Comentario(int id, std::string txt, TFecha fec, bool tPadre, int idPadre, int codProd);
 
     // Getters
-    int getID()
+    int getID();
     std::string getTexto()
     TFecha getFecha()
     bool getTienePadre()

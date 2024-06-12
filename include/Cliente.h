@@ -4,23 +4,25 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-#include "usuario.h"
+#include "Usuario.h"
 #include "ISuscripciones.h"
+#include "TDireccion.h"
+#include "TNotificacion.h"
 
-class Cliente:public Usuario,public ISuscripciones {////// DUDA
+class Cliente:public Usuario,public ISuscripciones {
     private: 
-        direccion direc;
+        TDireccion direc;
         std::string ciudad;
-        std::set<notificacion> *notificaciones;
+        std::set<TNotificacion> *notificaciones; // el * va adentro o afuera??
     public:
         // Constructor
-        Cliente(direcion direc,std::string ciudad ,std::set<notificacion> notifiaciones):Usuario(nickname,contrasena,fecha);
+        Cliente(TDireccion direc,std::string ciudad ,std::set<TNotificacion> notifiaciones):Usuario(nickname,contrasena,fecha);
         ~Cliente ();
 
         // Getters
-        direccion getDireccion();
+        TDireccion getDireccion();
         std::string getCiudad();
-        std::set<notificacion> getNotificaciones();
+        std::set<TNotificacion> getNotificaciones();
 
         // Setters
         void setCiudad();

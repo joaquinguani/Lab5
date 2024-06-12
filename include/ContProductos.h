@@ -5,6 +5,8 @@
 #include <memory>
 
 class ContProducto {
+private:
+    
 public:
     //constructor
     ContProducto();
