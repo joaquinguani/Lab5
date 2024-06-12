@@ -4,7 +4,8 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-#include "usuario.h"
+#include "Usuario.h"
+#include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
@@ -17,7 +18,7 @@ class Vendedor:public Usuario{
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);
            bool estaSuscrito(std::string);
-           void agregar(ISuscripciones*);
-           void eliminar(ISuscripciones*);
-           void notificar(ISuscripciones*);
+           void agregar(ISuscripciones *);
+           void eliminar(ISuscripciones *);
+           void notificar(ISuscripciones *);
 };     

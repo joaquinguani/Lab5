@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "TCodNomProd.h"
+#include "Compra.h"
 
 class ContProducto {
 private:
