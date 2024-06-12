@@ -12,12 +12,12 @@
 class DataUsuario{
 private:
     std::string nickname;
-    std::string contraseña;
+    std::string contrasena;
     TFecha fecha;
 public:
     DataUsuario(std::string, std::string, TFecha);
     std::string getNickname();
-    std::string getContraseña();
+    std::string getContrasena();
     TFecha getFecha();
 };  
 
