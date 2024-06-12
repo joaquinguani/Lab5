@@ -12,6 +12,8 @@ class Vendedor:public Usuario{
             std::set<std::string>ISuscripciones* suscriptores;
     public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
            ~Vendedor();
+           virtual void imprimirUsuario();
+           virtual void imprimirFecha();
            std::string getRUT();
            void setRUT(std::string);
            std::set<std::string> getsuscriptores();

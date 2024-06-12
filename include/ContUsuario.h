@@ -28,11 +28,11 @@ public:
     void ingresarDatosVendedor(DataVendedor data);
     void ingresarDatosCliente(DataCliente data);
 
-    (std::map<std::string, Usuario *>)* listarUsuarios();
+    (std::map<std::string, Usuario *>)* getColUsuarios();
 
     int sizeCol();
 
-    std::set<std::string> listarVendedores();
+
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
     std::set<std::string> listarComDeUsuarios(std::string nombre);

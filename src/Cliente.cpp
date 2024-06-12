@@ -32,3 +32,20 @@ void Cliente::setDireccion(TDireccion& direccion){
 Usuario Cliente::creadorUsuario(DataCliente data){
     return Cliente(data.getNickname(), data.getContrasena(),data.getFecha(),data.getDireccion(),data.getCiudad());
 };
+
+
+void Cliente::imprimirUsuario(){
+    std::string nombre = nickname;
+    std::cout << nombre << std::endl;
+    imprimirFecha();
+    imprimirDireccion();
+}
+
+void Cliente::imprimirDireccion(){
+    std::string calle = direccion.getCalle();
+    std::cout << nombre << std::endl;
+    int numero = direccion.getNumero();
+    printf("%d",numero);
+    std::string ciudadd = ciudad;
+    std::cout << ciudadd << std::endl;
+}
