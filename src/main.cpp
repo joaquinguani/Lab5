@@ -138,7 +138,7 @@ while(e) {
             scanf("%s", catProd); //PREGUNTARRRRRRRR
             codigoProducto ++;
             Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-            
+            //crear asociacion con vendedor
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
