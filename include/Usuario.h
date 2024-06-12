@@ -14,7 +14,7 @@ class Usuario{
             std::string contrasena;
             TFecha fecha;
     public: Usuario(std::string,std::string,TFecha);
-            virtual ~Usuario();
+                virtual ~Usuario();
             virtual std::set<TComentario> ListarComentarios()=0;
             virtual void sacarComentario(int)= 0;
             virtual void notificar(TNotificacion)=0;

@@ -1,26 +1,37 @@
+#ifndef CONTUSUARIO
+#define CONTUSUARIO
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
-#include "IContUsuario.h"
-#include "DataUsuario.h"
+#include <sstream>
+#include <map>
+#include "Comentario.h"
+#include "Usuario.h"
 #include "Cliente.h"
-#include "TNotificacion.h"
+#include "Vendedor.h"
+#include "DataUsuario.h"
 
 
-class ContUsuario: public IContUsuario {
+
+
+class ContUsuario {
 private:
-    std::set<Comentario> *comentarios;
-    std::set<Comentario> *usuarios;
-    
+    std::map<std::string, Comentario *> colComentario;
+    std::map<std::string, Usuario *> colUsuarios;
 public:
     //constructor
-    ContUsuario();
+    ContUsuario(std::map<std::string, Usuario *>);
 
     //otros metodos
-    void ingresarDatosUsuario(DataUsuario data);
+    void ingresarDatosVendedor(DataVendedor data);
+    void ingresarDatosCliente(DataCliente data);
+
+    (std::map<std::string, Usuario *>)* listarUsuarios();
+
+    int sizeCol();
+
     std::set<std::string> listarVendedores();
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
@@ -35,3 +46,4 @@ public:
 
     virtual ~ContUsuario(){}; //destructor 
 };
+#endif

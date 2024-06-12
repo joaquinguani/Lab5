@@ -107,7 +107,7 @@ while(e) {
             break;
         case 'b':
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            // Aquí iría el código para listar usuarios
+            contUsuario.listarUsuarios();
             break;
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
