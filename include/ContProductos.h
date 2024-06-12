@@ -1,8 +1,15 @@
+#ifndef COMPRAPROD
+#define COMPRAPROD
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
+#include "TFecha.h"
+#include "TCodNomProd.h"
+#include "Producto.h"
+#include "Compra.h"
+
 
 class ContProducto {
 private:
@@ -25,3 +32,4 @@ public:
     virtual ~ContProducto(){}; //destructor
 };
 
+#endif

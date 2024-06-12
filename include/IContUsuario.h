@@ -1,3 +1,5 @@
+#ifndef ICONTUSUARIO
+#define ICONTUSUARIO
 #include <iostream>
 #include <set>
 #include <string>
@@ -17,10 +19,11 @@ public:
     virtual std::set<std::string> listarNicknamesClientes() = 0;
     virtual std::set<std::string> listarVendedoresNoSubsXCliente(std::string cli) = 0;
     virtual void agregarSuscripcion() = 0;
-    virtual std::set<TNotificacio> listarNotificaciones(std::string nickname) = 0;
+    virtual std::set<TNotificacion> listarNotificaciones(std::string nickname) = 0;
     virtual std::set<std::string> listarVendSuscripto(std::string nickC) = 0;
     virtual void eliminarSuscripciones() = 0;
 
     virtual ~IContUsuario(){}; //destructor 
 };
 
+#endif

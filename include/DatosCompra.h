@@ -6,6 +6,9 @@
 #include <vector>
 #include <memory>
 //#include <sstream>
+#include "TFecha.h"
+#include "Producto.h"
+
 
 class DatosCompra{
 private:

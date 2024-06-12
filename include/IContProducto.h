@@ -1,10 +1,14 @@
+#ifndef ICONTPRODUCTO
+#define ICONTPRODUCTO
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+#include "TCodNomProd.h"
 #include "TFecha.h"
+#include "Producto.h"
+#include "Compra.h"
 
 class IContProducto {
 public:
@@ -20,3 +24,5 @@ public:
 
     virtual ~IContProducto(){}; //destructor
 };
+
+#endif

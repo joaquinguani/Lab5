@@ -1,9 +1,10 @@
-#include <iostream>
+
+#ifndef CONTUSUARIO
+#define CONTUSUARIO
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
 #include "IContUsuario.h"
 #include "DataUsuario.h"
 #include "Cliente.h"
@@ -35,3 +36,6 @@ public:
 
     virtual ~ContUsuario(){}; //destructor 
 };
+
+
+#endif

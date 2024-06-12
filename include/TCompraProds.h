@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "TFecha.h"
+#include "Producto.h"
 
 class TCompraProds{
 private:

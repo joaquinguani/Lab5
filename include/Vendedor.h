@@ -5,6 +5,7 @@
 #include <memory>
 #include <sstream>
 #include "usuario.h"
+#include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
