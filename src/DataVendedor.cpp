@@ -16,3 +16,5 @@ DataVendedor::DataVendedor(std::string nickname, std::string contraseña, TFecha
 std::string DataVendedor::getRut() {
     return this->RUT;
 };
+
+//HOLAAA
