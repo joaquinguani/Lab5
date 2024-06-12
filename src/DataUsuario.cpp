@@ -9,16 +9,16 @@
 #include "DataUsuario.h"
 
 
-DataUsuario::DataUsuario(std::string nickname, std::string contraseña, TFecha fecha): fecha(fecha){
+DataUsuario::DataUsuario(std::string nickname, std::string contrasena, TFecha fecha): fecha(fecha){
     this->nickname = nickname;
-    this->contraseña = contraseña;
+    this->contraseña = contrasena;
 };
 
 std::string DataUsuario::getNickname() {
     return this->nickname;
 };
 
-std::string DataUsuario::getContraseña() {
+std::string DataUsuario::getContrasena() {
     return this->contraseña;
 };
 
