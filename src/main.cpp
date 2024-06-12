@@ -60,8 +60,8 @@ while(e) {
             scanf(" %c", &venOcli); 
             nick = "holaholhola";
             PriemeraVez = true;
-            \\while ((usuarios.find(nick) != usuarios.end())|| (PriemeraVez)){
-                \\if(PriemeraVez){printf("\nIngresar Nickname usuario");}
+            while ((usuarios.find(nick) != usuarios.end())|| (PriemeraVez)){
+                if(PriemeraVez){printf("\nIngresar Nickname usuario");}
                 else{printf("\nEse Nickname ya existe, ingrese otro");}
                 std::cin.ignore();
                 std::getline(std::cin, nick);
