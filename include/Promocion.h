@@ -13,8 +13,8 @@ private:
     std::string descripcion;
     TFecha fechaVenc;
     int descuento;
-    std::set<ProductosEnPromo> *promproductos;
-    std::set<Producto> *productos;
+    std::set<ProductosEnPromo*> promproductos;
+    std::set<Producto*> productos;
     
 
 public:
@@ -22,7 +22,7 @@ public:
     Promocion(std::string nom, std::string desc, TFecha fVenc, int descu)
 
     // Getters
-    std::string getNombre() 
+    std::string getNombre(); 
     std::string getDescripcion() 
     TFecha getFechaVenc() 
     int getDescuento() 

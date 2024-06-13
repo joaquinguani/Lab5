@@ -9,8 +9,7 @@
 
 class Vendedor:public Usuario{
     private:std::string RUT;
-            std::set<std::string> suscriptores;
-            std::set<std::string>ISuscripciones* suscriptores;
+            std::set<ISuscripciones*> suscriptores;
     public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
            ~Vendedor();
            std::string getRUT();
