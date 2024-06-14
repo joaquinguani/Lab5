@@ -12,7 +12,7 @@
 class Promocion; //forward declaration
 class Producto {
 private:
-    std::string codigo;
+    int codigo;
     int stock;
     int precio;
     std::string nombre;
@@ -24,10 +24,10 @@ private:
 
 public:
     // Constructor
-    Producto(std::string cod, int stk, int pre, std::string nom, std::string desc, std::string cat);
+    Producto(int cod, int stk, int pre, std::string nom, std::string desc, std::string cat);
 
     // Getters
-    std::string getCodigo();
+    int getCodigo();
     int getStock();
     int getPrecio();
     std::string getNombre();
@@ -35,7 +35,7 @@ public:
     std::string getCategoria();
 
     // Setters
-    void setCodigo(std::string cod);
+    void setCodigo(int cod);
     void setStock(int stk);
     void setPrecio(int pre);
     void setNombre(std::string nom);

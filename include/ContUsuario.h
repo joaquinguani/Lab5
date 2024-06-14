@@ -21,8 +21,10 @@
 
 class ContUsuario {
 private:
+
     std::map<std::string, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
+
 public:
     //constructor
     ContUsuario(std::map<std::string, Usuario *>);

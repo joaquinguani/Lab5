@@ -4,14 +4,15 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-#include "usuario.h"
+
+#include "Usuario.h"
+
 #include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
-            std::set<std::string> suscriptores;
-            std::set<std::string>ISuscripciones* suscriptores; //prguntar a profeeeeee
-    public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha); //whyy mal
+            std::set<ISuscripciones*> suscriptores;
+    public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
            ~Vendedor();
            virtual void imprimirUsuario();
            virtual void imprimirFecha();
@@ -20,7 +21,7 @@ class Vendedor:public Usuario{
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);
            bool estaSuscrito(std::string);
-           void agregar(ISuscripciones*);
-           void eliminar(ISuscripciones*);
-           void notificar(ISuscripciones*);
+           void agregar(ISuscripciones *);
+           void eliminar(ISuscripciones *);
+           void notificar(ISuscripciones *);
 };     
