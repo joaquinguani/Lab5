@@ -4,13 +4,13 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-
+#include "CompraProd.h"
 
 class Compra {
 private:
     TFecha fecha;
     int MontoFinal;
-    std::set<CompraProd> *compraproducto; //chequear
+    std::set<CompraProd*> compraproducto; //chequear
 public:
     // Constructor
     Compra(TFecha f, int monto)

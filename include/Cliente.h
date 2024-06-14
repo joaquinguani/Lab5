@@ -13,7 +13,7 @@ class Cliente:public Usuario,public ISuscripciones {
     private: 
         TDireccion direc;
         std::string ciudad;
-        std::set<TNotificacion> *notificaciones; // el * va adentro o afuera??
+        std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
     public:
         // Constructor
         Cliente(TDireccion direc,std::string ciudad ,std::set<TNotificacion> notifiaciones):Usuario(nickname,contrasena,fecha);

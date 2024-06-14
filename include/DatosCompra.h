@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-//#include <sstream>
+#include "Producto.h"
 
 class DatosCompra{
 private:

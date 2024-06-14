@@ -12,8 +12,8 @@
 
 class ContUsuario: public IContUsuario {
 private:
-    std::set<Comentario> *comentarios;
-    std::set<Comentario> *usuarios;
+    std::set<Comentario*> comentarios;
+    std::set<Comentario*> usuarios;
     
 public:
     //constructor
