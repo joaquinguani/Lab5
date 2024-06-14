@@ -15,9 +15,9 @@ class TComentario {
         TFecha* fecha;
     public:
         TComentario(int, std::string, TFecha*);
-        //std::string getTexto();
-        //TFecha getFecha();
-        //int getID();
+        std::string getTexto();
+        TFecha getFecha();
+        int getID();
 };
 
 #endif
