@@ -16,3 +16,8 @@ void ContUsuario::ingresarDatosVendedor(DataVendedor data){
 int ContUsuario::sizeCol(){
     return colUsuarios.size();
 }
+
+(std::map<std::string, Usuario *>)* getColUsuarios(){
+        return colUsuarios*
+    }
+

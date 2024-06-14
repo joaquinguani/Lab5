@@ -12,3 +12,11 @@ Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContra
 Usuario Vendedor::creadorUsuario(DataVendedor data){
     return Vendedor(data.getNickname(), data.getContraseña(),data.getFecha(),data.getRut());
 };
+
+void Cliente::imprimirUsuario(){
+    std::string nombre = nickname;
+    std::cout << nombre << std::endl;
+    imprimirFecha();
+    std::string RUT = rut;
+    std::cout << RUT << std::endl;
+}
