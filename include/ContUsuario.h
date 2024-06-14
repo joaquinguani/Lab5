@@ -13,7 +13,7 @@
 class ContUsuario: public IContUsuario {
 private:
     std::set<Comentario*> comentarios;
-    std::set<Comentario*> usuarios;
+    std::map<std::string,Usuario *> usuarios;
     
 public:
     //constructor
@@ -32,6 +32,7 @@ public:
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
+    void listarNicknamesVendedores();
 
     virtual ~ContUsuario(){}; //destructor 
 };
