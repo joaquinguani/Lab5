@@ -9,21 +9,28 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
+
 #include "ContUsuario.h"
+
 //comentario de prueba
+
+
 
 int main()
 {
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 std::map<std::string,Usuario *> usuarios;
+std::set<Producto *> productos;
 
 ContUsuario contUsu = ContUsuario(usuarios);
+ContProducto contProdu = ContProducto(productos);
 std::string nick;
 std::string Contraseña;
-bool PriemeraVez;
+bool PriemeraVez; 
 TFecha* fecha;
-
+int codigoProducto;
+codigoProducto = 0;
 
 bool e = true;
 while(e) {
@@ -113,7 +120,28 @@ while(e) {
             break;
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            // Aquí iría el código para dar de alta un producto
+            contUsu.listarNicknamesVendedores();
+            printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
+            std::string nickVend;
+            scanf("%s", nickVend);
+            std::string nomProd;
+            int precioProd;
+            int stockProd;
+            std::string descProd;
+            std::string catProd; //como hacemos lo de enumerado
+            printf("\nIngrese el nombre del producto:\n");
+            scanf("%s", nomProd);
+            printf("\nIngrese el precio del producto:\n");
+            scanf("%d", precioProd);
+            printf("\nIngrese la cantidad en stock del producto:\n");
+            scanf("%d", precioProd);
+            printf("\nIngrese la descripcion del producto:\n");
+            scanf("%s", descProd);
+            printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
+            scanf("%s", catProd); //PREGUNTARRRRRRRR
+            codigoProducto ++;
+            Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+            //crear asociacion con vendedorr
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");

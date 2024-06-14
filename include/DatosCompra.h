@@ -5,10 +5,13 @@
 #include <string>
 #include <vector>
 #include <memory>
+
+
 //#include <sstream>
 #include "TFecha.h"
 #include "Producto.h"
 
+ main
 
 class DatosCompra{
 private:
