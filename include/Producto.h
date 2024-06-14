@@ -1,3 +1,5 @@
+#ifndef PRODUCTO
+#define PRODUCTO
 #include <iostream>
 #include <set>
 #include <string>
@@ -45,3 +47,5 @@ public:
     bool vendedor(std::string vendedor);
     void eliminarCom(int codigoProducto);
 };
+
+#endif

@@ -1,14 +1,16 @@
+#ifndef PRODUCTOSENPROMO
+#define PRODUCTOSENPROMO
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+//#include <sstream>
 
 class ProductosEnPromo{
 private:
     int cantidadMin;
-    Producto *producto
+    Producto *producto;
 public:
     //constructor
     ProductosEnPromo();
@@ -19,3 +21,5 @@ public:
     //destructor
     virtual ~ProductosEnPromo(){};
 };
+
+#endif
