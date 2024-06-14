@@ -37,7 +37,7 @@ public:
 
     int sizeCol();
 
-
+    void imprimirUsuarios();
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
     std::set<std::string> listarComDeUsuarios(std::string nombre);
