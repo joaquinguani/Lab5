@@ -1,3 +1,5 @@
+#ifndef CLIENTE
+#define CLIENTE
 #include <iostream>
 #include <set>
 #include <string>
@@ -16,7 +18,7 @@ class Cliente:public Usuario,public ISuscripciones {
         std::set<TNotificacion> *notificaciones; // el * va adentro o afuera??
     public:
         // Constructor
-        Cliente(TDireccion direc,std::string ciudad ,std::set<TNotificacion> notifiaciones):Usuario(nickname,contrasena,fecha);
+        Cliente(TDireccion direc,std::string ciudad ,std::set<TNotificacion> notifiaciones):Usuario(nickname, contrasena,fecha); //no deja
         ~Cliente ();
 
         // Getters
@@ -27,7 +29,7 @@ class Cliente:public Usuario,public ISuscripciones {
         // Setters
         void setCiudad();
         void setDireccion();
-        void agregarSuscripcion(n);
+        void agregarSuscripcion();
 
 
         // Métodos
@@ -38,3 +40,6 @@ class Cliente:public Usuario,public ISuscripciones {
         void eliminarNotificaciones();
         void notificar(TNotificacion);
 };
+
+
+#endif

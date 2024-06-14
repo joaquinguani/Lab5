@@ -5,12 +5,13 @@
 #include <memory>
 #include <sstream>
 #include "usuario.h"
+#include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
             std::set<std::string> suscriptores;
-            std::set<std::string>ISuscripciones* suscriptores;
-    public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
+            std::set<std::string>ISuscripciones* suscriptores; //prguntar a profeeeeee
+    public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha); //whyy mal
            ~Vendedor();
            virtual void imprimirUsuario();
            virtual void imprimirFecha();

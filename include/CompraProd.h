@@ -1,3 +1,5 @@
+#ifndef COMPRAPROD
+#define COMPRAPROD
 #include <iostream>
 #include <set>
 #include <string>
@@ -22,3 +24,5 @@ public:
     //destructor
     virtual ~CompraProd(){}; 
 };
+
+#endif

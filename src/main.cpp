@@ -2,14 +2,14 @@
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
 #include <map>
-#include "ContUsuario.h"
-#include "Usuario.h"
+
 #include "Cliente.h"
+#include "Usuario.h"
 #include "Vendedor.h"
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-//comentario de prueba jejdhdhdhd
+//comentario de prueba
 
 int main()
 {
@@ -29,8 +29,8 @@ while(e) {
 
     printf("      **MERCADO FING**\n");
     printf("            //MENU//\n\n");
-    int TamanoColUsuarios = contUsu.sizeCol();
-    printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamanoColUsuarios, TamanoColUsuarios, TamanoColUsuarios);
+    int TamañoColUsuarios = contUsu.sizeCol();
+    printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
     printf("precione:\n");
     printf("a: para dar de alta a un usuario\n");
     printf("b: Listado de usuarios\n");
@@ -55,7 +55,7 @@ while(e) {
     switch(tecla) {
         case 'a':
             printf("\nOpción 'a' seleccionada: Dar de alta a un usuario.\n");
-            printf("\nPrecione:\na: para ingresar un cliente\ncualquier otra tecla: para ingresar un vendedor\n");
+            printf("\nPresione:\na: para ingresar un cliente\ncualquier otra tecla: para ingresar un vendedor\n");
             char venOcli;
             scanf(" %c", &venOcli); 
             nick = "holaholhola";

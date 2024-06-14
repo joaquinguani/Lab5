@@ -1,15 +1,18 @@
 #ifndef CONTUSUARIO
 #define CONTUSUARIO
-#include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+#include <sstream>
+#include "IContUsuario.h"
+#include "IContUsuario.h"
 #include <map>
 #include "Comentario.h"
 #include "Usuario.h"
 #include "Cliente.h"
+#include "Cliente.h"
+#include "TNotificacion.h"
 #include "Vendedor.h"
 #include "DataUsuario.h"
 
@@ -46,4 +49,6 @@ public:
 
     virtual ~ContUsuario(){}; //destructor 
 };
+
+
 #endif
