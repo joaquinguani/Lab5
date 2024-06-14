@@ -17,7 +17,7 @@ class Usuario{
             virtual ~Usuario();
             virtual void imprimirUsuario();
             virtual void imprimirFecha();
-            virtual std::set<TComentario> ListarComentarios()=0;
+            virtual std::set<TComentario> ListarComentarios();
             virtual void sacarComentario(int)= 0;
             virtual void notificar(TNotificacion)=0;
             std::string getnickname();

@@ -107,7 +107,9 @@ while(e) {
             break;
         case 'b':
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            contUsuario.listarUsuarios();
+            (std::map<std::string, Usuario *>)* mapUsuarios;
+            mapUsuarios contUsuario.getColUsuarios();
+            
             break;
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
