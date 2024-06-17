@@ -2,14 +2,18 @@
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
 #include <map>
+
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
+
 #include "ContUsuario.h"
-#include "ContProductos.h"
+
+//comentario de prueba
+
 
 
 int main()
@@ -17,10 +21,10 @@ int main()
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 std::map<std::string,Usuario *> usuarios;
-std::set<Producto*> productos;
+std::set<Producto *> productos;
 
-ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto();
+ContUsuario contUsu = ContUsuario(usuarios);
+ContProducto contProdu = ContProducto(productos);
 std::string nick;
 std::string Contrasena;
 bool PriemeraVez;
@@ -112,7 +116,10 @@ while(e) {
             break;
         case 'b':
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            colUsuarios.imprimirUsuarios();
+            (std::map<std::string, Usuario *>)* mapUsuarios;
+            mapUsuarios contUsuario.getColUsuarios();
+            //holahoal
+            
             break;
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
@@ -137,19 +144,11 @@ while(e) {
             scanf("%s", catProd); //PREGUNTARRRRRRRR
             codigoProducto ++;
             Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-            /*auto it = usuarios.find(nickVend);
-            if (it != usuarios.end()) {
-            Vendedor* vendedor = dynamic_cast<Vendedor*>(it->second);
-            vendedor->productos.insert(nuevoProd);}*/
-            //QUEREMOS VER COMO AGARRAR EL VENDEDOR Y AGREGAR EL PRODUCTO A LA LISTA DE PRODUCTOS DEL MISMO AYUDAAAAA
+            //crear asociacion con vendedorr
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-            contProdu.listarProductos();
-            printf("\nIngrese el nombre del producto a seleccionar:\n");
-            scanf("%s", nomProd);
-            //Producto produ = productos.find(nomProd);
-            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", produ.getCodigo(), produ.getStock(), produ.getPrecio(), produ.getNombre(), produ.getDescripcion(), produ.getCategoria());
+            // Aquí iría el código para consultar un producto
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
