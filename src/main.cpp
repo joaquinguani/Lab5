@@ -138,7 +138,7 @@ while(e) {
             codigoProducto ++;
             Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
             /*auto it = usuarios.find(nickVend);
-            if (it != usuarios.end()) {
+            if (it != usuarios.end()) { 
             Vendedor* vendedor = dynamic_cast<Vendedor*>(it->second);
             vendedor->productos.insert(nuevoProd);}*/
             //QUEREMOS VER COMO AGARRAR EL VENDEDOR Y AGREGAR EL PRODUCTO A LA LISTA DE PRODUCTOS DEL MISMO AYUDAAAAA
