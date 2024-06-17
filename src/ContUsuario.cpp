@@ -22,7 +22,7 @@ int ContUsuario::sizeCol(){
 };
 
 
-void ContUsuarios::imprimirUsuarios(){
+void ContUsuario::imprimirUsuarios(){
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it! = colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
