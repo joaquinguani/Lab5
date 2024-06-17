@@ -1,6 +1,6 @@
 #include "ContUsuario.h"
 
-ContUsuario::ContUsuario(std::map<std::string, Usuario *> colUsuarios): colUsuarios(colUsuarios){
+ContUsuario::ContUsuario(){
 };
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){
