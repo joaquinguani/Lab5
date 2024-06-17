@@ -9,7 +9,7 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-
+#include "ContProductos.h"
 #include "ContUsuario.h"
 
 //comentario de prueba
@@ -24,7 +24,7 @@ std::map<std::string,Usuario *> usuarios;
 std::set<Producto *> productos;
 
 ContUsuario contUsu = ContUsuario(usuarios);
-ContProducto contProdu = ContProducto(productos);
+ContProductos contProdu = ContProducto(productos);
 std::string nick;
 std::string Contrasena;
 bool PriemeraVez;
@@ -145,7 +145,7 @@ while(e) {
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-            // Aquí iría el código para consultar un producto
+            
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
