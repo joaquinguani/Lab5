@@ -115,12 +115,15 @@ while(e) {
             
             break;
         case 'b':
+            
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
             (std::map<std::string, Usuario *>)* mapUsuarios;
             mapUsuarios contUsuario.getColUsuarios();
             //holahoal
             
             break;
+            
+
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.listarNicknamesVendedores();
