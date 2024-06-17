@@ -1,4 +1,3 @@
-#include <iostream> // Para std::cin y std::getline
 #include "TComentario.h"
 
 TComentario::TComentario(int id, std::string texto, TFecha* fecha){
@@ -8,4 +7,13 @@ TComentario::TComentario(int id, std::string texto, TFecha* fecha){
 };
 
 
-//faltan getesr
+std::string TComentario::getTexto(){
+    return texto
+};
+Fecha TComentario::getFecha(){
+    return *fecha
+};
+
+int TComentario::getID(){
+    retunr id
+};

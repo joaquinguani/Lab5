@@ -6,3 +6,12 @@ Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fec
     this->nickname = nickname;
     //this->fecha(fecha.getDia(),fecha.getMes(),fecha.getAnio());//no se como asignarle a fecha su fecah
 };
+
+void Usuario::imprimirFecha(){
+    int dia = *fecha.getDia();
+    printf("%d",dia);
+    int mes = *fecha.getMes();
+    printf("%d",mes);
+    int ano = *fecha.getAno();
+    printf("%d",Ano);
+}

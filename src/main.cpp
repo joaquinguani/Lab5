@@ -22,8 +22,9 @@ std::set<Producto*> productos;
 ContUsuario contUsu = ContUsuario();
 ContProducto contProdu = ContProducto();
 std::string nick;
-std::string Contraseña;
-bool PriemeraVez; 
+std::string Contrasena;
+bool PriemeraVez;
+
 TFecha* fecha;
 int codigoProducto;
 codigoProducto = 0;
@@ -35,7 +36,7 @@ while(e) {
     printf("            //MENU//\n\n");
     int TamañoColUsuarios = contUsu.sizeCol();
     printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
-    printf("presione:\n");
+    printf("precione:\n");
     printf("a: para dar de alta a un usuario\n");
     printf("b: Listado de usuarios\n");
     printf("c: Alta de producto\n");
@@ -63,27 +64,26 @@ while(e) {
             char venOcli;
             scanf(" %c", &venOcli); 
             nick = "holaholhola";
-            PriemeraVez = true;
-            while ((usuarios.find(nick) != usuarios.end())|| (PriemeraVez)){
-                if(PriemeraVez){printf("\nIngresar Nickname usuario");}
-                else{printf("\nEse Nickname ya existe, ingrese otro");}
-                std::cin.ignore();
-                std::getline(std::cin, nick);
-                PriemeraVez = false;
-            }
-            printf("\nIngresar Contraseña usuario\n");
+            printf("\nIngresar Nickname usuario");
             std::cin.ignore();
-            std::getline(std::cin, Contraseña);
-            printf("\nIngresar año de nacimiento de usuario\n");
-            int año;
-            scanf("%d", &año);
+            std::getline(std::cin, nick);
+            if (usuarios.find(nick) != usuarios.end()){
+                printf("\nError! Ese nombre de usuario ya existe");
+                break;
+            }
+            printf("\nIngresar Contrasena usuario\n");
+            std::cin.ignore();
+            std::getline(std::cin, Contrasena);
+            printf("\nIngresar ano de nacimiento de usuario\n");
+            int ano;
+            scanf("%d", &ano);
             printf("\nIngresar mes de nacimiento de usuario\n");
             int mes;
             scanf("%d", &mes);
             printf("\nIngresar dia de nacimiento de usuario\n");
             int dia;
             scanf("%d", &dia);
-            fecha = new TFecha(dia, mes, año);
+            fecha = new TFecha(dia, mes, ano);
             if(venOcli == 'a'){
                 printf("\nIngresar ciudad de cliente\n");
                 std::string ciudad;
@@ -97,7 +97,7 @@ while(e) {
                 int numero;
                 scanf("%d",&numero);
                 TDireccion* direccion = new TDireccion(calle, numero);
-                DataCliente* data = new DataCliente(nick,Contraseña,*fecha,*direccion,ciudad);
+                DataCliente* data = new DataCliente(nick,Contrasena,*fecha,*direccion,ciudad);
                 contUsu.ingresarDatosCliente(*data);
             }
             else{
@@ -105,14 +105,14 @@ while(e) {
                 std::string RUT;
                 std::cin.ignore();
                 std::getline(std::cin, RUT);
-                DataVendedor* data = new DataVendedor(nick,Contraseña,*fecha,RUT);
+                DataVendedor* data = new DataVendedor(nick,Contrasena,*fecha,RUT);
                 contUsu.ingresarDatosVendedor(*data);
             }
             
             break;
         case 'b':
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            // Aquí iría el código para listar usuarios
+            colUsuarios.imprimirUsuarios();
             break;
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
