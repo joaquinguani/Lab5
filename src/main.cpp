@@ -119,22 +119,28 @@ while(e) {
             contUsu.listarNicknamesVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend;
-            scanf("%s", nickVend);
+            std::cin.ignore();
+            std::getline(std::cin, nickVend);
             std::string nomProd;
             int precioProd;
             int stockProd;
             std::string descProd;
-            std::string catProd; //como hacemos lo de enumerado
+            TCategoria catProd; 
             printf("\nIngrese el nombre del producto:\n");
-            scanf("%s", nomProd);
+            std::cin.ignore();
+            std::getline(std::cin, nomProd);
             printf("\nIngrese el precio del producto:\n");
-            scanf("%d", precioProd);
+            std::cin.ignore();
+            std::getline(std::cin, precioProd);
             printf("\nIngrese la cantidad en stock del producto:\n");
-            scanf("%d", precioProd);
+            std::cin.ignore();
+            std::getline(std::cin, precioProd);
             printf("\nIngrese la descripcion del producto:\n");
-            scanf("%s", descProd);
+            std::cin.ignore();
+            std::getline(std::cin, descProd);
             printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
-            scanf("%s", catProd); //PREGUNTARRRRRRRR
+            std::cin.ignore();
+            std::getline(std::cin, catProd);
             codigoProducto ++;
             Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
             /*auto it = usuarios.find(nickVend);
