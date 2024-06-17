@@ -115,6 +115,7 @@ while(e) {
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
             colUsuarios.imprimirUsuarios();
             break;
+            
 
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
