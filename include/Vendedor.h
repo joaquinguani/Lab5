@@ -12,6 +12,7 @@
 class Vendedor:public Usuario{
     private:std::string RUT;
             std::set<ISuscripciones*> suscriptores;
+            std::set<Producto*> productos;
     public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
            ~Vendedor();
            virtual void imprimirUsuario();
