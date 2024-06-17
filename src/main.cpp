@@ -55,6 +55,7 @@ while(e) {
     printf("l: Suscribirse a notificaciones\n");
     printf("m: Consulta de notificaciones\n");
     printf("n: Eliminar suscripciones\n");
+    printf("o: Modificar fecha\n");
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
@@ -186,6 +187,19 @@ while(e) {
         case 'n':
             printf("\nOpción 'n' seleccionada: Eliminar suscripciones.\n");
             // Aquí iría el código para eliminar suscripciones
+            break;
+        case 'o':
+            printf("\nOpción 'o' seleccionada: Modificar fecha.\n");
+            printf("\nIngresar el anio nuevo\n");
+            int anio;
+            scanf("%d", &anio);
+            printf("\nIngresar el mes nuevo\n");
+            int mes;
+            scanf("%d", &mes);
+            printf("\nIngresar el dia nuevo\n");
+            int dia;
+            scanf("%d", &dia);
+            fecha->modificarFecha(dia, mes, anio);
             break;
         case 's':
             printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");
