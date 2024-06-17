@@ -9,6 +9,7 @@
 #include "DataCliente.h"
 #include "DataVendedor.h"
 #include "ContUsuario.h"
+#include "TCategoria.h"
 #include "ContProductos.h"
 
 
@@ -17,7 +18,8 @@ int main()
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 std::map<std::string,Usuario *> usuarios;
-std::set<Producto*> productos;
+std::map<std::string,Vendedor *> vendedores;
+std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
 ContProducto contProdu = ContProducto();
@@ -26,8 +28,7 @@ std::string Contrasena;
 bool PriemeraVez;
 
 TFecha* fecha;
-int codigoProducto;
-codigoProducto = 0;
+int codigoProducto = 0;
 
 bool e = true;
 while(e) {
@@ -121,40 +122,42 @@ while(e) {
             std::string nickVend;
             std::cin.ignore();
             std::getline(std::cin, nickVend);
-            std::string nomProd;
-            int precioProd;
-            int stockProd;
-            std::string descProd;
-            TCategoria catProd; 
-            printf("\nIngrese el nombre del producto:\n");
-            std::cin.ignore();
-            std::getline(std::cin, nomProd);
-            printf("\nIngrese el precio del producto:\n");
-            std::cin.ignore();
-            std::getline(std::cin, precioProd);
-            printf("\nIngrese la cantidad en stock del producto:\n");
-            std::cin.ignore();
-            std::getline(std::cin, precioProd);
-            printf("\nIngrese la descripcion del producto:\n");
-            std::cin.ignore();
-            std::getline(std::cin, descProd);
-            printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
-            std::cin.ignore();
-            std::getline(std::cin, catProd);
-            codigoProducto ++;
-            Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-            /*auto it = usuarios.find(nickVend);
-            if (it != usuarios.end()) { 
-            Vendedor* vendedor = dynamic_cast<Vendedor*>(it->second);
-            vendedor->productos.insert(nuevoProd);}*/
-            //QUEREMOS VER COMO AGARRAR EL VENDEDOR Y AGREGAR EL PRODUCTO A LA LISTA DE PRODUCTOS DEL MISMO AYUDAAAAA
+            iter = vendedores.find(nickVend);
+            if (iter == vendedores.end()) {
+                printf("\nError: No existe un vendedor con dicho nickname\n");
+            } else {
+                std::string nomProd;
+                int precioProd;
+                int stockProd;
+                std::string descProd;
+                TCategoria catProd; 
+                printf("\nIngrese el nombre del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, nomProd);
+                printf("\nIngrese el precio del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, precioProd);
+                printf("\nIngrese la cantidad en stock del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, precioProd);
+                printf("\nIngrese la descripcion del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, descProd);
+                printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
+                std::cin.ignore();
+                std::getline(std::cin, catProd);
+                codigoProducto ++;
+                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                iter->second->insertarProducto(nuevoProd);
+            }    
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el nombre del producto a seleccionar:\n");
             scanf("%s", nomProd);
-            //Producto produ = productos.find(nomProd);
+            iter = colProductos.find(nomProd);
+            
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", produ.getCodigo(), produ.getStock(), produ.getPrecio(), produ.getNombre(), produ.getDescripcion(), produ.getCategoria());
             break;
         case 'e':
