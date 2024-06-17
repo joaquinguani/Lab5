@@ -31,11 +31,12 @@ public:
     void ingresarDatosVendedor(DataVendedor data);
     void ingresarDatosCliente(DataCliente data);
 
-    (std::map<std::string, Usuario *>)* getColUsuarios();
 
     int sizeCol();
 
     void imprimirUsuarios();
+    void imprimirVendedores();
+
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
     std::set<std::string> listarComDeUsuarios(std::string nombre);

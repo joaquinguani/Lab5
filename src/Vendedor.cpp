@@ -20,3 +20,7 @@ void Cliente::imprimirUsuario(){
     std::string RUT = rut;
     std::cout << RUT << std::endl;
 }
+
+bool esVendedor(){
+    return true;
+}

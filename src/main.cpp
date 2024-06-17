@@ -175,6 +175,8 @@ while(e) {
             int desc;
             scanf("%d", &desc);
             
+            contUsu.imprimirVendedores();
+
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");

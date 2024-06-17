@@ -17,15 +17,21 @@ int ContUsuario::sizeCol(){
     return colUsuarios.size();
 };
 
-(std::map<std::string, Usuario *>)* getColUsuarios(){
-        return colUsuarios*
-};
-
 
 void ContUsuario::imprimirUsuarios(){
         std::map<std::string, Usuario *>::iterator it;
-        for (it= colUsuarios.begin(); it! = colUsuarios.end(); ++it){
+        for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
-                *usr.imprimirUsuario();
+                usr->imprimirUsuario();
+        }
+};
+
+void ContUsuario::imprimirVendedores(){
+        std::map<std::string, Usuario *>::iterator it;
+        for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (usr->esVendedor()){
+                        usr->imprimirUsuario();
+                }
         }
 };
