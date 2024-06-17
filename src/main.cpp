@@ -152,7 +152,29 @@ while(e) {
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            // Aquí iría el código para crear una promoción
+            printf("\nIngresar nombre de promocion\n");
+            std::string nombre;
+            std::cin.ignore();
+            std::getline(std::cin, nombre);
+            printf("\nIngresar descripcion de promocion\n");
+            std::string descripcion;
+            std::cin.ignore();
+            std::getline(std::cin, descripcion);
+
+            printf("\nIngresar año de fecha de vencimiento de promocion\n");
+            int ano;
+            scanf("%d", &ano);
+            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
+            int mes;
+            scanf("%d", &mes);
+            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
+            int dia;
+            scanf("%d", &dia);
+            fecha = new TFecha(dia, mes, ano);
+            printf("\nIngrese el porsentage que se va a aplicar en la promocion\n");
+            int desc;
+            scanf("%d", &desc);
+            
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
