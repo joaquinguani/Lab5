@@ -117,10 +117,7 @@ while(e) {
         case 'b':
             
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            (std::map<std::string, Usuario *>)* mapUsuarios;
-            mapUsuarios contUsuario.getColUsuarios();
-            //holahoal
-            
+            colUsuarios.imprimirUsuarios();
             break;
             
 
