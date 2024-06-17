@@ -21,12 +21,13 @@ int main()
 {
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
+
 std::map<std::string,Usuario *> usuarios;
 std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 
-ContUsuario contUsu = ContUsuario(usuarios);
+ContUsuario contUsu = ContUsuario();
 ContProducto contProdu = ContProducto(productos);
 std::string nick;
 std::string Contrasena;

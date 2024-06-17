@@ -25,7 +25,7 @@ private:
     std::map<std::string, Usuario *> colUsuarios;
 public:
     //constructor
-    ContUsuario(std::map<std::string, Usuario *>);
+    ContUsuario();
 
     //otros metodos
     void ingresarDatosVendedor(DataVendedor data);
