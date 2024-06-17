@@ -164,9 +164,12 @@ while(e) {
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el nombre del producto a seleccionar:\n");
-            scanf("%s", nomProd);
+            std::string nomProd;
+            std::cin.ignore();
+            std::getline(std::cin, nomProd);
+            std::map<std::string,Producto *>::iterator iter;
             iter = colProductos.find(nomProd);
-            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", produ.getCodigo(), produ.getStock(), produ.getPrecio(), produ.getNombre(), produ.getDescripcion(), produ.getCategoria());
+            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
