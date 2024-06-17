@@ -26,4 +26,5 @@ class Vendedor:public Usuario{
            void agregar(ISuscripciones *);
            void eliminar(ISuscripciones *);
            void notificar(ISuscripciones *);
+           void insertarProducto(Producto *);
 };     
