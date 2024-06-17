@@ -1,6 +1,7 @@
 #include <iostream> // Para std::cin y std::getline
 #include "Vendedor.h"
 
+
 Vendedor::Vendedor(std::string nickname ,std::string contrasena,TFecha fecha, std::string RUT): Usuario(nickname, contrasena, fecha){
     this->RUT = RUT;
 }
@@ -19,4 +20,12 @@ void Cliente::imprimirUsuario(){
     imprimirFecha();
     std::string RUT = rut;
     std::cout << RUT << std::endl;
-}
+};
+
+void Vendedor::insertarProducto(Producto* nuevoProducto){
+    productos.insert(nuevoProducto);
+};
+
+bool esVendedor(){
+    return true;
+}:

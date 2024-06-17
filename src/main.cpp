@@ -12,7 +12,8 @@
 #include "ContProductos.h"
 #include "ContUsuario.h"
 
-//comentario de prueba
+#include "TCategoria.h"
+#include "ContProductos.h"
 
 
 
@@ -20,18 +21,21 @@ int main()
 {
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
+
 std::map<std::string,Usuario *> usuarios;
-std::set<Producto *> productos;
+std::map<std::string,Vendedor *> vendedores;
+std::map<std::string,Vendedor *>::iterator iter;
+
 
 ContUsuario contUsu = ContUsuario(usuarios);
 ContProductos contProdu = ContProducto(productos);
+
 std::string nick;
 std::string Contrasena;
 bool PriemeraVez;
 
 TFecha* fecha;
-int codigoProducto;
-codigoProducto = 0;
+int codigoProducto = 0;
 
 bool e = true;
 while(e) {
@@ -116,41 +120,87 @@ while(e) {
             
             break;
         case 'b':
+            
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
             colUsuarios.imprimirUsuarios();
             break;
+            
+
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.listarNicknamesVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend;
-            scanf("%s", nickVend);
-            std::string nomProd;
-            int precioProd;
-            int stockProd;
-            std::string descProd;
-            std::string catProd; //como hacemos lo de enumerado
-            printf("\nIngrese el nombre del producto:\n");
-            scanf("%s", nomProd);
-            printf("\nIngrese el precio del producto:\n");
-            scanf("%d", precioProd);
-            printf("\nIngrese la cantidad en stock del producto:\n");
-            scanf("%d", precioProd);
-            printf("\nIngrese la descripcion del producto:\n");
-            scanf("%s", descProd);
-            printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
-            scanf("%s", catProd); //PREGUNTARRRRRRRR
-            codigoProducto ++;
-            Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-            //crear asociacion con vendedorr
+            std::cin.ignore();
+            std::getline(std::cin, nickVend);
+            iter = vendedores.find(nickVend);
+            if (iter == vendedores.end()) {
+                printf("\nError: No existe un vendedor con dicho nickname\n");
+            } else {
+                std::string nomProd;
+                int precioProd;
+                int stockProd;
+                std::string descProd;
+                TCategoria catProd; 
+                printf("\nIngrese el nombre del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, nomProd);
+                printf("\nIngrese el precio del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, precioProd);
+                printf("\nIngrese la cantidad en stock del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, precioProd);
+                printf("\nIngrese la descripcion del producto:\n");
+                std::cin.ignore();
+                std::getline(std::cin, descProd);
+                printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
+                std::cin.ignore();
+                std::getline(std::cin, catProd);
+                codigoProducto ++;
+                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                iter->second->insertarProducto(nuevoProd);
+            }    
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-            
+
+            contProdu.listarProductos();
+            printf("\nIngrese el nombre del producto a seleccionar:\n");
+            std::string nomProd;
+            std::cin.ignore();
+            std::getline(std::cin, nomProd);
+            std::map<std::string,Producto *>::iterator iter;
+            iter = colProductos.find(nomProd);
+            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            // Aquí iría el código para crear una promoción
+            printf("\nIngresar nombre de promocion\n");
+            std::string nombre;
+            std::cin.ignore();
+            std::getline(std::cin, nombre);
+            printf("\nIngresar descripcion de promocion\n");
+            std::string descripcion;
+            std::cin.ignore();
+            std::getline(std::cin, descripcion);
+
+            printf("\nIngresar año de fecha de vencimiento de promocion\n");
+            int ano;
+            scanf("%d", &ano);
+            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
+            int mes;
+            scanf("%d", &mes);
+            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
+            int dia;
+            scanf("%d", &dia);
+            fecha = new TFecha(dia, mes, ano);
+            printf("\nIngrese el porsentage que se va a aplicar en la promocion\n");
+            int desc;
+            scanf("%d", &desc);
+            
+            contUsu.imprimirVendedores();
+
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");

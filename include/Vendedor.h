@@ -13,8 +13,10 @@ class Vendedor:public Usuario{
     private:std::string RUT;
             std::set<ISuscripciones*> suscriptores;
             void notificar(ISuscripciones *); //en el teorico dice que es privada
+            std::set<Producto*> productos;
     public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
            ~Vendedor();
+           virtual bool esVendedor();
            virtual void imprimirUsuario();
            virtual void imprimirFecha();
            std::string getRUT();
@@ -24,5 +26,5 @@ class Vendedor:public Usuario{
            bool estaSuscrito(std::string);
            void agregar(ISuscripciones *);
            void eliminar(ISuscripciones *);
-           //void notificar(ISuscripciones *);
+           void insertarProducto(Producto *);
 };     
