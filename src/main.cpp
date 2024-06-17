@@ -9,7 +9,7 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-
+#include "ContProductos.h"
 #include "ContUsuario.h"
 
 #include "TCategoria.h"
@@ -27,8 +27,9 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 
-ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto(productos);
+ContUsuario contUsu = ContUsuario(usuarios);
+ContProductos contProdu = ContProducto(productos);
+
 std::string nick;
 std::string Contrasena;
 bool PriemeraVez;
@@ -58,6 +59,7 @@ while(e) {
     printf("l: Suscribirse a notificaciones\n");
     printf("m: Consulta de notificaciones\n");
     printf("n: Eliminar suscripciones\n");
+    printf("o: Modificar fecha\n");
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
@@ -162,6 +164,7 @@ while(e) {
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+
             contProdu.listarProductos();
             printf("\nIngrese el nombre del producto a seleccionar:\n");
             std::string nomProd;
@@ -234,6 +237,19 @@ while(e) {
         case 'n':
             printf("\nOpción 'n' seleccionada: Eliminar suscripciones.\n");
             // Aquí iría el código para eliminar suscripciones
+            break;
+        case 'o':
+            printf("\nOpción 'o' seleccionada: Modificar fecha.\n");
+            printf("\nIngresar el anio nuevo\n");
+            int anio;
+            scanf("%d", &anio);
+            printf("\nIngresar el mes nuevo\n");
+            int mes;
+            scanf("%d", &mes);
+            printf("\nIngresar el dia nuevo\n");
+            int dia;
+            scanf("%d", &dia);
+            fecha->modificarFecha(dia, mes, anio);
             break;
         case 's':
             printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");

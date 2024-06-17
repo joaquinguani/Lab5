@@ -1,21 +1,24 @@
-#ifndef COMPRAPROD
-#define COMPRAPROD
+#ifndef CONTPRODUCTOS
+#define CONTPRODUCTOS
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
 
+#include "Compra.h"
 #include "TFecha.h"
 #include "TCodNomProd.h"
 #include "Producto.h"
 #include "Compra.h"
 
-main
+//main
 
 class ContProducto {
 private:
-    
+    std::map<std::string, Producto *> colProducto;
+    std::map<std::string, Compra *> colCompra;
+    std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
     ContProducto();
