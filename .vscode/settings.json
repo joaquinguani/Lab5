@@ -42,7 +42,18 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
+<<<<<<< guani
         "typeinfo": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
+=======
+        "typeinfo": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp"
+    }
+>>>>>>> main
 }
