@@ -2,15 +2,19 @@
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
 #include <map>
+
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
+
 #include "ContUsuario.h"
+
 #include "TCategoria.h"
 #include "ContProductos.h"
+
 
 
 int main()
@@ -21,8 +25,9 @@ std::map<std::string,Usuario *> usuarios;
 std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
-ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto();
+
+ContUsuario contUsu = ContUsuario(usuarios);
+ContProducto contProdu = ContProducto(productos);
 std::string nick;
 std::string Contrasena;
 bool PriemeraVez;
@@ -112,9 +117,12 @@ while(e) {
             
             break;
         case 'b':
+            
             printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
             colUsuarios.imprimirUsuarios();
             break;
+            
+
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.listarNicknamesVendedores();
@@ -157,12 +165,35 @@ while(e) {
             printf("\nIngrese el nombre del producto a seleccionar:\n");
             scanf("%s", nomProd);
             iter = colProductos.find(nomProd);
-            
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", produ.getCodigo(), produ.getStock(), produ.getPrecio(), produ.getNombre(), produ.getDescripcion(), produ.getCategoria());
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            // Aquí iría el código para crear una promoción
+            printf("\nIngresar nombre de promocion\n");
+            std::string nombre;
+            std::cin.ignore();
+            std::getline(std::cin, nombre);
+            printf("\nIngresar descripcion de promocion\n");
+            std::string descripcion;
+            std::cin.ignore();
+            std::getline(std::cin, descripcion);
+
+            printf("\nIngresar año de fecha de vencimiento de promocion\n");
+            int ano;
+            scanf("%d", &ano);
+            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
+            int mes;
+            scanf("%d", &mes);
+            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
+            int dia;
+            scanf("%d", &dia);
+            fecha = new TFecha(dia, mes, ano);
+            printf("\nIngrese el porsentage que se va a aplicar en la promocion\n");
+            int desc;
+            scanf("%d", &desc);
+            
+            contUsu.imprimirVendedores();
+
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");

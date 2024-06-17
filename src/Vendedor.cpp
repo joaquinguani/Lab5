@@ -25,3 +25,7 @@ void Cliente::imprimirUsuario(){
 void Vendedor::insertarProducto(Producto* nuevoProducto){
     productos.insert(nuevoProducto);
 };
+
+bool esVendedor(){
+    return true;
+}:

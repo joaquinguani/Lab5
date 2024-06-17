@@ -35,6 +35,7 @@ class Cliente:public Usuario,public ISuscripciones {
         // Métodos
         virtual void imprimirUsuario();
         virtual void imprimirFecha();
+        virtual bool esVendedor();
         void imprimirDireccion();
         std::set<TNotificacion> listarNotificaciones();
         void eliminarNotificaciones();
