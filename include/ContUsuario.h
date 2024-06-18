@@ -36,6 +36,7 @@ public:
 
     void imprimirUsuarios();
     void imprimirVendedores();
+    void imprimirClientes();
 
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
@@ -47,7 +48,6 @@ public:
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
-    void listarNicknamesVendedores();
 
     virtual ~ContUsuario(){}; //destructor 
 };

@@ -35,3 +35,13 @@ void ContUsuario::imprimirVendedores(){
                 }
         }
 };
+
+void ContUsuario::imprimirClientes(){
+        std::map<std::string, Usuario *>::iterator it;
+        for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (!(usr->esVendedor())){
+                        usr->imprimirUsuario();
+                }
+        }
+};
