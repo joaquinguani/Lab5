@@ -14,6 +14,10 @@ Usuario Vendedor::creadorUsuario(DataVendedor data){
     return Vendedor(data.getNickname(), data.getContraseña(),data.getFecha(),data.getRut());
 };
 
+std::set<Producto*> Vendedor::getProductos(){
+    return this->productos;
+}
+
 void Cliente::imprimirUsuario(){
     std::string nombre = nickname;
     std::cout << nombre << std::endl;
@@ -29,3 +33,11 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 bool esVendedor(){
     return true;
 }:
+
+void imprimirProdsVendedor(Vendedor v){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods=v->getProductos();
+        for (it=prods.begin(); it != prods.end(); ++it){
+                it->imprimirProducto();
+        }
+}

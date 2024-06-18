@@ -4,13 +4,15 @@ ContUsuario::ContUsuario(){
 };
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){
-        Cliente* usuario = new Cliente(data);
+        Usuario* usuario = new Cliente(data);
         colUsuarios[data.getNickname()] = usuario;
+        colCliente[data.getNickname()]=usuario;
 };
 
 void ContUsuario::ingresarDatosVendedor(DataVendedor data){
         Vendedor* usuario = new Vendedor(data);
         colUsuarios[data.getNickname()] = usuario;
+        colVendedores[data.getNickname()]=usuario;
 };
 
 int ContUsuario::sizeCol(){
@@ -34,4 +36,8 @@ void ContUsuario::imprimirVendedores(){
                         usr->imprimirUsuario();
                 }
         }
+};
+
+Usuario* ContUsuario::buscarPorNombre(std::string vend){
+        return colVendedores[vend];
 };
