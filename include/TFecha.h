@@ -11,11 +11,15 @@
 class TFecha {
     private:
         int Dia, Mes, Anio;
+        static TFecha* instanciaFecha;
+        TFecha(int Dia, int Mes, int Anio); //constructor privado pq es singleton
+        ~TFecha(); //destructor
     public:
-        TFecha(int, int, int);
+        static TFecha * getInstanciaFecha(int Dia, int Mes, int Anio);
         int getDia();
         int getMes();
         int getAnio();
+        void modificarFecha(int dia, int mes, int anio);
 };
 
 #endif

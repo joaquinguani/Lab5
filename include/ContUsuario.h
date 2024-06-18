@@ -37,6 +37,7 @@ public:
 
     void imprimirUsuarios();
     void imprimirVendedores();
+    void imprimirClientes();
 
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();

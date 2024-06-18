@@ -15,7 +15,7 @@ private:
     Producto *productos; //REVISAR
 public:
     //constructor
-    CompraProd();
+    CompraProd(int, bool, Producto*); 
 
     //metodos de acceso
     int getCantidad();

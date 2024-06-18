@@ -1,3 +1,4 @@
+
 #ifndef CONTPRODUCTO
 #define CONTPRODUCTO
 #include <iostream>
@@ -13,8 +14,9 @@
 
 class ContProducto {
 private:
-        std::map<int, Usuario *> colProductos;
-        
+    std::map<int, Producto *> colProducto;
+    std::map<std::string, Compra *> colCompra;
+    std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
     ContProducto();

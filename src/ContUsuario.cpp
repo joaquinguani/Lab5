@@ -41,3 +41,13 @@ void ContUsuario::imprimirVendedores(){
 Usuario* ContUsuario::buscarPorNombre(std::string vend){
         return colVendedores[vend];
 };
+
+void ContUsuario::imprimirClientes(){
+        std::map<std::string, Usuario *>::iterator it;
+        for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (!(usr->esVendedor())){
+                        usr->imprimirUsuario();
+                }
+        }
+};
