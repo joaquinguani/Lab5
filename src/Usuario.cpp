@@ -15,7 +15,3 @@ void Usuario::imprimirFecha(){
     int ano = *fecha.getAno();
     printf("%d",Ano);
 };
-
-bool esVendedor(){
-    return false;
-};

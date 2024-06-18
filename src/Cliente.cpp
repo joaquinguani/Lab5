@@ -49,3 +49,7 @@ void Cliente::imprimirDireccion(){
     std::string ciudadd = ciudad;
     std::cout << ciudadd << std::endl;
 }
+
+bool esVendedor(){
+    return false;
+};

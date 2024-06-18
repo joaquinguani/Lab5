@@ -20,6 +20,7 @@ class Vendedor:public Usuario{
            virtual void imprimirUsuario();
            virtual void imprimirFecha();
            std::string getRUT();
+           std::set<Producto*> getProductos();
            void setRUT(std::string);
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);
@@ -27,4 +28,5 @@ class Vendedor:public Usuario{
            void agregar(ISuscripciones *);
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto *);
+           void imprimirProdsVendedor(Vendedor);
 };     

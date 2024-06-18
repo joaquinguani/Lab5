@@ -17,12 +17,13 @@
 #include "DataUsuario.h"
 
 
-
-
 class ContUsuario {
 private:
     std::map<std::string, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
+    std::map<std::string, Vendedor*> colVendedores;
+    std::map<std::string, Cliente*> colClientes;
+    
 public:
     //constructor
     ContUsuario();
@@ -48,7 +49,8 @@ public:
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
-
+    void listarNicknamesVendedores();
+    Vendedor* buscarPorNombre(std::string vend)
     virtual ~ContUsuario(){}; //destructor 
 };
 

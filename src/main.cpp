@@ -16,7 +16,7 @@
 
 #include "TCategoria.h"
 #include "ContProductos.h"
-
+#include "ContUsuario.h"
 
 
 int main()
@@ -197,11 +197,17 @@ while(e) {
             int dia;
             scanf("%d", &dia);
             fecha = new TFecha(dia, mes, ano);
-            printf("\nIngrese el porsentage que se va a aplicar en la promocion\n");
+            printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
             int desc;
             scanf("%d", &desc);
             
             contUsu.imprimirVendedores();
+            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
+            std::string vend;
+            std::cin.ignore();
+            std::getline(std::cin, vend);   
+            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            vnd->imprimirProdsVendedor();
 
             break;
         case 'f':
