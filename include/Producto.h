@@ -1,4 +1,4 @@
-#ifndef PRODUCTO
+/*#ifndef PRODUCTO
 #define PRODUCTO
 #include <iostream>
 #include <set>
@@ -10,6 +10,7 @@
 #include "Comentario.h"
 #include "TCategoria.h"
 
+
 class Promocion; //forward declaration
 class Producto {
 private:
@@ -18,7 +19,7 @@ private:
     int precio;
     std::string nombre;
     std::string descripcion;
-    std::string categoria;
+    TCategoria categoria; //decia string
     std::set<Comentario> *comentarios;
 
 public:
@@ -47,4 +48,4 @@ public:
     void eliminarCom(int codigoProducto);
 };
 
-#endif
+#endif*/

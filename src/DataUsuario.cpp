@@ -11,7 +11,7 @@
 
 DataUsuario::DataUsuario(std::string nickname, std::string contrasena, TFecha fecha): fecha(fecha){
     this->nickname = nickname;
-    this->contraseña = contrasena;
+    this->contrasena = contrasena;
 };
 
 std::string DataUsuario::getNickname() {
@@ -19,7 +19,7 @@ std::string DataUsuario::getNickname() {
 };
 
 std::string DataUsuario::getContrasena() {
-    return this->contraseña;
+    return this->contrasena;
 };
 
 TFecha DataUsuario::getFecha() {

@@ -1,4 +1,4 @@
-#ifndef DATOSPRODUCTO
+/*#ifndef DATOSPRODUCTO
 #define DATOSPRODUCTO
 #include <iostream>
 #include <set>
@@ -23,4 +23,4 @@ public:
     std::string getNicknameVend();
 };  
 
-#endif
+#endif*/

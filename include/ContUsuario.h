@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+#include <sstream>
 #include "IContUsuario.h"
 #include "IContUsuario.h"
 #include <map>
@@ -17,12 +17,13 @@
 #include "DataUsuario.h"
 
 
-
-
 class ContUsuario {
 private:
     std::map<std::string, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
+    std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
+    std::map<std::string, Cliente*> colClientes;
+    
 public:
     //constructor
     ContUsuario();
@@ -33,10 +34,14 @@ public:
 
 
     int sizeCol();
+    bool estaUsuario(std::string);
 
     void imprimirUsuarios();
+    
     void imprimirVendedores();
     void imprimirClientes();
+
+    
 
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
@@ -48,8 +53,14 @@ public:
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
+    void listarNicknamesVendedores();
+
+
+
+    Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
+    
 };
 
 
