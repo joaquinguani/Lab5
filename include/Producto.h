@@ -1,4 +1,4 @@
-/*#ifndef PRODUCTO
+#ifndef PRODUCTO
 #define PRODUCTO
 #include <iostream>
 #include <set>
@@ -48,4 +48,4 @@ public:
     void eliminarCom(int codigoProducto);
 };
 
-#endif*/
+#endif

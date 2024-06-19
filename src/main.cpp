@@ -128,7 +128,7 @@ while(e) {
         }
 
         case 'c':
-        
+
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
@@ -161,7 +161,7 @@ while(e) {
                 std::cin.ignore();
                 std::getline(std::cin, catProd);
                 codigoProducto ++;
-                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                Producto * nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
             }    
             break;
@@ -221,11 +221,11 @@ while(e) {
             std::string nickCliente;
             std::cin.ignore();
             std::getline(std::cin, nickCliente);
-            std::map<std::string,Cliente *>::iterator iter = clientes.find(nickCliente); //como hacer sin tener un map de clienteds
+            std::map<std::string,Cliente *>::iterator iter = contUsu.colUsuarios.find(nickCliente); //como hacer sin tener un map de clienteds
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
+                Compra compra = new Compra(fechaSist, 0);
                 contProdu.imprimirProductos();
                 int agregar;
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
@@ -254,7 +254,7 @@ while(e) {
                             //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
                             int precio = iter->second->getPrecio();
-                            precio = compra.aplicarDescuento(precio);
+                            precio = compra.aplicarDescuento(precio, cantP);
                             compra.sumarAlMonto(precio);
                         }
                     }
