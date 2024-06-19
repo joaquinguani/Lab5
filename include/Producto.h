@@ -21,8 +21,6 @@ private:
     std::string descripcion;
     TCategoria categoria; //decia string
     std::set<Comentario> *comentarios;
-    
-    
 
 public:
     // Constructor

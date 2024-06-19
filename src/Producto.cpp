@@ -1,3 +1,7 @@
+
+#include <iostream>
+#include "Producto.h"
+#include "TCategoria.h"
 #include "Producto.h"
 
 Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
