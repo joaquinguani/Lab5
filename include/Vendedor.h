@@ -1,3 +1,5 @@
+#ifndef VENDEDOR
+#define VENDEDOR
 #include <iostream>
 #include <set>
 #include <string>
@@ -6,18 +8,24 @@
 #include <sstream>
 
 #include "Usuario.h"
-
+#include "DataVendedor.h"
 #include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
-            std::set<ISuscripciones*> suscriptores;
-            std::set<Producto*> productos;
-    public:Vendedor(std::string RUT,std::set<std::string> suscriptores):Usuario(nickname,contrasena,fecha);
-           ~Vendedor();
+            //std::set<ISuscripciones*> suscriptores;
+            //std::set<Producto*> productos;
+    public:
+    
+        Vendedor(std::string  ,std::string ,TFecha , std::string );
+        Vendedor(DataVendedor);
+        virtual void imprimirUsuario();
+        std::string getRut();
+
+        virtual~Vendedor();
+           /*
            virtual bool esVendedor();
-           virtual void imprimirUsuario();
-           virtual void imprimirFecha();
+           
            std::string getRUT();
            void setRUT(std::string);
            std::set<std::string> getsuscriptores();
@@ -26,4 +34,6 @@ class Vendedor:public Usuario{
            void agregar(ISuscripciones *);
            void eliminar(ISuscripciones *);
            void notificar(ISuscripciones *);
+           */
 };     
+#endif

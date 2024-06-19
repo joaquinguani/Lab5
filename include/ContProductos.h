@@ -1,4 +1,4 @@
-#ifndef COMPRAPROD
+/*#ifndef COMPRAPROD
 #define COMPRAPROD
 #include <iostream>
 #include <set>
@@ -34,4 +34,4 @@ public:
     virtual ~ContProducto(){}; //destructor
 };
 
-#endif
+#endif*/

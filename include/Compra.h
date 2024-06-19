@@ -1,5 +1,5 @@
 
-#ifndef COMPRA
+/*#ifndef COMPRA
 #define COMPRA
 #include <set>
 #include <string>
@@ -36,4 +36,4 @@ public:
     void sumarAlMonto(int pre);
 };
 
-#endif
+#endif*/

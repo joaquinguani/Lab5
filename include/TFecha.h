@@ -10,12 +10,12 @@
 
 class TFecha {
     private:
-        int Dia, Mes, Anio;
+        int Dia, Mes, Ano;
     public:
         TFecha(int, int, int);
         int getDia();
         int getMes();
-        int getAnio();
+        int getAno();
 };
 
 #endif
