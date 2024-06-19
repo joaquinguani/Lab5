@@ -34,4 +34,4 @@ public:
     virtual ~ContProducto(){}; //destructor
 };
 
-#endif*/
+#endif

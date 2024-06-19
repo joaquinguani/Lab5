@@ -33,8 +33,8 @@ void ContUsuario::imprimirUsuarios(){
                 Usuario* usr = it->second;
                 usr->imprimirUsuario();
         }
-};
-/*
+}
+
 void ContUsuario::imprimirVendedores(){
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
@@ -57,4 +57,4 @@ void ContUsuario::imprimirClientes(){
                         usr->imprimirUsuario();
                 }
         }
-};*/
+};

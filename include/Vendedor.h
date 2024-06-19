@@ -6,17 +6,16 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-
+#include "Producto.h"
 #include "Usuario.h"
 #include "DataVendedor.h"
 #include "ISuscripciones.h"
 
 class Vendedor:public Usuario{
     private:std::string RUT;
-
-            //std::set<ISuscripciones*> suscriptores;
-            //void notificar(ISuscripciones *); //en el teorico dice que es privada
-            //std::set<Producto*> productos;
+        std::set<ISuscripciones*> suscriptores;
+        void notificar(ISuscripciones *); //en el teorico dice que es privada
+        std::set<Producto*> productos;
     public:
     
         Vendedor(std::string  ,std::string ,TFecha , std::string );
@@ -25,8 +24,8 @@ class Vendedor:public Usuario{
         std::string getRut();
 
         virtual~Vendedor();
-           /*
-           virtual bool esVendedor();
+           
+        virtual bool esVendedor();
            
            std::string getRUT();
            std::set<Producto*> getProductos();
@@ -38,5 +37,7 @@ class Vendedor:public Usuario{
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto *);
            void imprimirProdsVendedor(Vendedor);
-};     
+};
+
+
 #endif

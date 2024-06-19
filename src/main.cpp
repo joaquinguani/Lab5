@@ -16,7 +16,7 @@
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
-
+#include "TFecha.h"
 #include "TCategoria.h"
 #include "ContProductos.h"
 #include "ContUsuario.h"
@@ -127,7 +127,7 @@ while(e) {
             //std::getline(std::cin,Contrasena);
             break;
         }
-/*
+
         case 'c':
         
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
@@ -189,15 +189,15 @@ while(e) {
             std::getline(std::cin, descripcion);
 
             printf("\nIngresar año de fecha de vencimiento de promocion\n");
-            int ano;
-            scanf("%d", &ano);
+            int anio;
+            scanf("%d", &anio);
             printf("\nIngresar mes de fecha de vencimiento de promocion\n");
             int mes;
             scanf("%d", &mes);
             printf("\nIngresar dia de fecha de vencimiento de promocion\n");
             int dia;
             scanf("%d", &dia);
-            fecha = new TFecha(dia, mes, ano);
+            fecha = new TFecha(dia, mes, anio);
             printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
             int desc;
             scanf("%d", &desc);

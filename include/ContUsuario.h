@@ -37,7 +37,7 @@ public:
     bool estaUsuario(std::string);
 
     void imprimirUsuarios();
-    /*
+    
     void imprimirVendedores();
     void imprimirClientes();
 
@@ -57,10 +57,10 @@ public:
 
 
 
-    Vendedor* buscarPorNombre(std::string vend)
+    Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
-    */
+    
 };
 
 
