@@ -13,7 +13,9 @@ Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContra
 Vendedor::~Vendedor(){
 
 }
-
+std::set<Producto*> Vendedor::getProductos(){
+    return this->productos;
+}
 std::string Vendedor::getRut(){
     return this->RUT;
 }
@@ -36,5 +38,14 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 
 bool esVendedor(){
     return true;
-}
-*/
+
+
+}:
+
+void imprimirProdsVendedor(Vendedor v){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods=v->getProductos();
+        for (it=prods.begin(); it != prods.end(); ++it){
+                it->imprimirProducto();
+        }
+}*/

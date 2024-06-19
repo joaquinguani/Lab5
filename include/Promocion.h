@@ -29,7 +29,7 @@ public:
     std::string getDescripcion(); 
     TFecha getFechaVenc();
     int getDescuento();
- main
+
 
     // Setters
     void setNombre(const std::string& nom);

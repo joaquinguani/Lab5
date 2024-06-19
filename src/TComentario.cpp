@@ -8,12 +8,13 @@ TComentario::TComentario(int id, std::string texto, TFecha* fecha){
 
 
 std::string TComentario::getTexto(){
-    return texto
+    return texto;
 };
-Fecha TComentario::getFecha(){
-    return *fecha
+TFecha TComentario::getFecha(){ //decia solo Fecha
+    return *fecha;
 };
 
 int TComentario::getID(){
-    retunr id
+    retunr id;
 };*/
+
