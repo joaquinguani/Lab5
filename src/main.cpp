@@ -219,7 +219,7 @@ while(e) {
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
+                Compra compra = Compra(fechaActual, 0);
                 contProdu.imprimirProductos();
                 int agregar;
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");

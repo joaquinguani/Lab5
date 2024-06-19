@@ -12,8 +12,6 @@
 #include "Producto.h"
 #include "Compra.h"
 
-//main
-
 class ContProducto {
 private:
     std::map<std::string, Producto *> colProducto;
