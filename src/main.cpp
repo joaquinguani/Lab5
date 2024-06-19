@@ -207,8 +207,23 @@ while(e) {
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
+            //La idea es crear la promo, pedir que me vaya listando los productos a agregar en un while
+            //buscar el producto y agregarlo
+            // Solicitar datos al usuario
+            int d,m,a,descu;
+            std::string nom,descrip;
+            std::cout << "Ingrese el nombre de la promoción: ";
+            nom=leerCadena();
+            std::cout << "Ingrese la descripción de la promoción: ";
+            descrip=leerCadena();
+            std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
+            d=leerEntero();
+            m=leerEntero();
+            a=leerEntero();
+            std::cout << "Ingrese el descuento: ";
+            descu=leerEntero();
 
-
+            Promocion* p=new Promocion( );
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
