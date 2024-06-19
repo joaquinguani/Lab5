@@ -20,8 +20,8 @@ private:
     std::string nombre;
     std::string descripcion;
     TCategoria categoria; //decia string
-    std::set<Comentario> *comentarios;
-
+    std::set<Comentario*> comentarios;
+    Promocion* promo;
 public:
     // Constructor
     Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
@@ -33,6 +33,7 @@ public:
     std::string getNombre();
     std::string getDescripcion();
     std::string getCategoria();
+    Promocion* getPromo();
 
     // Setters
     void setCodigo(int cod);

@@ -11,8 +11,8 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
     this->nombre = nom;
     this->descripcion = desc;
     this->categoria = cat;
-
-}
+    this->promo = NULL;
+};
 
 void Producto::imprimirProducto(){
     int cod = codigo;
@@ -27,7 +27,7 @@ void Producto::imprimirProducto(){
     std::cout << des << std::endl;
     std::string cat = categoria;
     std::cout << cat << std::endl;
-}
+};
 
 
 
@@ -36,4 +36,8 @@ void Producto::imprimirProductoCodNom(){
     std::cout << cod << std::endl;
     std::string nom = nombre;
     std::cout << nom << std::endl;
+};
+
+Promocion* Producto::getPromo(){
+    return this->promo;
 };
