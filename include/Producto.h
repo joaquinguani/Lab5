@@ -9,7 +9,7 @@
 #include "Promocion.h"
 #include "Comentario.h"
 #include "TCategoria.h"
-
+#include "Vendedor.h"
 
 class Promocion; //forward declaration
 class Producto {
@@ -21,6 +21,7 @@ private:
     std::string descripcion;
     TCategoria categoria; //decia string
     std::set<Comentario> *comentarios;
+    Vendedor* vendAsociado;
 
 public:
     // Constructor
@@ -33,6 +34,7 @@ public:
     std::string getNombre();
     std::string getDescripcion();
     std::string getCategoria();
+    Vendedor* getVendAsociado();
 
     // Setters
     void setCodigo(int cod);
@@ -41,6 +43,7 @@ public:
     void setNombre(std::string nom);
     void setDescripcion(std::string desc);
     void setCategoria(std::string cat);
+    Vendedor* setVendAsociado();
 
     // Métodos
     Producto getDatos();

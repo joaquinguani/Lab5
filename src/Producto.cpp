@@ -14,6 +14,13 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
 
 }
 
+Vendedor* Producto::getVendAsociado(){
+    return this->vendAsociado;
+};
+
+
+
+
 void Producto::imprimirProducto(){
     int cod = codigo;
     std::cout << cod << std::endl;
@@ -25,35 +32,17 @@ void Producto::imprimirProducto(){
     std::cout << nom << std::endl;
     std::string des = descripcion;
     std::cout << des << std::endl;
-    std::string cat = categoria;
+    TCategoria cat = categoria;
     std::cout << cat << std::endl;
 }
 
-<<<<<<<<< Temporary merge branch 1
 
 
 void Producto::imprimirProductoCodNom(){
-=========
-void Producto::imprimirProducto(){
-    int cod = codigo;
-    std::cout << cod << std::endl;
-    int stck = stock;
-    std::cout << stck << std::endl;
-    int pre = precio;
-    std::cout << pre << std::endl;
-    std::string nom = nombre;
-    std::cout << nom << std::endl;
-    std::string des = descripcion;
-    std::cout << des << std::endl;
-    std::string cat = categoria;
-    std::cout << cat << std::endl;
-}
-
-
-void Producto::codigoYnombre(){
->>>>>>>>> Temporary merge branch 2
+//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
     std::cout << nom << std::endl;
 };
+

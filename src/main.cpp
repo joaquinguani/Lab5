@@ -11,12 +11,12 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-#include "ContProductos.h"
+#include "ContProducto.h"
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
 #include "TCategoria.h"
-#include "ContProductos.h"
+
 #include "ContUsuario.h"
 #include "TFecha.h"
 
@@ -30,7 +30,7 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto(productosda);
+ContProducto contProdu = ContProducto(/*productosda*/);
 TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
@@ -175,39 +175,14 @@ while(e) {
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
-            printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            printf("\nIngresar nombre de promocion\n");
-            std::string nombre;
-            std::cin.ignore();
-            std::getline(std::cin, nombre);
-            printf("\nIngresar descripcion de promocion\n");
-            std::string descripcion;
-            std::cin.ignore();
-            std::getline(std::cin, descripcion);
-
-            printf("\nIngresar año de fecha de vencimiento de promocion\n");
-            int anio;
-            scanf("%d", &anio);
-            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
-            int mes;
-            scanf("%d", &mes);
-            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
-            int dia;
-            scanf("%d", &dia);
-            fecha = new TFecha(dia, mes, anio);
-            printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
-            int desc;
-            scanf("%d", &desc);
-            
-
->>>>>>>>> Temporary merge branch 2
+           printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedorCodNom();
+            vnd->imprimirProdsVendedorCodNom(); //esta mal el parametro(en la implementacion le pasas algo)
             int d,m,a,descu;
             std::string nom,descrip;
             std::cout << "Ingrese el nombre de la promoción: ";
@@ -219,20 +194,24 @@ while(e) {
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
-
-<<<<<<<<< Temporary merge branch 1
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
             Promocion* p=new Promocion(nom,descrip, );
-=========
-
-
->>>>>>>>> Temporary merge branch 2
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-
+            printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
+            char tec=leerUnaTecla();
+            case 's':
+            printf("\nIngrese el nombre la promocion\n");
+            std::string nom;
+            std::cin.ignore();
+            std::getline(std::cin, nom);   
+            Promocion* promo = contProdu.buscarPromoPorNombre(nom);
+            promo->devolverDatosProdsPromo();
+            break;
+            case 'n':
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
