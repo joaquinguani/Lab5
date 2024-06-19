@@ -33,4 +33,3 @@ void Vendedor::imprimirUsuario(){
 bool esVendedor(){
     return true;
 }
-*/
