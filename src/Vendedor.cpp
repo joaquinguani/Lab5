@@ -30,7 +30,7 @@ void Vendedor::imprimirUsuario(){
     std::string raut = getRut();
     std::cout << raut << std::endl;
     printf("|_____________");
-}/*
+}
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
     productos.insert(nuevoProducto);
@@ -48,4 +48,4 @@ void imprimirProdsVendedor(Vendedor v){
         for (it=prods.begin(); it != prods.end(); ++it){
                 it->imprimirProducto();
         }
-}*/
+}
