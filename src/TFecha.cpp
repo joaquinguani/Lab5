@@ -44,5 +44,15 @@ void TFecha::modificarFecha(int dia, int mes, int anio) {
     } else {
         std::cerr << "Fecha no válida." << std::endl; //cerr es para imprimir errores 
     }
-}
+
+};
+
+void TFecha::imprimirFecha(){
+    int dia = getDia();
+    printf("%d",dia);
+    int mes = getMes();
+    printf("%d",mes);
+    int ano =getAnio();
+    printf("%d",ano);
+};
 
