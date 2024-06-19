@@ -22,8 +22,7 @@
 #include "ContUsuario.h"
 #include "TFecha.h"
 
-int main()
-{
+int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 
