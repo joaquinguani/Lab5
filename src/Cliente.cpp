@@ -27,7 +27,7 @@ std::string Cliente::getCiudad() {
 
 
 TDireccion Cliente::getDireccion() {
-    return this->direc;
+    return this->direccion;
 };
 /*
 void Cliente::setDireccion():direccion(direccion){

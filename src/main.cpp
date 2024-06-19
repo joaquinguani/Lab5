@@ -22,7 +22,7 @@
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
-
+//capaz crear como variables los controladores solo, y que las colecciones esten dentro de ellos ???
 
 std::set<Producto *> productos;
 std::map<std::string,Vendedor *> vendedores;
@@ -30,7 +30,7 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-//ContProducto contProdu = ContProducto(productosda);
+ContProducto contProdu = ContProducto(productosda);
 TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
@@ -175,6 +175,7 @@ while(e) {
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
+            printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
@@ -193,14 +194,14 @@ while(e) {
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
-
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
             Promocion* p=new Promocion(nom,descrip, );
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
-            // Aquí iría el código para consultar una promoción
+            contProdu.listarPromosVigentes();
+
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
