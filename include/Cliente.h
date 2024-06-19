@@ -7,39 +7,44 @@
 #include <memory>
 #include <sstream>
 #include "Usuario.h"
-#include "ISuscripciones.h"
+//#include "ISuscripciones.h"
 #include "TDireccion.h"
 #include "TNotificacion.h"
+#include "DataCliente.h"
 
-class Cliente:public Usuario,public ISuscripciones {
+class Cliente:public Usuario/*,public ISuscripciones */{
     private: 
-        TDireccion direc;
+        TDireccion direccion;
         std::string ciudad;
-        std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
+        //std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
     public:
         // Constructor
-        Cliente(TDireccion direc,std::string ciudad ,std::set<TNotificacion> notifiaciones):Usuario(nickname, contrasena,fecha); //no deja
-        ~Cliente ();
+        Cliente(std::string, std::string, TFecha, TDireccion,std::string); //no deja
+        Cliente(DataCliente);
+        virtual~Cliente();
 
         // Getters
         TDireccion getDireccion();
         std::string getCiudad();
-        std::set<TNotificacion> getNotificaciones();
-
+        virtual void imprimirUsuario();
+        void imprimirDireccion();
+        //std::set<TNotificacion> getNotificaciones();
+/*
         // Setters
         void setCiudad();
         void setDireccion();
+        
         void agregarSuscripcion();
 
 
         // Métodos
-        virtual void imprimirUsuario();
-        virtual void imprimirFecha();
+        
         virtual bool esVendedor();
-        void imprimirDireccion();
+        
         std::set<TNotificacion> listarNotificaciones();
         void eliminarNotificaciones();
         void notificar(TNotificacion);
+        */
 };
 
 

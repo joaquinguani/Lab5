@@ -6,6 +6,9 @@
 #include <vector>
 #include <memory>
 
+#include "TNotificacion.h"
+
+
 class ISuscripciones{
     public: virtual  void notificar(TNotificacion)=0;
             ISuscripciones();

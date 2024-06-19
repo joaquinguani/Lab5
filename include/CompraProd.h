@@ -1,4 +1,4 @@
-#ifndef COMPRAPROD
+/*#ifndef COMPRAPROD
 #define COMPRAPROD
 #include <iostream>
 #include <set>
@@ -15,7 +15,7 @@ private:
     Producto *productos; //REVISAR
 public:
     //constructor
-    CompraProd();
+    CompraProd(int, bool, Producto*); 
 
     //metodos de acceso
     int getCantidad();
@@ -25,4 +25,4 @@ public:
     virtual ~CompraProd(){}; 
 };
 
-#endif
+#endif*/

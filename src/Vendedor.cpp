@@ -6,21 +6,31 @@ Vendedor::Vendedor(std::string nickname ,std::string contrasena,TFecha fecha, st
     this->RUT = RUT;
 }
 
-Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContraseña(), data.getFecha()){
+Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContrasena(), data.getFecha()){
     this->RUT = data.getRut();
 };
 
-Usuario Vendedor::creadorUsuario(DataVendedor data){
-    return Vendedor(data.getNickname(), data.getContraseña(),data.getFecha(),data.getRut());
-};
+Vendedor::~Vendedor(){
 
-void Cliente::imprimirUsuario(){
-    std::string nombre = nickname;
+}
+std::set<Producto*> Vendedor::getProductos(){
+    return this->productos;
+}
+std::string Vendedor::getRut(){
+    return this->RUT;
+}
+
+void Vendedor::imprimirUsuario(){
+    printf("\n_______________\n| ");
+    std::string nombre = getNickname();
     std::cout << nombre << std::endl;
+    printf("|\n|");
     imprimirFecha();
-    std::string RUT = rut;
-    std::cout << RUT << std::endl;
-};
+    printf("\n| Rut:\n|          ");
+    std::string raut = getRut();
+    std::cout << raut << std::endl;
+    printf("|_____________");
+}
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
     productos.insert(nuevoProducto);
@@ -28,4 +38,14 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 
 bool esVendedor(){
     return true;
+
+
 }:
+
+void imprimirProdsVendedor(Vendedor v){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods=v->getProductos();
+        for (it=prods.begin(); it != prods.end(); ++it){
+                it->imprimirProducto();
+        }
+}

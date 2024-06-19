@@ -1,5 +1,5 @@
 
-#ifndef FABRICA_H
+/*#ifndef FABRICA_H
 #define FABRICA_H
 #include <iostream>
 #include <set>
@@ -20,4 +20,4 @@ public:
     IContProducto* getIContProducto();
 };
 
-#endif 
+#endif */

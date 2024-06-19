@@ -1,4 +1,4 @@
-#ifndef TCOMPRAPRODS
+/*#ifndef TCOMPRAPRODS
 #define TCOMPRAPRODS
 #include <iostream>
 #include <set>
@@ -21,4 +21,4 @@ public:
 };  
 
 
-#endif
+#endif*/

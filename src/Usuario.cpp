@@ -1,6 +1,8 @@
 #include <iostream> // Para std::cin y std::getline
 #include "Usuario.h"
 
+Usuario::~Usuario(){}
+
 Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fecha(fecha){
     this->nickname = nickname;
     this->nickname = nickname;
@@ -8,14 +10,21 @@ Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fec
 };
 
 void Usuario::imprimirFecha(){
-    int dia = *fecha.getDia();
-    printf("%d",dia);
-    int mes = *fecha.getMes();
-    printf("%d",mes);
-    int ano = *fecha.getAno();
-    printf("%d",Ano);
+    int dia = fecha.getDia();
+    int mes = fecha.getMes();
+    int ano = fecha.getAno();
+    printf("\n| Fecha:\n|          %d/%d/%d\n|",dia,mes,ano);
+}
+
+void Usuario::imprimirUsuario(){};
+
+std::string Usuario::getNickname(){
+    return this->nickname;
 };
 
+/*
 bool esVendedor(){
     return false;
 };
+*/
+
