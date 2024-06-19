@@ -22,6 +22,7 @@ class TFecha {
         int getAnio();
         void modificarFecha(int dia, int mes, int anio);
         void imprimirFecha();
+        bool mayoroIgual(TFecha); //va en el otro Tfecha
 };
 
 #endif

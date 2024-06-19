@@ -1,4 +1,4 @@
-/*#ifndef TCODNOMPROD
+#ifndef TCODNOMPROD
 #define TCODNOMPROD
 #include <iostream>
 #include <set>
@@ -19,4 +19,4 @@ public:
     std::string getNombre();
 };
 
-#endif*/
+#endif
