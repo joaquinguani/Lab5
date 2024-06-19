@@ -5,7 +5,7 @@ Usuario::~Usuario(){}
 
 Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fecha(fecha){
     this->nickname = nickname;
-    this->nickname = nickname;
+    this->contrasena = contrasena;
     //this->fecha(fecha.getDia(),fecha.getMes(),fecha.getAnio());//no se como asignarle a fecha su fecah
 };
 

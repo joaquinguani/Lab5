@@ -1,4 +1,4 @@
-/*#ifndef PRODUCTOSENPROMO
+#ifndef PRODUCTOSENPROMO
 #define PRODUCTOSENPROMO
 #include <iostream>
 #include <set>
@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 //#include <sstream>
+#include "Producto.h"
 
 class ProductosEnPromo{
 private:
@@ -22,4 +23,4 @@ public:
     virtual ~ProductosEnPromo(){};
 };
 
-#endif*/
+#endif
