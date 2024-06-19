@@ -1,4 +1,4 @@
-#ifndef INFOCLIENTE
+/*#ifndef INFOCLIENTE
 #define INFOCLIENTE
 #include <iostream>
 #include <set>
@@ -20,4 +20,4 @@ public:
     TCompraProds getCompra();
 };  
 
-#endif
+#endif*/

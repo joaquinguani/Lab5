@@ -1,4 +1,3 @@
-
 #ifndef CONTPRODUCTO
 #define CONTPRODUCTO
 #include <iostream>
@@ -35,4 +34,4 @@ public:
     virtual ~ContProducto(){}; //destructor
 };
 
-#endif
+#endif*/

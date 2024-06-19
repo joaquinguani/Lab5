@@ -1,4 +1,4 @@
-#ifndef DATOSCOMPRA
+/*#ifndef DATOSCOMPRA
 #define DATOSCOMPRA
 #include <iostream>
 #include <set>
@@ -25,4 +25,4 @@ public:
     std::set<Producto> getProductos;
 };  
 
-#endif
+#endif*/

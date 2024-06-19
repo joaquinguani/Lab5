@@ -2,6 +2,7 @@
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
 #include <map>
+#include <cstdlib>
 #include <set>
 
 #include "Cliente.h"
@@ -12,6 +13,7 @@
 #include "DataVendedor.h"
 #include "ContProductos.h"
 #include "ContUsuario.h"
+#include "leer.h"
 #include "Compra.h"
 
 #include "TCategoria.h"
@@ -24,24 +26,23 @@ int main()
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 
-std::map<std::string,Usuario *> usuarios;
-std::map<std::string,Vendedor *> vendedores; 
-std::map<std::string,Cliente *> clientes;
+std::set<Producto *> productos;
+std::map<std::string,Vendedor *> vendedores;
+  //std::map<std::string,Cliente *> clientes;
+std::map<std::string,Vendedor *>::iterator iter;
 
-
-ContUsuario contUsu = ContUsuario(usuarios);
-ContProducto contProdu = ContProducto(productos);
+ContUsuario contUsu = ContUsuario();
+//ContProducto contProdu = ContProducto(productos);
 
 std::string nick;
 std::string Contrasena;
-bool PriemeraVez;
-
 TFecha* fecha;
-int codigoProducto = 0;
+//int //codigoProducto = 0;
 
 bool e = true;
-while(e) {
 
+while(e) {
+    std::system("cls");
     printf("      **MERCADO FING**\n");
     printf("            //MENU//\n\n");
     int TamañoColUsuarios = contUsu.sizeCol();
@@ -65,70 +66,69 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla;
-    scanf(" %c", &tecla); 
+    char tecla = leerUnaTecla();
+    //scanf(" %c", &tecla); 
     
     switch(tecla) {
-        case 'a':
+        case 'a':{
+            std::system("cls");
             printf("\nOpción 'a' seleccionada: Dar de alta a un usuario.\n");
             printf("\nPresione:\na: para ingresar un cliente\ncualquier otra tecla: para ingresar un vendedor\n");
-            char venOcli;
-            scanf(" %c", &venOcli); 
-            nick = "holaholhola";
-            printf("\nIngresar Nickname usuario");
-            std::cin.ignore();
-            std::getline(std::cin, nick);
-            if (usuarios.find(nick) != usuarios.end()){
+            char venOcli = leerUnaTecla();
+            printf("\nIngresar Nickname usuario\n");
+            nick = leerCadena();
+            //std::cin.ignore();
+            //std::getline(std::cin, nick);
+            if (!contUsu.estaUsuario(nick)){
                 printf("\nError! Ese nombre de usuario ya existe");
                 break;
             }
             printf("\nIngresar Contrasena usuario\n");
-            std::cin.ignore();
-            std::getline(std::cin, Contrasena);
+            Contrasena = leerCadena();
+            //std::cin.ignore();
+            //std::getline(std::cin, Contrasena);
             printf("\nIngresar ano de nacimiento de usuario\n");
-            int ano;
-            scanf("%d", &ano);
+            int ano = leerEntero();
+            
             printf("\nIngresar mes de nacimiento de usuario\n");
-            int mes;
-            scanf("%d", &mes);
+            int mes = leerEntero();
             printf("\nIngresar dia de nacimiento de usuario\n");
-            int dia;
-            scanf("%d", &dia);
+            int dia = leerEntero();
+
             fecha = new TFecha(dia, mes, ano);
             if(venOcli == 'a'){
                 printf("\nIngresar ciudad de cliente\n");
-                std::string ciudad;
-                std::cin.ignore();
-                std::getline(std::cin, ciudad);
+                std::string ciudad = leerCadena();
                 printf("\nIngresar calle de cliente\n");
-                std::string calle;
-                std::cin.ignore();
-                std::getline(std::cin, calle);
+                std::string calle  = leerCadena();
                 printf("\nIngresar numero de puerta de cliente\n");
-                int numero;
-                scanf("%d",&numero);
+                int numero = leerEntero();
                 TDireccion* direccion = new TDireccion(calle, numero);
                 DataCliente* data = new DataCliente(nick,Contrasena,*fecha,*direccion,ciudad);
                 contUsu.ingresarDatosCliente(*data);
             }
             else{
                 printf("\nIngresar RUT de vendedor\n");
-                std::string RUT;
-                std::cin.ignore();
-                std::getline(std::cin, RUT);
+                std::string RUT = leerCadena();
+                std::system("cls");
                 DataVendedor* data = new DataVendedor(nick,Contrasena,*fecha,RUT);
                 contUsu.ingresarDatosVendedor(*data);
             }
-            
+        
             break;
-        case 'b':
-            
-            printf("\nOpción 'b' seleccionada: Listado de usuarios.\n");
-            colUsuarios.imprimirUsuarios();
+        }
+        case 'b':{
+            std::system("cls");
+            printf("\nListado de usuarios:\n");
+            contUsu.imprimirUsuarios();
+            printf("\nPrecione cualquier tecla para ir al menu\n");
+            leerUnaTecla();
+            //std::getline(std::cin,Contrasena);
             break;
-            
-
+        }
+/*
         case 'c':
+        
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
@@ -331,21 +331,21 @@ while(e) {
             fecha->modificarFecha(dia, mes, anio);
             break;
         case 's':
+        
             printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");
             // Aquí iría el código para volver al estado anterior del mercado
-            break;
-        case 'x':
+            break;*/
+        case 'x':{
             printf("\nOpción 'x' seleccionada: Salir del programa.\n");
             e=false;
-            break;
-        default:
+            break;}
+        default:{
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
-            break;
+            break;}
     }
 
 }
 
 
 }
-
 

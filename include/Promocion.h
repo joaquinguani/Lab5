@@ -1,4 +1,4 @@
-#ifndef PROMOCION
+/*#ifndef PROMOCION
 #define PROMOCION
 #include <iostream>
 #include <set>
@@ -44,4 +44,4 @@ public:
 };
 
 
-#endif
+#endif*/

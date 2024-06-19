@@ -14,6 +14,7 @@ class TFecha {
         static TFecha* instanciaFecha;
         TFecha(int Dia, int Mes, int Anio); //constructor privado pq es singleton
         ~TFecha(); //destructor
+
     public:
         static TFecha * getInstanciaFecha(int Dia, int Mes, int Anio);
         int getDia();

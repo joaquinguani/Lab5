@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <sstream>
+#include <sstream>
 #include "IContUsuario.h"
 #include "IContUsuario.h"
 #include <map>
@@ -34,10 +34,14 @@ public:
 
 
     int sizeCol();
+    bool estaUsuario(std::string);
 
     void imprimirUsuarios();
+    /*
     void imprimirVendedores();
     void imprimirClientes();
+
+    
 
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
@@ -50,8 +54,13 @@ public:
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
     void listarNicknamesVendedores();
+
+
+
     Vendedor* buscarPorNombre(std::string vend)
+
     virtual ~ContUsuario(){}; //destructor 
+    */
 };
 
 

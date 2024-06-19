@@ -8,10 +8,10 @@
 
 TFecha* TFecha::instanciaFecha = NULL;
 
-TFecha::TFecha(int Dia, int Mes, int Anio){
+TFecha::TFecha(int Dia, int Mes, int Ano){
     this->Dia=Dia;
     this->Mes=Mes;
-    this->Anio=Anio;
+    this->Ano=Ano;
 };
 
 TFecha::~TFecha(){}
@@ -30,9 +30,10 @@ int TFecha::getMes() {
     return this->Mes;
 };
 
-int TFecha::getAnio() {
-    return this->Anio;
+int TFecha::getAno() {
+    return this->Ano;
 };
+
 
 void TFecha::modificarFecha(int dia, int mes, int anio) {
     if (dia > 0 && dia <= 31 && mes > 0 && mes <= 12 && anio > 0) {
@@ -44,3 +45,4 @@ void TFecha::modificarFecha(int dia, int mes, int anio) {
         std::cerr << "Fecha no válida." << std::endl; //cerr es para imprimir errores 
     }
 }
+
