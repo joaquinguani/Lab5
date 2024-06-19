@@ -30,6 +30,11 @@ void Vendedor::imprimirUsuario(){
     printf("|_____________");
 }/*
 
+void Vendedor::insertarProducto(Producto* nuevoProducto){
+    productos.insert(nuevoProducto);
+};
+
 bool esVendedor(){
     return true;
 }
+*/
