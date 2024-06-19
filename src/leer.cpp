@@ -10,7 +10,7 @@
 // Función para leer una sola tecla sin presionar Enter en Unix/Linux
 char leerUnaTecla() {
     return _getch();  // Leer una tecla
-}
+};
 
 
 
@@ -35,7 +35,7 @@ int leerEntero() {
         // Si la entrada es inválida, mostrar un mensaje de error
         std::cout << "Entrada no válida. Intente de nuevo." << std::endl;
     }
-}
+};
 
 // Función para leer una cadena
 std::string leerCadena() {
@@ -52,4 +52,4 @@ std::string leerCadena() {
         // Si la entrada es inválida, mostrar un mensaje de error
         std::cout << "Entrada no válida. Intente de nuevo." << std::endl;
     }
-}
+};

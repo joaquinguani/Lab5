@@ -1,4 +1,4 @@
-/*#include <iostream> // Para std::cin y std::getline
+#include <iostream> // Para std::cin y std::getline
 #include <iostream>
 #include <set>
 #include <string>
@@ -14,9 +14,8 @@
 
 IContUsuario* Fabrica::getIContUsuario() {
     return ContUsuario.getInstancia();
-}
+};
 
 IContProducto* Fabrica::getIContProducto() {
     return ContProductos.getInstancia(); //??????? es lo que dice el teorico pero aparece mal!!!!
-}
-*/
+;}
