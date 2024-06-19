@@ -17,7 +17,6 @@ private:
     int descuento;
     std::set<ProductosEnPromo*> promproductos;
     std::set<Producto*> productos;
-    
 
 public:
     // Constructor

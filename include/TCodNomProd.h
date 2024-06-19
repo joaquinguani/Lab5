@@ -1,11 +1,11 @@
-/*#ifndef TCODNOMPROD
+#ifndef TCODNOMPROD
 #define TCODNOMPROD
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <memory>
-//#include <sstream>
+#include <sstream>
 
 class TCodNomProd{
 private:
@@ -19,4 +19,4 @@ public:
     std::string getNombre();
 };
 
-#endif*/
+#endif

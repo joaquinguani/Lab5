@@ -1,4 +1,4 @@
-/*#ifndef PRODUCTOSENPROMO
+#ifndef PRODUCTOSENPROMO
 #define PRODUCTOSENPROMO
 #include <iostream>
 #include <set>
@@ -22,4 +22,4 @@ public:
     virtual ~ProductosEnPromo(){};
 };
 
-#endif*/
+#endif

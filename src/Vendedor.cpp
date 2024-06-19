@@ -42,10 +42,10 @@ bool esVendedor(){
 
 }:
 
-void imprimirProdsVendedor(Vendedor v){
+void imprimirProdsVendedorCodNom(Vendedor v){
     std::set<Producto*>::iterator it;
     std::set<Producto*> prods=v->getProductos();
         for (it=prods.begin(); it != prods.end(); ++it){
-                it->imprimirProducto();
+                it->imprimirProductoCodNom();
         }
 }

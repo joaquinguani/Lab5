@@ -29,8 +29,11 @@ void Producto::imprimirProducto(){
     std::cout << cat << std::endl;
 }
 
-void Producto::codigoYnombre(){
+
+
+void Producto::imprimirProductoCodNom(){
     int cod = codigo;
     std::cout << cod << std::endl;
-    std::cout << nombre << std::endl;
-}
+    std::string nom = nombre;
+    std::cout << nom << std::endl;
+};
