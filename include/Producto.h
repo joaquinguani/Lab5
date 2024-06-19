@@ -21,8 +21,6 @@ private:
     std::string descripcion;
     TCategoria categoria; //decia string
     std::set<Comentario> *comentarios;
-    
-    
 
 public:
     // Constructor
@@ -48,6 +46,8 @@ public:
     Producto getDatos();
     bool vendedor(std::string vendedor);
     void eliminarCom(int codigoProducto);
+    void imprimirProducto();
+    void imprimirProductoCodNom();
 };
 
 #endif

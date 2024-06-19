@@ -9,6 +9,7 @@
 
 #include "TFecha.h"
 #include"CompraProd.h"
+#include "Producto.h"
 
 
 class Compra {
@@ -31,7 +32,7 @@ public:
 
     // Métodos
     void agregarProdACompra(Producto prod, int cod, int cant);
-    void aplicarDescuento(int precio);
+    int aplicarDescuento(int precio, int cant);
     void sumarAlMonto(int pre);
 };
 

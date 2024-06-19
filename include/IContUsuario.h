@@ -1,4 +1,4 @@
-#ifndef ICONTUSUARIO
+/*#ifndef ICONTUSUARIO
 #define ICONTUSUARIO
 #include <iostream>
 #include <set>
@@ -26,4 +26,4 @@ public:
     virtual ~IContUsuario(){}; //destructor 
 };
 
-#endif
+#endif*/

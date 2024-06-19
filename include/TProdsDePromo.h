@@ -1,4 +1,4 @@
-#ifndef TPRODSENPROMO
+/*#ifndef TPRODSENPROMO
 #define TPRODSENPROMO
 #include <iostream>
 #include <set>
@@ -22,3 +22,4 @@ public:
 };
 
 #endif
+*/

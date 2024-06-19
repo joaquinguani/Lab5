@@ -1,4 +1,4 @@
-#include "TComentario.h"
+/*#include "TComentario.h"
 
 TComentario::TComentario(int id, std::string texto, TFecha* fecha){
     this->fecha = fecha;
@@ -15,5 +15,6 @@ TFecha TComentario::getFecha(){ //decia solo Fecha
 };
 
 int TComentario::getID(){
-    return id;
-};
+    retunr id;
+};*/
+

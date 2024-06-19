@@ -12,7 +12,7 @@ void ContUsuario::ingresarDatosCliente(DataCliente data){
 };
 
 void ContUsuario::ingresarDatosVendedor(DataVendedor data){
-        Vendedor* usuario = new Vendedor(data);
+        Usuario* usuario = new Vendedor(data);
         colUsuarios[data.getNickname()] = usuario;
         colVendedores[data.getNickname()]=usuario;
 };
@@ -21,8 +21,11 @@ int ContUsuario::sizeCol(){
     return colUsuarios.size();
 };
 
-std::map<std::string, Usuario *> getUsuarios() {
-        return colUsuarios;}
+bool ContUsuario::estaUsuario(std::string nick){
+        return colUsuarios[nick] == NULL;
+        
+}
+
 
 void ContUsuario::imprimirUsuarios(){
         std::map<std::string, Usuario *>::iterator it;
@@ -30,7 +33,7 @@ void ContUsuario::imprimirUsuarios(){
                 Usuario* usr = it->second;
                 usr->imprimirUsuario();
         }
-};
+}
 
 void ContUsuario::imprimirVendedores(){
         std::map<std::string, Usuario *>::iterator it;

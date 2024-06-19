@@ -14,8 +14,8 @@
 
 IContUsuario* Fabrica::getIContUsuario() {
     return ContUsuario.getInstancia();
-}
+};
 
 IContProducto* Fabrica::getIContProducto() {
     return ContProductos.getInstancia(); //??????? es lo que dice el teorico pero aparece mal!!!!
-}
+;}
