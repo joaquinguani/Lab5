@@ -6,21 +6,12 @@
 #include <sstream>
 #include "TFecha.h" 
 
-TFecha* TFecha::instanciaFecha = NULL;
 
 TFecha::TFecha(int Dia, int Mes, int Anio){
     this->Dia=Dia;
     this->Mes=Mes;
     this->Anio=Anio;
 };
-
-TFecha::~TFecha(){}
-
-TFecha * TFecha::getInstanciaFecha(int Dia, int Mes, int Anio){
-    if (instanciaFecha == NULL)
-        instanciaFecha = new TFecha(Dia , Mes, Anio);
-    return instanciaFecha;
-}
 
 int TFecha::getDia() {
     return this->Dia;
