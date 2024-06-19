@@ -199,14 +199,35 @@ while(e) {
             int desc;
             scanf("%d", &desc);
             
+
+>>>>>>>>> Temporary merge branch 2
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedor();
+            vnd->imprimirProdsVendedorCodNom();
+            int d,m,a,descu;
+            std::string nom,descrip;
+            std::cout << "Ingrese el nombre de la promoción: ";
+            nom=leerCadena();
+            std::cout << "Ingrese la descripción de la promoción: ";
+            descrip=leerCadena();
+            std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
+            d=leerEntero();
+            m=leerEntero();
+            a=leerEntero();
+            TFecha* fech=new TFecha(d,m,a);
 
+<<<<<<<<< Temporary merge branch 1
+            std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
+            descu=leerEntero();
+            Promocion* p=new Promocion(nom,descrip, );
+=========
+
+
+>>>>>>>>> Temporary merge branch 2
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");

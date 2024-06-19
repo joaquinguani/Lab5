@@ -29,6 +29,11 @@ void Producto::imprimirProducto(){
     std::cout << cat << std::endl;
 }
 
+<<<<<<<<< Temporary merge branch 1
+
+
+void Producto::imprimirProductoCodNom(){
+=========
 void Producto::imprimirProducto(){
     int cod = codigo;
     std::cout << cod << std::endl;
@@ -45,9 +50,8 @@ void Producto::imprimirProducto(){
 }
 
 
-
-
-void Producto::imprimirProductoCodNom(){
+void Producto::codigoYnombre(){
+>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
