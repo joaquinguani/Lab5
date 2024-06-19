@@ -158,8 +158,8 @@ while(e) {
                 printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
                 std::cin.ignore();
                 std::getline(std::cin, catProd);
-                codigoProducto ++;
-                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                static int codigoProducto = 0;
+                Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
             }    
             break;

@@ -29,14 +29,14 @@ public:
     ContUsuario();
 
     //otros metodos
-    void ingresarDatosVendedor(DataVendedor data);
-    void ingresarDatosCliente(DataCliente data);
+    void ingresarDatosVendedor(DataVendedor data); //casos: a, 
+    void ingresarDatosCliente(DataCliente data); //casos: a, 
 
 
     int sizeCol();
-    bool estaUsuario(std::string);
+    bool estaUsuario(std::string); //casos: a, 
 
-    void imprimirUsuarios();
+    void imprimirUsuarios(); //casos: a,
     
     void imprimirVendedores();
     void imprimirClientes();
