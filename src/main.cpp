@@ -24,6 +24,19 @@
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
+int inputIndex = 0;
+// Inicializar simulatedInputs con datos válidos
+simulatedInputs = {
+    "a",      // Tecla para seleccionar opción 'a'
+    "nick123", // Nickname
+    "password123", // Contraseña
+    "1990",    // Año
+    "6",       // Mes
+    "15",      // Día
+    "New York", // Ciudad
+    "5th Ave",  // Calle
+    "123"       // Número de puerta
+};
 
 
 std::set<Producto *> productos;
@@ -67,7 +80,7 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla = leerUnaTecla();
+    char tecla = leerUnaTecla(simulatedInputs,inputIndex);
     //scanf(" %c", &tecla); 
     
     switch(tecla) {
@@ -350,5 +363,5 @@ while(e) {
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
             break;}
     }
-
+}
 };
