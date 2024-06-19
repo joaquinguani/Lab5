@@ -25,9 +25,9 @@ public:
     void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
     std::set<std::string> listarNicknamesVendedores();
     void seleccionarNickname(std::string nombre);
-    std::set<TCodNomProd> listarProductosDisp();
+    std::set<TCodNomProd> listarProductosDisp(); 
     void confirmarAltaPromo();
-    std::set<Producto> listarProductos();
+    std::set<Producto> listarProductos(); //porque no TCodNomProd? 
     void ingresarProducto(std::string cod, int cantidad);
     Compra mostrarCompra();
     void eliminarComDeProd(std::string cod, int ID);
