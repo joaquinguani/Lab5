@@ -22,11 +22,11 @@ std::string Cliente::getCiudad() {
 };
 
 TDireccion Cliente::getDireccion() {
-    return this->direccion;
+    return this->direc;
 };
 
-void Cliente::setDireccion(TDireccion& direccion){
-    this->direccion = direccion;
+void Cliente::setDireccion(TDireccion &direccion){ //estaba mal el &
+    this->direc = direccion; // es direc no direccion
 };
 
 Usuario Cliente::creadorUsuario(DataCliente data){

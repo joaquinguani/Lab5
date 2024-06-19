@@ -21,7 +21,7 @@ class ContUsuario {
 private:
     std::map<std::string, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
-    std::map<std::string, Vendedor*> colVendedores;
+    std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
     std::map<std::string, Cliente*> colClientes;
     
 public:
