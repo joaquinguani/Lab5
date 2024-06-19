@@ -1,5 +1,5 @@
-#ifndef TFECHA
-#define TFECHA
+#ifndef FechaSist
+#define FechaSist
 #include <iostream>
 #include <set>
 #include <string>
@@ -7,20 +7,20 @@
 #include <memory>
 #include <sstream>
 
-
-class TFecha {
+class TFechaActual {
     private:
         int Dia, Mes, Anio;
+        static TFecha* instanciaFecha;
+        ThhFecha(); //constructor privado pq es singleton
         ~TFecha(); //destructor
 
     public:
-        TFecha(int,int,int);
+        static TFecha * getInstanciaFecha();
         int getDia();
         int getMes();
         int getAnio();
         void modificarFecha(int dia, int mes, int anio);
         void imprimirFecha();
-        bool mayoroIgual(TFecha); //va en el otro Tfecha
 };
 
 #endif
