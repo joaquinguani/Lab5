@@ -29,6 +29,8 @@ void Producto::imprimirProducto(){
     std::cout << cat << std::endl;
 }
 
+
+
 void Producto::imprimirProductoCodNom(){
     int cod = codigo;
     std::cout << cod << std::endl;
