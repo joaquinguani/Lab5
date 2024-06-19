@@ -8,6 +8,8 @@
 #include <sstream>
 #include "Promocion.h"
 #include "Comentario.h"
+#include "TCategoria.h"
+
 
 class Promocion; //forward declaration
 class Producto {
@@ -17,14 +19,14 @@ private:
     int precio;
     std::string nombre;
     std::string descripcion;
-    std::string categoria;
+    TCategoria categoria; //decia string
     std::set<Comentario> *comentarios;
     
     
 
 public:
     // Constructor
-    Producto(int cod, int stk, int pre, std::string nom, std::string desc, std::string cat);
+    Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
 
     // Getters
     int getCodigo();

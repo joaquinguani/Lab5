@@ -30,7 +30,7 @@ std::map<std::string,Cliente *> clientes;
 
 
 ContUsuario contUsu = ContUsuario(usuarios);
-ContProductos contProdu = ContProducto(productos);
+ContProducto contProdu = ContProducto(productos);
 
 std::string nick;
 std::string Contrasena;
@@ -269,7 +269,29 @@ while(e) {
             break;
         case 'h':
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
-            // Aquí iría el código para dejar un comentario
+            printf("\nIngrese el nickname del usuario que desea seleccionar\n");
+            contUsu.imprimirUsuarios();
+            std::string nickUsuario;
+            std::cin.ignore();
+            std::getline(std::cin, nickUsuario);
+            std::map<std::string,Usuario *>::iterator iteru = usuarios.find(nickUsuario);
+            if (iteru == usuarios.end()) {
+                printf("\nError: No existe un usuario con dicho nickname\n");
+            } else {
+              printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
+              // se supone que la funcion esa con TCodNomProd (hay que hacer el .cpp) hace eso
+              contProdu.listarProductos();
+              std::string codigoprod;
+              std::cin.ignore();
+              std::getline(std::cin, codigoprod);
+              std::map<std::string,Producto *>::iterator iterP = productos.find(codigoprod); //hay que hacerlos map en vezde set
+              //que diga si puso mal el codigo, else:
+              // "desea comentario nuevo o respuesta?"
+              // case N : ingrese el texto de su comentario: ____ y ahi lo creas
+              // case R: falta un mostrarComDeProd en el contProductos, pero con eso los muestra, "elija uno", selecciona etc
+              // y ahi si ingrese el texto del comentario
+              
+
             break;
         case 'i':
             printf("\nOpción 'i' seleccionada: Eliminar comentario.\n");

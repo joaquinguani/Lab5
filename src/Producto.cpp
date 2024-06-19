@@ -1,8 +1,12 @@
 #include "Producto.h"
 
-Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, std::string cat{
+Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
     this->codigo = cod;
-    this
+    this->stock = stk;
+    this->precio = pre;
+    this->nombre = nom;
+    this->descripcion = desc;
+    this->categoria = cat;
 
 }
 
@@ -19,4 +23,10 @@ void Producto::imprimirProducto(){
     std::cout << des << std::endl;
     std::string cat = categoria;
     std::cout << cat << std::endl;
+}
+
+void Producto::codigoYnombre(){
+    int cod = codigo;
+    std::cout << cod << std::endl;
+    std::cout << nombre << std::endl;
 }
