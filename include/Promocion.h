@@ -1,4 +1,4 @@
-#ifndef PROMOCION
+/*#ifndef PROMOCION
 #define PROMOCION
 #include <iostream>
 #include <set>
@@ -29,7 +29,7 @@ public:
     std::string getDescripcion(); 
     TFecha getFechaVenc();
     int getDescuento();
- main
+
 
     // Setters
     void setNombre(const std::string& nom);
@@ -44,4 +44,4 @@ public:
 };
 
 
-#endif
+#endif*/

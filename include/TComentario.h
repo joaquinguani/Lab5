@@ -1,4 +1,4 @@
-#ifndef TCOMENTARIO
+/*#ifndef TCOMENTARIO
 #define TCOMENTARIO
 #include <iostream>
 #include <set>
@@ -20,4 +20,4 @@ class TComentario {
         int getID();
 };
 
-#endif
+#endif*/

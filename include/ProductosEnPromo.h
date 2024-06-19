@@ -1,4 +1,4 @@
-#ifndef PRODUCTOSENPROMO
+/*#ifndef PRODUCTOSENPROMO
 #define PRODUCTOSENPROMO
 #include <iostream>
 #include <set>
@@ -13,7 +13,7 @@ private:
     Producto *producto;
 public:
     //constructor
-    ProductosEnPromo();
+    ProductosEnPromo(); // y esto?
 
     //metodos de acceso
     int getCantidadMin();
@@ -22,4 +22,4 @@ public:
     virtual ~ProductosEnPromo(){};
 };
 
-#endif
+#endif*/

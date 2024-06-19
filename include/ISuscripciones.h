@@ -1,4 +1,4 @@
-#ifndef ISUSCRIPCIONES
+/*#ifndef ISUSCRIPCIONES
 #define ISUSCRIPCIONES
 #include <iostream>
 #include <set>
@@ -12,4 +12,4 @@ class ISuscripciones{
             virtual ~ISuscripciones(){};
 };
 
-#endif
+#endif*/
