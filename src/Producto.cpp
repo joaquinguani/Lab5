@@ -1,3 +1,7 @@
+
+#include <iostream>
+#include "Producto.h"
+#include "TCategoria.h"
 #include "Producto.h"
 
 Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
@@ -41,8 +45,11 @@ void Producto::imprimirProducto(){
 }
 
 
-void Producto::codigoYnombre(){
+
+
+void Producto::imprimirProductoCodNom(){
     int cod = codigo;
     std::cout << cod << std::endl;
-    std::cout << nombre << std::endl;
-}
+    std::string nom = nombre;
+    std::cout << nom << std::endl;
+};

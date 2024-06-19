@@ -1,4 +1,3 @@
-
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -16,7 +15,6 @@
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
-#include "TFecha.h"
 #include "TCategoria.h"
 #include "ContProductos.h"
 #include "ContUsuario.h"
@@ -129,7 +127,6 @@ while(e) {
         }
 
         case 'c':
-        
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
@@ -202,7 +199,6 @@ while(e) {
             int desc;
             scanf("%d", &desc);
             
-
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
@@ -210,8 +206,6 @@ while(e) {
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
             vnd->imprimirProdsVendedor();
-
-
 
             break;
         case 'f':
@@ -226,9 +220,13 @@ while(e) {
             std::string nickCliente;
             std::cin.ignore();
             std::getline(std::cin, nickCliente);
-            std::map<std::string,Cliente *>::iterator iter = clientes.find(nickCliente); //como hacer sin tener un map de clienteds
-            if (iter == vendedores.end()) {
-                printf("\nError: No existe un cliente con dicho nickname\n");
+            auto iter = contUsu.getUsuarios().find(nickCliente);
+            if (iter == contUsu.getUsuarios().end()) {
+                printf("\nError: No existe un usuario con dicho nickname\n");
+            else {
+                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
+                if (!cliente) {
+                    printf("\nError: El usuario seleccionado no es un cliente\n");
             } else {
                 Compra compra = new Compra(fechaActual, 0);
                 contProdu.imprimirProductos();
@@ -238,29 +236,29 @@ while(e) {
                 std::getline(std::cin, agregar);
                 std::set<int> comprasPro;
                 while (agregar == 0){
-                    printf("\nIngrese el codigo del producto a agrergar\n");
+                    printf("\nIngrese el codigo del producto a agregar\n");
                     int codP;
                     std::cin.ignore();
                     std::getline(std::cin, codP);
-                    std::map<std::string,Producto *>::iterator iter;
-                    iter = colProductos.find(codP);
-                    if (iter == colProductos.end()) {
+                    std::map<std::string,Producto *>::iterator iterProd;
+                    iterProd = contProdu.colProductos.find(codP);
+                    if (iter == contProdu.colProductos.end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
                             int cantP;
                             std::cin.ignore();
                             std::getline(std::cin, cantP);
-                            CompraProd compraP = CompraProd(cantP, false, iter->second);
+                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
                             //con que se conecta compraprod????? VERIFICAR
                             //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
-                            int precio = iter->second->getPrecio();
-                            precio = compra.aplicarDescuento(precio);
-                            compra.sumarAlMonto(precio);
+                            float precio = iter->second->getPrecio();
+                            precio = compra->aplicarDescuento(precio);
+                            compra->sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
@@ -335,7 +333,6 @@ while(e) {
             scanf("%d", &dia);
             fecha->modificarFecha(dia, mes, anio);
             break;
-        */
        case 'p':
             printf("\nOpcion 'p' seleccionada:Obtener fecha del sistema");
             printf("\nLa fecha actual del sistema es");
@@ -356,3 +353,6 @@ while(e) {
     }
 
 };
+};
+};
+
