@@ -4,6 +4,7 @@
 
 
 
+
 ContProducto::ContProducto(){
 
 };
@@ -28,3 +29,5 @@ Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Us
         return colPromocion[promo];
 };
 
+
+    

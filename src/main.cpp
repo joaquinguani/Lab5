@@ -22,7 +22,7 @@
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
-//capaz crear como variables los controladores solo, y que las colecciones esten dentro de ellos ???
+
 
 std::set<Producto *> productos;
 std::map<std::string,Vendedor *> vendedores;
@@ -65,7 +65,7 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla = leerUnaTecla();
+    char tecla = leerUnaTecla(simulatedInputs,inputIndex);
     //scanf(" %c", &tecla); 
     
     switch(tecla) {
@@ -353,6 +353,3 @@ while(e) {
     }
 
 };
-};
-};
-
