@@ -1,3 +1,4 @@
+
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -19,10 +20,9 @@
 #include "TCategoria.h"
 #include "ContProductos.h"
 #include "ContUsuario.h"
+#include "TFecha.h"
 
-
-int main()
-{
+int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 
@@ -32,8 +32,8 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-//ContProducto contProdu = ContProducto(productos);
-
+//ContProducto contProdu = ContProducto(productosda);
+TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
@@ -63,6 +63,7 @@ while(e) {
     printf("m: Consulta de notificaciones\n");
     printf("n: Eliminar suscripciones\n");
     printf("o: Modificar fecha\n");
+    printf("p: Obtener fecha del sistema");
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
@@ -330,11 +331,17 @@ while(e) {
             scanf("%d", &dia);
             fecha->modificarFecha(dia, mes, anio);
             break;
+        */
+       case 'p':
+            printf("\nOpcion 'p' seleccionada:Obtener fecha del sistema");
+            printf("\nLa fecha actual del sistema es");
+            fechaSist->imprimirFecha();
+            break;
         case 's':
         
             printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");
             // Aquí iría el código para volver al estado anterior del mercado
-            break;*/
+            break;
         case 'x':{
             printf("\nOpción 'x' seleccionada: Salir del programa.\n");
             e=false;
@@ -344,8 +351,4 @@ while(e) {
             break;}
     }
 
-}
-
-
-}
-
+};
