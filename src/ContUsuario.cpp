@@ -21,6 +21,8 @@ int ContUsuario::sizeCol(){
     return colUsuarios.size();
 };
 
+std::map<std::string, Usuario *> getUsuarios() {
+        return colUsuarios;}
 
 void ContUsuario::imprimirUsuarios(){
         std::map<std::string, Usuario *>::iterator it;
