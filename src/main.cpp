@@ -1,3 +1,4 @@
+
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -186,7 +187,6 @@ while(e) {
             std::string descripcion;
             std::cin.ignore();
             std::getline(std::cin, descripcion);
-
             printf("\nIngresar año de fecha de vencimiento de promocion\n");
             int anio;
             scanf("%d", &anio);
@@ -200,14 +200,14 @@ while(e) {
             printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
             int desc;
             scanf("%d", &desc);
-            
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedor();
+            vnd->imprimirProdsVendedorCodNom();
+
 
             break;
         case 'f':
@@ -330,7 +330,6 @@ while(e) {
             scanf("%d", &dia);
             fecha->modificarFecha(dia, mes, anio);
             break;
-        */
        case 'p':
             printf("\nOpcion 'p' seleccionada:Obtener fecha del sistema");
             printf("\nLa fecha actual del sistema es");
@@ -350,4 +349,6 @@ while(e) {
             break;}
     }
 
+};
+};
 };

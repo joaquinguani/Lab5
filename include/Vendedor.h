@@ -36,7 +36,7 @@ class Vendedor:public Usuario{
            void agregar(ISuscripciones *);
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto *);
-           void imprimirProdsVendedor(Vendedor);
+           void imprimirProdsVendedorCodNom(Vendedor);
 };
 
 
