@@ -1,4 +1,4 @@
-/*#ifndef PRODUCTO
+#ifndef PRODUCTO
 #define PRODUCTO
 #include <iostream>
 #include <set>
@@ -48,6 +48,8 @@ public:
     Producto getDatos();
     bool vendedor(std::string vendedor);
     void eliminarCom(int codigoProducto);
+    void imprimirProducto();
+    void imprimirProductoCodNom();
 };
 
-#endif*/
+#endif
