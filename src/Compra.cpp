@@ -16,6 +16,8 @@ int Compra::getMontoFinal(){
     return this->MontoFinal;
 };
 
+
+
 void Compra::setFecha(const TFecha& f){
     this->fecha = f;
 };

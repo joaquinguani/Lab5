@@ -55,3 +55,14 @@ void imprimirProdsVendedorCodNom(Vendedor v){
 void imprimirDatosVend(){
     
 }
+
+
+void Vendedor::imprimirProdsConCompraPendDeEnvio(){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods = this->getProductos();
+    for (it=prods.begin(); it != prods.end(); ++it){
+        if ((*it)->getCompraProducto()->getEnviado()){
+            (*it)->imprimirProducto(); 
+        }
+    }
+}

@@ -38,6 +38,8 @@ public:
     Producto* buscarProducto(int clave);
     std::map<int, Producto*> getProductos();
     Promocion* buscarPromoPorNombre(std::string promo);
+    Producto* buscarProdPorNombre(std::string produ);
+
     virtual ~ContProducto(){}; //destructor
     std::set<Promocion*> listarPromosVigentes();
 };

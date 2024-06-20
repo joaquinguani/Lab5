@@ -1,4 +1,4 @@
-/*#ifndef TNOTIFICACION
+#ifndef TNOTIFICACION
 #define TNOTIFICACION
 #include <iostream>
 #include <set>
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif*/
+#endif

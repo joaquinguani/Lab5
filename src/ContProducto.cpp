@@ -30,7 +30,7 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
 
 
 Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Usuario*, puse Vendedor*
-        return colPromocion[promo];
+    return colPromocion[promo];
 };
 
 void ContProducto::listarProductos()  {
@@ -51,6 +51,11 @@ Producto* ContProducto::buscarProducto(int clave){
     std::map<int, Producto*>::iterator it = Productos.find(clave);
     Producto* p = it->second;
 };
+
+
+Producto* ContProducto::buscarProdPorNombre(std::string produ){
+    return colProductos[produ];
+}
 
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
     for ( auto pair : colProducto) {
