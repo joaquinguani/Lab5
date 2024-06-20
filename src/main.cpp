@@ -4,7 +4,6 @@
 #include <map>
 #include <cstdlib>
 #include <set>
-
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
@@ -136,15 +135,15 @@ while(e) {
             //std::getline(std::cin,Contrasena);
             break;
         }
-
+        
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            contUsu.imprimirVendedores(); //tiene que imprimir solo los nicknames en realidad
+            contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend;
             std::cin.ignore();
             std::getline(std::cin, nickVend);
-            std::map<std::string,Vendedor *>::iterator iter;
+            std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
             iter = vendedores.find(nickVend);
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
@@ -172,21 +171,27 @@ while(e) {
                 static int codigoProducto = 0;
                 Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
-
-                //faltaria agregarlo al mapa de productos
             }    
             break;
-        case 'd':
+
+      
+         case 'd': //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
-            printf("\nIngrese el nombre del producto a seleccionar:\n");
-            std::string nomProd;
+            printf("\nIngrese el codigo del producto a seleccionar:\n");
+            int codProd;
             std::cin.ignore();
-            std::getline(std::cin, nomProd);
-            std::map<std::string,Producto *>::iterator iter;
-            iter = colProducto.find(nomProd);
-            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
+            std::getline(std::cin, codProd);
+            auto iterprodu = contProdu.getProductos().find(codProd);
+            if (iterprodu != contProdu.getProductos().end()){
+                Producto* product = iterprodu->second;
+                Vendedor* vendedor = product->getVendAsociado(); 
+                std::string nickVendAsociado = vendedor->getNickname();
+               printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n, Nombre del Vendedor:%s\n",  iterprodu->first, iterprodu->second->getStock(), iterprodu->second->getPrecio(),
+                  iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
+            }else  printf("Error: No existe un producto con dicho nombre\n");
             break;
+     
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             std::string nom;
@@ -232,9 +237,19 @@ while(e) {
             contProdu->colPromocion[nom]=p;
             break;
         case 'f':
-            printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
+           printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-            
+            printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
+            char tec=leerUnaTecla();
+            case 's':
+            printf("\nIngrese el nombre la promocion\n");
+            std::string nom;
+            std::cin.ignore();
+            std::getline(std::cin, nom);   
+            Promocion* promo = contProdu.buscarPromoPorNombre(nom);
+            promo->devolverDatosProdsPromo();
+            break;
+            case 'n':
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -313,9 +328,11 @@ while(e) {
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
             printf("\nIngrese el nickname del usuario que desea seleccionar\n");
             contUsu.imprimirUsuarios();
-            std::string nickUsuario = leerCadena();
-            std::map<std::string, Usuario *> iteru = contUsu.getUsuarios();
-            if (iteru.find(nickUsuario) == contUsu.getUsuarios().end()) {
+            std::string nickUsuario;
+            std::cin.ignore();
+            std::getline(std::cin, nickUsuario);
+            auto iteru = contUsu.getUsuarios().find(nickUsuario);
+            if (iteru == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
             } else {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
@@ -329,15 +346,20 @@ while(e) {
                     printf("\nError: No existe un producto con dicho codigo\n");
                 } else {
                     printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
-                    char tipoComentario = leerUnaTecla();
+                    char tipoComentario;
+                    std::cin.ignore();
+                    std::getline(std::cin, tipoComentario);
                     if (tipoComentario == 'N' || tipoComentario == 'n') {
                         printf("\nIngrese el texto de su comentario:\n");
-                        std::string textoComentario = leerCadena();
+                        std::string textoComentario;
+                        std::cin.ignore();
+                        std::getline(std::cin, textoComentario);
                      // Crear un nuevo comentario
+                        static int idComentario = 1; // ID único para cada comentario, static se mantiene en la memoria asi se va sumando ese numero
                        //guani aca fijate como es//
                        //no se porque comentario tiene tanta cosa//
                         //esta mal esto: Comentario nuevoComentario(idComentario++, textoComentario, fechaSist);
-                        iterProd->second->crearComentarioDeProd(textoComentario);//hay que definir iterProd
+                        iterProd->second->agregarComentario(nuevoComentario);
                         printf("\nComentario agregado exitosamente.\n");
                     } else if (tipoComentario == 'R' || tipoComentario == 'r') {
                         printf("\nComentarios del producto:\n");
@@ -359,7 +381,7 @@ while(e) {
             // Aquí iría el código para eliminar un comentario
             break;
         case 'j':
-            printf("\nOpción 'j' seleccionada: Enviar producto.\n");
+          printf("\nOpción 'j' seleccionada: Enviar producto.\n");
             contUsu.imprimirVendedores(); //solo los nicknames
             printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
             std::string vend;
@@ -373,17 +395,6 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, prod);
             Producto* produ = contProdu.buscarProdPorNombre(prod);
-            
-
-            
-            //seleccionar producto y que quede en variable
-            //listar compras con ese producto con envio pendiente
-            ///ir buscando en la coleccion de compra el producto
-            ///imprimir la compra (el nick del cliente y la fecha de compra)
-            //seleccionar una compra
-            //guardarla en variable 
-            //marcar como enviado en compra prod con 
-            //prod--compra--compraprod.enviado
             break;
         case 'k':
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");
