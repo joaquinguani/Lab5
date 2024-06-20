@@ -310,7 +310,8 @@ while(e) {
             std::string prod;
             std::cin.ignore();
             std::getline(std::cin, prod);
-            Producto* produ = contProdu.buscarProdPorNombre();
+            Producto* produ = contProdu.buscarProdPorNombre(prod);
+            
 
             
             //seleccionar producto y que quede en variable

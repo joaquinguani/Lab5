@@ -34,7 +34,7 @@ public:
     void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
     Promocion* buscarPromoPorNombre(std::string promo);
-    Producto* buscarProdPorNombre();
+    Producto* buscarProdPorNombre(std::string produ);
 
     virtual ~ContProducto(){}; //destructor
 };

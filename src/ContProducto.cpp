@@ -26,8 +26,10 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
 
 
 Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Usuario*, puse Vendedor*
-        return colPromocion[promo];
+    return colPromocion[promo];
 };
 
 
-    
+Producto* ContProducto::buscarProdPorNombre(std::string produ){
+    return colProductos[produ];
+}
