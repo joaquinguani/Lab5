@@ -38,7 +38,7 @@ public:
     void setDescuento(int descu);
 
     // Métodos
-    void agregarProdAPromo(int idProducto, int idPromocion);
+    void agregarProdAPromo(Producto* producto);
     void aplicarDescuento(int idProducto, int descuento);
     void devolverDatosProdsPromo();
 };

@@ -46,10 +46,16 @@ void ContProducto::listarProductosDisp() {
     }
 }
 
+
+Producto* ContProducto::buscarProducto(int clave){
+    std::map<int, Producto*>::iterator it = Productos.find(clave);
+    Producto* p = it->second;
+};
+
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
     for ( auto pair : colProducto) {
         if (pair.second->getStock() > 0 && pair.second->getVendAsociado() == vendedor) {
             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
         }
     }
-}
+};

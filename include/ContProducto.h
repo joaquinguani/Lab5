@@ -16,7 +16,7 @@
 
 class ContProducto {
 private:
-    std::map<int, Producto *> colProducto;
+    std::map<int, Producto *> Productos;
     std::map<std::string, Compra *> colCompra;
     std::map<std::string, Promocion *> colPromocion;
 public:
@@ -35,11 +35,9 @@ public:
     Compra mostrarCompra();
     void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
-
+    Producto* buscarProducto(int clave);
     std::map<int, Producto*> getProductos();
     Promocion* buscarPromoPorNombre(std::string promo);
-    
-
     virtual ~ContProducto(){}; //destructor
 };
 
