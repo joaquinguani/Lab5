@@ -1,3 +1,7 @@
+
+#include <iostream>
+#include "Producto.h"
+#include "TCategoria.h"
 #include "Producto.h"
 
 Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
@@ -7,8 +11,43 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
     this->nombre = nom;
     this->descripcion = desc;
     this->categoria = cat;
+    this->promo = NULL;
+};
 
+Vendedor* Producto::getVendAsociado(){
+    return this->vendAsociado;
+};
+
+
+int Producto::getCodigo()  {
+    return codigo;
 }
+
+
+int Producto::getStock()  {
+    return stock;
+}
+
+
+float Producto::getPrecio() {
+    return precio;
+}
+
+
+std::string Producto::getNombre()  {
+    return nombre;
+}
+
+
+std::string Producto::getDescripcion()  {
+    return descripcion;
+}
+
+// Getter para obtener la categoría del producto
+TCategoria Producto::getCategoria()  {
+    return categoria;
+}
+
 
 void Producto::imprimirProducto(){
     int cod = codigo;
@@ -21,12 +60,24 @@ void Producto::imprimirProducto(){
     std::cout << nom << std::endl;
     std::string des = descripcion;
     std::cout << des << std::endl;
-    std::string cat = categoria;
+    TCategoria cat = categoria;
     std::cout << cat << std::endl;
-}
+};
 
-void Producto::codigoYnombre(){
+
+
+void Producto::imprimirProductoCodNom(){
+//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
-    std::cout << nombre << std::endl;
+    std::string nom = nombre;
+    std::cout << nom << std::endl;
+};
+
+Promocion* Producto::getPromo(){
+    return this->promo;
+};
+
+void Producto::setPromo(Promocion* promo){
+    this->promo=promo;
 }

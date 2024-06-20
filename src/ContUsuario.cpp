@@ -5,13 +5,13 @@
 ContUsuario::ContUsuario(){
 };
 
-void ContUsuario::ingresarDatosCliente(DataCliente data){
+void ContUsuario::ingresarDatosCliente(DataCliente data){ //casos: a,
         Usuario* usuario = new Cliente(data);
         colUsuarios[data.getNickname()] = usuario;
         colClientes[data.getNickname()] = usuario; //decia ColCliente en singular
 };
 
-void ContUsuario::ingresarDatosVendedor(DataVendedor data){
+void ContUsuario::ingresarDatosVendedor(DataVendedor data){ //casos: a,
         Usuario* usuario = new Vendedor(data);
         colUsuarios[data.getNickname()] = usuario;
         colVendedores[data.getNickname()]=usuario;
@@ -27,14 +27,14 @@ bool ContUsuario::estaUsuario(std::string nick){
 }
 
 
-void ContUsuario::imprimirUsuarios(){
+void ContUsuario::imprimirUsuarios(){ //casos:a,
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
                 usr->imprimirUsuario();
         }
-};
-/*
+}
+
 void ContUsuario::imprimirVendedores(){
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
@@ -57,4 +57,4 @@ void ContUsuario::imprimirClientes(){
                         usr->imprimirUsuario();
                 }
         }
-};*/
+};

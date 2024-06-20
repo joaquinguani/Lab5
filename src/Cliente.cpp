@@ -27,7 +27,7 @@ std::string Cliente::getCiudad() {
 
 
 TDireccion Cliente::getDireccion() {
-    return this->direc;
+    return this->direccion;
 };
 /*
 void Cliente::setDireccion():direccion(direccion){
@@ -58,6 +58,6 @@ void Cliente::imprimirDireccion(){
 }
 
 
-bool esVendedor(){
-    return false;
-};
+// bool esVendedor(){
+//     return false;
+// };

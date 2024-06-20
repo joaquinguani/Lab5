@@ -1,4 +1,4 @@
-/*#ifndef PRODUCTO
+#ifndef PRODUCTO
 #define PRODUCTO
 #include <iostream>
 #include <set>
@@ -9,7 +9,7 @@
 #include "Promocion.h"
 #include "Comentario.h"
 #include "TCategoria.h"
-
+#include "Vendedor.h"
 
 class Promocion; //forward declaration
 class Producto {
@@ -20,9 +20,9 @@ private:
     std::string nombre;
     std::string descripcion;
     TCategoria categoria; //decia string
-    std::set<Comentario> *comentarios;
-    
-    
+    std::set<Comentario*> comentarios;
+    Vendedor* vendAsociado;
+    Promocion* promo;
 
 public:
     // Constructor
@@ -31,23 +31,31 @@ public:
     // Getters
     int getCodigo();
     int getStock();
-    int getPrecio();
+    float getPrecio();
     std::string getNombre();
     std::string getDescripcion();
-    std::string getCategoria();
+    TCategoria getCategoria();
+
+    Vendedor* getVendAsociado();
+    Promocion* getPromo();
+
 
     // Setters
     void setCodigo(int cod);
     void setStock(int stk);
     void setPrecio(int pre);
     void setNombre(std::string nom);
+    void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
     void setCategoria(std::string cat);
+    Vendedor* setVendAsociado();
 
     // Métodos
     Producto getDatos();
     bool vendedor(std::string vendedor);
     void eliminarCom(int codigoProducto);
+    void imprimirProducto();
+    void imprimirProductoCodNom();
 };
 
-#endif*/
+#endif

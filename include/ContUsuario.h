@@ -21,28 +21,26 @@ class ContUsuario {
 private:
     std::map<std::string, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
-    std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
-    std::map<std::string, Cliente*> colClientes;
+    //std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
+    //std::map<std::string, Cliente*> colClientes;
     
 public:
     //constructor
     ContUsuario();
 
     //otros metodos
-    void ingresarDatosVendedor(DataVendedor data);
-    void ingresarDatosCliente(DataCliente data);
+    void ingresarDatosVendedor(DataVendedor data); //casos: a, 
+    void ingresarDatosCliente(DataCliente data); //casos: a, 
 
 
     int sizeCol();
-    bool estaUsuario(std::string);
+    bool estaUsuario(std::string); //casos: a, 
 
-    void imprimirUsuarios();
-    /*
+    void imprimirUsuarios(); //casos: a,
+    
     void imprimirVendedores();
     void imprimirClientes();
-
-    
-
+    std::map<std::string, Usuario *> getUsuarios(); // a ver esto
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
     std::set<std::string> listarComDeUsuarios(std::string nombre);
@@ -57,10 +55,10 @@ public:
 
 
 
-    Vendedor* buscarPorNombre(std::string vend)
+    Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
-    */
+    
 };
 
 

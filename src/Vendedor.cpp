@@ -30,22 +30,28 @@ void Vendedor::imprimirUsuario(){
     std::string raut = getRut();
     std::cout << raut << std::endl;
     printf("|_____________");
-}/*
+}
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
-    productos.insert(nuevoProducto);
+    productos[nuevoProducto->getCodigo()] = nuevoProducto; 
 };
 
-bool esVendedor(){
-    return true;
+
+// bool esVendedor(){
+//     return true;
 
 
-}:
+// }:
 
-void imprimirProdsVendedor(Vendedor v){
+
+void imprimirProdsVendedorCodNom(Vendedor v){
     std::set<Producto*>::iterator it;
     std::set<Producto*> prods=v->getProductos();
         for (it=prods.begin(); it != prods.end(); ++it){
-                it->imprimirProducto();
+                (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
-}*/
+
+
+void imprimirDatosVend(){
+    
+}

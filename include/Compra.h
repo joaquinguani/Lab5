@@ -1,5 +1,5 @@
 
-/*#ifndef COMPRA
+#ifndef COMPRA
 #define COMPRA
 #include <set>
 #include <string>
@@ -9,6 +9,7 @@
 
 #include "TFecha.h"
 #include"CompraProd.h"
+#include "Producto.h"
 
 
 class Compra {
@@ -31,8 +32,8 @@ public:
 
     // Métodos
     void agregarProdACompra(Producto prod, int cod, int cant);
-    void aplicarDescuento(int precio);
+    int aplicarDescuento(int precio, int cant, int codProd, Producto* prod);
     void sumarAlMonto(int pre);
 };
 
-#endif*/
+#endif

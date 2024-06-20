@@ -6,21 +6,12 @@
 #include <sstream>
 #include "TFecha.h" 
 
-TFecha* TFecha::instanciaFecha = NULL;
 
-TFecha::TFecha(int Dia, int Mes, int Ano){
+TFecha::TFecha(int Dia, int Mes, int Anio){
     this->Dia=Dia;
     this->Mes=Mes;
-    this->Ano=Ano;
+    this->Anio=Anio;
 };
-
-TFecha::~TFecha(){}
-
-TFecha * TFecha::getInstanciaFecha(int Dia, int Mes, int Anio){
-    if (instanciaFecha == NULL)
-        instanciaFecha = new TFecha(Dia , Mes, Anio);
-    return instanciaFecha;
-}
 
 int TFecha::getDia() {
     return this->Dia;
@@ -30,8 +21,8 @@ int TFecha::getMes() {
     return this->Mes;
 };
 
-int TFecha::getAno() {
-    return this->Ano;
+int TFecha::getAnio() {
+    return this->Anio;
 };
 
 
@@ -44,5 +35,33 @@ void TFecha::modificarFecha(int dia, int mes, int anio) {
     } else {
         std::cerr << "Fecha no válida." << std::endl; //cerr es para imprimir errores 
     }
-}
 
+};
+
+void TFecha::imprimirFecha(){
+    int dia = getDia();
+    printf("%d",dia);
+    int mes = getMes();
+    printf("%d",mes);
+    int ano =getAnio();
+    printf("%d",ano);
+};
+
+bool TFecha::mayoroIgual(TFechaActual* Fecha) {
+    if (this->Anio > Fecha->getAnio()){
+        return true;
+    }
+    else if (this->Anio == Fecha->getAnio()){
+        if(this->Mes > Fecha->getMes()){
+            return true;
+        }
+        else if (this->Mes == Fecha->getMes()){
+            if(this->Dia >= Fecha->getMes()){
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }
+    else return false;
+}

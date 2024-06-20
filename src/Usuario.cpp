@@ -5,7 +5,7 @@ Usuario::~Usuario(){}
 
 Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fecha(fecha){
     this->nickname = nickname;
-    this->nickname = nickname;
+    this->contrasena = contrasena;
     //this->fecha(fecha.getDia(),fecha.getMes(),fecha.getAnio());//no se como asignarle a fecha su fecah
 };
 
@@ -16,15 +16,21 @@ void Usuario::imprimirFecha(){
     printf("\n| Fecha:\n|          %d/%d/%d\n|",dia,mes,ano);
 }
 
-void Usuario::imprimirUsuario(){};
 
 std::string Usuario::getNickname(){
     return this->nickname;
 };
+
+
+
+
+void Usuario::imprimirUsuario(){};
+
 
 /*
 bool esVendedor(){
     return false;
 };
 */
+
 

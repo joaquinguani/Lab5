@@ -1,4 +1,4 @@
-/*#ifndef PROMOCION
+#ifndef PROMOCION
 #define PROMOCION
 #include <iostream>
 #include <set>
@@ -15,13 +15,12 @@ private:
     std::string descripcion;
     TFecha fechaVenc;
     int descuento;
-    std::set<ProductosEnPromo*> promproductos;
+    std::set<ProductosEnPromo*> promProductos;
     std::set<Producto*> productos;
-    
 
 public:
     // Constructor
-    Promocion(std::string nom, std::string desc, TFecha fVenc, int descu);
+    Promocion(std::string nom, std::string desc, TFecha* fVenc, int descu);
 
     // Getters
 
@@ -29,6 +28,7 @@ public:
     std::string getDescripcion(); 
     TFecha getFechaVenc();
     int getDescuento();
+    std::set<Producto*> getProductos();
 
 
     // Setters
@@ -38,10 +38,11 @@ public:
     void setDescuento(int descu);
 
     // Métodos
-    void agregarProdAPromo(int idProducto, int idPromocion);
-
+    void agregarProdAPromo(Producto* producto);
+    void agregarProdAPromoCantMin(Producto* producto,int cantMin);
     void aplicarDescuento(int idProducto, int descuento);
+    void devolverDatosProdsPromo();
 };
 
 
-#endif*/
+#endif

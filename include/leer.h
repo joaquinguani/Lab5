@@ -1,14 +1,12 @@
 #ifndef LEER_H
 #define LEER_H
 
-#include <iostream>
 #include <string>
-#include <sstream>
-#include <conio.h> 
+#include <vector> // Asegúrate de incluir la biblioteca <vector>
 
-// Declaraciones de las funciones
-char leerUnaTecla();
-int leerEntero();
-std::string leerCadena();
 
-#endif // LEER_H
+char leerUnaTecla(std::vector<std::string> , int );
+int leerEntero(std::vector<std::string> , int );
+std::string leerCadena(std::vector<std::string> , int );
+
+#endif

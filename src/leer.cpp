@@ -1,9 +1,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <conio.h> 
-
-
+#include <conio.h>
+#include <vector>
 #include "leer.h"
 
 
@@ -18,10 +17,10 @@ int leerEntero() {
     std::string entrada;
     int numero;
 
-    while (true) {
-        std::getline(std::cin, entrada);
+        while (true) {
+            std::getline(std::cin, entrada);
 
-        std::istringstream flujoEntrada(entrada);
+            std::istringstream flujoEntrada(entrada);
 
         // Intentar extraer el número entero
         if (flujoEntrada >> numero) {
@@ -41,15 +40,14 @@ int leerEntero() {
 std::string leerCadena() {
     std::string entrada;
 
-    while (true) {
-        std::getline(std::cin, entrada);
+        while (true) {
+            std::getline(std::cin, entrada);
 
-        // Verificar que la cadena no esté vacía
-        if (!entrada.empty()) {
-            return entrada;  // Entrada válida, retornar la cadena
+            if (!entrada.empty()) {
+                return entrada; // Entrada válida
+            }
+
+            std::cout << "Entrada no válida. Intente de nuevo." << std::endl;
         }
-
-        // Si la entrada es inválida, mostrar un mensaje de error
-        std::cout << "Entrada no válida. Intente de nuevo." << std::endl;
     }
-}
+
