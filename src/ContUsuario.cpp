@@ -3,14 +3,22 @@
 #include "DataVendedor.h" //puse estos includes que faltaban
 
 ContUsuario::ContUsuario(){
-        CantComen = 0;
+        cantComen = 0;
 };
+
+void ContUsuario::sumarComentario(){
+        ++cantComen;
+}
 
 ContUsuario* ContUsuario::getInstanciaContUsu() {
     if (instanciaContUsu == nullptr) {
         instanciaContUsu = new ContUsuario();
     }
     return instanciaContUsu;
+}
+
+int ContUsuario::getCantComen(){
+        return cantComen
 }
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){ //casos: a,
@@ -66,3 +74,4 @@ void ContUsuario::imprimirClientes(){
                 }
         }
 };
+

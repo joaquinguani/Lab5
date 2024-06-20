@@ -8,6 +8,7 @@
 #include <sstream>
 #include <map>
 #include "Usuario.h"
+#include "Producto.h"
 #include "TFecha.h"
 
 class Comentario {
@@ -15,21 +16,20 @@ private:
     int ID;
     std::string texto;
     TFecha fecha;
-    bool tienePadre;
-    int IDPadre;
-    int CodigoProd;
+    bool tieneComPadre;
+    Comentario* ComenPadre;
+    Producto* ProdPadre;
     std::map<int,Comentario*> respuestas;
-    Usuario *usuario;
+    Usuario* usuario;
 public:
     // Constructor
     Comentario(std::string txt);
-    CrearHijo(std::string txt);
+    void CrearHijo(std::string txt,Usuario* usu);
     // Getters
     int getID();
     std::string getTexto();
     TFecha getFecha();
     bool getTienePadre();
-    int getIDPadre();
     int getCodigoProd();
 
     // Setters

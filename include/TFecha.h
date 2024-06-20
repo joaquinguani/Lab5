@@ -12,9 +12,10 @@
 class TFecha {
     private:
         int Dia, Mes, Anio;
-        ~TFecha(); //destructor
+         //destructor
 
     public:
+        ~TFecha();
         TFecha(int,int,int);
         int getDia();
         int getMes();
