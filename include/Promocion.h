@@ -20,7 +20,7 @@ private:
 
 public:
     // Constructor
-    Promocion(std::string nom, std::string desc, TFecha fVenc, int descu);
+    Promocion(std::string nom, std::string desc, TFecha* fVenc, int descu);
 
     // Getters
 

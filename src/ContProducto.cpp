@@ -1,8 +1,8 @@
 #include "ContProducto.h"
 #include "Promocion.h"
 #include "TFechaActual.h"
-
-
+#include <cstdio>
+#include <iostream>
 
 
 ContProducto::ContProducto(){
@@ -33,5 +33,23 @@ Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Us
         return colPromocion[promo];
 };
 
+void ContProducto::listarProductos()  {
+    for (auto pair : colProducto) {
+        printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
+    }};
 
-    
+void ContProducto::listarProductosDisp() {
+    for ( auto pair : colProducto ) {
+        if (pair.second->getStock() > 0) {
+            printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
+        }
+    }
+}
+
+void ContProducto::listarProductosDisp(Vendedor* vendedor) {
+    for ( auto pair : colProducto) {
+        if (pair.second->getStock() > 0 && pair.second->getVendAsociado() == vendedor) {
+            printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
+        }
+    }
+}
