@@ -78,3 +78,6 @@ Promocion* Producto::getPromo(){
     return this->promo;
 };
 
+void Producto::setPromo(Promocion* promo){
+    this->promo=promo;
+}

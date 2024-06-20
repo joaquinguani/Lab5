@@ -58,7 +58,11 @@ void Promocion::setDescuento(int descu) {
 
 void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
-}
+};
+
+void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
+    promProductos.insert(producto,cantMin);//revisar el insert aca
+};
 
 void Promocion::aplicarDescuento(int idProducto, int descuento) {
     // Aquí se debe implementar la lógica para aplicar un descuento a un producto específico.

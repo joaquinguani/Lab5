@@ -194,7 +194,7 @@ while(e) {
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
             contUsu.imprimirVendedores();
-            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
+            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion.\n");
             std::string vend;
             vend=leerCadena();
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
@@ -202,15 +202,20 @@ while(e) {
             Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
             bool seguir=true;
             while(seguir){
-                printf("\nIngrese el codigo de un producto que desea agregar a la promocion");
+                printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
                 int c=leerEntero();
                 Producto* prod=contProdu->buscarproducto(c);
+                printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
+                int cantmin=leerEntero();
                 p->agregarProdAPromo(prod);
-                printf("\n¿Desea seguir agregando productos? (s/n): ");
+                //asociar el producto a la promo
+                prod->setPromo(p);
+                p->agregarProdAPromoCantMin(prod,cantmin);
+                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
-                //FALTA VER LO DE CANTIDAD MINIMA COMO IMPLEMENTARLO
+                //falta lo de suscripciones lo demas esta creo
             };
 
             break;
