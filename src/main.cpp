@@ -4,19 +4,18 @@
 #include <map>
 #include <cstdlib>
 #include <set>
-
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-#include "ContProducto.h"
+#include "ContProductos.h"
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
 #include "TCategoria.h"
-
+#include "ContProductos.h"
 #include "ContUsuario.h"
 #include "TFecha.h"
 
@@ -30,7 +29,7 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto(/*productosda*/);
+ContProducto contProdu = ContProducto(productosda);
 TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
@@ -138,10 +137,8 @@ while(e) {
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd;
-                int precioProd;
-                int stockProd;
-                std::string descProd;
+                std::string nomProd, descProd;
+                int precioProd, stockProd;
                 TCategoria catProd; 
                 printf("\nIngrese el nombre del producto:\n");
                 std::cin.ignore();
@@ -223,12 +220,12 @@ while(e) {
             auto iter = contUsu.getUsuarios().find(nickCliente);
             if (iter == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
+            } else {
                 Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
                 if (!cliente) {
                     printf("\nError: El usuario seleccionado no es un cliente\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
+                Compra compra = new Compra(fechaSist, 0);
                 contProdu.imprimirProductos();
                 int agregar;
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
@@ -245,7 +242,7 @@ while(e) {
                     if (iter == contProdu.colProductos.end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()) {//if (comprasPro.contains(codP)) { //ver xq esta mal el contains
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
@@ -256,9 +253,9 @@ while(e) {
                             //con que se conecta compraprod????? VERIFICAR
                             //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
-                            compra->sumarAlMonto(precio);
+                            float precio = iterProd->second->getPrecio();
+                            precio = compra.aplicarDescuento(precio, cantP, codP, iterProd->second);
+                            compra.sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");

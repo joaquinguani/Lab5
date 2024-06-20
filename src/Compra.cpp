@@ -26,9 +26,14 @@ void Compra::setMontoFinal(int monto){
 
 //void Compra::agregarProdACompra(Producto prod, int cod, int cant){}; creo que no hay que usar nunca
 
-int Compra::aplicarDescuento(int precio, int cant){
-    int precioNuevo;
-    
+int Compra::aplicarDescuento(int precio, int cant, int codProd, Producto* prod){
+    int precioNuevo = precio;
+    Promocion* promo = prod->getPromo();
+    if (promo != NULL) {
+        //SI CANT ES MAYOR O IGUAL A CANT MINIMA 
+            int desc = promo->getDescuento();
+            precioNuevo = (desc*precio)/100;
+    }
     return precioNuevo;
 };
 
