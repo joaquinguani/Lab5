@@ -39,6 +39,7 @@ public:
 
     // Métodos
     void agregarProdAPromo(Producto* producto);
+    void agregarProdAPromoCantMin(Producto* producto,int cantMin);
     void aplicarDescuento(int idProducto, int descuento);
     void devolverDatosProdsPromo();
 };

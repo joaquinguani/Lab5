@@ -45,6 +45,7 @@ public:
     void setStock(int stk);
     void setPrecio(int pre);
     void setNombre(std::string nom);
+    void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
     void setCategoria(std::string cat);
     Vendedor* setVendAsociado();
