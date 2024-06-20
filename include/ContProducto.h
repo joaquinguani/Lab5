@@ -33,6 +33,7 @@ public:
     Compra mostrarCompra();
     void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
+    Promocion* buscarPromoPorNombre(std::string promo);
 
     virtual ~ContProducto(){}; //destructor
 };

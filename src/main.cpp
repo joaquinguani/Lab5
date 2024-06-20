@@ -4,7 +4,6 @@
 #include <map>
 #include <cstdlib>
 #include <set>
-
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
@@ -173,14 +172,14 @@ while(e) {
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
-            printf("\nOpción 'e' seleccionada: Crear promoción.\n");
+           printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedorCodNom();
+            vnd->imprimirProdsVendedorCodNom(); //esta mal el parametro(en la implementacion le pasas algo)
             int d,m,a,descu;
             std::string nom,descrip;
             std::cout << "Ingrese el nombre de la promoción: ";
@@ -199,7 +198,17 @@ while(e) {
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-
+            printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
+            char tec=leerUnaTecla();
+            case 's':
+            printf("\nIngrese el nombre la promocion\n");
+            std::string nom;
+            std::cin.ignore();
+            std::getline(std::cin, nom);   
+            Promocion* promo = contProdu.buscarPromoPorNombre(nom);
+            promo->devolverDatosProdsPromo();
+            break;
+            case 'n':
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");

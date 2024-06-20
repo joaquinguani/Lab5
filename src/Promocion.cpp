@@ -35,6 +35,10 @@ int Promocion::getDescuento() {
     return descuento;
 }
 
+std::set<Producto*> Promocion::getProductos() {
+    return productos;
+}
+
 // Setters
 void Promocion::setNombre(const std::string& nom) {
     nombre = nom;
@@ -69,4 +73,16 @@ void Promocion::aplicarDescuento(int idProducto, int descuento) {
     //         break;
     //     }
     // }
+}
+
+void Promocion::devolverDatosProdsPromo(){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods = this->getProductos();
+    for (it= prods.begin(); it != prods.end(); ++it){
+        //imprimir datos prod
+        (*it)->imprimirProducto();
+        //imprimir datos vendedor
+        Vendedor* vnd = (*it)->getVendAsociado();
+        vnd->imprimirUsuario();
+    }
 }

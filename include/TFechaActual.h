@@ -10,12 +10,12 @@
 class TFechaActual {
     private:
         int Dia, Mes, Anio;
-        static TFecha* instanciaFecha;
-        ThhFecha(); //constructor privado pq es singleton
-        ~TFecha(); //destructor
+        static TFechaActual * instanciaFecha;
+        TFechaActual(int dia, int mes, int anio); //constructor privado pq es singleton
+        ~TFechaActual(); //destructor
 
     public:
-        static TFecha * getInstanciaFecha();
+        static TFechaActual* getInstanciaFecha(int dia = 24, int mes = 6, int anio = 2024);
         int getDia();
         int getMes();
         int getAnio();

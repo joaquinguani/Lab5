@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 #include <sstream>
+#include "TFechaActual.h"
 
 
 class TFecha {
@@ -20,7 +21,7 @@ class TFecha {
         int getAnio();
         void modificarFecha(int dia, int mes, int anio);
         void imprimirFecha();
-        bool mayoroIgual(TFecha); //va en el otro Tfecha
+        bool mayoroIgual(TFechaActual*); 
 };
 
 #endif

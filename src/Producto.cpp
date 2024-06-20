@@ -14,6 +14,13 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
     this->promo = NULL;
 };
 
+Vendedor* Producto::getVendAsociado(){
+    return this->vendAsociado;
+};
+
+
+
+
 void Producto::imprimirProducto(){
     int cod = codigo;
     std::cout << cod << std::endl;
@@ -25,17 +32,22 @@ void Producto::imprimirProducto(){
     std::cout << nom << std::endl;
     std::string des = descripcion;
     std::cout << des << std::endl;
-    std::string cat = categoria;
+    TCategoria cat = categoria;
     std::cout << cat << std::endl;
 };
 
+
+
 void Producto::imprimirProductoCodNom(){
+//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
     std::cout << nom << std::endl;
 };
 
+=======
 Promocion* Producto::getPromo(){
     return this->promo;
 };
+

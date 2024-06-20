@@ -16,11 +16,14 @@ void Usuario::imprimirFecha(){
     printf("\n| Fecha:\n|          %d/%d/%d\n|",dia,mes,ano);
 }
 
-void Usuario::imprimirUsuario(){};
 
 std::string Usuario::getNickname(){
     return this->nickname;
 };
+
+
+void Usuario::imprimirUsuario(){};
+
 
 /*
 bool esVendedor(){
