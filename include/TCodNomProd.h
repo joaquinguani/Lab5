@@ -9,13 +9,13 @@
 
 class TCodNomProd{
 private:
-    std::string codigo;
+    int codigo;
     std::string nombre;
 public:
     //constructor
-    TCodNomProd(std::string, std::string);
+    TCodNomProd(int, std::string);
     //getters
-    std::string getCodigo();
+    int getCodigo();
     std::string getNombre();
 };
 

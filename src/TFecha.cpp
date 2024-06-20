@@ -6,6 +6,7 @@
 #include <sstream>
 #include "TFecha.h" 
 
+TFecha::~TFecha(){}
 
 TFecha::TFecha(int Dia, int Mes, int Anio){
     this->Dia=Dia;
