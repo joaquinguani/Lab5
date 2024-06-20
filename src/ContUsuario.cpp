@@ -3,7 +3,15 @@
 #include "DataVendedor.h" //puse estos includes que faltaban
 
 ContUsuario::ContUsuario(){
+        CantComen = 0;
 };
+
+ContUsuario* ContUsuario::getInstanciaContUsu() {
+    if (instanciaContUsu == nullptr) {
+        instanciaContUsu = new ContUsuario();
+    }
+    return instanciaContUsu;
+}
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){ //casos: a,
         Usuario* usuario = new Cliente(data);

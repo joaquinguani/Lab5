@@ -22,8 +22,8 @@ private:
     Usuario *usuario;
 public:
     // Constructor
-    Comentario(int id, std::string txt, TFecha fec, bool tPadre, int idPadre, int codProd);
-
+    Comentario(std::string txt);
+    CrearHijo(std::string txt);
     // Getters
     int getID();
     std::string getTexto();
