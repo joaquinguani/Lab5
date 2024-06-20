@@ -175,6 +175,7 @@ while(e) {
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
+            printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
@@ -182,21 +183,22 @@ while(e) {
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
-            int d,m,a,descu;
-            std::string nom,descrip;
+            std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
-            nom=leerCadena();
+            nom=leerCadena(); 
+            std::string descrip;
             std::cout << "Ingrese la descripción de la promoción: ";
             descrip=leerCadena();
+            int d,m,a;
             std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
             d=leerEntero();
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
-
+            int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip, );
+            Promocion* p=new Promocion(nom,descrip,fech,descu);
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
