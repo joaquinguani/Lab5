@@ -163,7 +163,7 @@ while(e) {
                 iter->second->insertarProducto(nuevoProd);
             }    
             break;
-        case 'd':
+        case 'd': //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
