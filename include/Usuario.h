@@ -7,18 +7,20 @@
 #include <memory>
 #include <sstream>
 #include "TFecha.h"
-#include "TComentario.h"
+#include "Comentario.h"
 #include "TNotificacion.h"
 
 
 class Usuario{
     private:
         std::string nickname;
-            std::string contrasena;
-            TFecha fecha;
+        std::string contrasena;
+        TFecha fecha;
+        std::map<int,Comentario*> comentarios;
+
     public: 
         Usuario(std::string,std::string,TFecha);
-   
+        void agregarComen(Comentario *);
         virtual~Usuario();
             virtual bool esVendedor() const { return false; };
             virtual void imprimirUsuario();
