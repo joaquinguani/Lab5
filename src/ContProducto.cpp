@@ -9,6 +9,10 @@ ContProducto::ContProducto(){
 
 };
 
+
+std::map<int, Producto*> ContProducto::getProductos() {
+    return colProducto;}
+
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::set<Promocion*> promos;
     TFechaActual* fecha;

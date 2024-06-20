@@ -22,6 +22,8 @@ std::string Usuario::getNickname(){
 };
 
 
+
+
 void Usuario::imprimirUsuario(){};
 
 
@@ -30,4 +32,5 @@ bool esVendedor(){
     return false;
 };
 */
+
 
