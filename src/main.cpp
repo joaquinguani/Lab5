@@ -171,42 +171,17 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, codProd);
             auto iterprodu = contProdu.getProductos().find(codProd);
-            if (iterprodu != contProdu.getProductos().end())
-            printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
-            else  printf("Error: No existe un producto con dicho nombre\n");
+            if (iterprodu != contProdu.getProductos().end()){
+                Producto* product = iterprodu->second;
+                Vendedor* vendedor = product->getVendAsociado(); 
+                std::string nickVendAsociado = vendedor->getNickname();
+               printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n, Nombre del Vendedor:%s\n",  iterprodu->first, iterprodu->second->getStock(), iterprodu->second->getPrecio(),
+                  iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
+            }else  printf("Error: No existe un producto con dicho nombre\n");
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             printf("\nIngresar nombre de promocion\n");
-            std::string nombre;
-            std::cin.ignore();
-            std::getline(std::cin, nombre);
-            printf("\nIngresar descripcion de promocion\n");
-            std::string descripcion;
-            std::cin.ignore();
-            std::getline(std::cin, descripcion);
-
-            printf("\nIngresar año de fecha de vencimiento de promocion\n");
-            int ano;
-            scanf("%d", &ano);
-            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
-            int mes;
-            scanf("%d", &mes);
-            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
-            int dia;
-            scanf("%d", &dia);
-            fecha = new TFecha(dia, mes, ano);
-            printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
-            int desc;
-            scanf("%d", &desc);
-
-            contUsu.imprimirVendedores();
-            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
-            std::string vend;
-            std::cin.ignore();
-            std::getline(std::cin, vend);   
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedorCodNom();
             int d,m,a,descu;
             std::string nom,descrip;
             std::cout << "Ingrese el nombre de la promoción: ";
@@ -220,7 +195,17 @@ while(e) {
             TFecha* fech=new TFecha(d,m,a);
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip, );
+            contUsu.imprimirVendedores();
+            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
+            std::string vend;
+            vend=leerCadena();
+            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            contProdu.listarProductosDisp(vnd);
+            //falta como la mitad del caso de uso: que de esos productos hay que preguntar para que seleccione los que quiera que integren la promo
+            // un producto no puede estar en 2 promos -vigentes- simultaneamente
+            // para cada producto que seleccione el usuario indica la cantidad minima para que aplique la promo
+            // y por ultimo se hace el Promocion* p=new Promocion(nom,descrip,fech,descu); y las asociaciones
+            // Y se agrega la promocion al controlador de productos. lo mismo cuando se crea cualquier cosa creo
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
@@ -230,8 +215,7 @@ while(e) {
             case 's':
             printf("\nIngrese el nombre la promocion\n");
             std::string nom;
-            std::cin.ignore();
-            std::getline(std::cin, nom);   
+            nom = leerCadena;   
             Promocion* promo = contProdu.buscarPromoPorNombre(nom);
             promo->devolverDatosProdsPromo();
             break;

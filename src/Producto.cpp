@@ -19,6 +19,34 @@ Vendedor* Producto::getVendAsociado(){
 };
 
 
+int Producto::getCodigo()  {
+    return codigo;
+}
+
+
+int Producto::getStock()  {
+    return stock;
+}
+
+
+float Producto::getPrecio() {
+    return precio;
+}
+
+
+std::string Producto::getNombre()  {
+    return nombre;
+}
+
+
+std::string Producto::getDescripcion()  {
+    return descripcion;
+}
+
+// Getter para obtener la categoría del producto
+TCategoria Producto::getCategoria()  {
+    return categoria;
+}
 
 
 void Producto::imprimirProducto(){
@@ -46,7 +74,6 @@ void Producto::imprimirProductoCodNom(){
     std::cout << nom << std::endl;
 };
 
-=======
 Promocion* Producto::getPromo(){
     return this->promo;
 };

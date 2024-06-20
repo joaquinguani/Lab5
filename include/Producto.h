@@ -31,13 +31,13 @@ public:
     // Getters
     int getCodigo();
     int getStock();
-    int getPrecio();
+    float getPrecio();
     std::string getNombre();
     std::string getDescripcion();
-    std::string getCategoria();
+    TCategoria getCategoria();
 
     Vendedor* getVendAsociado();
-     Promocion* getPromo();
+    Promocion* getPromo();
 
 
     // Setters
