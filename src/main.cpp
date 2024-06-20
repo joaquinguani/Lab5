@@ -217,7 +217,8 @@ while(e) {
                 seguir = (respuesta == 's' || respuesta == 'S');
                 //falta lo de suscripciones lo demas esta creo
             };
-
+            //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
+            contProdu->colPromocion[nom]=p;
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
