@@ -1,3 +1,4 @@
+
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -224,7 +225,17 @@ while(e) {
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-
+            printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
+            char tec=leerUnaTecla();
+            case 's':
+            printf("\nIngrese el nombre la promocion\n");
+            std::string nom;
+            std::cin.ignore();
+            std::getline(std::cin, nom);   
+            Promocion* promo = contProdu.buscarPromoPorNombre(nom);
+            promo->devolverDatosProdsPromo();
+            break;
+            case 'n':
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");

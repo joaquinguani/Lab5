@@ -47,3 +47,21 @@ void TFecha::imprimirFecha(){
     printf("%d",ano);
 };
 
+bool TFecha::mayoroIgual(TFechaActual* Fecha) {
+    if (this->Anio > Fecha->getAnio()){
+        return true;
+    }
+    else if (this->Anio == Fecha->getAnio()){
+        if(this->Mes > Fecha->getMes()){
+            return true;
+        }
+        else if (this->Mes == Fecha->getMes()){
+            if(this->Dia >= Fecha->getMes()){
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }
+    else return false;
+}

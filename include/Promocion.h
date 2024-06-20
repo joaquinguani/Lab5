@@ -15,7 +15,7 @@ private:
     std::string descripcion;
     TFecha fechaVenc;
     int descuento;
-    std::set<ProductosEnPromo*> promproductos;
+    std::set<ProductosEnPromo*> promProductos;
     std::set<Producto*> productos;
 
 public:
@@ -28,6 +28,7 @@ public:
     std::string getDescripcion(); 
     TFecha getFechaVenc();
     int getDescuento();
+    std::set<Producto*> getProductos();
 
 
     // Setters
@@ -38,8 +39,8 @@ public:
 
     // Métodos
     void agregarProdAPromo(int idProducto, int idPromocion);
-
     void aplicarDescuento(int idProducto, int descuento);
+    void devolverDatosProdsPromo();
 };
 
 
