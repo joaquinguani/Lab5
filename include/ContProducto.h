@@ -11,6 +11,7 @@
 #include "Producto.h"
 #include "Compra.h"
 #include "Promocion.h"
+#include <cstdio>
 
 
 class ContProducto {
@@ -26,14 +27,17 @@ public:
     void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
     std::set<std::string> listarNicknamesVendedores();
     void seleccionarNickname(std::string nombre);
-    std::set<TCodNomProd> listarProductosDisp(); 
+    void listarProductosDisp();
+    void listarProductosDisp(Vendedor* vendedor); //una con vendedor asociado para el caso E
     void confirmarAltaPromo();
-    std::set<Producto> listarProductos(); //porque no TCodNomProd? 
+    void listarProductos(); //que sea void y despues dentro de la funcion imprima
     void ingresarProducto(std::string cod, int cantidad);
     Compra mostrarCompra();
     void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
     Producto* buscarProducto(int clave);
+    std::map<int, Producto*> getProductos();
+    Promocion* buscarPromoPorNombre(std::string promo);
     virtual ~ContProducto(){}; //destructor
 };
 

@@ -29,7 +29,7 @@ class Cliente:public Usuario/*,public ISuscripciones */{
         virtual void imprimirUsuario();
         void imprimirDireccion();
         //std::set<TNotificacion> getNotificaciones();
-/*
+
         // Setters
         void setCiudad();
         void setDireccion();
@@ -39,12 +39,11 @@ class Cliente:public Usuario/*,public ISuscripciones */{
 
         // Métodos
         
-        virtual bool esVendedor();
+        bool esVendedor() const override { return false; };
         
         std::set<TNotificacion> listarNotificaciones();
         void eliminarNotificaciones();
         void notificar(TNotificacion);
-        */
 };
 
 

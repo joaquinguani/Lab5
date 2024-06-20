@@ -15,12 +15,12 @@ private:
     std::string descripcion;
     TFecha fechaVenc;
     int descuento;
-    std::set<ProductosEnPromo*> promproductos;
+    std::set<ProductosEnPromo*> promProductos;
     std::set<Producto*> productos;
 
 public:
     // Constructor
-    Promocion(std::string nom, std::string desc, TFecha fVenc, int descu);
+    Promocion(std::string nom, std::string desc, TFecha* fVenc, int descu);
 
     // Getters
 
@@ -28,6 +28,7 @@ public:
     std::string getDescripcion(); 
     TFecha getFechaVenc();
     int getDescuento();
+    std::set<Producto*> getProductos();
 
 
     // Setters
@@ -38,8 +39,8 @@ public:
 
     // Métodos
     void agregarProdAPromo(Producto* producto);
-
     void aplicarDescuento(int idProducto, int descuento);
+    void devolverDatosProdsPromo();
 };
 
 
