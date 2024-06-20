@@ -30,7 +30,7 @@ std::map<std::string,Vendedor *> vendedores;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-//ContProducto contProdu = ContProducto(productosda);
+ContProducto contProdu = ContProducto(productosda);
 TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
@@ -65,7 +65,7 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla = leerUnaTecla();
+    char tecla = leerUnaTecla(simulatedInputs,inputIndex);
     //scanf(" %c", &tecla); 
     
     switch(tecla) {
@@ -138,10 +138,8 @@ while(e) {
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd;
-                int precioProd;
-                int stockProd;
-                std::string descProd;
+                std::string nomProd, descProd;
+                int precioProd, stockProd;
                 TCategoria catProd; 
                 printf("\nIngrese el nombre del producto:\n");
                 std::cin.ignore();
@@ -183,26 +181,25 @@ while(e) {
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
-            std::string nom;
+            int d,m,a,descu;
+            std::string nom,descrip;
             std::cout << "Ingrese el nombre de la promoción: ";
-            nom=leerCadena(); 
-            std::string descrip;
+            nom=leerCadena();
             std::cout << "Ingrese la descripción de la promoción: ";
             descrip=leerCadena();
-            int d,m,a;
             std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
             d=leerEntero();
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
-            int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip,fech,descu);
+            Promocion* p=new Promocion(nom,descrip, );
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
-            // Aquí iría el código para consultar una promoción
+            contProdu.listarPromosVigentes();
+
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -214,12 +211,12 @@ while(e) {
             auto iter = contUsu.getUsuarios().find(nickCliente);
             if (iter == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
+            } else {
                 Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
                 if (!cliente) {
                     printf("\nError: El usuario seleccionado no es un cliente\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
+                Compra compra = new Compra(fechaSist, 0);
                 contProdu.imprimirProductos();
                 int agregar;
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
@@ -236,7 +233,7 @@ while(e) {
                     if (iter == contProdu.colProductos.end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()) {//if (comprasPro.contains(codP)) { //ver xq esta mal el contains
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
@@ -247,9 +244,9 @@ while(e) {
                             //con que se conecta compraprod????? VERIFICAR
                             //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
-                            compra->sumarAlMonto(precio);
+                            float precio = iterProd->second->getPrecio();
+                            precio = compra.aplicarDescuento(precio, cantP, codP, iterProd->second);
+                            compra.sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
@@ -344,6 +341,3 @@ while(e) {
     }
 
 };
-};
-};
-

@@ -32,7 +32,7 @@ public:
 
     // Métodos
     void agregarProdACompra(Producto prod, int cod, int cant);
-    int aplicarDescuento(int precio, int cant);
+    int aplicarDescuento(int precio, int cant, int codProd, Producto* prod);
     void sumarAlMonto(int pre);
 };
 
