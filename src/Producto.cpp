@@ -78,6 +78,34 @@ void Producto::setCategoria(TCategoria cat) {
     categoria = cat;
 }
 
+int Producto::getCodigo()  {
+    return codigo;
+}
+
+
+int Producto::getStock()  {
+    return stock;
+}
+
+
+float Producto::getPrecio() {
+    return precio;
+}
+
+
+std::string Producto::getNombre()  {
+    return nombre;
+}
+
+
+std::string Producto::getDescripcion()  {
+    return descripcion;
+}
+
+// Getter para obtener la categoría del producto
+TCategoria Producto::getCategoria()  {
+    return categoria;
+}
 
 
 void Producto::imprimirProducto(){
@@ -106,3 +134,11 @@ void Producto::imprimirProductoCodNom(){
 };
 
 
+Promocion* Producto::getPromo(){
+    return this->promo;
+};
+
+
+void Producto::setPromo(Promocion* promo){
+    this->promo=promo;
+}

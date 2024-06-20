@@ -39,13 +39,15 @@ public:
     // Getters
     int getCodigo();
     int getStock();
-    int getPrecio();
+    float getPrecio();
     std::string getNombre();
     std::string getDescripcion();
     TCategoria getCategoria();
+
     Vendedor* getVendAsociado();
     Promocion* getPromo();
     CompraProd* getCompraProducto();
+
 
 
     // Setters
@@ -53,6 +55,7 @@ public:
     void setStock(int stk);
     void setPrecio(int pre);
     void setNombre(std::string nom);
+    void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
     void setCategoria(TCategoria cat);
     Vendedor* setVendAsociado();

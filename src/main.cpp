@@ -4,6 +4,7 @@
 #include <map>
 #include <cstdlib>
 #include <set>
+
 #include "Cliente.h"
 #include "Usuario.h"
 #include "Vendedor.h"
@@ -17,19 +18,21 @@
 #include "ContProducto.h"
 #include "ContUsuario.h"
 #include "TFecha.h"
+#include "Producto.h"
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 
-std::set<Producto *> productos;
 std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto(productosda);
-TFechaActual* fechaSist=getInstanciaFecha();
+
+ContProducto contProdu = ContProducto();
+TFecha* fechaSist=getInstanciaFecha();
+
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
@@ -44,6 +47,16 @@ while(e) {
     int TamañoColUsuarios = contUsu.sizeCol();
     printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
     printf("precione:\n");
+    printf("a: para acceder a los casos de uso\n");
+    printf("b: para acceder a los casos de prueba predeterminados\n");
+    printf("x: para salir\n");
+
+    char tec = leerUnaTecla();
+    switch(tec) {
+    case 'a':{
+    std::system("cls");
+    printf(" --CASOS DE USO--\n\n");
+    printf("precione:\n\n");
     printf("a: para dar de alta a un usuario\n");
     printf("b: Listado de usuarios\n");
     printf("c: Alta de producto\n");
@@ -63,7 +76,7 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla = leerUnaTecla(simulatedInputs,inputIndex);
+    char tecla = leerUnaTecla();
     //scanf(" %c", &tecla); 
     
     switch(tecla) {
@@ -136,8 +149,10 @@ while(e) {
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd, descProd;
-                int precioProd, stockProd;
+                std::string nomProd;
+                int precioProd;
+                int stockProd;
+                std::string descProd;
                 TCategoria catProd; 
                 printf("\nIngrese el nombre del producto:\n");
                 std::cin.ignore();
@@ -154,9 +169,11 @@ while(e) {
                 printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
                 std::cin.ignore();
                 std::getline(std::cin, catProd);
-                codigoProducto ++;
-                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                static int codigoProducto = 0;
+                Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
+
+                //faltaria agregarlo al mapa de productos
             }    
             break;
         case 'd':
@@ -171,43 +188,53 @@ while(e) {
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
-           printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            contUsu.imprimirVendedores();
-            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
-            std::string vend;
-            std::cin.ignore();
-            std::getline(std::cin, vend);   
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedorCodNom(); //esta mal el parametro(en la implementacion le pasas algo)
-            int d,m,a,descu;
-            std::string nom,descrip;
+            printf("\nOpción 'e' seleccionada: Crear promoción.\n");
+            std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
-            nom=leerCadena();
+            nom=leerCadena(); 
+            std::string descrip;
             std::cout << "Ingrese la descripción de la promoción: ";
             descrip=leerCadena();
+            int d,m,a;
             std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
             d=leerEntero();
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
+            int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip, );
+            contUsu.imprimirVendedores();
+            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion.\n");
+            std::string vend;
+            vend=leerCadena();
+            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            vnd->imprimirProdsVendedorCodNom();
+            Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
+                int c=leerEntero();
+                Producto* prod=contProdu->buscarproducto(c);
+                printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
+                int cantmin=leerEntero();
+                p->agregarProdAPromo(prod);
+                //asociar el producto a la promo
+                prod->setPromo(p);
+                p->agregarProdAPromoCantMin(prod,cantmin);
+                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //falta lo de suscripciones lo demas esta creo
+            };
+            //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
+            contProdu->colPromocion[nom]=p;
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-            printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
-            char tec=leerUnaTecla();
-            case 's':
-            printf("\nIngrese el nombre la promocion\n");
-            std::string nom;
-            std::cin.ignore();
-            std::getline(std::cin, nom);   
-            Promocion* promo = contProdu.buscarPromoPorNombre(nom);
-            promo->devolverDatosProdsPromo();
-            break;
-            case 'n':
+            
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -219,12 +246,19 @@ while(e) {
             auto iter = contUsu.getUsuarios().find(nickCliente);
             if (iter == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
-            } else {
+            else {
+                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
+                if (!cliente) {
+                    printf("\nError: El usuario seleccionado no es un cliente\n");
+            auto iter = contUsu.getUsuarios().find(nickCliente);
+            if (iter == contUsu.getUsuarios().end()) {
+                printf("\nError: No existe un usuario con dicho nickname\n");
+            else {
                 Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
                 if (!cliente) {
                     printf("\nError: El usuario seleccionado no es un cliente\n");
             } else {
-                Compra compra = new Compra(fechaSist, 0);
+                Compra compra = new Compra(fechaActual, 0);
                 contProdu.imprimirProductos();
                 int agregar;
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
@@ -233,15 +267,20 @@ while(e) {
                 std::set<int> comprasPro;
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
+                    printf("\nIngrese el codigo del producto a agregar\n");
                     int codP;
                     std::cin.ignore();
                     std::getline(std::cin, codP);
                     std::map<std::string,Producto *>::iterator iterProd;
                     iterProd = contProdu.colProductos.find(codP);
                     if (iter == contProdu.colProductos.end()) {
+                    std::map<std::string,Producto *>::iterator iterProd;
+                    iterProd = contProdu.colProductos.find(codP);
+                    if (iter == contProdu.colProductos.end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.find(codP) != comprasPro.end()) {//if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
@@ -249,12 +288,16 @@ while(e) {
                             std::cin.ignore();
                             std::getline(std::cin, cantP);
                             CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
+                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
                             //con que se conecta compraprod????? VERIFICAR
                             //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
-                            float precio = iterProd->second->getPrecio();
-                            precio = compra.aplicarDescuento(precio, cantP, codP, iterProd->second);
-                            compra.sumarAlMonto(precio);
+                            float precio = iter->second->getPrecio();
+                            precio = compra->aplicarDescuento(precio);
+                            compra->sumarAlMonto(precio);
+                            float precio = iter->second->getPrecio();
+                            precio = compra->aplicarDescuento(precio);
+                            compra->sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
@@ -273,8 +316,8 @@ while(e) {
             std::string nickUsuario;
             std::cin.ignore();
             std::getline(std::cin, nickUsuario);
-            std::map<std::string,Usuario *>::iterator iteru = usuarios.find(nickUsuario);
-            if (iteru == usuarios.end()) {
+            auto iteru = contUsu.getUsuarios().find(nickUsuario);
+            if (iteru == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
             } else {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
@@ -283,13 +326,39 @@ while(e) {
               std::string codigoprod;
               std::cin.ignore();
               std::getline(std::cin, codigoprod);
-              std::map<std::string,Producto *>::iterator iterP = productos.find(codigoprod); //hay que hacerlos map en vezde set
-              //que diga si puso mal el codigo, else:
-              // "desea comentario nuevo o respuesta?"
-              // case N : ingrese el texto de su comentario: ____ y ahi lo creas
-              // case R: falta un mostrarComDeProd en el contProductos, pero con eso los muestra, "elija uno", selecciona etc
-              // y ahi si ingrese el texto del comentario
-              
+              auto iterP = contProdu.getProductos().find(codigoprod);
+              if (iterP == contProdu.getProductos().end()) {
+                    printf("\nError: No existe un producto con dicho codigo\n");
+                } else {
+                    printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
+                    char tipoComentario;
+                    std::cin.ignore();
+                    std::getline(std::cin, tipoComentario);
+                    if (tipoComentario == 'N' || tipoComentario == 'n') {
+                        printf("\nIngrese el texto de su comentario:\n");
+                        std::string textoComentario;
+                        std::cin.ignore();
+                        std::getline(std::cin, textoComentario);
+                     // Crear un nuevo comentario
+                        static int idComentario = 1; // ID único para cada comentario, static se mantiene en la memoria asi se va sumando ese numero
+                       //guani aca fijate como es//
+                       //no se porque comentario tiene tanta cosa//
+                        //esta mal esto: Comentario nuevoComentario(idComentario++, textoComentario, fechaSist);
+                        iterProd->second->agregarComentario(nuevoComentario);
+                        printf("\nComentario agregado exitosamente.\n");
+                    } else if (tipoComentario == 'R' || tipoComentario == 'r') {
+                        printf("\nComentarios del producto:\n");
+                        iterProd->second->mostrarComDeProd(); //en el contprod iria esa funcion
+                        printf("\nElija el numero del comentario al que desea responder:\n");
+                        int numComentario;
+                        std::cin.ignore();
+                        std::getline(std::cin, numComentario);
+                        if (numComentario > 0 && numComentario <= iterProd->second->comentarios.size()) {
+                            printf("\nIngrese el texto de su respuesta:\n");
+                            std::string textoRespuesta;
+                            std::cin.ignore();
+                            std::getline(std::cin, textoRespuesta);
+
 
             break;
         case 'i':
@@ -369,12 +438,156 @@ while(e) {
             // Aquí iría el código para volver al estado anterior del mercado
             break;
         case 'x':{
-            printf("\nOpción 'x' seleccionada: Salir del programa.\n");
-            e=false;
             break;}
         default:{
+            //esto no esta bien, hay que hacer que se mantenga en el switch con otro bool
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
             break;}
     }
+    break;}
+    case 'b':{
+        std::system("cls");
+        printf(" --CASOS DE PRUEBA--\n\n");
+        printf("precione:\n\n");
+        printf("a: caso usuario\n");
+        printf("x: para volver al menu\n");
+        char casoPrueba = leerUnaTecla();
+        switch(casoPrueba) {
+            case 'a':{
+            simulatedInputs = {
+                // Usuario 1
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "ana23",            // Nickname
+                "qwer1234",         // Contraseña
+                "1988",             // Año
+                "05",               // Mes
+                "15",               // Día
+                "212345678001",     // RUT
 
-};
+                // Usuario 2
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "carlos78",         // Nickname
+                "asdfghj",          // Contraseña
+                "1986",             // Año
+                "06",               // Mes
+                "18",               // Día
+                "356789012345",     // RUT
+
+                // Usuario 3
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "diegom",           // Nickname
+                "zxcvbn",           // Contraseña
+                "1993",             // Año
+                "07",               // Mes
+                "28",               // Día
+                "190123456789",     // RUT
+
+                // Usuario 4
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "juan87",           // Nickname
+                "1qaz2wsx",         // Contraseña
+                "1992",             // Año
+                "10",               // Mes
+                "20",               // Día
+                "Melo",             // Ciudad
+                "Av. 18 de Julio",  // Calle
+                "456",              // Número de puerta
+
+                // Usuario 5
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "laura",            // Nickname
+                "3edc4rfv",         // Contraseña
+                "1979",             // Año
+                "09",               // Mes
+                "22",               // Día
+                "Montevideo",       // Ciudad
+                "Rondeau",          // Calle
+                "1617",             // Número de puerta
+
+                // Usuario 6
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "maria01",          // Nickname
+                "5tgb6yhn",         // Contraseña
+                "1985",             // Año
+                "03",               // Mes
+                "25",               // Día
+                "321098765432",     // RUT
+
+                // Usuario 7
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "natalia",          // Nickname
+                "poiuyt",           // Contraseña
+                "1982",             // Año
+                "04",               // Mes
+                "14",               // Día
+                "Salto",            // Ciudad
+                "Paysandú",         // Calle
+                "2021",             // Número de puerta
+
+                // Usuario 8
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "pablo10",          // Nickname
+                "lkjhgv",           // Contraseña
+                "1995",             // Año
+                "11",               // Mes
+                "30",               // Día
+                "Mercedes",         // Ciudad
+                "Av. Rivera",       // Calle
+                "1819",             // Número de puerta
+
+                // Usuario 9
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "roberto",          // Nickname
+                "mnbvcx",           // Contraseña
+                "1990",             // Año
+                "08",               // Mes
+                "12",               // Día
+                "Montevideo",       // Ciudad
+                "Av. Brasil",       // Calle
+                "1011",             // Número de puerta
+
+                // Usuario 10
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "sofia25",          // Nickname
+                "1234asdf",         // Contraseña
+                "1983",             // Año
+                "12",               // Mes
+                "07",               // Día
+                "445678901234"      // RUT
+            };
+        break;}
+        case 'x':{
+            break;}
+        default:{
+            break;}
+        }
+    break;}
+    case 'x':{
+            printf("\nOpción 'x' seleccionada: Salir del programa.\n");
+            e=false;
+            break;}
+    default:{
+            break;}
+    }
+    }
+}
