@@ -19,15 +19,17 @@
 
 class ContUsuario {
 private:
-    std::map<std::string, Comentario *> colComentario;
+    ContUsuario();
+    static ContUsuario * instanciaContUsu;
+
+    std::map<int, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
     //std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
     //std::map<std::string, Cliente*> colClientes;
+    int CantComen;
     
 public:
-    //constructor
-    ContUsuario();
-
+    ContUsuario* getInstanciaContUsu();
     //otros metodos
     void ingresarDatosVendedor(DataVendedor data); //casos: a, 
     void ingresarDatosCliente(DataCliente data); //casos: a, 
