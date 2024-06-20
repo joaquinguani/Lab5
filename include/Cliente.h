@@ -11,6 +11,7 @@
 #include "TDireccion.h"
 #include "TNotificacion.h"
 #include "DataCliente.h"
+#include "TFecha.h"
 
 class Cliente:public Usuario/*,public ISuscripciones */{
     private: 

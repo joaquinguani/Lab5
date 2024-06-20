@@ -10,12 +10,11 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-#include "ContProductos.h"
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
 #include "TCategoria.h"
-#include "ContProductos.h"
+#include "ContProducto.h"
 #include "ContUsuario.h"
 #include "TFecha.h"
 
@@ -30,7 +29,7 @@ std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
 ContProducto contProdu = ContProducto(productosda);
-TFecha* fechaSist=getInstanciaFecha();
+TFechaActual* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
@@ -127,7 +126,7 @@ while(e) {
 
         case 'c':
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            contUsu.imprimirVendedores();
+            contUsu.imprimirVendedores(); //tiene que imprimir solo los nicknames en realidad
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend;
             std::cin.ignore();
@@ -168,7 +167,7 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, nomProd);
             std::map<std::string,Producto *>::iterator iter;
-            iter = colProductos.find(nomProd);
+            iter = colProducto.find(nomProd);
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
             break;
         case 'e':
@@ -299,7 +298,29 @@ while(e) {
             break;
         case 'j':
             printf("\nOpción 'j' seleccionada: Enviar producto.\n");
-            // Aquí iría el código para enviar un producto
+            contUsu.imprimirVendedores(); //solo los nicknames
+            printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
+            std::string vend;
+            std::cin.ignore();
+            std::getline(std::cin, vend);   
+            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            //
+            vnd->imprimirProdsConCompraPendDeEnvio();
+            printf("\nIngrese el nombre del producto que quiere seleccionar\n");
+            std::string prod;
+            std::cin.ignore();
+            std::getline(std::cin, prod);
+            Producto* produ = contProdu.buscarProdPorNombre();
+
+            
+            //seleccionar producto y que quede en variable
+            //listar compras con ese producto con envio pendiente
+            ///ir buscando en la coleccion de compra el producto
+            ///imprimir la compra (el nick del cliente y la fecha de compra)
+            //seleccionar una compra
+            //guardarla en variable 
+            //marcar como enviado en compra prod con 
+            //prod--compra--compraprod.enviado
             break;
         case 'k':
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");

@@ -8,11 +8,12 @@
 #include <sstream>
 #include "Producto.h"
 
+
 class CompraProd{
 private:
     int cantidad;
     bool enviado;
-    Producto *productos; //REVISAR
+    Producto *producto; //REVISAR
 public:
     //constructor
     CompraProd(int, bool, Producto*); 
@@ -20,6 +21,10 @@ public:
     //metodos de acceso
     int getCantidad();
     bool getEnviado();
+    Producto* getProducto();
+
+    void setCantidad(int cant);
+    void setEnviado(bool env);
 
     //destructor
     virtual ~CompraProd(){}; 

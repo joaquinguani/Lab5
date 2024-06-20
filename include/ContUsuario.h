@@ -53,8 +53,6 @@ public:
     void eliminarSuscripciones();
     void listarNicknamesVendedores();
 
-
-
     Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 

@@ -12,7 +12,7 @@ Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fec
 void Usuario::imprimirFecha(){
     int dia = fecha.getDia();
     int mes = fecha.getMes();
-    int ano = fecha.getAno();
+    int ano = fecha.getAnio();
     printf("\n| Fecha:\n|          %d/%d/%d\n|",dia,mes,ano);
 }
 
@@ -25,9 +25,9 @@ std::string Usuario::getNickname(){
 void Usuario::imprimirUsuario(){};
 
 
-/*
+
 bool esVendedor(){
     return false;
 };
-*/
+
 
