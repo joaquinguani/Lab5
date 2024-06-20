@@ -176,29 +176,6 @@ while(e) {
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            printf("\nIngresar nombre de promocion\n");
-            std::string nombre;
-            std::cin.ignore();
-            std::getline(std::cin, nombre);
-            printf("\nIngresar descripcion de promocion\n");
-            std::string descripcion;
-            std::cin.ignore();
-            std::getline(std::cin, descripcion);
-
-            printf("\nIngresar año de fecha de vencimiento de promocion\n");
-            int ano;
-            scanf("%d", &ano);
-            printf("\nIngresar mes de fecha de vencimiento de promocion\n");
-            int mes;
-            scanf("%d", &mes);
-            printf("\nIngresar dia de fecha de vencimiento de promocion\n");
-            int dia;
-            scanf("%d", &dia);
-            fecha = new TFecha(dia, mes, ano);
-            printf("\nIngrese el porcentaje que se va a aplicar en la promocion\n");
-            int desc;
-            scanf("%d", &desc);
-
             contUsu.imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
             std::string vend;
@@ -206,20 +183,22 @@ while(e) {
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
-            int d,m,a,descu;
-            std::string nom,descrip;
+            std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
-            nom=leerCadena();
+            nom=leerCadena(); 
+            std::string descrip;
             std::cout << "Ingrese la descripción de la promoción: ";
             descrip=leerCadena();
+            int d,m,a;
             std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
             d=leerEntero();
             m=leerEntero();
             a=leerEntero();
             TFecha* fech=new TFecha(d,m,a);
+            int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip, );
+            Promocion* p=new Promocion(nom,descrip,fech,descu);
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
