@@ -20,3 +20,8 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
     //va preguntando si la fechaVenc<TfechaActual, si es asi lo agrega a promos
 
 }
+
+Producto* ContProducto::buscarProducto(int clave){
+    std::map<int, Producto*>::iterator it = Productos.find(clave);
+    Producto* p = it->second;
+};

@@ -19,18 +19,18 @@
 #include "ContProductos.h"
 #include "ContUsuario.h"
 #include "TFecha.h"
+#include "Producto.h"
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
 
 
-std::set<Producto *> productos;
 std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
 
 ContUsuario contUsu = ContUsuario();
-ContProducto contProdu = ContProducto(productosda);
+ContProducto contProdu = ContProducto();
 TFecha* fechaSist=getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
@@ -161,6 +161,8 @@ while(e) {
                 static int codigoProducto = 0;
                 Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
+
+                //faltaria agregarlo al mapa de productos
             }    
             break;
         case 'd':
@@ -176,13 +178,6 @@ while(e) {
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
-            contUsu.imprimirVendedores();
-            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
-            std::string vend;
-            std::cin.ignore();
-            std::getline(std::cin, vend);   
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            vnd->imprimirProdsVendedorCodNom();
             std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
             nom=leerCadena(); 
@@ -198,7 +193,26 @@ while(e) {
             int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            Promocion* p=new Promocion(nom,descrip,fech,descu);
+            contUsu.imprimirVendedores();
+            printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion\n");
+            std::string vend;
+            vend=leerCadena();
+            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            vnd->imprimirProdsVendedorCodNom();
+            Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el codigo de un producto que desea agregar a la promocion");
+                int c=leerEntero();
+                Producto* prod=contProdu->buscarproducto(c);
+                p->agregarProdAPromo(prod);
+                printf("\n¿Desea seguir agregando productos? (s/n): ");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //FALTA VER LO DE CANTIDAD MINIMA COMO IMPLEMENTARLO
+            };
+
             break;
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
