@@ -39,6 +39,7 @@ public:
     std::map<int, Producto*> getProductos();
     Promocion* buscarPromoPorNombre(std::string promo);
     virtual ~ContProducto(){}; //destructor
+    std::set<Promocion*> listarPromosVigentes();
 };
 
 #endif

@@ -14,7 +14,7 @@ std::map<int, Producto*> ContProducto::getProductos() {
     return Productos;}
 
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
-    std::set<Promocion*> promos;
+    std::set<Promocion*> promosVigentes;
     TFechaActual* fecha;
     fecha = TFechaActual::getInstanciaFecha();
     //iterador que vaya por toda la coleccion de promociones
@@ -22,10 +22,10 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
         if (it->second->getFechaVenc().mayoroIgual(fecha)){
-            promos.insert(it->second);
+            promosVigentes.insert(it->second);
          }
-               
-    }
+    };
+    promosVigentes.imprimirPromocion();
 };
 
 
