@@ -8,6 +8,7 @@
 #include <sstream>
 #include "ProductosEnPromo.h"
 #include "TFecha.h"
+#include <map>
 
 class Promocion {
 private:

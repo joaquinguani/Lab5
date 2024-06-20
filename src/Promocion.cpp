@@ -61,7 +61,8 @@ void Promocion::agregarProdAPromo(Producto* producto) {
 };
 
 void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
-    promProductos.insert(producto,cantMin);//revisar el insert aca
+    ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
+    promProductos.insert(p);
 };
 
 void Promocion::aplicarDescuento(int idProducto, int descuento) {
