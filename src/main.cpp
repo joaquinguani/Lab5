@@ -311,11 +311,9 @@ while(e) {
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
             printf("\nIngrese el nickname del usuario que desea seleccionar\n");
             contUsu.imprimirUsuarios();
-            std::string nickUsuario;
-            std::cin.ignore();
-            std::getline(std::cin, nickUsuario);
-            auto iteru = contUsu.getUsuarios().find(nickUsuario);
-            if (iteru == contUsu.getUsuarios().end()) {
+            std::string nickUsuario = leerCadena();
+            std::map<std::string, Usuario *> iteru = contUsu.getUsuarios();
+            if (iteru.find(nickUsuario) == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
             } else {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
@@ -329,20 +327,15 @@ while(e) {
                     printf("\nError: No existe un producto con dicho codigo\n");
                 } else {
                     printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
-                    char tipoComentario;
-                    std::cin.ignore();
-                    std::getline(std::cin, tipoComentario);
+                    char tipoComentario = leerUnaTecla();
                     if (tipoComentario == 'N' || tipoComentario == 'n') {
                         printf("\nIngrese el texto de su comentario:\n");
-                        std::string textoComentario;
-                        std::cin.ignore();
-                        std::getline(std::cin, textoComentario);
+                        std::string textoComentario = leerCadena();
                      // Crear un nuevo comentario
-                        static int idComentario = 1; // ID único para cada comentario, static se mantiene en la memoria asi se va sumando ese numero
                        //guani aca fijate como es//
                        //no se porque comentario tiene tanta cosa//
                         //esta mal esto: Comentario nuevoComentario(idComentario++, textoComentario, fechaSist);
-                        iterProd->second->agregarComentario(nuevoComentario);
+                        iterProd->second->crearComentarioDeProd(textoComentario);//hay que definir iterProd
                         printf("\nComentario agregado exitosamente.\n");
                     } else if (tipoComentario == 'R' || tipoComentario == 'r') {
                         printf("\nComentarios del producto:\n");
