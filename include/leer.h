@@ -4,9 +4,11 @@
 #include <string>
 #include <vector> // Asegúrate de incluir la biblioteca <vector>
 
+extern std::vector<std::string> simulatedInputs;
+extern unsigned int inputIndex;  // Cambiado a unsigned int
 
-char leerUnaTecla(std::vector<std::string> , int );
-int leerEntero(std::vector<std::string> , int );
-std::string leerCadena(std::vector<std::string> , int );
+char leerUnaTecla();
+int leerEntero();
+std::string leerCadena( );
 
 #endif

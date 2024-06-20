@@ -46,6 +46,16 @@ while(e) {
     int TamañoColUsuarios = contUsu.sizeCol();
     printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
     printf("precione:\n");
+    printf("a: para acceder a los casos de uso\n");
+    printf("b: para acceder a los casos de prueba predeterminados\n");
+    printf("x: para salir\n");
+
+    char tec = leerUnaTecla();
+    switch(tec) {
+    case 'a':{
+    std::system("cls");
+    printf(" --CASOS DE USO--\n\n");
+    printf("precione:\n\n");
     printf("a: para dar de alta a un usuario\n");
     printf("b: Listado de usuarios\n");
     printf("c: Alta de producto\n");
@@ -65,7 +75,7 @@ while(e) {
     printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
-    char tecla = leerUnaTecla(simulatedInputs,inputIndex);
+    char tecla = leerUnaTecla();
     //scanf(" %c", &tecla); 
     
     switch(tecla) {
@@ -397,12 +407,156 @@ while(e) {
             // Aquí iría el código para volver al estado anterior del mercado
             break;
         case 'x':{
-            printf("\nOpción 'x' seleccionada: Salir del programa.\n");
-            e=false;
             break;}
         default:{
+            //esto no esta bien, hay que hacer que se mantenga en el switch con otro bool
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
             break;}
     }
+    break;}
+    case 'b':{
+        std::system("cls");
+        printf(" --CASOS DE PRUEBA--\n\n");
+        printf("precione:\n\n");
+        printf("a: caso usuario\n");
+        printf("x: para volver al menu\n");
+        char casoPrueba = leerUnaTecla();
+        switch(casoPrueba) {
+            case 'a':{
+            simulatedInputs = {
+                // Usuario 1
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "ana23",            // Nickname
+                "qwer1234",         // Contraseña
+                "1988",             // Año
+                "05",               // Mes
+                "15",               // Día
+                "212345678001",     // RUT
 
-};
+                // Usuario 2
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "carlos78",         // Nickname
+                "asdfghj",          // Contraseña
+                "1986",             // Año
+                "06",               // Mes
+                "18",               // Día
+                "356789012345",     // RUT
+
+                // Usuario 3
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "diegom",           // Nickname
+                "zxcvbn",           // Contraseña
+                "1993",             // Año
+                "07",               // Mes
+                "28",               // Día
+                "190123456789",     // RUT
+
+                // Usuario 4
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "juan87",           // Nickname
+                "1qaz2wsx",         // Contraseña
+                "1992",             // Año
+                "10",               // Mes
+                "20",               // Día
+                "Melo",             // Ciudad
+                "Av. 18 de Julio",  // Calle
+                "456",              // Número de puerta
+
+                // Usuario 5
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "laura",            // Nickname
+                "3edc4rfv",         // Contraseña
+                "1979",             // Año
+                "09",               // Mes
+                "22",               // Día
+                "Montevideo",       // Ciudad
+                "Rondeau",          // Calle
+                "1617",             // Número de puerta
+
+                // Usuario 6
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "maria01",          // Nickname
+                "5tgb6yhn",         // Contraseña
+                "1985",             // Año
+                "03",               // Mes
+                "25",               // Día
+                "321098765432",     // RUT
+
+                // Usuario 7
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "natalia",          // Nickname
+                "poiuyt",           // Contraseña
+                "1982",             // Año
+                "04",               // Mes
+                "14",               // Día
+                "Salto",            // Ciudad
+                "Paysandú",         // Calle
+                "2021",             // Número de puerta
+
+                // Usuario 8
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "pablo10",          // Nickname
+                "lkjhgv",           // Contraseña
+                "1995",             // Año
+                "11",               // Mes
+                "30",               // Día
+                "Mercedes",         // Ciudad
+                "Av. Rivera",       // Calle
+                "1819",             // Número de puerta
+
+                // Usuario 9
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "a",                // Tecla para seleccionar 'a' (cliente).
+                "roberto",          // Nickname
+                "mnbvcx",           // Contraseña
+                "1990",             // Año
+                "08",               // Mes
+                "12",               // Día
+                "Montevideo",       // Ciudad
+                "Av. Brasil",       // Calle
+                "1011",             // Número de puerta
+
+                // Usuario 10
+                "a", 
+                "a",                // Opción 'a' seleccionada: Dar de alta a un usuario.
+                "v",                // Tecla para seleccionar 'v' (vendedor).
+                "sofia25",          // Nickname
+                "1234asdf",         // Contraseña
+                "1983",             // Año
+                "12",               // Mes
+                "07",               // Día
+                "445678901234"      // RUT
+            };
+        break;}
+        case 'x':{
+            break;}
+        default:{
+            break;}
+        }
+    break;}
+    case 'x':{
+            printf("\nOpción 'x' seleccionada: Salir del programa.\n");
+            e=false;
+            break;}
+    default:{
+            break;}
+    }
+    }
+}
