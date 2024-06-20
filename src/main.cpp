@@ -11,12 +11,11 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
-#include "ContProductos.h"
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
 #include "TCategoria.h"
-#include "ContProductos.h"
+#include "ContProducto.h"
 #include "ContUsuario.h"
 #include "TFecha.h"
 
@@ -120,7 +119,7 @@ while(e) {
             std::system("cls");
             printf("\nListado de usuarios:\n");
             contUsu.imprimirUsuarios();
-            printf("\nPrecione cualquier tecla para ir al menu\n");
+            printf("\nPresione cualquier tecla para ir al menu\n");
             leerUnaTecla();
             //std::getline(std::cin,Contrasena);
             break;
@@ -133,7 +132,7 @@ while(e) {
             std::string nickVend;
             std::cin.ignore();
             std::getline(std::cin, nickVend);
-            std::map<std::string,Vendedor *>::iterator iter;
+            std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
             iter = vendedores.find(nickVend);
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
@@ -158,21 +157,22 @@ while(e) {
                 printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
                 std::cin.ignore();
                 std::getline(std::cin, catProd);
-                codigoProducto ++;
-                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                static int codigoProducto = 0;
+                Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
             }    
             break;
         case 'd':
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
-            printf("\nIngrese el nombre del producto a seleccionar:\n");
-            std::string nomProd;
+            printf("\nIngrese el codigo del producto a seleccionar:\n");
+            int codProd;
             std::cin.ignore();
-            std::getline(std::cin, nomProd);
-            std::map<std::string,Producto *>::iterator iter;
-            iter = colProductos.find(nomProd);
+            std::getline(std::cin, codProd);
+            auto iterprodu = contProdu.getProductos().find(codProd);
+            if (iterprodu != contProdu.getProductos().end())
             printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n", iter->first, iter->second->getStock(), iter->second->getPrecio(), iter->second->getNombre(), iter->second->getDescripcion(), iter->second->getCategoria());
+            else  printf("Error: No existe un producto con dicho nombre\n");
             break;
         case 'e':
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
@@ -233,20 +233,14 @@ while(e) {
             std::string nickCliente;
             std::cin.ignore();
             std::getline(std::cin, nickCliente);
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
+            auto itercli = contUsu.getUsuarios().find(nickCliente);
+            if (itercli == contUsu.getUsuarios().end()) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
             else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
+                Cliente* cliente = dynamic_cast<Cliente*>(itercli->second);
                 if (!cliente) {
                     printf("\nError: El usuario seleccionado no es un cliente\n");
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
-                printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
-                if (!cliente) {
-                    printf("\nError: El usuario seleccionado no es un cliente\n");
+    
             } else {
                 Compra compra = new Compra(fechaActual, 0);
                 contProdu.imprimirProductos();
@@ -257,35 +251,25 @@ while(e) {
                 std::set<int> comprasPro;
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
-                    printf("\nIngrese el codigo del producto a agregar\n");
                     int codP;
                     std::cin.ignore();
                     std::getline(std::cin, codP);
                     std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
-                    std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
+                    iterProd = contProdu.getProductos().find(codP);
+                    if (iterProd == contProdu.getProductos().end()) { 
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
                         if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
-                            printf("\nEste producto ya fue ingresado\n");
-                        } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
                             int cantP;
                             std::cin.ignore();
                             std::getline(std::cin, cantP);
                             CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            //con que se conecta compraprod????? VERIFICAR
-                            //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
                             comprasPro.insert(codP);
-                            float precio = iter->second->getPrecio();
+                            float precio = iterProd->second->getPrecio();
                             precio = compra->aplicarDescuento(precio);
                             compra->sumarAlMonto(precio);
-                            float precio = iter->second->getPrecio();
+                            float precio = iterProd->second->getPrecio();
                             precio = compra->aplicarDescuento(precio);
                             compra->sumarAlMonto(precio);
                         }

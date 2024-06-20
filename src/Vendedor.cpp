@@ -33,14 +33,14 @@ void Vendedor::imprimirUsuario(){
 }
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
-    productos.insert(nuevoProducto);
+    productos[nuevoProducto->getCodigo()] = nuevoProducto; 
 };
 
-bool esVendedor(){
-    return true;
+// bool esVendedor(){
+//     return true;
 
 
-}:
+// }:
 
 void imprimirProdsVendedorCodNom(Vendedor v){
     std::set<Producto*>::iterator it;
@@ -48,4 +48,4 @@ void imprimirProdsVendedorCodNom(Vendedor v){
         for (it=prods.begin(); it != prods.end(); ++it){
                 it->imprimirProductoCodNom();
         }
-}
+};

@@ -22,9 +22,9 @@ std::string Usuario::getNickname(){
     return this->nickname;
 };
 
-/*
-bool esVendedor(){
-    return false;
-};
-*/
+
+// bool esVendedor(){
+//     return false;
+// };
+
 

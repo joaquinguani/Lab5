@@ -58,6 +58,6 @@ void Cliente::imprimirDireccion(){
 }
 
 
-bool esVendedor(){
-    return false;
-};
+// bool esVendedor(){
+//     return false;
+// };
