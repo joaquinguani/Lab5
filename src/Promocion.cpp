@@ -56,13 +56,14 @@ void Promocion::setDescuento(int descu) {
     descuento = descu;
 }
 
-// Métodos
-void Promocion::agregarProdAPromo(int idProducto, int idPromocion) {
-    // Aquí se debe implementar la lógica para agregar un producto a la promoción.
-    // Ejemplo de implementación básica:
-    // ProductosEnPromo* nuevoProductoEnPromo = new ProductosEnPromo(idProducto, idPromocion);
-    // promproductos.insert(nuevoProductoEnPromo);
-}
+void Promocion::agregarProdAPromo(Producto* producto) {
+    productos.insert(producto);
+};
+
+void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
+    ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
+    promProductos.insert(p);
+};
 
 void Promocion::aplicarDescuento(int idProducto, int descuento) {
     // Aquí se debe implementar la lógica para aplicar un descuento a un producto específico.
@@ -85,4 +86,8 @@ void Promocion::devolverDatosProdsPromo(){
         Vendedor* vnd = (*it)->getVendAsociado();
         vnd->imprimirUsuario();
     }
-}
+};
+
+void Promocion::imprimirPromocion(){
+
+};

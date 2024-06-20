@@ -8,6 +8,7 @@
 #include <sstream>
 #include "ProductosEnPromo.h"
 #include "TFecha.h"
+#include <map>
 
 class Promocion {
 private:
@@ -38,9 +39,11 @@ public:
     void setDescuento(int descu);
 
     // Métodos
-    void agregarProdAPromo(int idProducto, int idPromocion);
+    void agregarProdAPromo(Producto* producto);
+    void agregarProdAPromoCantMin(Producto* producto,int cantMin);
     void aplicarDescuento(int idProducto, int descuento);
     void devolverDatosProdsPromo();
+    void imprimirPromocion();
 };
 
 

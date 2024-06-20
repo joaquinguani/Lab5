@@ -11,7 +11,7 @@
 class ProductosEnPromo{
 private:
     int cantidadMin;
-    Producto *producto;
+    Producto  *producto;
 public:
     //constructor
     ProductosEnPromo(); // y esto?
@@ -21,6 +21,7 @@ public:
 
     //destructor
     virtual ~ProductosEnPromo(){};
+    
 };
 
 #endif

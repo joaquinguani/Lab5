@@ -1,7 +1,7 @@
 #include <iostream>
 
-enum TCategoria {
+/*enum TCategoria {
     ropa,
     electrodomesticos,
     otros
-};
+};*/
