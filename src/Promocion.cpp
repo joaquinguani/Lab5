@@ -86,4 +86,8 @@ void Promocion::devolverDatosProdsPromo(){
         Vendedor* vnd = (*it)->getVendAsociado();
         vnd->imprimirUsuario();
     }
-}
+};
+
+void Promocion::imprimirPromocion(){
+
+};

@@ -233,7 +233,7 @@ while(e) {
         case 'f':
             printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
-
+            
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
