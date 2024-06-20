@@ -26,11 +26,13 @@ private:
     std::map<std::string, Usuario *> colUsuarios;
     //std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
     //std::map<std::string, Cliente*> colClientes;
-    int CantComen;
+    int cantComen;
     
 public:
-    ContUsuario* getInstanciaContUsu();
+    static ContUsuario* getInstanciaContUsu();
     //otros metodos
+    int getCantComen();
+    void sumarComentario();
     void ingresarDatosVendedor(DataVendedor data); //casos: a, 
     void ingresarDatosCliente(DataCliente data); //casos: a, 
 

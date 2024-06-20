@@ -9,6 +9,11 @@ Usuario::Usuario(std::string nickname ,std::string contrasena,TFecha fecha): fec
     //this->fecha(fecha.getDia(),fecha.getMes(),fecha.getAnio());//no se como asignarle a fecha su fecah
 };
 
+void Usuario::agregarComen(Comentario* coment){
+    int id = coment->getID();
+    comentarios[id] = coment;
+}
+
 void Usuario::imprimirFecha(){
     int dia = fecha.getDia();
     int mes = fecha.getMes();
