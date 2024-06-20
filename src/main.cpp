@@ -311,7 +311,13 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, prod);
             Producto* produ = contProdu.buscarProdPorNombre(prod);
-            
+            //colProdu.imprimircomprasConProductoPendiente
+            ///busca en la coleccion de compra uno por uno si tiene el producto
+            ////iterador, en una compra busca el producto en su set de productos
+            ///si lo tiene imprime nickdelcliente y la fecha
+            //seleccionar uno de los elementos
+            //marcar como enviado el producto
+
 
             
             //seleccionar producto y que quede en variable

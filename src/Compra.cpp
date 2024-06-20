@@ -16,7 +16,9 @@ int Compra::getMontoFinal(){
     return this->MontoFinal;
 };
 
-
+std::map<std::string,Producto*> Compra::getProductos(){
+    return this->productos;
+}
 
 void Compra::setFecha(const TFecha& f){
     this->fecha = f;

@@ -17,6 +17,7 @@ private:
     TFecha fecha;
     int MontoFinal;
     std::set<CompraProd*> compraProducto; //chequear
+    std::map<std::string,Producto*> productos; //la clave es el codigo
     
 public:
     // Constructor
@@ -26,6 +27,7 @@ public:
     // Getters
     TFecha getFecha();
     int getMontoFinal();
+    std::map<std::string,Producto*> getProductos();
 
     // Setters
     void setFecha(const TFecha& f);
