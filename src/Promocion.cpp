@@ -60,7 +60,7 @@ void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
 };
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
+void Promocion::agregarProdAPromoCantMin(Producto* producto,std::string cantMin) {
     ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
     promProductos.insert(p);
 };
@@ -89,5 +89,10 @@ void Promocion::devolverDatosProdsPromo(){
 };
 
 void Promocion::imprimirPromocion(){
-
+     std::cout << "Nombre: " << getNombre() << std::endl;
+     std::cout << "Descripción: " << getDescripcion() << std::endl;
+     std::cout << "Fecha de Vencimiento: ";
+     getFechaVenc().imprimirFecha();
+     std::cout << std::endl;
+     std::cout << "Descuento: " << getDescuento() << "%" << std::endl;
 };

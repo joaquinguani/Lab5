@@ -30,9 +30,11 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
         if (it->second->getFechaVenc().mayoroIgual(fecha)){
             promosVigentes.insert(it->second);
+            it->second->imprimirPromocion();
+            //se podria imprimir aca o afuera recorriendo la lista
+            //creo q es mas facil asi, la lista pierde sentido
          }
     };
-    promosVigentes.imprimirPromocion();
 };
 
 
@@ -54,8 +56,8 @@ void ContProducto::listarProductosDisp() {
 }
 
 
-Producto* ContProducto::buscarProducto(int clave){
-    std::map<int, Producto*>::iterator it = Productos.find(clave);
+Producto* ContProducto::buscarProducto(std::string clave){
+    std::map<std::string, Producto*>::iterator it = Productos.find(clave);
     Producto* p = it->second;
 };
 
