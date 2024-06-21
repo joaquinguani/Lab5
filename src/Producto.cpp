@@ -81,3 +81,25 @@ Promocion* Producto::getPromo(){
 void Producto::setPromo(Promocion* promo){
     this->promo=promo;
 }
+
+void Producto::crearComentario(std::string txt, Usuario* usu){
+    ContUsuario* contUsuari = ContUsuario::getInstanciaContUsu();
+    Comentario* NuevoComen = new Comentario(txt);
+    NuevoComen->setUsuario(usu);
+    usu->agregarComen(NuevoComen);
+    int ID = NuevoComen->getID();
+    comentarios[ID] = NuevoComen;
+    NuevoComen->setProdPadre(this);
+};
+
+void Producto::imprimirComDeProd(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= comentarios.begin(); it != comentarios.end(); ++it){
+            Comentario* comen = it->second;
+            comen->imprimirComenYHijos();
+    }
+}
+
+bool Producto::estaComen(int ID){
+    return comentarios[ID]!=NULL
+}

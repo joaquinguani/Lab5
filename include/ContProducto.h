@@ -16,12 +16,14 @@
 
 class ContProducto {
 private:
+    ContProducto();
+    static ContProducto * instanciaContProd;
     std::map<int, Producto *> Productos;
     std::map<std::string, Compra *> colCompra;
     std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
-    ContProducto();
+    static ContProducto* getInstanciaContProd();
 
     //otros metodos
     void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
@@ -38,6 +40,8 @@ public:
     Producto* buscarProducto(int clave);
     std::map<int, Producto*> getProductos();
     Promocion* buscarPromoPorNombre(std::string promo);
+    bool estaProd(int);
+    Producto* find(int);
     virtual ~ContProducto(){}; //destructor
 };
 

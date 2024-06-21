@@ -10,6 +10,7 @@
 #include "Comentario.h"
 #include "TCategoria.h"
 #include "Vendedor.h"
+#include "ContUsuario.h"
 
 class Promocion; //forward declaration
 class Producto {
@@ -20,7 +21,7 @@ private:
     std::string nombre;
     std::string descripcion;
     TCategoria categoria; //decia string
-    std::set<Comentario*> comentarios;
+    std::map<int,Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
 
@@ -49,6 +50,7 @@ public:
     void setDescripcion(std::string desc);
     void setCategoria(std::string cat);
     Vendedor* setVendAsociado();
+    
 
     // Métodos
     Producto getDatos();
@@ -56,6 +58,9 @@ public:
     void eliminarCom(int codigoProducto);
     void imprimirProducto();
     void imprimirProductoCodNom();
+    void crearComentario(std::string, Usuario*);
+    void imprimirComDeProd();
+    bool estaComen(int);
 };
 
 #endif
