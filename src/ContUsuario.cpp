@@ -83,7 +83,7 @@ void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
      std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
      for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
-                if (usr->esVendedor()){//consultar si esVendedor funciona
+                if (usr->esVendedor()){
                         
                 }
         }
