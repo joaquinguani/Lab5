@@ -15,9 +15,10 @@
 
 class Compra {
 private:
-    TFecha fecha;
+    TFecha* fecha;
     int MontoFinal;
-    std::set<CompraProd*> compraProducto; //chequear
+    //std::set<CompraProd*> compraProducto; //chequear 
+    std::map<std::string, CompraProd*> compraProducto; //la clave es el cod del producto??
     std::map<std::string,Producto*> productos; //la clave es el codigo
     Cliente* clienteAsociado;
     
@@ -30,6 +31,7 @@ public:
     TFecha getFecha();
     float getMontoFinal();
     std::map<std::string,Producto*> getProductos();
+    
     std::set<CompraProd*> getCompraProducto();
     Cliente* getClienteAsociado();
 

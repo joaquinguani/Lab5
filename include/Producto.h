@@ -10,6 +10,8 @@
 #include "Comentario.h"
 //#include "TCategoria.h"
 #include "Vendedor.h"
+
+#include "ContUsuario.h"
 #include "Compra.h"
 
 enum TCategoria {
@@ -17,6 +19,7 @@ enum TCategoria {
     electrodomesticos,
     otros
 };
+
 
 class Promocion; //forward declaration
 class Producto {
@@ -27,10 +30,11 @@ private:
     std::string nombre;
     std::string descripcion;
     TCategoria categoria; //decia string
-    std::set<Comentario*> comentarios;
+    std::map<int,Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
-    CompraProd* compraProducto;
+    //CompraProd* compraProducto;
+    Compra* compraAsociada;
 
 public:
     // Constructor
@@ -46,7 +50,8 @@ public:
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
-    CompraProd* getCompraProducto();
+    //CompraProd* getCompraProducto();
+    Compra* getCompraAsociada();
 
 
 
@@ -59,6 +64,7 @@ public:
     void setDescripcion(std::string desc);
     void setCategoria(TCategoria cat);
     Vendedor* setVendAsociado();
+    
 
     // Métodos
     Producto getDatos();
@@ -67,8 +73,13 @@ public:
     void imprimirProducto();
     void imprimirProductoCodNom();
 
+    void crearComentario(std::string, Usuario*);
+    void imprimirComDeProd();
+    bool estaComen(int);
+
     //Destructor
     ~Producto();
+
 };
 
 #endif
