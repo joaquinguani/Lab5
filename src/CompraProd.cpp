@@ -1,4 +1,6 @@
 #include "CompraProd.h"
+#include "Producto.h"
+
 
 // Constructor
 CompraProd::CompraProd(int cant, bool env, Producto* prod){

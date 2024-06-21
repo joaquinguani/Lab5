@@ -137,7 +137,7 @@ while(e) {
             break;
         }
         
-        case 'c':
+        case 'c':{
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
@@ -172,11 +172,11 @@ while(e) {
                 static int codigoProducto = 0;
                 Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
-            }    
+            };
+        };   
             break;
-
-      
-         case 'd': //cosecha me cagaste la vida
+            
+         case 'd':{ //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
@@ -192,8 +192,8 @@ while(e) {
                   iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
             }else  printf("Error: No existe un producto con dicho nombre\n");
             break;
-     
-        case 'e':
+         };
+        case 'e':{
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
@@ -220,7 +220,7 @@ while(e) {
             bool seguir=true;
             while(seguir){
                 printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
-                int c=leerEntero();
+                std::string c=leerCadena();
                 Producto* prod=contProdu->buscarproducto(c);
                 printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
                 int cantmin=leerEntero();
@@ -236,8 +236,9 @@ while(e) {
             };
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
             contProdu->colPromocion[nom]=p;
+        };
             break;
-        case 'f':
+        case 'f':{
            printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
             printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
@@ -251,6 +252,7 @@ while(e) {
             promo->devolverDatosProdsPromo();
             break;
             case 'n':
+        };
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -339,17 +341,15 @@ while(e) {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
               // se supone que la funcion esa con TCodNomProd (hay que hacer el .cpp) hace eso
               contProdu.listarProductos();
-              std::string codigoprod;
-              std::cin.ignore();
-              std::getline(std::cin, codigoprod);
+              int codigoprod;
+              codigoprod=leerEntero();
               auto iterP = contProdu.getProductos().find(codigoprod);
               if (iterP == contProdu.getProductos().end()) {
                     printf("\nError: No existe un producto con dicho codigo\n");
                 } else {
                     printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
                     char tipoComentario;
-                    std::cin.ignore();
-                    std::getline(std::cin, tipoComentario);
+                    tipoComentario=leerUnaTecla();
                     if (tipoComentario == 'N' || tipoComentario == 'n') {
                         printf("\nIngrese el texto de su comentario:\n");
                         std::string textoComentario;
@@ -373,7 +373,7 @@ while(e) {
                             printf("\nIngrese el texto de su respuesta:\n");
                             std::string textoRespuesta;
                             std::cin.ignore();
-                            std::getline(std::cin, textoRespuesta);
+                            std::getline(std::cin, textoRespuesta);}}}
 
 
             break;
@@ -406,13 +406,44 @@ while(e) {
             produ->getCompraProducto()->setEnviado(true);
             printf("El producto fue enviado correctamente.");
             break;
-        case 'k':
+        case 'k': {
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");
-            // Aquí iría el código para gestionar el expediente de un usuario
-            break;
+            contUsu.imprimirUsuarios(); // Imprimir todos los usuarios
+            printf("\nIngrese el nombre del usuario que quiere seleccionar\n");
+            std::string nick;
+            nick=leerCadena();
+            Usuario* usr = contUsu.buscarPorNombre(nick);
+            if (usr == nullptr) {
+                printf("Error: No existe un usuario con ese nombre.\n");
+                break;
+            }
+            printf("Información básica del usuario:\n");
+            printf("Nickname: %s\n", usr->getNickname());
+            usr->imprimirFecha(); // info basica: nickname y fecha. sin contraseña ciudad ni nada de eso
+            if (usr->esVendedor()) {
+                Vendedor* vendedor = dynamic_cast<Vendedor*>(usr);
+                printf("El usuario es un vendedor.\n");
+                printf("Productos en venta:\n");
+                vendedor->listarProductosEnVenta();
+                printf("Promociones vigentes:\n");
+                vendedor->listarPromocionesVigentes();
+            } else {
+                Cliente* cliente = dynamic_cast<Cliente*>(usr);
+                printf("El usuario es un cliente.\n");
+                printf("Compras realizadas:\n");
+                cliente->listarComprasRealizadas();
+            }
+    break;
+}
+
         case 'l':
             printf("\nOpción 'l' seleccionada: Suscribirse a notificaciones.\n");
-            // Aquí iría el código para suscribirse a notificaciones
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            //buscar el cliente y obtenerlo para usarlo de parametro
+            Cliente* cliente=contUsu.buscarClientePorNombre(cli);
+            //el Sistema devuelve la lista de todos los vendedores a los que no está suscrito el cliente
+            contUsu.listarVendedoresNoSubsXCliente(cliente);
             break;
         case 'm':
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
@@ -445,11 +476,13 @@ while(e) {
             // Aquí iría el código para volver al estado anterior del mercado
             break;
         case 'x':{
-            break;}
+            break;
+        }
         default:{
             //esto no esta bien, hay que hacer que se mantenga en el switch con otro bool
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
-            break;}
+            break;
+        }
     }
     break;}
     case 'b':{
