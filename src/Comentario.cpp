@@ -26,16 +26,47 @@ void Comentario::CrearHijo(std::string txt,Usuario* usu){
     NuevoComen->usuario = usu;
     usu->agregarComen(NuevoComen);
     NuevoComen->ProdPadre = ProdPadre;
+    int ID = NuevoComen->getID();
+    this->respuestas[ID] = NuevoComen;
+}
+
+
+void Comentario::setUsuario(Usuario* usu){
+    this->usuario = usu;
+}
+
+void Comentario::setProdPadre(Producto* prod){
+    ProdPadre = prod;
 }
 
 
 std::string Comentario::getTexto(){
-    return texto
+    return texto;
 };
 TFecha Comentario::getFecha(){
-    return fecha
+    return fecha;
 };
 
 int Comentario::getID(){
     return ID;
 };
+
+void Comentario::imprimirComentario(){
+    std::string nickk = usuario->getNickname();
+    int dia = fecha.getDia();
+    int mes = fecha.getMes();
+    int anio = fecha.getAnio();
+    
+    printf("ID: %d        %d/%d/%d \n",ID,dia,mes,anio);
+    std::cout << nickk << std::endl;
+    std::cout << texto << std::endl;
+}
+
+void Comentario::imprimirComenYHijos(){
+    imprimirComentario();
+    std::map<int, Comentario *>::iterator it;
+    for (it= respuestas.begin(); it != respuestas.end(); ++it){
+        Comentario* comen = it->second;
+        comen->imprimirComenYHijos();
+    }
+}
