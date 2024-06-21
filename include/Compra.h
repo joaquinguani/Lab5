@@ -21,6 +21,7 @@ private:
     std::map<std::string, CompraProd*> compraProducto; //la clave es el cod del producto??
     std::map<std::string,Producto*> productos; //la clave es el codigo
     Cliente* clienteAsociado;
+    int id; //para identificar cada compra
     
 public:
     // Constructor
@@ -28,9 +29,10 @@ public:
 
 
     // Getters
-    TFecha getFecha();
+    TFecha* getFecha();
     float getMontoFinal();
     std::map<std::string,Producto*> getProductos();
+    int getId();
     
     std::set<CompraProd*> getCompraProducto();
     Cliente* getClienteAsociado();
