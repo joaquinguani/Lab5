@@ -137,7 +137,7 @@ while(e) {
             break;
         }
         
-        case 'c':
+        case 'c':{
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
             contUsu.imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
@@ -172,11 +172,11 @@ while(e) {
                 static int codigoProducto = 0;
                 Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
-            }    
+            };
+        };   
             break;
-
-      
-         case 'd': //cosecha me cagaste la vida
+            
+         case 'd':{ //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
@@ -192,8 +192,8 @@ while(e) {
                   iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
             }else  printf("Error: No existe un producto con dicho nombre\n");
             break;
-     
-        case 'e':
+         };
+        case 'e':{
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             std::string nom;
             std::cout << "Ingrese el nombre de la promoción: ";
@@ -236,8 +236,9 @@ while(e) {
             };
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
             contProdu->colPromocion[nom]=p;
+        };
             break;
-        case 'f':
+        case 'f':{
            printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
             printf("\nSi desea seleccionar una promoción ingrese 's', de lo contrario ingrese 'n'");
@@ -251,6 +252,7 @@ while(e) {
             promo->devolverDatosProdsPromo();
             break;
             case 'n':
+        };
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -436,7 +438,12 @@ while(e) {
 
         case 'l':
             printf("\nOpción 'l' seleccionada: Suscribirse a notificaciones.\n");
-            // Aquí iría el código para suscribirse a notificaciones
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            //buscar el cliente y obtenerlo para usarlo de parametro
+            Cliente* cliente=contUsu.buscarClientePorNombre(cli);
+            //el Sistema devuelve la lista de todos los vendedores a los que no está suscrito el cliente
+            contUsu.listarVendedoresNoSubsXCliente(cliente);
             break;
         case 'm':
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
@@ -469,11 +476,13 @@ while(e) {
             // Aquí iría el código para volver al estado anterior del mercado
             break;
         case 'x':{
-            break;}
+            break;
+        }
         default:{
             //esto no esta bien, hay que hacer que se mantenga en el switch con otro bool
             printf("\nTecla no válida. Por favor, seleccione una opción válida.\n");
-            break;}
+            break;
+        }
     }
     break;}
     case 'b':{

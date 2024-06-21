@@ -65,6 +65,10 @@ Vendedor* ContUsuario::buscarPorNombre(std::string vend){ //aca decia Usuario*, 
         return colVendedores[vend];
 };
 
+Cliente* ContUsuario::buscarClientePorNombre(std::string cli){ //aca decia Usuario*, puse Cliente*
+        return colClientes[cli];
+};
+
 void ContUsuario::imprimirClientes(){
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
@@ -75,3 +79,12 @@ void ContUsuario::imprimirClientes(){
         }
 };
 
+void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
+     std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
+     for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (usr->esVendedor()){//consultar si esVendedor funciona
+                        
+                }
+        }
+};
