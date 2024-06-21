@@ -90,7 +90,7 @@ TCategoria Producto::getCategoria()  {
 
 
 void Producto::imprimirProducto(){
-    int cod = codigo;
+    int cod = cod;
     std::cout << cod << std::endl;
     int stck = stock;
     std::cout << stck << std::endl;
@@ -105,9 +105,7 @@ void Producto::imprimirProducto(){
 };
 
 
-
 void Producto::imprimirProductoCodNom(){
-//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
