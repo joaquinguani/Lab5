@@ -49,13 +49,13 @@ Promocion* Producto::getPromo() {
     return this->promo;
 }
 
-/*CompraProd* Producto::getCompraProducto(){
-    return this->compraProducto;
-}*/
-
-Compra* Producto::getCompraAsociada(){
-    return compraAsociada;
+std::map<int, CompraProd*> Producto::getCompraProd(){
+    return this->compraProd;
 }
+
+/*Compra* Producto::getCompraAsociada(){
+    return compraAsociada;
+}*/
 
 // Setters
 void Producto::setCodigo(int cod) {
@@ -122,6 +122,11 @@ void Producto::setPromo(Promocion* promo){
     this->promo=promo;
 }
 
+
+CompraProd* Producto::findCompraProd(int ID){
+    return compraProd[ID];
+}
+
 void Producto::crearComentario(std::string txt, Usuario* usu){
     ContUsuario* contUsuari = ContUsuario::getInstanciaContUsu();
     Comentario* NuevoComen = new Comentario(txt);
@@ -141,5 +146,10 @@ void Producto::imprimirComDeProd(){
 }
 
 bool Producto::estaComen(int ID){
-    return comentarios[ID]!=NULL
+    return comentarios[ID]!=NULL;
 }
+
+void Producto::eliminarRefComen(int ID){
+    comentarios.erase(ID);
+}
+

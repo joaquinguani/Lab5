@@ -105,8 +105,12 @@ void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
      for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
                 if (usr->esVendedor()){
-                        
+                        Vendedor* vnd=dynamic_cast<Vendedor*>(usr);
+                        if(cli->getColSuscripciones().find(vnd->getNickname())==cli->getColSuscripciones().end()){
+                                std::cout <<vnd->getNickname() <<std::endl;
+                        }
                 }
+                
         }
 };
 

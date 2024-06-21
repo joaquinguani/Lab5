@@ -340,9 +340,27 @@ while(e) {
 
 
             break;}
-        case 'i':
+        case 'i':{
             printf("\nOpción 'i' seleccionada: Eliminar comentario.\n");
-            // Aquí iría el código para eliminar un comentario
+            contUsu->imprimirUsuarios();
+            printf("\nEscriba el nickName del usuario correspondiente al comentario a elminar\n");
+            std::string nick = leerCadena();
+            Usuario* usu = contUsu->find(nick);
+            usu->imprimirComentarios();
+            printf("\nEscribe el ID del comentario a elminar (se eliminaran todas sus respuestas)\n");
+            int ID = leerEntero();
+            Comentario* comen = contUsu->findComen(ID);
+            bool tienePadre = comen->getTieneComPadre();
+            if (tienePadre){
+                Comentario* comPadre = comen->getComPadre();
+                comPadre->eliminarRefCom(ID);
+            }
+            else {
+                Producto* prod = comen->getProducto();
+                prod->eliminarRefComen(ID);
+            }
+            comen->EliminoComentarioYHijos();
+        }
             break;
         case 'j':
           printf("\nOpción 'j' seleccionada: Enviar producto.\n");
@@ -352,22 +370,14 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, vend);   
             Vendedor* vnd=contUsu.buscarPorNombre(vend);
-            //
             vnd->imprimirProdsConCompraPendDeEnvio();
-            printf("\nIngrese el nombre del producto que quiere seleccionar\n");
-            std::string prod;
-            std::cin.ignore();
-            std::getline(std::cin, prod);
-            //Producto* produ = contProdu.buscarProdPorNombre(prod); //no puedo porque esta por codigo
-            contProdu.imprimirComprasConProdPendiente(prod);//no entiendo bien que imprime
-            printf("\nIngrese el nickname del cliente que quiere seleccionar\n");
-            std::string nickCli;
-            std::cin.ignore();
-            std::getline(std::cin, nickCli);
-            std::set<Compra*> compras = contProdu.getColCompra().find(nickCli);//buscar en todas las compras el nick del cliente asociado 
-            //compras->getCompraProducto()->setEnviado(true);
-            produ->getCompraProducto()->setEnviado(true);
-            printf("El producto fue enviado correctamente.");
+            printf("\nIngrese el codigo del producto que quiere seleccionar\n");
+            int prod = leerEntero();
+            Producto* produ = contProdu.buscarProducto(prod); 
+            contProdu.imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
+            printf("\nIngrese el id de la compra que quiere seleccionar\n");
+            int id=leerEntero();
+            produ->findCompraProd(id)->setEnviado(true);
             break;
         case 'k': {
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");
@@ -404,9 +414,22 @@ while(e) {
             printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
             std::string cli=leerCadena();
             //buscar el cliente y obtenerlo para usarlo de parametro
-            Cliente* cliente=contUsu.buscarClientePorNombre(cli);
+            Cliente* cliente=contUsu->buscarClientePorNombre(cli);
             //el Sistema devuelve la lista de todos los vendedores a los que no está suscrito el cliente
-            contUsu.listarVendedoresNoSubsXCliente(cliente);
+            contUsu->listarVendedoresNoSubsXCliente(cliente);
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el nickname del vendedor al que desea suscribirse.\n");
+                std::string c=leerCadena();
+                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                cliente->agregarSuscripcion(vnd);
+                vnd->agregarSuscriptor(cliente);
+                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //falta lo de suscripciones lo demas esta creo
+            };
             break;
         case 'm':
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
