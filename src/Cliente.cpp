@@ -75,7 +75,9 @@ void Cliente::listarComprasRealizadas() {
 
 
 
-
+void Cliente::agregarCompra(Compra* compra){
+    this->compras.insert(compra);
+};
 
 
 

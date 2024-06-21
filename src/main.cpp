@@ -40,7 +40,7 @@ TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
-//int //codigoProducto = 0;
+int codigoProducto = 0;
 
 bool e = true;
 
@@ -81,7 +81,6 @@ while(e) {
     printf("x: para salir\n");
 
     char tecla = leerUnaTecla();
-    //scanf(" %c", &tecla); 
     
     switch(tecla) {
         case 'a':{
@@ -262,74 +261,46 @@ while(e) {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
             contUsu.imprimirClientes();
             printf("\nIngrese el nickname del cliente que desea seleccionar.\n");
-            std::string nickCliente;
-            std::cin.ignore();
-            std::getline(std::cin, nickCliente);
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
-                printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
-                if (!cliente) {
-                    printf("\nError: El usuario seleccionado no es un cliente\n");
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
-                printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
-                if (!cliente) {
-                    printf("\nError: El usuario seleccionado no es un cliente\n");
+            std::string nickCliente = leerCadena();
+            auto iterC = contUsu.getColClientes().find(nickCliente);
+            if (iterC == contUsu.getColClientes().end()) {
+                printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
-                contProdu.imprimirProductos();
-                int agregar;
+                Compra* compra = new Compra(fechaSist, 0);
+                contProdu.imprimirProductos(); //XQ NO ME DEJA SI YA SE IMPLEMETO??
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
-                std::cin.ignore();
-                std::getline(std::cin, agregar);
-                std::set<int> comprasPro;
+                int agregar = leerEntero();
+                std::map<int, CompraProd*> comprasPro; //se busca por el codigo del producto que tiene
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
-                    printf("\nIngrese el codigo del producto a agregar\n");
-                    int codP;
-                    std::cin.ignore();
-                    std::getline(std::cin, codP);
-                    std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
-                    std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
+                    int codP = leerEntero();
+                    auto iterProd = contProdu.getProductos().find(codP);
+                    if (iterProd == contProdu.getProductos().end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()){ 
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
-                            int cantP;
-                            std::cin.ignore();
-                            std::getline(std::cin, cantP);
-                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            //con que se conecta compraprod????? VERIFICAR
-                            //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
-                            comprasPro.insert(codP);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
-                            compra->sumarAlMonto(precio);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
+                            int cantP = leerEntero();
+                            CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
+                            comprasPro[codP]= compraP;
+                            compra->asociarCompraProd(compraP);
+                            int precio = iterProd->second->getPrecio();
+                            precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
                             compra->sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
-                    std::cin.ignore();
-                    std::getline(std::cin, agregar);
+                    agregar = leerEntero();
                 }
-                //mostrar compra
-
+                compra->imprimirCompraCompleto();
+                printf("/nPresiona 0 para confirmar la compra/n"); //NO DICE EN EL CASO DE USO PERO HABRIA QUE AGREGAR OPCION PARA DESCARTAR COMPRA???
+                int a = leerEntero();
+                if (a == 0) {
+                    iterC->second->agregarCompra(compra); //asocio el cliente con la compra
+                } //sino destruyo la compra???
             }
-                
             break;
         case 'h':{
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
