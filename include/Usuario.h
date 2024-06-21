@@ -37,6 +37,7 @@ class Usuario{
             TFecha getfecha();
             void setfecha(TFecha);
         void imprimirComentarios();
+        void eliminarRefCom(int);
 
 };
 #endif

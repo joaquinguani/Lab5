@@ -19,6 +19,10 @@ Comentario::Comentario(std::string txt){
     tieneComPadre = false;
 }
 
+Comentario::~Comentario(){
+
+}
+
 void Comentario::CrearHijo(std::string txt,Usuario* usu){
     Comentario* NuevoComen = new Comentario(txt);
     NuevoComen->tieneComPadre = true;
@@ -83,5 +87,16 @@ void Comentario::imprimirComenYHijos(){
 }
 
 bool Comentario::getTieneComPadre(){
-    return tieneComPadre
+    return tieneComPadre;
+}
+
+void Comentario::EliminoComentarioYHijos(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= respuestas.begin(); it != respuestas.end(); ++it){
+        Comentario* comHijo = it->second;
+        comHijo->EliminoComentarioYHijos();
+    }
+    usuario->eliminarRefCom(ID);
+    respuestas.clear();
+    delete this;
 }

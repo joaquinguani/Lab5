@@ -49,13 +49,13 @@ Promocion* Producto::getPromo() {
     return this->promo;
 }
 
-/*CompraProd* Producto::getCompraProducto(){
-    return this->compraProducto;
-}*/
-
-Compra* Producto::getCompraAsociada(){
-    return compraAsociada;
+std::map<int, CompraProd*> Producto::getCompraProd(){
+    return this->compraProd;
 }
+
+/*Compra* Producto::getCompraAsociada(){
+    return compraAsociada;
+}*/
 
 // Setters
 void Producto::setCodigo(int cod) {
@@ -90,7 +90,7 @@ TCategoria Producto::getCategoria()  {
 
 
 void Producto::imprimirProducto(){
-    int cod = codigo;
+    int cod = cod;
     std::cout << cod << std::endl;
     int stck = stock;
     std::cout << stck << std::endl;
@@ -105,9 +105,7 @@ void Producto::imprimirProducto(){
 };
 
 
-
 void Producto::imprimirProductoCodNom(){
-//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
@@ -122,6 +120,11 @@ Promocion* Producto::getPromo(){
 
 void Producto::setPromo(Promocion* promo){
     this->promo=promo;
+}
+
+
+CompraProd* Producto::findCompraProd(int ID){
+    return compraProd[ID];
 }
 
 void Producto::crearComentario(std::string txt, Usuario* usu){
@@ -149,3 +152,4 @@ bool Producto::estaComen(int ID){
 void Producto::eliminarRefComen(int ID){
     comentarios.erase(ID);
 }
+

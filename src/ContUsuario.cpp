@@ -72,13 +72,14 @@ void ContUsuario::imprimirVendedores(){
         }
 };
 
-Vendedor* ContUsuario::buscarPorNombre(std::string vend){ //aca decia Usuario*, puse Vendedor*
-        return colVendedores[vend];
+Vendedor* ContUsuario::buscarVendPorNombre(std::string vend){ //aca decia Usuario*, puse Vendedor*
+        return ColVendedores[vend];
 };
 
 Cliente* ContUsuario::buscarClientePorNombre(std::string cli){ //aca decia Usuario*, puse Cliente*
         return colClientes[cli];
 };
+
 
 void ContUsuario::imprimirClientes(){
         std::map<std::string, Usuario *>::iterator it;
@@ -90,12 +91,26 @@ void ContUsuario::imprimirClientes(){
         }
 };
 
+
+std::map<std::string, Vendedor*> ContUsuario::getColVendedores(){
+        return this->colVendedores;
+};
+
+std::map<std::string, Cliente*> ContUsuario::getColClientes(){
+        return this->colClientes;
+};
+
 void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
      std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
      for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
-                if (usr->esVendedor()){//consultar si esVendedor funciona
-                        
+                if (usr->esVendedor()){
+                        Vendedor* vnd=dynamic_cast<Vendedor*>(usr);
+                        if(cli->getColSuscripciones().find(vnd->getNickname())==cli->getColSuscripciones().end()){
+                                std::cout <<vnd->getNickname() <<std::endl;
+                        }
                 }
+                
         }
 };
+
