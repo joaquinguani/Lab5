@@ -348,9 +348,27 @@ while(e) {
 
 
             break;}
-        case 'i':
+        case 'i':{
             printf("\nOpción 'i' seleccionada: Eliminar comentario.\n");
-            // Aquí iría el código para eliminar un comentario
+            contUsu->imprimirUsuarios();
+            printf("\nEscriba el nickName del usuario correspondiente al comentario a elminar\n");
+            std::string nick = leerCadena();
+            Usuario* usu = contUsu->find(nick);
+            usu->imprimirComentarios();
+            printf("\nEscribe el ID del comentario a elminar (se eliminaran todas sus respuestas)\n");
+            int ID = leerEntero();
+            Comentario* comen = contUsu->findComen(ID);
+            bool tienePadre = comen->getTieneComPadre();
+            if (tienePadre){
+                Comentario* comPadre = comen->getComPadre();
+                comPadre->eliminarRefCom(ID);
+            }
+            else {
+                Producto* prod = comen->getProducto();
+                prod->eliminarRefComen(ID);
+            }
+            comen->EliminoComentarioYHijos();
+        }
             break;
         case 'j':
           printf("\nOpción 'j' seleccionada: Enviar producto.\n");

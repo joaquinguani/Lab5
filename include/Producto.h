@@ -69,7 +69,7 @@ public:
     // Métodos
     Producto getDatos();
     bool vendedor(std::string vendedor);
-    void eliminarCom(int codigoProducto);
+    void eliminarRefComen(int);
     void imprimirProducto();
     void imprimirProductoCodNom();
 
