@@ -6,7 +6,7 @@
 //#include "TCategoria.h"
 #include "Producto.h"
 
-Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
+Producto::Producto(std::string cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
     this->codigo = cod;
     this->stock = stk;
     this->precio = pre;
@@ -17,7 +17,7 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
 };
 
 // Getters
-int Producto::getCodigo() {
+std::string Producto::getCodigo() {
     return this->codigo;
 }
 

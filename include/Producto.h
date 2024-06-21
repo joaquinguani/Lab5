@@ -37,7 +37,7 @@ public:
     Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
 
     // Getters
-    int getCodigo();
+    std::string getCodigo();
     int getStock();
     float getPrecio();
     std::string getNombre();
