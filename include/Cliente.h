@@ -47,6 +47,7 @@ class Cliente:public Usuario/*,public ISuscripciones */{
         std::set<TNotificacion> listarNotificaciones();
         void eliminarNotificaciones();
         void notificar(TNotificacion);
+        void agregarCompra(Compra* compra);
 };
 
 
