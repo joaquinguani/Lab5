@@ -220,7 +220,7 @@ while(e) {
             bool seguir=true;
             while(seguir){
                 printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
-                int c=leerEntero();
+                std::string c=leerCadena();
                 Producto* prod=contProdu->buscarproducto(c);
                 printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
                 int cantmin=leerEntero();

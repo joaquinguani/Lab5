@@ -21,7 +21,7 @@ enum TCategoria {
 class Promocion; //forward declaration
 class Producto {
 private:
-    int codigo;
+    std::string codigo;
     int stock;
     int precio;
     std::string nombre;
