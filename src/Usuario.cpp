@@ -26,6 +26,13 @@ std::string Usuario::getNickname(){
     return this->nickname;
 };
 
+void Usuario::imprimirComentarios(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= comentarios.begin(); it != comentarios.end(); ++it){
+            Comentario* com = it->second;
+            com->imprimirComentario();
+    }
+}
 
 
 
@@ -37,5 +44,4 @@ bool esVendedor(){
     return false;
 };
 
-
-
+void Usuario::imprimirComentarios(){}

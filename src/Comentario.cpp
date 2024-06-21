@@ -39,6 +39,9 @@ void Comentario::setProdPadre(Producto* prod){
     ProdPadre = prod;
 }
 
+Comentario* Comentario::getComPadre(){
+    return ComenPadre;
+}
 
 std::string Comentario::getTexto(){
     return texto;
@@ -50,6 +53,14 @@ TFecha Comentario::getFecha(){
 int Comentario::getID(){
     return ID;
 };
+
+void Comentario::eliminarRefCom(int ID){
+    respuestas.erase(ID);
+}
+
+Producto* Comentario::getProducto(){
+    return ProdPadre;
+}
 
 void Comentario::imprimirComentario(){
     std::string nickk = usuario->getNickname();
@@ -69,4 +80,8 @@ void Comentario::imprimirComenYHijos(){
         Comentario* comen = it->second;
         comen->imprimirComenYHijos();
     }
+}
+
+bool Comentario::getTieneComPadre(){
+    return tieneComPadre
 }

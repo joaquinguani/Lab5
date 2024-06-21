@@ -143,5 +143,9 @@ void Producto::imprimirComDeProd(){
 }
 
 bool Producto::estaComen(int ID){
-    return comentarios[ID]!=NULL
+    return comentarios[ID]!=NULL;
+}
+
+void Producto::eliminarRefComen(int ID){
+    comentarios.erase(ID);
 }
