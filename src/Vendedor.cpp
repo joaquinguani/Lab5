@@ -52,7 +52,7 @@ void imprimirProdsVendedorCodNom(Vendedor v){
                 (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
 
-
+}
 void imprimirDatosVend(){
     
 }
@@ -79,8 +79,6 @@ void Vendedor::imprimirProdsConCompraPendDeEnvio(){
     }
 }
 
-
-
 void Vendedor::listarProductosEnVenta() {
     if (productos.empty()) {
         std::cout << "No hay productos en venta.\n";
@@ -92,9 +90,12 @@ void Vendedor::listarProductosEnVenta() {
 
 void Vendedor::listarPromocionesVigentes() {
         for (const auto& promo : promociones) {
-            if (promo->getFechaVencimiento().mayoroIgual(fechaActual))
+            if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
     }
 }
 
+void Vendedor::agregarSuscriptor(Cliente* cliente){
+    suscriptores[cliente->getNickname()]=cliente;
+}

@@ -12,9 +12,9 @@
 #include "DataVendedor.h"
 #include "ISuscripciones.h"
 
-class Vendedor:public Usuario{
+class Vendedor:public Usuario, public ISuscripciones{
     private:std::string RUT;
-        std::set<ISuscripciones*> suscriptores;
+        std::map<std::string,ISuscripciones*> suscriptores;
         void notificar(ISuscripciones *); //en el teorico dice que es privada
         //std::set<Producto*> productos;// 
         std::map<std::string, Producto*> productos; //mapa mejor
@@ -37,7 +37,7 @@ class Vendedor:public Usuario{
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);
            bool estaSuscrito(std::string);
-           void agregar(ISuscripciones *);
+           void agregarSuscriptor(Cliente *);
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
            void imprimirProdsVendedorCodNom(Vendedor);
