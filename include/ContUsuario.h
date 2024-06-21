@@ -24,8 +24,8 @@ private:
 
     std::map<int, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
-    //std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
-    //std::map<std::string, Cliente*> colClientes;
+    std::map<std::string, Vendedor*> colVendedores; 
+    std::map<std::string, Cliente*> colClientes;
     int cantComen;
     
 public:
@@ -56,6 +56,8 @@ public:
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
     void listarNicknamesVendedores();
+    std::map<std::string, Cliente*> getColClientes();
+    std::map<std::string, Vendedor*> getColVendedores();
 
     Vendedor* buscarPorNombre(std::string vend);
 
