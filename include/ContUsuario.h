@@ -24,8 +24,8 @@ private:
 
     std::map<int, Comentario *> colComentario;
     std::map<std::string, Usuario *> colUsuarios;
-    //std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
-    //std::map<std::string, Cliente*> colClientes;
+    std::map<std::string, Vendedor*> colVendedores; //hacemos esto o lo de dynamic cast?
+    std::map<std::string, Cliente*> colClientes;
     int cantComen;
     
 public:
@@ -58,15 +58,13 @@ public:
     std::set<std::string> listarComDeUsuarios(std::string nombre);
     void eliminarComentario(int ID);
     std::set<std::string> listarNicknamesClientes();
-    std::set<std::string> listarVendedoresNoSubsXCliente(std::string cli);
+    void listarVendedoresNoSubsXCliente(Cliente* cli);
     void agregarSuscripcion();
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
     void eliminarSuscripciones();
     void listarNicknamesVendedores();
-
-
-
+    Cliente* buscarClientePorNombre(std::string cli);
     Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 

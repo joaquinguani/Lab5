@@ -1,10 +1,12 @@
 
 #include <iostream>
+#include <string>
+#include <set>
 #include "Producto.h"
-#include "TCategoria.h"
+//#include "TCategoria.h"
 #include "Producto.h"
 
-Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
+Producto::Producto(std::string cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
     this->codigo = cod;
     this->stock = stk;
     this->precio = pre;
@@ -14,34 +16,72 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
     this->promo = NULL;
 };
 
-Vendedor* Producto::getVendAsociado(){
-    return this->vendAsociado;
-};
-
-
-int Producto::getCodigo()  {
-    return codigo;
+// Getters
+std::string Producto::getCodigo() {
+    return this->codigo;
 }
 
-
-int Producto::getStock()  {
-    return stock;
+int Producto::getStock() {
+    return this->stock;
 }
-
 
 float Producto::getPrecio() {
-    return precio;
+    return this->precio;
 }
 
-
-std::string Producto::getNombre()  {
-    return nombre;
+std::string Producto::getNombre() {
+    return this->nombre;
 }
 
-
-std::string Producto::getDescripcion()  {
-    return descripcion;
+std::string Producto::getDescripcion() {
+    return this->descripcion;
 }
+
+TCategoria Producto::getCategoria() {
+    return this->categoria;
+}
+
+Vendedor* Producto::getVendAsociado() {
+    return this->vendAsociado;
+}
+
+Promocion* Producto::getPromo() {
+    return this->promo;
+}
+
+/*CompraProd* Producto::getCompraProducto(){
+    return this->compraProducto;
+}*/
+
+Compra* Producto::getCompraAsociada(){
+    return compraAsociada;
+}
+
+// Setters
+void Producto::setCodigo(int cod) {
+    codigo = cod;
+}
+
+void Producto::setStock(int stk) {
+    stock = stk;
+}
+
+void Producto::setPrecio(int pre) {
+    precio = pre;
+}
+
+void Producto::setNombre(std::string nom) {
+    nombre = nom;
+}
+
+void Producto::setDescripcion(std::string desc) {
+    descripcion = desc;
+}
+
+void Producto::setCategoria(TCategoria cat) {
+    categoria = cat;
+}
+
 
 // Getter para obtener la categoría del producto
 TCategoria Producto::getCategoria()  {
@@ -74,9 +114,11 @@ void Producto::imprimirProductoCodNom(){
     std::cout << nom << std::endl;
 };
 
+
 Promocion* Producto::getPromo(){
     return this->promo;
 };
+
 
 void Producto::setPromo(Promocion* promo){
     this->promo=promo;

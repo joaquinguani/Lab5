@@ -60,8 +60,9 @@ void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
 };
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
-    promProductos.insert(producto,cantMin);//revisar el insert aca
+void Promocion::agregarProdAPromoCantMin(Producto* producto,std::string cantMin) {
+    ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
+    promProductos.insert(p);
 };
 
 void Promocion::aplicarDescuento(int idProducto, int descuento) {
@@ -85,4 +86,13 @@ void Promocion::devolverDatosProdsPromo(){
         Vendedor* vnd = (*it)->getVendAsociado();
         vnd->imprimirUsuario();
     }
-}
+};
+
+void Promocion::imprimirPromocion(){
+     std::cout << "Nombre: " << getNombre() << std::endl;
+     std::cout << "Descripción: " << getDescripcion() << std::endl;
+     std::cout << "Fecha de Vencimiento: ";
+     getFechaVenc().imprimirFecha();
+     std::cout << std::endl;
+     std::cout << "Descuento: " << getDescuento() << "%" << std::endl;
+};

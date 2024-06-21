@@ -8,14 +8,23 @@
 #include <sstream>
 #include "Promocion.h"
 #include "Comentario.h"
-#include "TCategoria.h"
+//#include "TCategoria.h"
 #include "Vendedor.h"
+
 #include "ContUsuario.h"
+#include "Compra.h"
+
+enum TCategoria {
+    ropa,
+    electrodomesticos,
+    otros
+};
+
 
 class Promocion; //forward declaration
 class Producto {
 private:
-    int codigo;
+    std::string codigo;
     int stock;
     int precio;
     std::string nombre;
@@ -24,13 +33,15 @@ private:
     std::map<int,Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
+    //CompraProd* compraProducto;
+    Compra* compraAsociada;
 
 public:
     // Constructor
     Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
 
     // Getters
-    int getCodigo();
+    std::string getCodigo();
     int getStock();
     float getPrecio();
     std::string getNombre();
@@ -39,6 +50,9 @@ public:
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
+    //CompraProd* getCompraProducto();
+    Compra* getCompraAsociada();
+
 
 
     // Setters
@@ -48,7 +62,7 @@ public:
     void setNombre(std::string nom);
     void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
-    void setCategoria(std::string cat);
+    void setCategoria(TCategoria cat);
     Vendedor* setVendAsociado();
     
 
@@ -58,9 +72,14 @@ public:
     void eliminarCom(int codigoProducto);
     void imprimirProducto();
     void imprimirProductoCodNom();
+
     void crearComentario(std::string, Usuario*);
     void imprimirComDeProd();
     bool estaComen(int);
+
+    //Destructor
+    ~Producto();
+
 };
 
 #endif

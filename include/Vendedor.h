@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include <sstream>
 #include "Producto.h"
 #include "Usuario.h"
@@ -16,20 +17,22 @@ class Vendedor:public Usuario{
         std::set<ISuscripciones*> suscriptores;
         void notificar(ISuscripciones *); //en el teorico dice que es privada
         //std::set<Producto*> productos;// 
-        std::map<int, Producto*> productos; //mapa mejor
+        std::map<std::string, Producto*> productos; //mapa mejor
     public:
     
         Vendedor(std::string  ,std::string ,TFecha , std::string );
         Vendedor(DataVendedor);
         virtual void imprimirUsuario();
         std::string getRut();
+        std::map<std::string, Producto*> getProductos();
+
 
         virtual~Vendedor();
            
         bool esVendedor() const override { return true; };
            
            std::string getRUT();
-           std::set<Producto*> getProductos();
+           std::map<std::string, Producto*> getProductos();
            void setRUT(std::string);
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);
@@ -38,6 +41,9 @@ class Vendedor:public Usuario{
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
            void imprimirProdsVendedorCodNom(Vendedor);
+           void imprimirProdsConCompraPendDeEnvio();
+           void listarProductosEnVenta(); 
+           void listarPromocionesVigentes();
 };
 
 

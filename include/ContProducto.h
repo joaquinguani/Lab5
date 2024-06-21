@@ -20,10 +20,16 @@ private:
     static ContProducto * instanciaContProd;
     std::map<int, Producto *> Productos;
     std::map<std::string, Compra *> colCompra;
+    std::set<Compra *> colCompra; //cambie a set
+
     std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
     static ContProducto* getInstanciaContProd();
+
+    //getters
+    std::map<int, Producto*> getProductos();
+    std::set<Compra*> getColCompra();
 
     //otros metodos
     void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
@@ -37,12 +43,17 @@ public:
     Compra mostrarCompra();
     void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
-    Producto* buscarProducto(int clave);
-    std::map<int, Producto*> getProductos();
+    Producto* buscarProducto(std::string clave);
     Promocion* buscarPromoPorNombre(std::string promo);
     bool estaProd(int);
     Producto* find(int);
+
+    Producto* buscarProdPorNombre(std::string produ);
+    //caso j
+    void imprimirComprasConProdPendiente(std::string);
+
     virtual ~ContProducto(){}; //destructor
+    std::set<Promocion*> listarPromosVigentes();
 };
 
 #endif
