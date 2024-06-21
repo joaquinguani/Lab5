@@ -395,7 +395,16 @@ while(e) {
             std::string prod;
             std::cin.ignore();
             std::getline(std::cin, prod);
-            Producto* produ = contProdu.buscarProdPorNombre(prod);
+            //Producto* produ = contProdu.buscarProdPorNombre(prod); //no puedo porque esta por codigo
+            contProdu.imprimirComprasConProdPendiente(prod);
+            printf("\nIngrese el nickname del cliente que quiere seleccionar\n");//no entiendo bien que imprime
+            std::string nickCli;
+            std::cin.ignore();
+            std::getline(std::cin, nickCli);
+            Compra* compras = contProdu.getColCompra()//buscar en todas las compras el nick del cliente asociado 
+            //compras->getCompraProducto()->setEnviado(true);
+            produ->getCompraProducto()->setEnviado(true);
+            printf("El producto fue enviado correctamente.");
             break;
         case 'k':
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");
@@ -432,7 +441,6 @@ while(e) {
             fechaSist->imprimirFecha();
             break;
         case 's':
-        
             printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");
             // Aquí iría el código para volver al estado anterior del mercado
             break;
