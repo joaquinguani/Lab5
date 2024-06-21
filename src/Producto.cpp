@@ -6,7 +6,7 @@
 //#include "TCategoria.h"
 #include "Producto.h"
 
-Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
+Producto::Producto(std::string cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
     this->codigo = cod;
     this->stock = stk;
     this->precio = pre;
@@ -17,7 +17,7 @@ Producto::Producto(int cod, int stk, int pre, std::string nom, std::string desc,
 };
 
 // Getters
-int Producto::getCodigo() {
+std::string Producto::getCodigo() {
     return this->codigo;
 }
 
@@ -49,8 +49,12 @@ Promocion* Producto::getPromo() {
     return this->promo;
 }
 
-CompraProd* Producto::getCompraProducto(){
+/*CompraProd* Producto::getCompraProducto(){
     return this->compraProducto;
+}*/
+
+Compra* Producto::getCompraAsociada(){
+    return compraAsociada;
 }
 
 // Setters
@@ -116,4 +120,26 @@ Promocion* Producto::getPromo(){
 
 void Producto::setPromo(Promocion* promo){
     this->promo=promo;
+}
+
+void Producto::crearComentario(std::string txt, Usuario* usu){
+    ContUsuario* contUsuari = ContUsuario::getInstanciaContUsu();
+    Comentario* NuevoComen = new Comentario(txt);
+    NuevoComen->setUsuario(usu);
+    usu->agregarComen(NuevoComen);
+    int ID = NuevoComen->getID();
+    comentarios[ID] = NuevoComen;
+    NuevoComen->setProdPadre(this);
+};
+
+void Producto::imprimirComDeProd(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= comentarios.begin(); it != comentarios.end(); ++it){
+            Comentario* comen = it->second;
+            comen->imprimirComenYHijos();
+    }
+}
+
+bool Producto::estaComen(int ID){
+    return comentarios[ID]!=NULL
 }

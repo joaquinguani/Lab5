@@ -39,9 +39,13 @@ public:
     void setTienePadre(bool tPadre);
     void setIDPadre(int idPadre);
     void setCodigoProd(int codProd);
+    void setUsuario(Usuario* usu);
+    void setProdPadre(Producto* prod);
 
     // Métodos
     void EliminoComentario(int idComentario);
+    void imprimirComentario();
+    void imprimirComenYHijos();
 
     std::string GetTComentario();
 };

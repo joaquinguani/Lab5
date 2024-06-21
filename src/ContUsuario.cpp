@@ -17,31 +17,42 @@ ContUsuario* ContUsuario::getInstanciaContUsu() {
     return instanciaContUsu;
 }
 
+std::map<std::string, Usuario *> ContUsuario::getUsuarios(){
+        return colUsuarios;  // Retorna una copia del mapa
+
+}
+
 int ContUsuario::getCantComen(){
         return cantComen
 }
 
-void ContUsuario::ingresarDatosCliente(DataCliente data){ //casos: a,
+void ContUsuario::ingresarDatosCliente(DataCliente data){
         Usuario* usuario = new Cliente(data);
         colUsuarios[data.getNickname()] = usuario;
-        colClientes[data.getNickname()] = usuario; //decia ColCliente en singular
 };
 
-void ContUsuario::ingresarDatosVendedor(DataVendedor data){ //casos: a,
+void ContUsuario::ingresarDatosVendedor(DataVendedor data){
         Usuario* usuario = new Vendedor(data);
         colUsuarios[data.getNickname()] = usuario;
-        colVendedores[data.getNickname()]=usuario;
 };
+
 
 int ContUsuario::sizeCol(){
     return colUsuarios.size();
 };
 
 bool ContUsuario::estaUsuario(std::string nick){
-        return colUsuarios[nick] == NULL;
+        return colUsuarios[nick] != NULL;
         
 }
 
+Usuario* ContUsuario::find(std::string nick){
+        return colUsuarios[nick];
+}
+
+Comentario* ContUsuario::findComen(int ID){
+        return colComentario[ID];
+}
 
 void ContUsuario::imprimirUsuarios(){ //casos:a,
         std::map<std::string, Usuario *>::iterator it;
@@ -65,6 +76,10 @@ Vendedor* ContUsuario::buscarVendPorNombre(std::string vend){ //aca decia Usuari
         return ColVendedores[vend];
 };
 
+Cliente* ContUsuario::buscarClientePorNombre(std::string cli){ //aca decia Usuario*, puse Cliente*
+        return colClientes[cli];
+};
+
 
 void ContUsuario::imprimirClientes(){
         std::map<std::string, Usuario *>::iterator it;
@@ -84,3 +99,14 @@ std::map<std::string, Vendedor*> ContUsuario::getColVendedores(){
 std::map<std::string, Cliente*> ContUsuario::getColClientes(){
         return this->colClientes;
 };
+
+void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
+     std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
+     for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (usr->esVendedor()){
+                        
+                }
+        }
+};
+

@@ -33,24 +33,32 @@ public:
     //otros metodos
     int getCantComen();
     void sumarComentario();
-    void ingresarDatosVendedor(DataVendedor data); //casos: a, 
-    void ingresarDatosCliente(DataCliente data); //casos: a, 
+
 
 
     int sizeCol();
-    bool estaUsuario(std::string); //casos: a, 
+    
 
     void imprimirUsuarios(); //casos: a,
+
+    //funciones del MAPA Usuario
+    Usuario* find(std::string);
+    bool estaUsuario(std::string); 
+    void ingresarDatosVendedor(DataVendedor data); //agrega un vendedor
+    void ingresarDatosCliente(DataCliente data); //agrega un cliente 
+    //funciones del MAPA Coment
+    Comentario* findComen(int ID);
+
     
     void imprimirVendedores();
     void imprimirClientes();
-    std::map<std::string, Usuario *> getUsuarios(); // a ver esto
+    std::map<std::string, Usuario *> getUsuarios(); // ESTO TE DEVUELVE UNA COPIA, SOLO SIRVE PARA VER SI HAY COSAS, NO PARA AGREGAR NI SACAR!!(soy el pelado jeje)
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
     std::set<std::string> listarComDeUsuarios(std::string nombre);
     void eliminarComentario(int ID);
     std::set<std::string> listarNicknamesClientes();
-    std::set<std::string> listarVendedoresNoSubsXCliente(std::string cli);
+    void listarVendedoresNoSubsXCliente(Cliente* cli);
     void agregarSuscripcion();
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
     std::set<std::string> listarVendSuscripto(std::string nickC);
@@ -58,7 +66,7 @@ public:
     void listarNicknamesVendedores();
     std::map<std::string, Cliente*> getColClientes();
     std::map<std::string, Vendedor*> getColVendedores();
-
+    Cliente* buscarClientePorNombre(std::string cli);
     Vendedor* buscarPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
