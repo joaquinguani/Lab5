@@ -422,9 +422,22 @@ while(e) {
             printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
             std::string cli=leerCadena();
             //buscar el cliente y obtenerlo para usarlo de parametro
-            Cliente* cliente=contUsu.buscarClientePorNombre(cli);
+            Cliente* cliente=contUsu->buscarClientePorNombre(cli);
             //el Sistema devuelve la lista de todos los vendedores a los que no está suscrito el cliente
-            contUsu.listarVendedoresNoSubsXCliente(cliente);
+            contUsu->listarVendedoresNoSubsXCliente(cliente);
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el nickname del vendedor al que desea suscribirse.\n");
+                std::string c=leerCadena();
+                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                cliente->agregarSuscripcion(vnd);
+                vnd->agregarSuscriptor(cliente);
+                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //falta lo de suscripciones lo demas esta creo
+            };
             break;
         case 'm':
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");

@@ -84,3 +84,11 @@ void Cliente::agregarCompra(Compra* compra){
 // bool esVendedor(){
 //     return false;
 // };
+
+std::map<std::string,Vendedor*> Cliente::getColSuscripciones(){
+    return this->colSuscripciones;
+};
+
+void Cliente::agregarSuscripcion(Vendedor* Vendedor){
+    colSuscripciones[Vendedor->getNickname()]=Vendedor;
+}
