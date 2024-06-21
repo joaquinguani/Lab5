@@ -38,6 +38,9 @@ class Vendedor:public Usuario{
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
            void imprimirProdsVendedorCodNom(Vendedor);
+           void imprimirProdsConCompraPendDeEnvio();
+           void listarProductosEnVenta(); 
+           void listarPromocionesVigentes();
 };
 
 

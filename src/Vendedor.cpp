@@ -55,3 +55,31 @@ void imprimirProdsVendedorCodNom(Vendedor v){
 void imprimirDatosVend(){
     
 }
+
+
+void Vendedor::imprimirProdsConCompraPendDeEnvio(){
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods = this->getProductos();
+    for (it=prods.begin(); it != prods.end(); ++it){
+        if ((*it)->getCompraProducto()->getEnviado()){
+            (*it)->imprimirProducto(); 
+        }
+    }
+}
+
+void Vendedor::listarProductosEnVenta() {
+    if (productos.empty()) {
+        std::cout << "No hay productos en venta.\n";
+    } else {
+        for (const auto& prod : productos) {
+            std::cout << "Producto: " << prod->getNombre() << std::endl;
+        }
+    }}
+
+void Vendedor::listarPromocionesVigentes() {
+        for (const auto& promo : promociones) {
+            if (promo->getFechaVencimiento().mayoroIgual(fechaActual))
+            std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
+        }
+    }
+}

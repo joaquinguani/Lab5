@@ -8,8 +8,15 @@
 #include <sstream>
 #include "Promocion.h"
 #include "Comentario.h"
-#include "TCategoria.h"
+//#include "TCategoria.h"
 #include "Vendedor.h"
+#include "Compra.h"
+
+enum TCategoria {
+    ropa,
+    electrodomesticos,
+    otros
+};
 
 class Promocion; //forward declaration
 class Producto {
@@ -23,6 +30,7 @@ private:
     std::set<Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
+    CompraProd* compraProducto;
 
 public:
     // Constructor
@@ -38,6 +46,8 @@ public:
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
+    CompraProd* getCompraProducto();
+
 
 
     // Setters
@@ -47,7 +57,7 @@ public:
     void setNombre(std::string nom);
     void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
-    void setCategoria(std::string cat);
+    void setCategoria(TCategoria cat);
     Vendedor* setVendAsociado();
 
     // Métodos
@@ -56,6 +66,9 @@ public:
     void eliminarCom(int codigoProducto);
     void imprimirProducto();
     void imprimirProductoCodNom();
+
+    //Destructor
+    ~Producto();
 };
 
 #endif

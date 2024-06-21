@@ -11,11 +11,13 @@
 #include "TDireccion.h"
 #include "TNotificacion.h"
 #include "DataCliente.h"
+#include "TFecha.h"
 
 class Cliente:public Usuario/*,public ISuscripciones */{
     private: 
         TDireccion direccion;
         std::string ciudad;
+        std::set<Compra*> compras; 
         //std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
     public:
         // Constructor
@@ -35,6 +37,7 @@ class Cliente:public Usuario/*,public ISuscripciones */{
         void setDireccion();
         
         void agregarSuscripcion();
+        void listarComprasRealizadas();
 
 
         // Métodos
