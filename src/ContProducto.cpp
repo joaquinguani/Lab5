@@ -13,11 +13,12 @@ ContProducto::ContProducto(){
 
 
 std::map<int, Producto*> ContProducto::getProductos() {
-    return Productos;}
+    return Productos;
+};
 
 std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;
-}
+};
 
 
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
@@ -42,7 +43,7 @@ ContProducto* ContProducto::getInstanciaContProd() {
         instanciaContProd = new ContProducto();
     }
     return instanciaContProd;
-}
+};
 
 
 Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Usuario*, puse Vendedor*
@@ -52,7 +53,8 @@ Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Us
 void ContProducto::listarProductos()  {
     for (auto pair : Productos) {
         printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
-    }};
+    }
+};
 
 void ContProducto::listarProductosDisp() {
     for ( auto pair : colProducto ) {
@@ -60,7 +62,7 @@ void ContProducto::listarProductosDisp() {
             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
         }
     }
-}
+};
 
 
 Producto* ContProducto::buscarProducto(std::string clave){
@@ -71,7 +73,7 @@ Producto* ContProducto::buscarProducto(std::string clave){
 
 Producto* ContProducto::buscarProdPorNombre(std::string produ){
     return colProductos[produ];
-}
+};
 
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
     for ( auto pair : colProducto) {
@@ -83,11 +85,11 @@ void ContProducto::listarProductosDisp(Vendedor* vendedor) {
 
 bool ContProducto::estaProd(int codigoProd){
     return Productos[codigoProd] !=NULL;
-}
+};
 
 Producto* ContProducto::find(int codigo){
     return Productos[codigo]
-
+};
 
 void ContProducto::imprimirComprasConProdPendiente(std::string prod){
     std::set<Compra*>::iterator it;
@@ -108,4 +110,12 @@ void ContProducto::imprimirComprasConProdPendiente(std::string prod){
             }
         }else{}
     }
-}
+};
+
+void ContProducto::listarProductosDisp(){
+    for (auto it = this->Productos.begin(); it != this->Productos.end(); it++) {
+        if (it->second->getStock() > 0){
+            it->second->imprimirProducto();
+        }
+    } 
+};
