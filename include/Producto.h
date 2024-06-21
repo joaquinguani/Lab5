@@ -30,8 +30,8 @@ private:
     std::set<Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
-    //CompraProd* compraProducto;
-    Compra* compraAsociada;
+    std::map<int, CompraProd*> compraProd; // la clave es el codigo de la compra
+    //std::set<Compra*> comprasAsociadas;
 
 public:
     // Constructor
@@ -47,8 +47,8 @@ public:
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
-    //CompraProd* getCompraProducto();
-    Compra* getCompraAsociada();
+    std::map<int, CompraProd*> getCompraProd();
+    //Compra* getCompraAsociada();
 
 
 
@@ -68,6 +68,7 @@ public:
     void eliminarCom(int codigoProducto);
     void imprimirProducto();
     void imprimirProductoCodNom();
+    CompraProd* findCompraProd(int);
 
     //Destructor
     ~Producto();

@@ -13,13 +13,16 @@ Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContra
 Vendedor::~Vendedor(){
 }
 
-std::map<std::string, Producto*> Vendedor::getProductos(){
+std::set<Producto*> Vendedor::getProductos(){
     return this->productos;
 }
 
 std::string Vendedor::getRut(){
     return this->RUT;
 }
+
+
+
 
 void Vendedor::imprimirUsuario(){
     printf("\n_______________\n| ");
@@ -45,12 +48,15 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 // }:
 
 
-void imprimirProdsVendedorCodNom(Vendedor v){
+
+
+void Vendedor::imprimirProdsVendedorCodNom(Vendedor v){
     std::set<Producto*>::iterator it;
     std::set<Producto*> prods=v->getProductos();
         for (it=prods.begin(); it != prods.end(); ++it){
                 (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
+}
 
 
 void imprimirDatosVend(){
@@ -59,10 +65,24 @@ void imprimirDatosVend(){
 
 
 void Vendedor::imprimirProdsConCompraPendDeEnvio(){
-    std::map<std::string Producto*>::iterator it;
-    std::map<std::string, Producto*> prods = this->getProductos();
+    std::set<Producto*>::iterator it;
+    std::set<Producto*> prods = this->getProductos();
     for (it=prods.begin(); it != prods.end(); ++it){
-        std::map<std::string, CompraProd*> comprasProd = (*it)->getCompraAsociada()->getCompraProducto();
+        std::map<int, CompraProd*> comprProd = (*it)->getCompraProd();
+        std::map<int, CompraProd*>::iterator itComProd;
+        bool yaImprimio = false;
+        while (!yaImprimio || itComProd!=comprProd.end()){
+            if(!itComProd->second->getEnviado()){
+                (*it)->imprimirProducto();
+                yaImprimio = true;
+            }else{
+                ++itComProd;
+            }
+        }
+    }
+}
+       
+       /* std::map<std::string, CompraProd*> comprasProd = (*it)->getCompraAsociada()->getCompraProducto();
         std::map<std::string, CompraProd*>::iterator itComProd;
         for(itComProd=comprasProd.begin(); itComProd != comprasProd.end(); ++itComProd){
             if(!(*itComProd)->getEnviado){
@@ -77,7 +97,9 @@ void Vendedor::imprimirProdsConCompraPendDeEnvio(){
             //(*it)->imprimirProducto(); 
         }
     }
-}
+}*/
+
+
 
 
 

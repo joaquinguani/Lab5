@@ -12,8 +12,8 @@ ContProducto::ContProducto(){
 };
 
 
-std::map<int, Producto*> ContProducto::getProductos() {
-    return Productos;}
+std::map<int, Producto*> ContProducto::getColProductos() {
+    return colProductos;}
 
 std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;
@@ -43,12 +43,12 @@ Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Us
 };
 
 void ContProducto::listarProductos()  {
-    for (auto pair : colProducto) {
+    for (auto pair : colProductos) {
         printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
     }};
 
 void ContProducto::listarProductosDisp() {
-    for ( auto pair : colProducto ) {
+    for ( auto pair : colProductos ) {
         if (pair.second->getStock() > 0) {
             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
         }
@@ -56,15 +56,15 @@ void ContProducto::listarProductosDisp() {
 }
 
 
-Producto* ContProducto::buscarProducto(std::string clave){
-    std::map<std::string, Producto*>::iterator it = Productos.find(clave);
+Producto* ContProducto::buscarProducto(int clave){
+    std::map<int, Producto*>::iterator it = colProductos.find(clave);
     Producto* p = it->second;
 };
 
 
-Producto* ContProducto::buscarProdPorNombre(std::string produ){
+/*Producto* ContProducto::buscarProdPorNombre(std::string produ){     //v-creo que esta no sirve
     return colProductos[produ];
-}
+}*/
 
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
     for ( auto pair : colProducto) {
@@ -75,23 +75,19 @@ void ContProducto::listarProductosDisp(Vendedor* vendedor) {
 };
 
 
-void ContProducto::imprimirComprasConProdPendiente(std::string prod){
-    std::set<Compra*>::iterator it;
-    std::set<Compra*> compras = this->getColCompra();
-    for (it=compras.begin(); it != compras.end(); ++it){
-        auto iterProd = (*it)->getProductos().find(prod); 
-        if(iterProd != (*it)->getProductos().end()){ //si tiene al producto
-            if(!iterProd->second->getCompraProducto()->getEnviado()){ //si no fue enviado
-                std::string nickCli = (*it)->getClienteAsociado()->getNickname();
-                TFecha* fecha = (*it)->getFecha();
-                std::pair<std::string, TFecha*> par;
-                par.first = nickCli;
-                par.second = fecha;
-                std::cout << "(";
-                std::cout << par.first << ","; 
-                par.second->imprimirFecha();
-                std::cout << ")";
-            }
-        }else{}
+void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
+    std::map<int, CompraProd*>::iterator it;
+    std::map<int, CompraProd*> comProd = prod->getCompraProd();
+    for(it=comProd.begin(); it != comProd.end(); ++it){
+        if(!it->second->getEnviado()){
+            std::string nickCli = it->second->getCompraAsociada()->getClienteAsociado()->getNickname();
+            int id = it->second->getCompraAsociada()->getId();     
+            TFecha* fecha = it->second->getCompraAsociada()->getFecha();
+            std::cout << "(";
+            std::cout << nickCli << "," << id << ","; 
+            fecha->imprimirFecha();
+            std::cout << ")";
+        }
     }
+
 }
