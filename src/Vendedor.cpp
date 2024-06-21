@@ -66,3 +66,20 @@ void Vendedor::imprimirProdsConCompraPendDeEnvio(){
         }
     }
 }
+
+void Vendedor::listarProductosEnVenta() {
+    if (productos.empty()) {
+        std::cout << "No hay productos en venta.\n";
+    } else {
+        for (const auto& prod : productos) {
+            std::cout << "Producto: " << prod->getNombre() << std::endl;
+        }
+    }}
+
+void Vendedor::listarPromocionesVigentes() {
+        for (const auto& promo : promociones) {
+            if (promo->getFechaVencimiento().mayoroIgual(fechaActual))
+            std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
+        }
+    }
+}

@@ -397,10 +397,42 @@ while(e) {
             std::getline(std::cin, prod);
             Producto* produ = contProdu.buscarProdPorNombre(prod);
             break;
-        case 'k':
+        case 'k': {
             printf("\nOpción 'k' seleccionada: Expediente de Usuario.\n");
-            // Aquí iría el código para gestionar el expediente de un usuario
-            break;
+            contUsu.imprimirUsuarios(); // Imprimir todos los usuarios
+            printf("\nIngrese el nombre del usuario que quiere seleccionar\n");
+            std::string nick;
+            std::cin.ignore();
+            std::getline(std::cin, nick);
+
+            Usuario* usr = contUsu.buscarPorNombre(nick);
+            if (usr == nullptr) {
+                printf("Error: No existe un usuario con ese nombre.\n");
+                break;
+            }
+
+            // Imprimir información básica del usuario
+            printf("Información básica del usuario:\n");
+            printf("Nickname: %s\n", usr->getNickname());
+            usr->imprimirFecha(); // info basica: nickname y fecha. sin contraseña ciudad ni nada de eso
+
+            // Continuamos con la lógica dependiendo del tipo de usuario
+            if (usr->esVendedor()) {
+                Vendedor* vendedor = dynamic_cast<Vendedor*>(usr);
+                printf("El usuario es un vendedor.\n");
+                printf("Productos en venta:\n");
+                vendedor->listarProductosEnVenta();
+                printf("Promociones vigentes:\n");
+                vendedor->listarPromocionesVigentes();
+            } else {
+                Cliente* cliente = dynamic_cast<Cliente*>(usr);
+                printf("El usuario es un cliente.\n");
+                printf("Compras realizadas:\n");
+                cliente->imprimirComprasRealizadas();
+            }
+    break;
+}
+
         case 'l':
             printf("\nOpción 'l' seleccionada: Suscribirse a notificaciones.\n");
             // Aquí iría el código para suscribirse a notificaciones
