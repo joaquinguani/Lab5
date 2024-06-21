@@ -16,15 +16,16 @@ class Vendedor:public Usuario, public ISuscripciones{
     private:std::string RUT;
         std::map<std::string,ISuscripciones*> suscriptores;
         void notificar(ISuscripciones *); //en el teorico dice que es privada
-        //std::set<Producto*> productos;// 
-        std::map<std::string, Producto*> productos; //mapa mejor
+        std::set<Producto*> productos;// 
+        //std::map<std::string, Producto*> productos; //mapa mejor
     public:
     
         Vendedor(std::string  ,std::string ,TFecha , std::string );
         Vendedor(DataVendedor);
         virtual void imprimirUsuario();
         std::string getRut();
-        std::map<std::string, Producto*> getProductos();
+        std::set<Producto*> getProductos();
+
 
 
         virtual~Vendedor();
@@ -32,7 +33,6 @@ class Vendedor:public Usuario, public ISuscripciones{
         bool esVendedor() const override { return true; };
            
            std::string getRUT();
-           std::map<std::string, Producto*> getProductos();
            void setRUT(std::string);
            std::set<std::string> getsuscriptores();
            void setsuscriptores(std::set<std::string>);

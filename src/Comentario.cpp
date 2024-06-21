@@ -19,6 +19,10 @@ Comentario::Comentario(std::string txt){
     tieneComPadre = false;
 }
 
+Comentario::~Comentario(){
+
+}
+
 void Comentario::CrearHijo(std::string txt,Usuario* usu){
     Comentario* NuevoComen = new Comentario(txt);
     NuevoComen->tieneComPadre = true;
@@ -39,6 +43,9 @@ void Comentario::setProdPadre(Producto* prod){
     ProdPadre = prod;
 }
 
+Comentario* Comentario::getComPadre(){
+    return ComenPadre;
+}
 
 std::string Comentario::getTexto(){
     return texto;
@@ -50,6 +57,14 @@ TFecha Comentario::getFecha(){
 int Comentario::getID(){
     return ID;
 };
+
+void Comentario::eliminarRefCom(int ID){
+    respuestas.erase(ID);
+}
+
+Producto* Comentario::getProducto(){
+    return ProdPadre;
+}
 
 void Comentario::imprimirComentario(){
     std::string nickk = usuario->getNickname();
@@ -69,4 +84,19 @@ void Comentario::imprimirComenYHijos(){
         Comentario* comen = it->second;
         comen->imprimirComenYHijos();
     }
+}
+
+bool Comentario::getTieneComPadre(){
+    return tieneComPadre;
+}
+
+void Comentario::EliminoComentarioYHijos(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= respuestas.begin(); it != respuestas.end(); ++it){
+        Comentario* comHijo = it->second;
+        comHijo->EliminoComentarioYHijos();
+    }
+    usuario->eliminarRefCom(ID);
+    respuestas.clear();
+    delete this;
 }
