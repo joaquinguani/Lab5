@@ -10,6 +10,7 @@
 #include "TFecha.h"
 #include"CompraProd.h"
 #include "Producto.h"
+#include "Cliente.h"
 
 
 class Compra {
@@ -18,6 +19,7 @@ private:
     int MontoFinal;
     std::set<CompraProd*> compraProducto; //chequear
     std::map<std::string,Producto*> productos; //la clave es el codigo
+    Cliente* clienteAsociado;
     
 public:
     // Constructor
@@ -25,9 +27,11 @@ public:
 
 
     // Getters
-    TFecha getFecha();
+    TFecha* getFecha();
     int getMontoFinal();
     std::map<std::string,Producto*> getProductos();
+    std::set<CompraProd*> getCompraProducto();
+    Cliente* getClienteAsociado();
 
     // Setters
     void setFecha(const TFecha& f);
@@ -37,6 +41,7 @@ public:
     void agregarProdACompra(Producto prod, int cod, int cant);
     int aplicarDescuento(int precio, int cant, int codProd, Producto* prod);
     void sumarAlMonto(int pre);
+    
 };
 
 #endif

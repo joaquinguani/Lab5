@@ -3,6 +3,8 @@
 #include "TFechaActual.h"
 #include <cstdio>
 #include <iostream>
+#include <utility> // Para std::pair
+#include <string>
 
 
 ContProducto::ContProducto(){
@@ -12,6 +14,11 @@ ContProducto::ContProducto(){
 
 std::map<int, Producto*> ContProducto::getProductos() {
     return Productos;}
+
+std::set<Compra*> ContProducto::getColCompra(){
+    return colCompra;
+}
+
 
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::set<Promocion*> promosVigentes;
@@ -64,3 +71,23 @@ void ContProducto::listarProductosDisp(Vendedor* vendedor) {
         }
     }
 };
+
+
+void ContProducto::imprimirComprasConProdPendiente(std::string prod){
+    std::set<Compra*>::iterator it;
+    std::set<Compra*> compras = this->getColCompra();
+    for (it=compras.begin(); it != compras.end(); ++it){
+        auto iterProd = (*it)->getProductos().find(prod);
+        if(iterProd != (*it)->getProductos().end()){
+            std::string nickCli = (*it)->getClienteAsociado()->getNickname();
+            TFecha* fecha = (*it)->getFecha();
+            std::pair<std::string, TFecha*> par;
+            par.first = nickCli;
+            par.second = fecha;
+            std::cout << "(";
+            std::cout << par.first << ","; 
+            par.second->imprimirFecha();
+            std::cout << ")";
+        }else{}
+    }
+}
