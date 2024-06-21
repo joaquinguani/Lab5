@@ -94,8 +94,10 @@ void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
      std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
      for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
                 Usuario* usr = it->second;
-                if (usr->esVendedor()){
-                        
+                if (usr->esVendedor()){// lista de todos los vendedores a los que no está suscrito
+                                      //dicho cliente
+                        if()
                 }
+                
         }
 };
