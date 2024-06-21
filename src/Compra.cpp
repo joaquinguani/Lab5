@@ -8,7 +8,8 @@ Compra::Compra(TFecha f, int monto){
     this->MontoFinal = monto;
 };
 
-TFecha Compra::getFecha(){
+//getters
+TFecha* Compra::getFecha(){
     return this->fecha;
 };
 
@@ -20,6 +21,15 @@ std::map<std::string,Producto*> Compra::getProductos(){
     return this->productos;
 }
 
+std::set<CompraProd*> Compra::getCompraProducto(){
+    return this->compraProducto;
+}
+
+Cliente* Compra::getClienteAsociado(){
+    return clienteAsociado;
+}
+
+//setters
 void Compra::setFecha(const TFecha& f){
     this->fecha = f;
 };
@@ -44,3 +54,5 @@ int Compra::aplicarDescuento(int precio, int cant, int codProd, Producto* prod){
 void Compra::sumarAlMonto(int pre){
     this->MontoFinal += pre;
 };
+
+

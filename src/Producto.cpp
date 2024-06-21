@@ -25,7 +25,7 @@ int Producto::getStock() {
     return this->stock;
 }
 
-int Producto::getPrecio() {
+float Producto::getPrecio() {
     return this->precio;
 }
 
@@ -78,29 +78,6 @@ void Producto::setCategoria(TCategoria cat) {
     categoria = cat;
 }
 
-int Producto::getCodigo()  {
-    return codigo;
-}
-
-
-int Producto::getStock()  {
-    return stock;
-}
-
-
-float Producto::getPrecio() {
-    return precio;
-}
-
-
-std::string Producto::getNombre()  {
-    return nombre;
-}
-
-
-std::string Producto::getDescripcion()  {
-    return descripcion;
-}
 
 // Getter para obtener la categoría del producto
 TCategoria Producto::getCategoria()  {
