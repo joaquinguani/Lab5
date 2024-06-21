@@ -9,11 +9,11 @@ Compra::Compra(TFecha f, int monto){
 };
 
 //getters
-TFecha* Compra::getFecha(){
+TFecha Compra::getFecha(){
     return this->fecha;
 };
 
-int Compra::getMontoFinal(){
+float Compra::getMontoFinal(){
     return this->MontoFinal;
 };
 

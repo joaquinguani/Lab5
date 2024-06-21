@@ -58,6 +58,27 @@ void Cliente::imprimirDireccion(){
 }
 
 
+void Cliente::listarComprasRealizadas() {
+        for ( auto& compra : compras) {
+            std::cout << "Fecha de compra: ";
+            compra->getFecha().imprimirFecha(); 
+            std::cout << "Monto final: " << compra->getMontoFinal() << std::endl;
+            std::cout << "Productos comprados:" << std::endl;
+            for (const auto& compraProd : compra->getCompraProducto()) {
+                Producto* producto = compraProd->getProducto();
+                int cantidad = compraProd->getCantidad();
+                std::cout << " - Producto: " << producto->getNombre() << ", Código: " << producto->getCodigo() << ", Cantidad: " << cantidad << std::endl;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 // bool esVendedor(){
 //     return false;
 // };
