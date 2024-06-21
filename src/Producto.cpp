@@ -90,7 +90,7 @@ TCategoria Producto::getCategoria()  {
 
 
 void Producto::imprimirProducto(){
-    int cod = codigo;
+    int cod = cod;
     std::cout << cod << std::endl;
     int stck = stock;
     std::cout << stck << std::endl;
@@ -105,9 +105,7 @@ void Producto::imprimirProducto(){
 };
 
 
-
 void Producto::imprimirProductoCodNom(){
-//>>>>>>>>> Temporary merge branch 2
     int cod = codigo;
     std::cout << cod << std::endl;
     std::string nom = nombre;
@@ -124,6 +122,34 @@ void Producto::setPromo(Promocion* promo){
     this->promo=promo;
 }
 
+
 CompraProd* Producto::findCompraProd(int ID){
     return compraProd[ID];
 }
+
+void Producto::crearComentario(std::string txt, Usuario* usu){
+    ContUsuario* contUsuari = ContUsuario::getInstanciaContUsu();
+    Comentario* NuevoComen = new Comentario(txt);
+    NuevoComen->setUsuario(usu);
+    usu->agregarComen(NuevoComen);
+    int ID = NuevoComen->getID();
+    comentarios[ID] = NuevoComen;
+    NuevoComen->setProdPadre(this);
+};
+
+void Producto::imprimirComDeProd(){
+    std::map<int, Comentario *>::iterator it;
+    for (it= comentarios.begin(); it != comentarios.end(); ++it){
+            Comentario* comen = it->second;
+            comen->imprimirComenYHijos();
+    }
+}
+
+bool Producto::estaComen(int ID){
+    return comentarios[ID]!=NULL;
+}
+
+void Producto::eliminarRefComen(int ID){
+    comentarios.erase(ID);
+}
+

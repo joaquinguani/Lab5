@@ -17,11 +17,16 @@
 class ContProducto {
 private:
     std::map<int, Producto *> colProductos; //cambie a col de nuevo jeje
+    ContProducto();
+    static ContProducto * instanciaContProd;
+    std::map<std::string, Compra *> colCompra;
+
     std::set<Compra *> colCompra; //cambie a set
+
     std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
-    ContProducto();
+    static ContProducto* getInstanciaContProd();
 
     //getters
     std::map<int, Producto*> getColProductos();
@@ -41,6 +46,9 @@ public:
     std::set<Promocion*> listarPromosVigentes();
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
+    bool estaProd(int);
+    Producto* find(int);
+
     Producto* buscarProdPorNombre(std::string produ);
     //caso j
     void imprimirComprasConProdPendiente(Producto*);

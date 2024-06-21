@@ -29,8 +29,10 @@ public:
     int getID();
     std::string getTexto();
     TFecha getFecha();
-    bool getTienePadre();
+    bool getTieneComPadre();
     int getCodigoProd();
+    Comentario* getComPadre();
+    Producto* getProducto();
 
     // Setters
     void setID(int id);
@@ -39,10 +41,14 @@ public:
     void setTienePadre(bool tPadre);
     void setIDPadre(int idPadre);
     void setCodigoProd(int codProd);
+    void setUsuario(Usuario* usu);
+    void setProdPadre(Producto* prod);
 
     // Métodos
     void EliminoComentario(int idComentario);
-
+    void imprimirComentario();
+    void imprimirComenYHijos();
+    void eliminarRefCom(int)
     std::string GetTComentario();
 };
 

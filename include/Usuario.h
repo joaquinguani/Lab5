@@ -36,6 +36,7 @@ class Usuario{
             void setcontrasena(std::string);
             TFecha getfecha();
             void setfecha(TFecha);
+        void imprimirComentarios();
 
 };
 #endif

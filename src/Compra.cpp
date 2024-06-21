@@ -47,10 +47,9 @@ void Compra::setMontoFinal(int monto){
 int Compra::aplicarDescuento(int precio, int cant, int codProd, Producto* prod){
     int precioNuevo = precio;
     Promocion* promo = prod->getPromo();
-    if (promo != NULL) {
-        //SI CANT ES MAYOR O IGUAL A CANT MINIMA 
-            int desc = promo->getDescuento();
-            precioNuevo = (desc*precio)/100;
+    if (promo != NULL && /* CANT MINIMA SE CUMPLE */) { 
+        int desc = promo->getDescuento();
+        precioNuevo = (desc*precio)/100;
     }
     return precioNuevo;
 };
@@ -60,3 +59,18 @@ void Compra::sumarAlMonto(int pre){
 };
 
 
+void Compra::asociarCompraProd(CompraProd* cp){
+    compraProducto.insert(cp);
+};
+
+void Compra::imprimirCompraCompleto(){
+    printf("/nResumen Compra:/n");
+    TFecha fecha = this->fecha;
+    fecha.imprimirFecha();
+    int monto = this->MontoFinal;
+    printf("/nMonto Final: $%d/n", monto);
+    printf("/nDetalle productos:/n");
+    for (auto it = this->productos.begin(); it != this->productos.end(); i++) {
+        it->second.imprimirProducto(); //TERMINARRRR
+    }
+};

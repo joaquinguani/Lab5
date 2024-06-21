@@ -11,14 +11,19 @@
 #include "DataUsuario.h"
 #include "DataCliente.h"
 #include "DataVendedor.h"
+#include "ContProducto.h"
+
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
 #include "TCategoria.h"
+
 #include "ContProducto.h"
+
 #include "ContUsuario.h"
 #include "TFecha.h"
 #include "Producto.h"
+#include "TFechaActual.h"
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
@@ -28,15 +33,14 @@ std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
 
-ContUsuario contUsu = ContUsuario();
-
-ContProducto contProdu = ContProducto();
-TFecha* fechaSist=getInstanciaFecha();
+ContUsuario* contUsu = ContUsuario::getInstanciaContUsu();
+ContProducto* contProdu = ContProducto::getInstanciaContProd();
+TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
 
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
-//int //codigoProducto = 0;
+int codigoProducto = 0;
 
 bool e = true;
 
@@ -44,7 +48,7 @@ while(e) {
     std::system("cls");
     printf("      **MERCADO FING**\n");
     printf("            //MENU//\n\n");
-    int TamañoColUsuarios = contUsu.sizeCol();
+    int TamañoColUsuarios = contUsu->sizeCol();
     printf("Cantidad usuarios: %d -----> C: %d,  V: %d (falta contar vendedor y cliete por separado)\n\n", TamañoColUsuarios, TamañoColUsuarios, TamañoColUsuarios);
     printf("precione:\n");
     printf("a: para acceder a los casos de uso\n");
@@ -77,7 +81,6 @@ while(e) {
     printf("x: para salir\n");
 
     char tecla = leerUnaTecla();
-    //scanf(" %c", &tecla); 
     
     switch(tecla) {
         case 'a':{
@@ -89,7 +92,7 @@ while(e) {
             nick = leerCadena();
             //std::cin.ignore();
             //std::getline(std::cin, nick);
-            if (!contUsu.estaUsuario(nick)){
+            if (!contUsu->estaUsuario(nick)){
                 printf("\nError! Ese nombre de usuario ya existe");
                 break;
             }
@@ -115,14 +118,14 @@ while(e) {
                 int numero = leerEntero();
                 TDireccion* direccion = new TDireccion(calle, numero);
                 DataCliente* data = new DataCliente(nick,Contrasena,*fecha,*direccion,ciudad);
-                contUsu.ingresarDatosCliente(*data);
+                contUsu->ingresarDatosCliente(*data);
             }
             else{
                 printf("\nIngresar RUT de vendedor\n");
                 std::string RUT = leerCadena();
                 std::system("cls");
                 DataVendedor* data = new DataVendedor(nick,Contrasena,*fecha,RUT);
-                contUsu.ingresarDatosVendedor(*data);
+                contUsu->ingresarDatosVendedor(*data);
             }
         
             break;
@@ -130,7 +133,7 @@ while(e) {
         case 'b':{
             std::system("cls");
             printf("\nListado de usuarios:\n");
-            contUsu.imprimirUsuarios();
+            contUsu->imprimirUsuarios();
             printf("\nPrecione cualquier tecla para ir al menu\n");
             leerUnaTecla();
             //std::getline(std::cin,Contrasena);
@@ -256,95 +259,64 @@ while(e) {
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
-            contUsu.imprimirClientes();
+            contUsu->imprimirClientes();
             printf("\nIngrese el nickname del cliente que desea seleccionar.\n");
-            std::string nickCliente;
-            std::cin.ignore();
-            std::getline(std::cin, nickCliente);
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
-                printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
-                if (!cliente) {
-                    printf("\nError: El usuario seleccionado no es un cliente\n");
-            auto iter = contUsu.getUsuarios().find(nickCliente);
-            if (iter == contUsu.getUsuarios().end()) {
-                printf("\nError: No existe un usuario con dicho nickname\n");
-            else {
-                Cliente* cliente = dynamic_cast<Cliente*>(iter->second);
-                if (!cliente) {
-                    printf("\nError: El usuario seleccionado no es un cliente\n");
+            std::string nickCliente = leerCadena();
+            auto iterC = contUsu->getColClientes().find(nickCliente);
+            if (iterC == contUsu->getColClientes().end()) {
+                printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra compra = new Compra(fechaActual, 0);
-                contProdu.imprimirProductos();
-                int agregar;
+                Compra* compra = new Compra(fechaSist, 0);
+                contProdu->imprimirProductos(); //XQ NO ME DEJA SI YA SE IMPLEMETO??
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
-                std::cin.ignore();
-                std::getline(std::cin, agregar);
-                std::set<int> comprasPro;
+                int agregar = leerEntero();
+                std::map<int, CompraProd*> comprasPro; //se busca por el codigo del producto que tiene
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
-                    printf("\nIngrese el codigo del producto a agregar\n");
-                    int codP;
-                    std::cin.ignore();
-                    std::getline(std::cin, codP);
-                    std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
-                    std::map<std::string,Producto *>::iterator iterProd;
-                    iterProd = contProdu.colProductos.find(codP);
-                    if (iter == contProdu.colProductos.end()) {
+                    int codP = leerEntero();
+                    auto iterProd = contProdu->getProductos().find(codP);
+                    if (iterProd == contProdu->getProductos().end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
-                        if (comprasPro.find(codP) != comprasPro.end()) //if (comprasPro.contains(codP)) { //ver xq esta mal el contains
+                        if (comprasPro.find(codP) != comprasPro.end()){ 
                             printf("\nEste producto ya fue ingresado\n");
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
-                            int cantP;
-                            std::cin.ignore();
-                            std::getline(std::cin, cantP);
-                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            CompraProd* compraP = CompraProd(cantP, false, iterProd->second);
-                            //con que se conecta compraprod????? VERIFICAR
-                            //HAY QUE CONECTAR LOS PRODUCTOS CON LOS 
-                            comprasPro.insert(codP);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
-                            compra->sumarAlMonto(precio);
-                            float precio = iter->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio);
+                            int cantP = leerEntero();
+                            CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
+                            comprasPro[codP]= compraP;
+                            compra->asociarCompraProd(compraP);
+                            int precio = iterProd->second->getPrecio();
+                            precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
                             compra->sumarAlMonto(precio);
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
-                    std::cin.ignore();
-                    std::getline(std::cin, agregar);
+                    agregar = leerEntero();
                 }
-                //mostrar compra
-
+                compra->imprimirCompraCompleto();
+                printf("/nPresiona 0 para confirmar la compra/n"); //NO DICE EN EL CASO DE USO PERO HABRIA QUE AGREGAR OPCION PARA DESCARTAR COMPRA???
+                int a = leerEntero();
+                if (a == 0) {
+                    iterC->second->agregarCompra(compra); //asocio el cliente con la compra
+                } //sino destruyo la compra???
             }
-                
             break;
-        case 'h':
+        case 'h':{
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
             printf("\nIngrese el nickname del usuario que desea seleccionar\n");
-            contUsu.imprimirUsuarios();
-            std::string nickUsuario;
-            std::cin.ignore();
-            std::getline(std::cin, nickUsuario);
-            auto iteru = contUsu.getUsuarios().find(nickUsuario);
-            if (iteru == contUsu.getUsuarios().end()) {
+            contUsu->imprimirUsuarios();
+            std::string nickUsuario = leerCadena();
+            Usuario* usu = contUsu->find(nickUsuario);
+            if (!contUsu->estaUsuario(nickUsuario)) {
                 printf("\nError: No existe un usuario con dicho nickname\n");
             } else {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
-              // se supone que la funcion esa con TCodNomProd (hay que hacer el .cpp) hace eso
-              contProdu.listarProductos();
-              int codigoprod;
-              codigoprod=leerEntero();
-              auto iterP = contProdu.getProductos().find(codigoprod);
-              if (iterP == contProdu.getProductos().end()) {
+              contProdu->listarProductos();//implementar
+              int codigoProd = leerEntero();
+              Producto* prod = contProdu->find(codigoProd);
+              if (!contProdu->estaProd(codigoProd)) {
+
                     printf("\nError: No existe un producto con dicho codigo\n");
                 } else {
                     printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
@@ -352,34 +324,51 @@ while(e) {
                     tipoComentario=leerUnaTecla();
                     if (tipoComentario == 'N' || tipoComentario == 'n') {
                         printf("\nIngrese el texto de su comentario:\n");
-                        std::string textoComentario;
-                        std::cin.ignore();
-                        std::getline(std::cin, textoComentario);
-                     // Crear un nuevo comentario
-                        static int idComentario = 1; // ID único para cada comentario, static se mantiene en la memoria asi se va sumando ese numero
-                       //guani aca fijate como es//
-                       //no se porque comentario tiene tanta cosa//
-                        //esta mal esto: Comentario nuevoComentario(idComentario++, textoComentario, fechaSist);
-                        iterProd->second->agregarComentario(nuevoComentario);
+                        std::string textoComentario = leerCadena();
+   
+                        
+                        
+                        prod->crearComentario(textoComentario, usu);
+
                         printf("\nComentario agregado exitosamente.\n");
                     } else if (tipoComentario == 'R' || tipoComentario == 'r') {
                         printf("\nComentarios del producto:\n");
-                        iterProd->second->mostrarComDeProd(); //en el contprod iria esa funcion
-                        printf("\nElija el numero del comentario al que desea responder:\n");
-                        int numComentario;
-                        std::cin.ignore();
-                        std::getline(std::cin, numComentario);
-                        if (numComentario > 0 && numComentario <= iterProd->second->comentarios.size()) {
+                        prod->imprimirComDeProd(); 
+                        printf("\nElija el ID del comentario al que desea responder:\n");
+                        int IDComentario = leerEntero();
+                        if (prod->estaComen(IDComentario)) {
                             printf("\nIngrese el texto de su respuesta:\n");
-                            std::string textoRespuesta;
-                            std::cin.ignore();
-                            std::getline(std::cin, textoRespuesta);}}}
+                            std::string textoRespuesta = leerCadena();
+                            Comentario* comenPadre = contUsu->findComen(IDComentario);
+                            comenPadre->CrearHijo(textoRespuesta, usu); 
+                        }
+                    }
+                }
+            }
 
 
-            break;
-        case 'i':
+            break;}
+        case 'i':{
             printf("\nOpción 'i' seleccionada: Eliminar comentario.\n");
-            // Aquí iría el código para eliminar un comentario
+            contUsu->imprimirUsuarios();
+            printf("\nEscriba el nickName del usuario correspondiente al comentario a elminar\n");
+            std::string nick = leerCadena();
+            Usuario* usu = contUsu->find(nick);
+            usu->imprimirComentarios();
+            printf("\nEscribe el ID del comentario a elminar (se eliminaran todas sus respuestas)\n");
+            int ID = leerEntero();
+            Comentario* comen = contUsu->findComen(ID);
+            bool tienePadre = comen->getTieneComPadre();
+            if (tienePadre){
+                Comentario* comPadre = comen->getComPadre();
+                comPadre->eliminarRefCom(ID);
+            }
+            else {
+                Producto* prod = comen->getProducto();
+                prod->eliminarRefComen(ID);
+            }
+            comen->EliminoComentarioYHijos();
+        }
             break;
         case 'j':
           printf("\nOpción 'j' seleccionada: Enviar producto.\n");

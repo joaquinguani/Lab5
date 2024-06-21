@@ -45,7 +45,8 @@ public:
     void agregarProdACompra(Producto prod, int cod, int cant);
     int aplicarDescuento(int precio, int cant, int codProd, Producto* prod);
     void sumarAlMonto(int pre);
-    
+    void asociarCompraProd(CompraProd* cp);
+    void imprimirCompraCompleto();
 };
 
 #endif
