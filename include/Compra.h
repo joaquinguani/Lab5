@@ -27,8 +27,8 @@ public:
 
 
     // Getters
-    TFecha* getFecha();
-    int getMontoFinal();
+    TFecha getFecha();
+    float getMontoFinal();
     std::map<std::string,Producto*> getProductos();
     std::set<CompraProd*> getCompraProducto();
     Cliente* getClienteAsociado();

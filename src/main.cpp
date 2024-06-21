@@ -339,17 +339,15 @@ while(e) {
               printf("\nAhora ingrese el codigo identificador del producto que desea seleccionar\n");
               // se supone que la funcion esa con TCodNomProd (hay que hacer el .cpp) hace eso
               contProdu.listarProductos();
-              std::string codigoprod;
-              std::cin.ignore();
-              std::getline(std::cin, codigoprod);
+              int codigoprod;
+              codigoprod=leerEntero();
               auto iterP = contProdu.getProductos().find(codigoprod);
               if (iterP == contProdu.getProductos().end()) {
                     printf("\nError: No existe un producto con dicho codigo\n");
                 } else {
                     printf("\n¿Desea hacer un comentario nuevo (N) o una respuesta (R)?\n");
                     char tipoComentario;
-                    std::cin.ignore();
-                    std::getline(std::cin, tipoComentario);
+                    tipoComentario=leerUnaTecla();
                     if (tipoComentario == 'N' || tipoComentario == 'n') {
                         printf("\nIngrese el texto de su comentario:\n");
                         std::string textoComentario;
@@ -373,7 +371,7 @@ while(e) {
                             printf("\nIngrese el texto de su respuesta:\n");
                             std::string textoRespuesta;
                             std::cin.ignore();
-                            std::getline(std::cin, textoRespuesta);
+                            std::getline(std::cin, textoRespuesta);}}}
 
 
             break;
@@ -411,21 +409,15 @@ while(e) {
             contUsu.imprimirUsuarios(); // Imprimir todos los usuarios
             printf("\nIngrese el nombre del usuario que quiere seleccionar\n");
             std::string nick;
-            std::cin.ignore();
-            std::getline(std::cin, nick);
-
+            nick=leerCadena();
             Usuario* usr = contUsu.buscarPorNombre(nick);
             if (usr == nullptr) {
                 printf("Error: No existe un usuario con ese nombre.\n");
                 break;
             }
-
-            // Imprimir información básica del usuario
             printf("Información básica del usuario:\n");
             printf("Nickname: %s\n", usr->getNickname());
             usr->imprimirFecha(); // info basica: nickname y fecha. sin contraseña ciudad ni nada de eso
-
-            // Continuamos con la lógica dependiendo del tipo de usuario
             if (usr->esVendedor()) {
                 Vendedor* vendedor = dynamic_cast<Vendedor*>(usr);
                 printf("El usuario es un vendedor.\n");
@@ -437,7 +429,7 @@ while(e) {
                 Cliente* cliente = dynamic_cast<Cliente*>(usr);
                 printf("El usuario es un cliente.\n");
                 printf("Compras realizadas:\n");
-                cliente->imprimirComprasRealizadas();
+                cliente->listarComprasRealizadas();
             }
     break;
 }
