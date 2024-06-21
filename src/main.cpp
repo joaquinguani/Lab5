@@ -259,23 +259,23 @@ while(e) {
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
-            contUsu.imprimirClientes();
+            contUsu->imprimirClientes();
             printf("\nIngrese el nickname del cliente que desea seleccionar.\n");
             std::string nickCliente = leerCadena();
-            auto iterC = contUsu.getColClientes().find(nickCliente);
-            if (iterC == contUsu.getColClientes().end()) {
+            auto iterC = contUsu->getColClientes().find(nickCliente);
+            if (iterC == contUsu->getColClientes().end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
                 Compra* compra = new Compra(fechaSist, 0);
-                contProdu.imprimirProductos(); //XQ NO ME DEJA SI YA SE IMPLEMETO??
+                contProdu->imprimirProductos(); //XQ NO ME DEJA SI YA SE IMPLEMETO??
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
                 int agregar = leerEntero();
                 std::map<int, CompraProd*> comprasPro; //se busca por el codigo del producto que tiene
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
                     int codP = leerEntero();
-                    auto iterProd = contProdu.getProductos().find(codP);
-                    if (iterProd == contProdu.getProductos().end()) {
+                    auto iterProd = contProdu->getProductos().find(codP);
+                    if (iterProd == contProdu->getProductos().end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
                         if (comprasPro.find(codP) != comprasPro.end()){ 
