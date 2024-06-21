@@ -49,8 +49,12 @@ Promocion* Producto::getPromo() {
     return this->promo;
 }
 
-CompraProd* Producto::getCompraProducto(){
+/*CompraProd* Producto::getCompraProducto(){
     return this->compraProducto;
+}*/
+
+Compra* Producto::getCompraAsociada(){
+    return compraAsociada;
 }
 
 // Setters

@@ -11,11 +11,12 @@ Vendedor::Vendedor(DataVendedor data):Usuario(data.getNickname(), data.getContra
 };
 
 Vendedor::~Vendedor(){
-
 }
-std::set<Producto*> Vendedor::getProductos(){
+
+std::map<std::string, Producto*> Vendedor::getProductos(){
     return this->productos;
 }
+
 std::string Vendedor::getRut(){
     return this->RUT;
 }
@@ -58,11 +59,24 @@ void imprimirDatosVend(){
 
 
 void Vendedor::imprimirProdsConCompraPendDeEnvio(){
-    std::set<Producto*>::iterator it;
-    std::set<Producto*> prods = this->getProductos();
+    std::map<std::string Producto*>::iterator it;
+    std::map<std::string, Producto*> prods = this->getProductos();
     for (it=prods.begin(); it != prods.end(); ++it){
-        if ((*it)->getCompraProducto()->getEnviado()){
+        std::map<std::string, CompraProd*> comprasProd = (*it)->getCompraAsociada()->getCompraProducto();
+        std::map<std::string, CompraProd*>::iterator itComProd;
+        for(itComProd=comprasProd.begin(); itComProd != comprasProd.end(); ++itComProd){
+            if(!(*itComProd)->getEnviado){
+                (*it)->imprimirProducto(); 
+
+            }
+        }
+        if(!(*it)->getCompraAsociada()->getCompraProducto()->getEnviado()){
             (*it)->imprimirProducto(); 
+       
+        //if ((*it)->getCompraProducto()->getEnviado()){
+            //(*it)->imprimirProducto(); 
         }
     }
 }
+
+    std::map<std::string, Producto*>::iterator it;

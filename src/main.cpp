@@ -396,12 +396,12 @@ while(e) {
             std::cin.ignore();
             std::getline(std::cin, prod);
             //Producto* produ = contProdu.buscarProdPorNombre(prod); //no puedo porque esta por codigo
-            contProdu.imprimirComprasConProdPendiente(prod);
-            printf("\nIngrese el nickname del cliente que quiere seleccionar\n");//no entiendo bien que imprime
+            contProdu.imprimirComprasConProdPendiente(prod);//no entiendo bien que imprime
+            printf("\nIngrese el nickname del cliente que quiere seleccionar\n");
             std::string nickCli;
             std::cin.ignore();
             std::getline(std::cin, nickCli);
-            Compra* compras = contProdu.getColCompra()//buscar en todas las compras el nick del cliente asociado 
+            std::set<Compra*> compras = contProdu.getColCompra().find(nickCli);//buscar en todas las compras el nick del cliente asociado 
             //compras->getCompraProducto()->setEnviado(true);
             produ->getCompraProducto()->setEnviado(true);
             printf("El producto fue enviado correctamente.");

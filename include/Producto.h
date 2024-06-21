@@ -30,7 +30,8 @@ private:
     std::set<Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
-    CompraProd* compraProducto;
+    //CompraProd* compraProducto;
+    Compra* compraAsociada;
 
 public:
     // Constructor
@@ -46,7 +47,8 @@ public:
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
-    CompraProd* getCompraProducto();
+    //CompraProd* getCompraProducto();
+    Compra* getCompraAsociada();
 
 
 
