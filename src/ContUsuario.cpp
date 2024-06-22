@@ -54,6 +54,15 @@ Comentario* ContUsuario::findComen(int ID){
         return colComentario[ID];
 }
 
+Vendedor* ContUsuario::findVend(std::string nick){
+        return colVendedores[nick];
+}
+
+bool ContUsuario::esVaciaVendedor(){
+        return colVendedores.empty();
+}
+
+
 void ContUsuario::imprimirUsuarios(){ //casos:a,
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
