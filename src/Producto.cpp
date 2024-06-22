@@ -6,14 +6,15 @@
 //#include "TCategoria.h"
 #include "Producto.h"
 
-Producto::Producto(std::string cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat){
-    this->codigo = cod;
+Producto::Producto( int stk, int pre, std::string nom, std::string desc, char cat){
+    ContProducto* contProdu = ContProducto::getInstanciaContProd();
+    this->codigo = contProdu->getCodigoProducto();
+    contProdu->sumarCodigoProducto();
     this->stock = stk;
     this->precio = pre;
     this->nombre = nom;
     this->descripcion = desc;
     this->categoria = cat;
-    this->promo = NULL;
 };
 
 // Getters

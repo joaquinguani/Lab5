@@ -1,4 +1,3 @@
-
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -143,33 +142,35 @@ while(e) {
             contUsu->imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend = leerCadena();
-            std::map<std::string,Vendedor *>::iterator iter = vendedores.find(nickVend);
-            if (iter == vendedores.end()) {
+            std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
+            if (contUsu->findVend(nickVend) == NULL) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd, descProd;
-                int precioProd, stockProd;
-                TCategoria catProd; 
+        
+                char catProd = 'z';
                 printf("\nIngrese el nombre del producto:\n");
-                nomProd = leerCadena();
+                std::string nomProd = leerCadena();
                 printf("\nIngrese el precio del producto:\n");
-                precioProd = leerEntero();
+                int precioProd = leerEntero();
                 printf("\nIngrese la cantidad en stock del producto:\n");
-                stockProd = leerEntero();
+                int stockProd = leerEntero();
                 printf("\nIngrese la descripcion del producto:\n");
-                descProd = leerCadena();
-                printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
-                std::cin.ignore();
-                std::getline(std::cin, catProd); //Hay que hacer un leer enum????
-                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-                iter->second->insertarProducto(nuevoProd);
-                codigoProducto++; //el primer producto tiene codigo 0 y luego va aumentado
-            }
+                std::string descProd = leerCadena();
+                while (catProd != 'c' && catProd != 'b' && catProd != 'a'){
+                printf("\nPresione la tecla correspondiente a la categoria es ropa, electrodomesticos, otros:\n");
+                printf("\na: ropa\nb: electrodomestrico\nc: otros");
+                catProd = leerUnaTecla();
+                }
+                Producto* nuevoProd = new Producto(stockProd, precioProd, nomProd, descProd, catProd);
+                contProdu->insertarProducto(nuevoProd);
+            };
+        };   
             break;
-        }   
-         case 'd':{ //cosecha me cagaste la vida
-            printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-            contProdulistarProductos();
+            
+           case 'd':{ //cosecha me cagaste la vida
+             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+
+            contProdu.listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
             int codProd;
             std::cin.ignore();
@@ -404,7 +405,6 @@ while(e) {
             }
             break;
         }
-
         case 'l':
             printf("\nOpción 'l' seleccionada: Suscribirse a notificaciones.\n");
             printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
@@ -420,20 +420,49 @@ while(e) {
                 Vendedor* vnd=contUsu->buscarPorNombre(c);
                 cliente->agregarSuscripcion(vnd);
                 vnd->agregarSuscriptor(cliente);
-                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
+                printf("\n¿Desea agregar otra suscripcion? (s/n): .\n");
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
                 //falta lo de suscripciones lo demas esta creo
             };
             break;
-        case 'm':
+        case 'm':{
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
-            // Aquí iría el código para consultar notificaciones
+
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            Cliente* cliente = dynamic_cast<Cliente*>(contUsu->buscarPorNombre(cli));
+            if (cliente == nullptr) {
+                printf("Error: No existe un cliente con ese nombre.\n");
+                break;
+            }
+            // Consultar y listar notificaciones del cliente
+            cliente->consultarNotificaciones();
+
             break;
+        };
         case 'n':
             printf("\nOpción 'n' seleccionada: Eliminar suscripciones.\n");
-            // Aquí iría el código para eliminar suscripciones
+
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            Cliente* cliente = dynamic_cast<Cliente*>(contUsu->buscarPorNombre(cli));
+            contUsu->listarVendSuscripto(cliente);
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el nickname del vendedor al que desea desuscribirse.\n");
+                std::string c=leerCadena();
+                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                cliente->eliminarSuscripcion(vnd);
+                vnd->eliminarSuscriptor(cliente);
+                printf("\n¿Desea eliminar otra suscripcion? (s/n): .\n");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //falta lo de suscripciones lo demas esta creo
+            };
+
             break;
         case 'o':
             printf("\nOpción 'o' seleccionada: Modificar fecha.\n");
