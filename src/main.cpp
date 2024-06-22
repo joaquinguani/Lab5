@@ -119,8 +119,7 @@ while(e) {
                 TDireccion* direccion = new TDireccion(calle, numero);
                 DataCliente* data = new DataCliente(nick,Contrasena,*fecha,*direccion,ciudad);
                 contUsu->ingresarDatosCliente(*data);
-            }
-            else{
+            } else{
                 printf("\nIngresar RUT de vendedor\n");
                 std::string RUT = leerCadena();
                 std::system("cls");
@@ -139,46 +138,35 @@ while(e) {
             //std::getline(std::cin,Contrasena);
             break;
         }
-        
         case 'c':{
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            contUsu.imprimirVendedores();
+            contUsu->imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
-            std::string nickVend;
-            std::cin.ignore();
-            std::getline(std::cin, nickVend);
-            std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
-            iter = vendedores.find(nickVend);
+            std::string nickVend = leerCadena();
+            std::map<std::string,Vendedor *>::iterator iter = vendedores.find(nickVend);
             if (iter == vendedores.end()) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd;
-                int precioProd;
-                int stockProd;
-                std::string descProd;
+                std::string nomProd, descProd;
+                int precioProd, stockProd;
                 TCategoria catProd; 
                 printf("\nIngrese el nombre del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, nomProd);
+                nomProd = leerCadena();
                 printf("\nIngrese el precio del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, precioProd);
+                precioProd = leerEntero();
                 printf("\nIngrese la cantidad en stock del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, precioProd);
+                stockProd = leerEntero();
                 printf("\nIngrese la descripcion del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, descProd);
+                descProd = leerCadena();
                 printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
                 std::cin.ignore();
-                std::getline(std::cin, catProd);
-                static int codigoProducto = 0;
-                Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
+                std::getline(std::cin, catProd); //Hay que hacer un leer enum????
+                Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
-            };
-        };   
+                codigoProducto++; //el primer producto tiene codigo 0 y luego va aumentado
+            }
             break;
-            
+        }   
          case 'd':{ //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
@@ -193,9 +181,9 @@ while(e) {
                 std::string nickVendAsociado = vendedor->getNickname();
                printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n, Nombre del Vendedor:%s\n",  iterprodu->first, iterprodu->second->getStock(), iterprodu->second->getPrecio(),
                   iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
-            }else  printf("Error: No existe un producto con dicho nombre\n");
+            }   printf("Error: No existe un producto con dicho nombre\n");
             break;
-         };
+         }
         case 'e':{
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             std::string nom;
@@ -213,11 +201,11 @@ while(e) {
             int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
             descu=leerEntero();
-            contUsu.imprimirVendedores();
+            contUsu->imprimirVendedores();
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion.\n");
             std::string vend;
             vend=leerCadena();
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            Vendedor* vnd=contUsu->buscarPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
             Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
             bool seguir=true;
@@ -236,11 +224,11 @@ while(e) {
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
                 //falta lo de suscripciones lo demas esta creo
-            };
+            }
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
             contProdu->colPromocion[nom]=p;
-        };
             break;
+        }
         case 'f':{
            printf("\nOpción 'f' seleccionada: Consultar promoción.\n");
             contProdu.listarPromosVigentes();
@@ -248,14 +236,12 @@ while(e) {
             char tec=leerUnaTecla();
             case 's':
             printf("\nIngrese el nombre la promocion\n");
-            std::string nom;
-            std::cin.ignore();
-            std::getline(std::cin, nom);   
+            std::string nom = leerCadena();
             Promocion* promo = contProdu.buscarPromoPorNombre(nom);
             promo->devolverDatosProdsPromo();
             break;
             case 'n':
-        };
+        }
             break;
         case 'g':
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
@@ -266,8 +252,8 @@ while(e) {
             if (iterC == contUsu->getColClientes().end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra* compra = new Compra(fechaSist, 0);
-                contProdu->imprimirProductos(); //XQ NO ME DEJA SI YA SE IMPLEMETO??
+                Compra* compra = new Compra(fechaSist, 0); //???
+                contProdu->listarProductosDisp(); 
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
                 int agregar = leerEntero();
                 std::map<int, CompraProd*> comprasPro; //se busca por el codigo del producto que tiene
@@ -283,12 +269,17 @@ while(e) {
                         } else {
                             printf("\nIngrese la cantidad que desea comprar\n");
                             int cantP = leerEntero();
-                            CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
-                            comprasPro[codP]= compraP;
-                            compra->asociarCompraProd(compraP);
-                            int precio = iterProd->second->getPrecio();
-                            precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
-                            compra->sumarAlMonto(precio);
+                            if (cantP <= iterProd->second->getStock()) {
+                                CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
+                                comprasPro[codP]= compraP; 
+                                compra->asociarCompraProd(compraP);
+                                int precio = iterProd->second->getPrecio();
+                                precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
+                                compra->sumarAlMonto(precio);
+                                iterProd->second->setStock(iterProd->second->getStock()-cantP); //actualizo el stock del producto
+                            } else {
+                                printf("/nError: Cantidad ingresada menor a cantidad en stock/n");
+                            }
                         }
                     }
                     printf("\nIngrese 0 si desea agregar mas productos a la compra, de lo contrario ingrese otro numero\n");
@@ -299,7 +290,8 @@ while(e) {
                 int a = leerEntero();
                 if (a == 0) {
                     iterC->second->agregarCompra(compra); //asocio el cliente con la compra
-                } //sino destruyo la compra???
+                    // HAY QUE DISMINUIR LA CANTIDAD DEL STOCK DEL PRODUCTO CON LO QUE SE COMPRA
+                } //sino destruyo la compra y tendria que restaurar el stock tmb
             }
             break;
         case 'h':{
