@@ -259,8 +259,8 @@ while(e) {
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
                     int codP = leerEntero();
-                    auto iterProd = contProdu->getProductos().find(codP);
-                    if (iterProd == contProdu->getProductos().end()) {
+                    auto iterProd = contProdu->getColProductos().find(codP);
+                    if (iterProd == contProdu->getColProductos().end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
                         if (comprasPro.find(codP) != comprasPro.end()){ 

@@ -12,8 +12,8 @@ ContProducto::ContProducto(){
 };
 
 
-std::map<int, Producto*> ContProducto::getProductos() {
-    return Productos;
+std::map<int, Producto*> ContProducto::getColProductos() {
+    return this->colProductos;
 };
 
 
