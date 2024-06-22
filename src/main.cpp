@@ -242,7 +242,7 @@ while(e) {
                 break;
             }else{
                 break;
-            }
+            } 
         }
         case 'g': {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
