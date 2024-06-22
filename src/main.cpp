@@ -242,8 +242,7 @@ while(e) {
             break;
             case 'n':
         }
-            break;
-        case 'g':
+        case 'g': {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
             contUsu->imprimirClientes();
             printf("\nIngrese el nickname del cliente que desea seleccionar.\n");
@@ -252,7 +251,7 @@ while(e) {
             if (iterC == contUsu->getColClientes().end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra* compra = new Compra(fechaSist, 0); //???
+                Compra* compra = new Compra(fechaSist, 0); 
                 contProdu->listarProductosDisp(); 
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
                 int agregar = leerEntero();
@@ -260,8 +259,8 @@ while(e) {
                 while (agregar == 0){
                     printf("\nIngrese el codigo del producto a agregar\n");
                     int codP = leerEntero();
-                    auto iterProd = contProdu->getProductos().find(codP);
-                    if (iterProd == contProdu->getProductos().end()) {
+                    auto iterProd = contProdu->getColProductos().find(codP);
+                    if (iterProd == contProdu->getColProductos().end()) {
                         printf("\nError: No existe un producto con dicho codigo\n");
                     } else {
                         if (comprasPro.find(codP) != comprasPro.end()){ 
@@ -290,10 +289,10 @@ while(e) {
                 int a = leerEntero();
                 if (a == 0) {
                     iterC->second->agregarCompra(compra); //asocio el cliente con la compra
-                    // HAY QUE DISMINUIR LA CANTIDAD DEL STOCK DEL PRODUCTO CON LO QUE SE COMPRA
                 } //sino destruyo la compra y tendria que restaurar el stock tmb
             }
             break;
+        }
         case 'h':{
             printf("\nOpción 'h' seleccionada: Dejar comentario.\n");
             printf("\nIngrese el nickname del usuario que desea seleccionar\n");

@@ -25,7 +25,7 @@ private:
     
 public:
     // Constructor
-    Compra(TFecha f, int monto);
+    Compra(TFecha* f, int monto);
 
 
     // Getters
