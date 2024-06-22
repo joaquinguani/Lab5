@@ -121,3 +121,8 @@ void Vendedor::listarPromocionesVigentes() {
 void Vendedor::agregarSuscriptor(Cliente* cliente){
     suscriptores[cliente->getNickname()]=cliente;
 }
+
+
+void Vendedor::eliminarSuscriptor(Cliente* cli){
+    suscriptores.erase(cli->getNickname());
+}

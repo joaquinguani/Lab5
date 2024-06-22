@@ -54,6 +54,15 @@ Comentario* ContUsuario::findComen(int ID){
         return colComentario[ID];
 }
 
+Vendedor* ContUsuario::findVend(std::string nick){
+        return colVendedores[nick];
+}
+
+bool ContUsuario::esVaciaVendedor(){
+        return colVendedores.empty();
+}
+
+
 void ContUsuario::imprimirUsuarios(){ //casos:a,
         std::map<std::string, Usuario *>::iterator it;
         for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
@@ -107,6 +116,20 @@ void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
                 if (usr->esVendedor()){
                         Vendedor* vnd=dynamic_cast<Vendedor*>(usr);
                         if(cli->getColSuscripciones().find(vnd->getNickname())==cli->getColSuscripciones().end()){
+                                std::cout <<vnd->getNickname() <<std::endl;
+                        }
+                }
+                
+        }
+};
+
+void ContUsuario::listarVendSuscripto(Cliente* cli){
+     std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
+     for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (usr->esVendedor()){
+                        Vendedor* vnd=dynamic_cast<Vendedor*>(usr);
+                        if(cli->getColSuscripciones().find(vnd->getNickname())!=cli->getColSuscripciones().end()){
                                 std::cout <<vnd->getNickname() <<std::endl;
                         }
                 }

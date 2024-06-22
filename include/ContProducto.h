@@ -16,6 +16,7 @@
 
 class ContProducto {
 private:
+    int codigoProducto;
     std::map<int, Producto *> colProductos; //cambie a col de nuevo jeje
     ContProducto();
     static ContProducto * instanciaContProd;
@@ -32,6 +33,11 @@ public:
     std::map<int, Producto*> getColProductos();
     std::set<Compra*> getColCompra();
 
+    //mapaProducto
+    void insertarProducto(Producto*);
+    bool estaProd(int);
+    Producto* find(int);
+
     //otros metodos
     void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
     std::set<std::string> listarNicknamesVendedores();
@@ -46,8 +52,10 @@ public:
     std::set<Promocion*> listarPromosVigentes();
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
-    bool estaProd(int);
-    Producto* find(int);
+    
+
+    int getCodigoProducto();
+    void sumarCodigoProducto();
 
     Producto* buscarProdPorNombre(std::string produ);
     //caso j
