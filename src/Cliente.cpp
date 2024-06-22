@@ -7,7 +7,7 @@
 #include <sstream>
 #include <set>
 #include "Cliente.h"
-
+#include <stack>
 
 Cliente::~Cliente(){
 
@@ -91,4 +91,22 @@ std::map<std::string,Vendedor*> Cliente::getColSuscripciones(){
 
 void Cliente::agregarSuscripcion(Vendedor* Vendedor){
     colSuscripciones[Vendedor->getNickname()]=Vendedor;
+}
+
+void Cliente::eliminarSuscripcion(Vendedor* Vendedor){
+   colSuscripciones.erase(Vendedor->getNickname());
+}
+
+void Cliente::consultarNotificaciones(){
+    while(!notificaciones.empty()){
+        TNotificacion* noti=notificaciones.top();
+        notificaciones.pop();
+        std::cout << "Notificación de: " << noti->getNickVend() << std::endl;
+        std::cout << "Promoción: " << noti->getNomPromocion() << std::endl;
+        std::cout << "Productos: ";
+        for ( auto producto : noti->getProductos()) {
+            std::cout << producto.getNombre() << " ";
+        }
+        std::cout << std::endl;
+    }
 }

@@ -12,13 +12,14 @@
 #include "TNotificacion.h"
 #include "DataCliente.h"
 #include "TFecha.h"
+#include <stack>
 
 class Cliente:public Usuario,public ISuscripciones {
     private: 
         TDireccion direccion;
         std::string ciudad;
         std::set<Compra*> compras; 
-        //std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
+        std::stack<TNotificacion*> notificaciones;
         std::map<std::string,Vendedor*> colSuscripciones;
     public:
         // Constructor
@@ -45,9 +46,8 @@ class Cliente:public Usuario,public ISuscripciones {
         // Métodos
         
         bool esVendedor() const override { return false; };
-        
-        std::set<TNotificacion> listarNotificaciones();
-        void eliminarNotificaciones();
+        void eliminarSuscripcion(Vendedor* vnd);
+        void consultarNotificaciones();
         void notificar(TNotificacion);
         void agregarCompra(Compra* compra);
 };
