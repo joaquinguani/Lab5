@@ -1,4 +1,3 @@
-
 #include <cstdio>  // Para printf y scanf
 #include <iostream> // Para std::cin y std::getline
 #include <conio.h>  // Para _getch() en Windows
@@ -164,6 +163,7 @@ while(e) {
                 Producto* nuevoProd = new Producto(codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
                 iter->second->insertarProducto(nuevoProd);
                 codigoProducto++; //el primer producto tiene codigo 0 y luego va aumentado
+
             }
             break;
         }   
@@ -409,7 +409,6 @@ while(e) {
             }
     break;
 }
-
         case 'l':
             printf("\nOpción 'l' seleccionada: Suscribirse a notificaciones.\n");
             printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
@@ -425,20 +424,45 @@ while(e) {
                 Vendedor* vnd=contUsu->buscarPorNombre(c);
                 cliente->agregarSuscripcion(vnd);
                 vnd->agregarSuscriptor(cliente);
-                printf("\n¿Desea seguir agregando productos? (s/n): .\n");
+                printf("\n¿Desea agregar otra suscripcion? (s/n): .\n");
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
                 //falta lo de suscripciones lo demas esta creo
             };
             break;
-        case 'm':
+        case 'm':{
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
-            // Aquí iría el código para consultar notificaciones
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            Cliente* cliente = dynamic_cast<Cliente*>(contUsu->buscarPorNombre(cli));
+            if (cliente == nullptr) {
+                printf("Error: No existe un cliente con ese nombre.\n");
+                break;
+            }
+            // Consultar y listar notificaciones del cliente
+            cliente->consultarNotificaciones();
             break;
+        };
         case 'n':
             printf("\nOpción 'n' seleccionada: Eliminar suscripciones.\n");
-            // Aquí iría el código para eliminar suscripciones
+            printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
+            std::string cli=leerCadena();
+            Cliente* cliente = dynamic_cast<Cliente*>(contUsu->buscarPorNombre(cli));
+            contUsu->listarVendSuscripto(cliente);
+            bool seguir=true;
+            while(seguir){
+                printf("\nIngrese el nickname del vendedor al que desea desuscribirse.\n");
+                std::string c=leerCadena();
+                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                cliente->eliminarSuscripcion(vnd);
+                vnd->eliminarSuscriptor(cliente);
+                printf("\n¿Desea eliminar otra suscripcion? (s/n): .\n");
+                char respuesta;
+                respuesta=leerUnaTecla();
+                seguir = (respuesta == 's' || respuesta == 'S');
+                //falta lo de suscripciones lo demas esta creo
+            };
             break;
         case 'o':
             printf("\nOpción 'o' seleccionada: Modificar fecha.\n");
