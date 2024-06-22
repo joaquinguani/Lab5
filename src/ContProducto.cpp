@@ -26,6 +26,15 @@ void ContProducto::insertarProducto(Producto* prod){
     colProductos[codigoo] = prod;
 }
 
+Promocion* ContProducto::findPromocion(std::string string){
+    return colPromocion[string];
+}
+
+void ContProducto::agregarPromocion(Promocion* promo){
+    std::string nombre = promo->getNombre();
+    colPromocion[nombre] = promo;
+}
+
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::set<Promocion*> promosVigentes;
     TFechaActual* fecha;

@@ -212,8 +212,8 @@ while(e) {
             bool seguir=true;
             while(seguir){
                 printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
-                std::string c=leerCadena();
-                Producto* prod=contProdu->buscarproducto(c);
+                int c=leerEntero();
+                Producto* prod=contProdu->buscarProducto(c);
                 printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
                 int cantmin=leerEntero();
                 p->agregarProdAPromo(prod);
@@ -227,7 +227,8 @@ while(e) {
                 //falta lo de suscripciones lo demas esta creo
             }
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
-            contProdu->colPromocion[nom]=p;
+            contProdu->agregarPromocion(p);
+            vnd->notificarClientes(p);
             break;
         }
         case 'f':{

@@ -60,7 +60,7 @@ void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
 };
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,std::string cantMin) {
+void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
     ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
     promProductos.insert(p);
 };
