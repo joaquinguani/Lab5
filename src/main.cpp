@@ -365,17 +365,17 @@ while(e) {
             break;
         case 'j':
           printf("\nOpción 'j' seleccionada: Enviar producto.\n");
-            contUsu.imprimirVendedores(); //solo los nicknames
+            contUsu->imprimirVendedores(); //solo los nicknames
             printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            Vendedor* vnd=contUsu->buscarPorNombre(vend);
             vnd->imprimirProdsConCompraPendDeEnvio();
             printf("\nIngrese el codigo del producto que quiere seleccionar\n");
             int prod = leerEntero();
-            Producto* produ = contProdu.buscarProducto(prod); 
-            contProdu.imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
+            Producto* produ = contProdu->buscarProducto(prod); 
+            contProdu->imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
             printf("\nIngrese el id de la compra que quiere seleccionar\n");
             int id=leerEntero();
             produ->findCompraProd(id)->setEnviado(true);
