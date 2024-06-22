@@ -46,6 +46,8 @@ public:
     bool estaUsuario(std::string); 
     void ingresarDatosVendedor(DataVendedor data); //agrega un vendedor
     void ingresarDatosCliente(DataCliente data); //agrega un cliente 
+    Vendedor* findVend(std::string);
+    bool esVaciaVendedor();
     //funciones del MAPA Coment
     Comentario* findComen(int ID);
 

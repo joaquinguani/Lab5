@@ -10,26 +10,21 @@
 #include "Comentario.h"
 //#include "TCategoria.h"
 #include "Vendedor.h"
-
+#include "ContProducto.h"
 #include "ContUsuario.h"
 #include "Compra.h"
 
-enum TCategoria {
-    ropa,
-    electrodomesticos,
-    otros
-};
 
 
 class Promocion; //forward declaration
 class Producto {
 private:
-    std::string codigo;
+    int codigo;
     int stock;
     int precio;
     std::string nombre;
     std::string descripcion;
-    TCategoria categoria; //decia string
+    char categoria; //a: ropa   b: electrodomestrico   c: otros
     std::map<int,Comentario*> comentarios;
     Vendedor* vendAsociado;
     Promocion* promo;
@@ -38,10 +33,10 @@ private:
 
 public:
     // Constructor
-    Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
+    Producto(int stk, int pre, std::string nom, std::string desc, char cat);
 
     // Getters
-    std::string getCodigo();
+    int getCodigo();
     int getStock();
     float getPrecio();
     std::string getNombre();

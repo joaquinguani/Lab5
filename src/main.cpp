@@ -142,45 +142,36 @@ while(e) {
         
         case 'c':{
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            contUsu.imprimirVendedores();
+            contUsu->imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
-            std::string nickVend;
-            std::cin.ignore();
-            std::getline(std::cin, nickVend);
+            std::string nickVend = leerCadena();
             std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
-            iter = vendedores.find(nickVend);
-            if (iter == vendedores.end()) {
+            if (contUsu->findVend(nickVend) == NULL) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-                std::string nomProd;
-                int precioProd;
-                int stockProd;
-                std::string descProd;
-                TCategoria catProd; 
+        
+                char catProd = 'z';
                 printf("\nIngrese el nombre del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, nomProd);
+                std::string nomProd = leerCadena();
                 printf("\nIngrese el precio del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, precioProd);
+                int precioProd = leerEntero();
                 printf("\nIngrese la cantidad en stock del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, precioProd);
+                int stockProd = leerEntero();
                 printf("\nIngrese la descripcion del producto:\n");
-                std::cin.ignore();
-                std::getline(std::cin, descProd);
-                printf("\nIngrese si el producto es ropa, electrodomesticos, otros:\n");
-                std::cin.ignore();
-                std::getline(std::cin, catProd);
-                static int codigoProducto = 0;
-                Producto* nuevoProd = new Producto(++codigoProducto, stockProd, precioProd, nomProd, descProd, catProd);
-                iter->second->insertarProducto(nuevoProd);
+                std::string descProd = leerCadena();
+                while (catProd != 'c' && catProd != 'b' && catProd != 'a'){
+                printf("\nPresione la tecla correspondiente a la categoria es ropa, electrodomesticos, otros:\n");
+                printf("\na: ropa\nb: electrodomestrico\nc: otros");
+                catProd = leerUnaTecla();
+                }
+                Producto* nuevoProd = new Producto(stockProd, precioProd, nomProd, descProd, catProd);
+                contProdu->insertarProducto(nuevoProd);
             };
         };   
             break;
             
-         case 'd':{ //cosecha me cagaste la vida
-            printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+           case 'd':{ //cosecha me cagaste la vida
+             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu.listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
             int codProd;
@@ -441,11 +432,9 @@ while(e) {
             break;
         case 'm':
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
-            // Aquí iría el código para consultar notificaciones
             break;
         case 'n':
             printf("\nOpción 'n' seleccionada: Eliminar suscripciones.\n");
-            // Aquí iría el código para eliminar suscripciones
             break;
         case 'o':
             printf("\nOpción 'o' seleccionada: Modificar fecha.\n");

@@ -8,7 +8,7 @@
 
 
 ContProducto::ContProducto(){
-
+    codigoProducto = 0;
 };
 
 
@@ -19,6 +19,10 @@ std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;
 }
 
+void ContProducto::insertarProducto(Producto* prod){
+    int codigoo = prod->getCodigo();
+    colProductos[codigoo] = prod;
+}
 
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::set<Promocion*> promosVigentes;
@@ -36,6 +40,14 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
          }
     };
 };
+
+int ContProducto::getCodigoProducto(){
+    return codigoProducto;
+}
+
+void ContProducto::sumarCodigoProducto(){
+    ++codigoProducto;
+}
 
 ContProducto* ContProducto::getInstanciaContProd() {
     if (instanciaContProd == nullptr) {
