@@ -13,12 +13,13 @@
 #include "DataCliente.h"
 #include "TFecha.h"
 
-class Cliente:public Usuario/*,public ISuscripciones */{
+class Cliente:public Usuario,public ISuscripciones {
     private: 
         TDireccion direccion;
         std::string ciudad;
         std::set<Compra*> compras; 
         //std::set<TNotificacion*> notificaciones; // el * va adentro o afuera??
+        std::map<std::string,Vendedor*> colSuscripciones;
     public:
         // Constructor
         Cliente(std::string, std::string, TFecha, TDireccion,std::string); //no deja
@@ -31,12 +32,13 @@ class Cliente:public Usuario/*,public ISuscripciones */{
         virtual void imprimirUsuario();
         void imprimirDireccion();
         //std::set<TNotificacion> getNotificaciones();
+        std::map<std::string,Vendedor*> getColSuscripciones();
 
         // Setters
         void setCiudad();
         void setDireccion();
         
-        void agregarSuscripcion();
+        void agregarSuscripcion(Vendedor* vendedor);
         void listarComprasRealizadas();
 
 

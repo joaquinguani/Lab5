@@ -9,7 +9,7 @@ Compra::Compra(TFecha* f, int monto){
 };
 
 //getters
-TFecha Compra::getFecha(){
+TFecha* Compra::getFecha(){
     return this->fecha;
 };
 
@@ -28,6 +28,10 @@ std::set<CompraProd*> Compra::getCompraProducto(){
 Cliente* Compra::getClienteAsociado(){
     return clienteAsociado;
 };
+
+int Compra::getId(){
+    return id;
+}
 
 //setters
 void Compra::setFecha(const TFecha& f){
