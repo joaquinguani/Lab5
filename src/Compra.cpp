@@ -47,7 +47,8 @@ void Compra::setMontoFinal(int monto){
 int Compra::aplicarDescuento(int precio, int cant, int codProd, Producto* prod){
     int precioNuevo = precio;
     Promocion* promo = prod->getPromo();
-    if (promo != NULL && /* CANT MINIMA SE CUMPLE */) { 
+    std::map<int, ProductosEnPromo*> prodsProm = promo->getPromProductos();
+    if (promo != NULL && prodsProm[codProd]->getCantidadMin() >= cant) { 
         int desc = promo->getDescuento();
         precioNuevo = (desc*precio)/100;
     }
