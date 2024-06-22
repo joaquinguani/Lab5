@@ -8,9 +8,8 @@
 #include <sstream>
 #include "Promocion.h"
 #include "Comentario.h"
-//#include "TCategoria.h"
 #include "Vendedor.h"
-
+#include "CompraProd.h"
 #include "ContUsuario.h"
 #include "Compra.h"
 
@@ -20,11 +19,10 @@ enum TCategoria {
     otros
 };
 
-
 class Promocion; //forward declaration
 class Producto {
 private:
-    std::string codigo;
+    int codigo;
     int stock;
     int precio;
     std::string nombre;
@@ -35,13 +33,12 @@ private:
     Promocion* promo;
     std::map<int, CompraProd*> compraProd; // la clave es el codigo de la compra
     //std::set<Compra*> comprasAsociadas;
-
 public:
     // Constructor
     Producto(int cod, int stk, int pre, std::string nom, std::string desc, TCategoria cat);
 
     // Getters
-    std::string getCodigo();
+    int getCodigo();
     int getStock();
     float getPrecio();
     std::string getNombre();
@@ -73,13 +70,14 @@ public:
     void imprimirProducto();
     void imprimirProductoCodNom();
     CompraProd* findCompraProd(int);
-
+    void ingresarCompraProd(CompraProd* compraP);
     void crearComentario(std::string, Usuario*);
     void imprimirComDeProd();
     bool estaComen(int);
 
     //Destructor
     ~Producto();
+    
 
 };
 

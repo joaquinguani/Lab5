@@ -271,7 +271,9 @@ while(e) {
                             if (cantP <= iterProd->second->getStock()) {
                                 CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
                                 comprasPro[codP]= compraP; 
-                                compra->asociarCompraProd(compraP);
+                                iterProd->second->ingresarCompraProd(compraP); 
+                                compra->asociarCompraProd(compraP, codP); 
+                                compraP->setCompraAsociada(compra); 
                                 int precio = iterProd->second->getPrecio();
                                 precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
                                 compra->sumarAlMonto(precio);
@@ -285,11 +287,11 @@ while(e) {
                     agregar = leerEntero();
                 }
                 compra->imprimirCompraCompleto();
-                printf("/nPresiona 0 para confirmar la compra/n"); //NO DICE EN EL CASO DE USO PERO HABRIA QUE AGREGAR OPCION PARA DESCARTAR COMPRA???
+                printf("/nPresiona 0 para confirmar la compra/n");
                 int a = leerEntero();
                 if (a == 0) {
                     iterC->second->agregarCompra(compra); //asocio el cliente con la compra
-                } //sino destruyo la compra y tendria que restaurar el stock tmb
+                } 
             }
             break;
         }
