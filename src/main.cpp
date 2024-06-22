@@ -15,7 +15,6 @@
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
-#include "TCategoria.h"
 
 #include "ContProducto.h"
 
@@ -166,17 +165,14 @@ while(e) {
             };
         };   
             break;
-            
-           case 'd':{ //cosecha me cagaste la vida
-             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-
-            contProdu.listarProductos();
+        }   
+         case 'd':{ 
+            printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+            contProdu->listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
-            int codProd;
-            std::cin.ignore();
-            std::getline(std::cin, codProd);
-            auto iterprodu = contProdu.getProductos().find(codProd);
-            if (iterprodu != contProdu.getProductos().end()){
+            int codProd = leerEntero();
+            auto iterprodu = contProdu->getColProductos().find(codProd);
+            if (iterprodu != contProdu->getColProductos().end()){
                 Producto* product = iterprodu->second;
                 Vendedor* vendedor = product->getVendAsociado(); 
                 std::string nickVendAsociado = vendedor->getNickname();
