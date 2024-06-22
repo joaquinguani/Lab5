@@ -20,39 +20,39 @@ Producto::Producto( int stk, int pre, std::string nom, std::string desc, char ca
 // Getters
 int Producto::getCodigo() {
     return this->codigo;
-}
+};
 
 int Producto::getStock() {
     return this->stock;
-}
+};
 
 float Producto::getPrecio() {
     return this->precio;
-}
+};
 
 std::string Producto::getNombre() {
     return this->nombre;
-}
+};
 
 std::string Producto::getDescripcion() {
     return this->descripcion;
-}
+};
 
 TCategoria Producto::getCategoria() {
     return this->categoria;
-}
+};
 
 Vendedor* Producto::getVendAsociado() {
     return this->vendAsociado;
-}
+};
 
 Promocion* Producto::getPromo() {
     return this->promo;
-}
+};
 
 std::map<int, CompraProd*> Producto::getCompraProd(){
     return this->compraProd;
-}
+};
 
 /*Compra* Producto::getCompraAsociada(){
     return compraAsociada;
@@ -61,33 +61,33 @@ std::map<int, CompraProd*> Producto::getCompraProd(){
 // Setters
 void Producto::setCodigo(int cod) {
     codigo = cod;
-}
+};
 
 void Producto::setStock(int stk) {
     stock = stk;
-}
+};
 
 void Producto::setPrecio(int pre) {
     precio = pre;
-}
+};
 
 void Producto::setNombre(std::string nom) {
     nombre = nom;
-}
+};
 
 void Producto::setDescripcion(std::string desc) {
     descripcion = desc;
-}
+};
 
 void Producto::setCategoria(TCategoria cat) {
     categoria = cat;
-}
+};
 
 
 // Getter para obtener la categoría del producto
 TCategoria Producto::getCategoria()  {
     return categoria;
-}
+};
 
 
 void Producto::imprimirProducto(){
@@ -121,12 +121,12 @@ Promocion* Producto::getPromo(){
 
 void Producto::setPromo(Promocion* promo){
     this->promo=promo;
-}
+};
 
 
 CompraProd* Producto::findCompraProd(int ID){
     return compraProd[ID];
-}
+};
 
 void Producto::crearComentario(std::string txt, Usuario* usu){
     ContUsuario* contUsuari = ContUsuario::getInstanciaContUsu();
@@ -144,13 +144,16 @@ void Producto::imprimirComDeProd(){
             Comentario* comen = it->second;
             comen->imprimirComenYHijos();
     }
-}
+};
 
 bool Producto::estaComen(int ID){
     return comentarios[ID]!=NULL;
-}
+};
 
 void Producto::eliminarRefComen(int ID){
     comentarios.erase(ID);
-}
+};
 
+void Producto::ingresarCompraProd(CompraProd* compraP){
+    this->compraProd[this->getCodigo()] = compraP;
+};

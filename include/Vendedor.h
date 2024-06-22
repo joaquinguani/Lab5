@@ -38,6 +38,8 @@ class Vendedor:public Usuario, public ISuscripciones{
            void setsuscriptores(std::set<std::string>);
            bool estaSuscrito(std::string);
            void agregarSuscriptor(Cliente *);
+           void eliminarSuscriptor(Cliente *);
+
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
            void imprimirProdsVendedorCodNom(Vendedor);

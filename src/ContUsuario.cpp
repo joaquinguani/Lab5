@@ -123,3 +123,17 @@ void ContUsuario::listarVendedoresNoSubsXCliente(Cliente* cli){
         }
 };
 
+void ContUsuario::listarVendSuscripto(Cliente* cli){
+     std::map<std::string, Usuario *>::iterator it; //se puede iterar aca o sobre la coleccion de Vendedores
+     for (it= colUsuarios.begin(); it != colUsuarios.end(); ++it){
+                Usuario* usr = it->second;
+                if (usr->esVendedor()){
+                        Vendedor* vnd=dynamic_cast<Vendedor*>(usr);
+                        if(cli->getColSuscripciones().find(vnd->getNickname())!=cli->getColSuscripciones().end()){
+                                std::cout <<vnd->getNickname() <<std::endl;
+                        }
+                }
+                
+        }
+};
+

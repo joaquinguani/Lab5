@@ -8,12 +8,13 @@
 #include <sstream>
 #include "Promocion.h"
 #include "Comentario.h"
-//#include "TCategoria.h"
 #include "Vendedor.h"
 #include "ContProducto.h"
+
+#include "CompraProd.h"
+
 #include "ContUsuario.h"
 #include "Compra.h"
-
 
 
 class Promocion; //forward declaration
@@ -30,7 +31,6 @@ private:
     Promocion* promo;
     std::map<int, CompraProd*> compraProd; // la clave es el codigo de la compra
     //std::set<Compra*> comprasAsociadas;
-
 public:
     // Constructor
     Producto(int stk, int pre, std::string nom, std::string desc, char cat);
@@ -68,13 +68,14 @@ public:
     void imprimirProducto();
     void imprimirProductoCodNom();
     CompraProd* findCompraProd(int);
-
+    void ingresarCompraProd(CompraProd* compraP);
     void crearComentario(std::string, Usuario*);
     void imprimirComDeProd();
     bool estaComen(int);
 
     //Destructor
     ~Producto();
+    
 
 };
 

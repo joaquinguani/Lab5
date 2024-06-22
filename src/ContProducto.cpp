@@ -13,11 +13,13 @@ ContProducto::ContProducto(){
 
 
 std::map<int, Producto*> ContProducto::getColProductos() {
-    return colProductos;}
+    return this->colProductos;
+};
+
 
 std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;
-}
+};
 
 void ContProducto::insertarProducto(Producto* prod){
     int codigoo = prod->getCodigo();
@@ -54,7 +56,7 @@ ContProducto* ContProducto::getInstanciaContProd() {
         instanciaContProd = new ContProducto();
     }
     return instanciaContProd;
-}
+};
 
 
 Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Usuario*, puse Vendedor*
@@ -73,7 +75,7 @@ void ContProducto::listarProductosDisp() {
             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
         }
     }
-}
+};
 
 
 Producto* ContProducto::buscarProducto(int clave){
@@ -86,6 +88,7 @@ Producto* ContProducto::buscarProducto(int clave){
     return colProductos[produ];
 }*/
 
+
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
     for ( auto pair : colProducto) {
         if (pair.second->getStock() > 0 && pair.second->getVendAsociado() == vendedor) {
@@ -96,11 +99,11 @@ void ContProducto::listarProductosDisp(Vendedor* vendedor) {
 
 bool ContProducto::estaProd(int codigoProd){
     return Productos[codigoProd] !=NULL;
-}
+};
 
 Producto* ContProducto::find(int codigo){
     return Productos[codigo]
-
+};
 
 void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
     std::map<int, CompraProd*>::iterator it;
@@ -116,5 +119,13 @@ void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
             std::cout << ")";
         }
     }
+};
 
-}
+void ContProducto::listarProductosDisp(){
+    for (auto it = this->Productos.begin(); it != this->Productos.end(); it++) {
+        if (it->second->getStock() > 0){
+            it->second->imprimirProducto();
+        }
+    } 
+};
+

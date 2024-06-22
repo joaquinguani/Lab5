@@ -3,7 +3,7 @@
 #include "TFecha.h"
 
 
-Compra::Compra(TFecha f, int monto){
+Compra::Compra(TFecha* f, int monto){
     this->fecha = f;
     this->MontoFinal = monto;
 };
@@ -19,15 +19,15 @@ float Compra::getMontoFinal(){
 
 std::map<std::string,Producto*> Compra::getProductos(){
     return this->productos;
-}
+};
 
 std::set<CompraProd*> Compra::getCompraProducto(){
     return this->compraProducto;
-}
+};
 
 Cliente* Compra::getClienteAsociado(){
     return clienteAsociado;
-}
+};
 
 int Compra::getId(){
     return id;
@@ -58,19 +58,21 @@ void Compra::sumarAlMonto(int pre){
     this->MontoFinal += pre;
 };
 
-
-void Compra::asociarCompraProd(CompraProd* cp){
-    compraProducto.insert(cp);
+void Compra::asociarCompraProd(CompraProd* cp, int cod){
+    this->compraProducto[cod] = cp;
 };
 
 void Compra::imprimirCompraCompleto(){
     printf("/nResumen Compra:/n");
-    TFecha fecha = this->fecha;
-    fecha.imprimirFecha();
+    TFecha* fecha = this->fecha;
+    fecha->imprimirFecha();
     int monto = this->MontoFinal;
     printf("/nMonto Final: $%d/n", monto);
     printf("/nDetalle productos:/n");
-    for (auto it = this->productos.begin(); it != this->productos.end(); i++) {
-        it->second.imprimirProducto(); //TERMINARRRR
+    for (auto it = this->productos.begin(); it != this->productos.end(); it++) {
+        it->second->imprimirProducto(); 
+        int codP = it->second->getCodigo();
+        std::map<int, CompraProd*> compraPro = it->second->getCompraProd();
+        compraPro[codP]->imprimirCompraProd();
     }
 };

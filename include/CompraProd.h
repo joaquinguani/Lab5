@@ -9,12 +9,12 @@
 #include "Producto.h"
 #include "Compra.h"
 
-
+class Compra; //forward declaration
 class CompraProd{
 private:
     int cantidad;
     bool enviado;
-    //Producto *producto; //REVISAR
+    Producto *producto; 
     Compra* compraAsociada;
 public:
     //constructor
@@ -25,9 +25,11 @@ public:
     bool getEnviado();
     //Producto* getProducto();
     Compra* getCompraAsociada();
+    void setCompraAsociada(Compra* compra);
 
     void setCantidad(int cant);
     void setEnviado(bool env);
+    void imprimirCompraProd();
 
     //destructor
     virtual ~CompraProd(){}; 
