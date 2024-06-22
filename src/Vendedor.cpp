@@ -50,15 +50,14 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 
 
 
-void Vendedor::imprimirProdsVendedorCodNom(Vendedor v){
+void Vendedor::imprimirProdsVendedorCodNom(){
     std::set<Producto*>::iterator it;
-    std::set<Producto*> prods=v->getProductos();
+    std::set<Producto*> prods=this->getProductos();
         for (it=prods.begin(); it != prods.end(); ++it){
                 (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
 }
 
-}
 void imprimirDatosVend(){
     
 }
@@ -108,15 +107,16 @@ void Vendedor::listarProductosEnVenta() {
         for (const auto& prod : productos) {
             std::cout << "Producto: " << prod->getNombre() << std::endl;
         }
-    }}
+    }
+}
 
 void Vendedor::listarPromocionesVigentes() {
         for (const auto& promo : promociones) {
             if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
-    }
 }
+
 
 void Vendedor::agregarSuscriptor(Cliente* cliente){
     suscriptores[cliente->getNickname()]=cliente;
@@ -125,4 +125,9 @@ void Vendedor::agregarSuscriptor(Cliente* cliente){
 
 void Vendedor::eliminarSuscriptor(Cliente* cli){
     suscriptores.erase(cli->getNickname());
+}
+
+void Vendedor::notificarClientes(Promocion* p){
+    std::map<std::string,ISuscripciones*> it;
+    
 }

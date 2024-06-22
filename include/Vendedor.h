@@ -39,10 +39,10 @@ class Vendedor:public Usuario, public ISuscripciones{
            bool estaSuscrito(std::string);
            void agregarSuscriptor(Cliente *);
            void eliminarSuscriptor(Cliente *);
-
+           void notificarClientes(Promocion* ); 
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
-           void imprimirProdsVendedorCodNom(Vendedor);
+           void imprimirProdsVendedorCodNom();
            void imprimirProdsConCompraPendDeEnvio();
            void listarProductosEnVenta(); 
            void listarPromocionesVigentes();

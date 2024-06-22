@@ -52,7 +52,9 @@ public:
     std::set<Promocion*> listarPromosVigentes();
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
-    
+    Promocion* findPromocion(std::string);
+    void agregarPromocion(Promocion* promo)
+
 
     int getCodigoProducto();
     void sumarCodigoProducto();
