@@ -67,6 +67,10 @@ void ContProducto::listarProductos()  {
     for (auto pair : colProductos) {
         printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
     }
+    std::map<int, Producto *>::iterator it;
+    for (it= colProductos.begin(); it != colProductos.end(); ++it){
+            printf("Código: %d, Producto: %s\n", it->first, it->second->getNombre());
+        }
 };
 
 void ContProducto::listarProductosDisp() {
@@ -128,4 +132,5 @@ void ContProducto::listarProductosDisp(){
         }
     } 
 };
+
 

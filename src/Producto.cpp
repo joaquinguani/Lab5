@@ -79,13 +79,13 @@ void Producto::setDescripcion(std::string desc) {
     descripcion = desc;
 };
 
-void Producto::setCategoria(TCategoria cat) {
+void Producto::setCategoria(char cat) {
     categoria = cat;
 };
 
 
 // Getter para obtener la categoría del producto
-TCategoria Producto::getCategoria()  {
+char Producto::getCategoria()  {
     return categoria;
 };
 
@@ -101,8 +101,9 @@ void Producto::imprimirProducto(){
     std::cout << nom << std::endl;
     std::string des = descripcion;
     std::cout << des << std::endl;
-    TCategoria cat = categoria;
-    std::cout << cat << std::endl;
+    if (categoria = 'a'){printf("\nRopa\n");}
+    if (categoria = 'b'){printf("\nElectrodomestico\n");}
+    if (categoria = 'c'){printf("\nOtro\n");}
 };
 
 

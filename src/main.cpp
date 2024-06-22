@@ -40,7 +40,7 @@ std::string nick;
 std::string Contrasena;
 TFecha* fecha;
 int codigoProducto = 0;
-
+bool booleano = true;//booleano para hacer cualquiera
 bool e = true;
 
 while(e) {
@@ -168,21 +168,18 @@ while(e) {
             break;
             
            case 'd':{ //cosecha me cagaste la vida
-             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+            printf("\nOpción 'd' seleccionada: Consultar producto.\n");
 
-            contProdu.listarProductos();
+            contProdu->listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
-            int codProd;
-            std::cin.ignore();
-            std::getline(std::cin, codProd);
-            auto iterprodu = contProdu.getProductos().find(codProd);
-            if (iterprodu != contProdu.getProductos().end()){
-                Producto* product = iterprodu->second;
-                Vendedor* vendedor = product->getVendAsociado(); 
-                std::string nickVendAsociado = vendedor->getNickname();
-               printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n, Nombre del Vendedor:%s\n",  iterprodu->first, iterprodu->second->getStock(), iterprodu->second->getPrecio(),
-                  iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
-            }   printf("Error: No existe un producto con dicho nombre\n");
+            Producto* prod = NULL;
+            while (prod != NULL){
+                int codProd = leerEntero();
+                prod = contProdu->find(codProd);
+            }
+            prod->imprimirProducto();
+            
+            
             break;
          }
         case 'e':{
