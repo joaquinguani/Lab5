@@ -18,14 +18,14 @@ private:
     TFecha* fecha;
     int MontoFinal;
     //std::set<CompraProd*> compraProducto; //chequear 
-    std::map<std::string, CompraProd*> compraProducto; //la clave es el cod del producto??
-    std::map<std::string,Producto*> productos; //la clave es el codigo
+    std::map<int, CompraProd*> compraProducto; //la clave es el cod del producto
+    std::map<int,Producto*> productos; //la clave es el codigo 
     Cliente* clienteAsociado;
     int id; //para identificar cada compra
     
 public:
     // Constructor
-    Compra(TFecha f, int monto);
+    Compra(TFecha* f, int monto);
 
 
     // Getters
@@ -45,7 +45,7 @@ public:
     void agregarProdACompra(Producto prod, int cod, int cant);
     int aplicarDescuento(int precio, int cant, int codProd, Producto* prod);
     void sumarAlMonto(int pre);
-    void asociarCompraProd(CompraProd* cp);
+    void asociarCompraProd(CompraProd* cp, int cod);
     void imprimirCompraCompleto();
 };
 

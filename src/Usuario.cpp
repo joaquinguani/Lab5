@@ -40,8 +40,12 @@ void Usuario::imprimirUsuario(){};
 
 
 
-bool esVendedor(){
+bool Usuario::esVendedor(){
     return false;
 };
 
 void Usuario::imprimirComentarios(){}
+
+void Usuario::eliminarRefCom(int ID){
+    comentarios.erase(ID);
+}

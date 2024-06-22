@@ -50,6 +50,8 @@ public:
     void imprimirComenYHijos();
     void eliminarRefCom(int)
     std::string GetTComentario();
+    void EliminoComentarioYHijos();
+    ~Comentario();
 };
 
 #endif
