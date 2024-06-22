@@ -271,7 +271,9 @@ while(e) {
                             if (cantP <= iterProd->second->getStock()) {
                                 CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
                                 comprasPro[codP]= compraP; 
-                                compra->asociarCompraProd(compraP);
+                                iterProd->second->ingresarCompraProd(compraP); 
+                                compra->asociarCompraProd(compraP, codP); 
+                                compraP->setCompraAsociada(compra); 
                                 int precio = iterProd->second->getPrecio();
                                 precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
                                 compra->sumarAlMonto(precio);
@@ -285,11 +287,11 @@ while(e) {
                     agregar = leerEntero();
                 }
                 compra->imprimirCompraCompleto();
-                printf("/nPresiona 0 para confirmar la compra/n"); //NO DICE EN EL CASO DE USO PERO HABRIA QUE AGREGAR OPCION PARA DESCARTAR COMPRA???
+                printf("/nPresiona 0 para confirmar la compra/n");
                 int a = leerEntero();
                 if (a == 0) {
                     iterC->second->agregarCompra(compra); //asocio el cliente con la compra
-                } //sino destruyo la compra y tendria que restaurar el stock tmb
+                } 
             }
             break;
         }
@@ -363,17 +365,17 @@ while(e) {
             break;
         case 'j':
           printf("\nOpción 'j' seleccionada: Enviar producto.\n");
-            contUsu.imprimirVendedores(); //solo los nicknames
+            contUsu->imprimirVendedores(); //solo los nicknames
             printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
             std::string vend;
             std::cin.ignore();
             std::getline(std::cin, vend);   
-            Vendedor* vnd=contUsu.buscarPorNombre(vend);
+            Vendedor* vnd=contUsu->buscarPorNombre(vend);
             vnd->imprimirProdsConCompraPendDeEnvio();
             printf("\nIngrese el codigo del producto que quiere seleccionar\n");
             int prod = leerEntero();
-            Producto* produ = contProdu.buscarProducto(prod); 
-            contProdu.imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
+            Producto* produ = contProdu->buscarProducto(prod); 
+            contProdu->imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
             printf("\nIngrese el id de la compra que quiere seleccionar\n");
             int id=leerEntero();
             produ->findCompraProd(id)->setEnviado(true);

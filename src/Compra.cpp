@@ -58,19 +58,21 @@ void Compra::sumarAlMonto(int pre){
     this->MontoFinal += pre;
 };
 
-
-void Compra::asociarCompraProd(CompraProd* cp){
-    compraProducto.insert(cp);
+void Compra::asociarCompraProd(CompraProd* cp, int cod){
+    this->compraProducto[cod] = cp;
 };
 
 void Compra::imprimirCompraCompleto(){
     printf("/nResumen Compra:/n");
-    TFecha fecha = this->fecha;
-    fecha.imprimirFecha();
+    TFecha* fecha = this->fecha;
+    fecha->imprimirFecha();
     int monto = this->MontoFinal;
     printf("/nMonto Final: $%d/n", monto);
     printf("/nDetalle productos:/n");
-    for (auto it = this->productos.begin(); it != this->productos.end(); i++) {
-        it->second.imprimirProducto(); //TERMINARRRR
+    for (auto it = this->productos.begin(); it != this->productos.end(); it++) {
+        it->second->imprimirProducto(); 
+        int codP = it->second->getCodigo();
+        std::map<int, CompraProd*> compraPro = it->second->getCompraProd();
+        compraPro[codP]->imprimirCompraProd();
     }
 };
