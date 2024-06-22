@@ -9,7 +9,7 @@
 #include "Producto.h"
 #include "Compra.h"
 
-
+class Compra; //forward declaration
 class CompraProd{
 private:
     int cantidad;
