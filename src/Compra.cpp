@@ -3,13 +3,13 @@
 #include "TFecha.h"
 
 
-Compra::Compra(TFecha* f, int monto){
+Compra::Compra(TFechaActual* f, int monto){
     this->fecha = f;
     this->MontoFinal = monto;
 };
 
 //getters
-TFecha* Compra::getFecha(){
+TFechaActual* Compra::getFecha(){
     return this->fecha;
 };
 
@@ -17,11 +17,11 @@ float Compra::getMontoFinal(){
     return this->MontoFinal;
 };
 
-std::map<std::string,Producto*> Compra::getProductos(){
+std::map<int,Producto*> Compra::getProductos(){
     return this->productos;
 };
 
-std::set<CompraProd*> Compra::getCompraProducto(){
+std::map<int, CompraProd*> Compra::getCompraProducto(){
     return this->compraProducto;
 };
 
@@ -34,9 +34,9 @@ int Compra::getId(){
 }
 
 //setters
-void Compra::setFecha(const TFecha& f){
+/*void Compra::setFecha(const TFechaActual& f){
     this->fecha = f;
-};
+};*/
 
 void Compra::setMontoFinal(int monto){
     this->MontoFinal = monto;
@@ -65,7 +65,7 @@ void Compra::asociarCompraProd(CompraProd* cp, int cod){
 
 void Compra::imprimirCompraCompleto(){
     printf("/nResumen Compra:/n");
-    TFecha* fecha = this->fecha;
+    TFechaActual* fecha = this->fecha;
     fecha->imprimirFecha();
     int monto = this->MontoFinal;
     printf("/nMonto Final: $%d/n", monto);

@@ -17,7 +17,7 @@
 #include "DataUsuario.h"
 
 
-class ContUsuario {
+class ContUsuario:public IContUsuario {
 private:
     ContUsuario();
     static ContUsuario * instanciaContUsu;
@@ -46,6 +46,8 @@ public:
     bool estaUsuario(std::string); 
     void ingresarDatosVendedor(DataVendedor data); //agrega un vendedor
     void ingresarDatosCliente(DataCliente data); //agrega un cliente 
+    Vendedor* findVend(std::string);
+    bool esVaciaVendedor();
     //funciones del MAPA Coment
     Comentario* findComen(int ID);
 
@@ -61,7 +63,7 @@ public:
     void listarVendedoresNoSubsXCliente(Cliente* cli);
     void agregarSuscripcion();
     std::set<TNotificacion> listarNotificaciones(std::string nickname);
-    std::set<std::string> listarVendSuscripto(std::string nickC);
+    void listarVendSuscripto(Cliente* cli);
     void eliminarSuscripciones();
     void listarNicknamesVendedores();
     std::map<std::string, Cliente*> getColClientes();
