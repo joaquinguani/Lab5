@@ -15,7 +15,7 @@
 
 class Compra {
 private:
-    TFecha* fecha;
+    TFechaActual* fecha;
     int MontoFinal;
     //std::set<CompraProd*> compraProducto; //chequear 
     std::map<int, CompraProd*> compraProducto; //la clave es el cod del producto
@@ -25,16 +25,15 @@ private:
     
 public:
     // Constructor
-    Compra(TFecha* f, int monto);
+    Compra(TFechaActual* f, int monto);
 
 
     // Getters
-    TFecha* getFecha();
+    TFechaActual* getFecha();
     float getMontoFinal();
-    std::map<std::string,Producto*> getProductos();
+    std::map<int,Producto*> getProductos();
     int getId();
-    
-    std::set<CompraProd*> getCompraProducto();
+    std::map<int, CompraProd*> getCompraProducto();
     Cliente* getClienteAsociado();
 
     // Setters
