@@ -3,7 +3,7 @@
 #include "TFecha.h"
 
 
-Compra::Compra(TFecha f, int monto){
+Compra::Compra(TFecha* f, int monto){
     this->fecha = f;
     this->MontoFinal = monto;
 };
@@ -19,15 +19,15 @@ float Compra::getMontoFinal(){
 
 std::map<std::string,Producto*> Compra::getProductos(){
     return this->productos;
-}
+};
 
 std::set<CompraProd*> Compra::getCompraProducto(){
     return this->compraProducto;
-}
+};
 
 Cliente* Compra::getClienteAsociado(){
     return clienteAsociado;
-}
+};
 
 int Compra::getId(){
     return id;
