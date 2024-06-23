@@ -5,15 +5,16 @@
 #include <string>
 #include <vector>
 #include <memory>
-
+#include "Cliente.h"
 #include "TNotificacion.h"
 
 
 class ISuscripciones{
-    public: virtual  void notificar(TNotificacion)=0;
-            ISuscripciones();
-            virtual ~ISuscripciones(){};
-            virtual void agregarSuscriptor(Cliente* cliente);
+    public: 
+        // virtual void notificar(TNotificacion);
+        ISuscripciones();
+        virtual ~ISuscripciones(){};
+        virtual void agregarSuscriptor(Cliente* cliente);
 };
 
 #endif
