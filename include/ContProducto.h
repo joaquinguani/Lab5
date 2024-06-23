@@ -7,7 +7,6 @@
 #include <memory>
 #include <map>
 #include "TFecha.h"
-#include "TCodNomProd.h"
 #include "Producto.h"
 #include "Compra.h"
 #include "Promocion.h"
@@ -29,7 +28,7 @@ public:
     //getters
     std::map<int, Producto*> getColProductos();
     std::set<Compra*> getColCompra();
-    std::map<std::string, Promocion *> getcolPromocion();
+    //std::map<std::string, Promocion *> getcolPromocion(); //SE DEBERIA USAR EN listarPromosVigentes
     int getCodigoProducto();
 
     //mapaProducto
@@ -38,16 +37,16 @@ public:
     Producto* find(int);
 
     //otros metodos
-    void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
-    std::set<std::string> listarNicknamesVendedores();
-    void seleccionarNickname(std::string nombre);
+    //void ingresarDatosPromo(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento);
+    //std::set<std::string> listarNicknamesVendedores();
+    //void seleccionarNickname(std::string nombre);
     void listarProductosDisp();
     void listarProductosDisp(Vendedor* vendedor); //una con vendedor asociado para el caso E
-    void confirmarAltaPromo();
+    //void confirmarAltaPromo();
     void listarProductos(); //que sea void y despues dentro de la funcion imprima
-    void ingresarProducto(std::string cod, int cantidad);
-    Compra mostrarCompra();
-    void eliminarComDeProd(std::string cod, int ID);
+    //void ingresarProducto(std::string cod, int cantidad);
+    //Compra mostrarCompra();
+    //void eliminarComDeProd(std::string cod, int ID);
     std::set<Promocion*> listarPromosVigentes();
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
@@ -55,12 +54,11 @@ public:
     void agregarPromocion(Promocion* promo);
     void sumarCodigoProducto();
 
-    Producto* buscarProdPorNombre(std::string produ);
+    //Producto* buscarProdPorNombre(std::string produ);
     //caso j
     void imprimirComprasConProdPendiente(Producto*);
 
     virtual ~ContProducto(){}; //destructor
-    std::set<Promocion*> listarPromosVigentes();
 };
 
 #endif

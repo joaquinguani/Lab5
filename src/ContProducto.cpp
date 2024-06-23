@@ -66,10 +66,6 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
 };
 
 
-int ContProducto::getCodigoProducto(){
-    return codigoProducto;
-}
-
 void ContProducto::sumarCodigoProducto(){
     ++codigoProducto;
 }
@@ -89,13 +85,13 @@ void ContProducto::listarProductos()  {
         }
 };
 
-void ContProducto::listarProductosDisp() {
-    for ( auto pair : colProductos ) {
-        if (pair.second->getStock() > 0) {
-            printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
-        }
-    }
-};
+// void ContProducto::listarProductosDisp() {
+//     for ( auto pair : colProductos ) {
+//         if (pair.second->getStock() > 0) {
+//             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
+//         }
+//     }
+// }; //ESTA DOS VECES PERO FUNCIONAN DISTINTO
 
 
 Producto* ContProducto::buscarProducto(int clave){
