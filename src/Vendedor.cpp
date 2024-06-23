@@ -50,15 +50,15 @@ void Vendedor::insertarProducto(Producto* nuevoProducto){
 
 
 
-void Vendedor::imprimirProdsVendedorCodNom(Vendedor v){
+void Vendedor::imprimirProdsVendedorCodNom(){
     std::set<Producto*>::iterator it;
-    std::set<Producto*> prods=v->getProductos();
+    std::set<Producto*> prods=this->getProductos();
         for (it=prods.begin(); it != prods.end(); ++it){
                 (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
 }
 
-}
+
 void imprimirDatosVend(){
     
 }
@@ -111,12 +111,12 @@ void Vendedor::listarProductosEnVenta() {
     }}
 
 void Vendedor::listarPromocionesVigentes() {
-        for (const auto& promo : promociones) {
+        for (const auto& promo : colPromocion) {
             if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
     }
-}
+
 
 void Vendedor::agregarSuscriptor(Cliente* cliente){
     suscriptores[cliente->getNickname()]=cliente;

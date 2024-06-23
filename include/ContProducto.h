@@ -20,10 +20,7 @@ private:
     std::map<int, Producto *> colProductos; //cambie a col de nuevo jeje
     ContProducto();
     static ContProducto * instanciaContProd;
-    std::map<std::string, Compra *> colCompra;
-
     std::set<Compra *> colCompra; //cambie a set
-
     std::map<std::string, Promocion *> colPromocion;
 public:
     //constructor
@@ -32,6 +29,7 @@ public:
     //getters
     std::map<int, Producto*> getColProductos();
     std::set<Compra*> getColCompra();
+    int getCodigoProducto();
 
     //mapaProducto
     void insertarProducto(Producto*);
@@ -53,8 +51,6 @@ public:
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
     
-
-    int getCodigoProducto();
     void sumarCodigoProducto();
 
     Producto* buscarProdPorNombre(std::string produ);

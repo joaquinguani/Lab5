@@ -11,7 +11,7 @@
 #include "Producto.h"
 
 // Constructor
-Promocion::Promocion(std::string nombre, std::string descripcion, TFecha fechaVenc, int descuento){
+Promocion::Promocion(std::string nombre, std::string descripcion, TFecha* fechaVenc, int descuento){
     this->nombre = nombre;
     this->descripcion= descripcion;                                                          
     this->fechaVenc =fechaVenc;
@@ -27,7 +27,7 @@ std::string Promocion::getDescripcion() {
     return descripcion;
 }
 
-TFecha Promocion::getFechaVenc() {
+TFecha* Promocion::getFechaVenc() {
     return fechaVenc;
 }
 
@@ -48,7 +48,7 @@ void Promocion::setDescripcion(const std::string& desc) {
     descripcion = desc;
 }
 
-void Promocion::setFechaVenc(const TFecha& fVenc) {
+void Promocion::setFechaVenc( TFecha* fVenc) {
     fechaVenc = fVenc;
 }
 
@@ -60,7 +60,7 @@ void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
 };
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,std::string cantMin) {
+void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
     ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
     promProductos.insert(p);
 };
@@ -92,7 +92,7 @@ void Promocion::imprimirPromocion(){
      std::cout << "Nombre: " << getNombre() << std::endl;
      std::cout << "Descripción: " << getDescripcion() << std::endl;
      std::cout << "Fecha de Vencimiento: ";
-     getFechaVenc().imprimirFecha();
+     getFechaVenc()->imprimirFecha();
      std::cout << std::endl;
      std::cout << "Descuento: " << getDescuento() << "%" << std::endl;
 };

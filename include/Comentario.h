@@ -48,7 +48,7 @@ public:
     void EliminoComentario(int idComentario);
     void imprimirComentario();
     void imprimirComenYHijos();
-    void eliminarRefCom(int)
+    void eliminarRefCom(int);
     std::string GetTComentario();
     void EliminoComentarioYHijos();
     ~Comentario();

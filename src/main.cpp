@@ -15,7 +15,6 @@
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
-#include "TCategoria.h"
 
 #include "ContProducto.h"
 
@@ -31,6 +30,7 @@ int main(){
 std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
+
 
 ContUsuario* contUsu = ContUsuario::getInstanciaContUsu();
 ContProducto* contProdu = ContProducto::getInstanciaContProd();

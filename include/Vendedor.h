@@ -42,7 +42,7 @@ class Vendedor:public Usuario, public ISuscripciones{
 
            void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
-           void imprimirProdsVendedorCodNom(Vendedor);
+           void imprimirProdsVendedorCodNom();
            void imprimirProdsConCompraPendDeEnvio();
            void listarProductosEnVenta(); 
            void listarPromocionesVigentes();
