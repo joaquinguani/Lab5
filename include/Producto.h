@@ -73,6 +73,8 @@ class Producto {
         void imprimirComDeProd();
         bool estaComen(int);
         void asociarVendedor(Vendedor* vend);
+        void asociarCompraProd(CompraProd* compraP, int id);
+
         //Destructor
         ~Producto();
         

@@ -149,11 +149,11 @@ void Producto::imprimirComDeProd(){
 };
 
 bool Producto::estaComen(int ID){
-    return comentarios[ID]!=NULL;
+    return this->comentarios[ID]!=NULL;
 };
 
 void Producto::eliminarRefComen(int ID){
-    comentarios.erase(ID);
+    this->comentarios.erase(ID);
 };
 
 void Producto::ingresarCompraProd(CompraProd* compraP){
@@ -161,5 +161,9 @@ void Producto::ingresarCompraProd(CompraProd* compraP){
 };
 
 void Producto::asociarVendedor(Vendedor* vend){
-    vendAsociado=vend;
-}
+    this->vendAsociado=vend;
+};
+
+void Producto::asociarCompraProd(CompraProd* compraP, int id){
+    this->compraProd[id] = compraP;
+};

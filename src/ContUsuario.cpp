@@ -83,7 +83,7 @@ void ContUsuario::imprimirVendedores(){
         }
 };
 Usuario* ContUsuario::buscarPorNombre(std::string usuario){
-        return colUsuarios[usuario];
+        return colUsuarios[usuario];    
 }
 Vendedor* ContUsuario::buscarVendPorNombre(std::string vend){ //aca decia Usuario*, puse Vendedor*
         return colVendedores[vend];
