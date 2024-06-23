@@ -52,6 +52,7 @@ class Cliente:public Usuario,public ISuscripciones {
         void consultarNotificaciones();
         // void notificar(TNotificacion);
         void agregarCompra(Compra* compra);
+        void agregarNotificacion(TNotificacion* noti);
 };
 
 

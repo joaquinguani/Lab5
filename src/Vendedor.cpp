@@ -124,15 +124,16 @@ void Vendedor::listarPromocionesVigentes() { ///en ContProducto hay una funcion 
 
 
 void Vendedor::agregarSuscriptor(Cliente* cliente){
-    suscriptores[cliente->getNickname()]=cliente;
+    suscriptores.insert(cliente);
 }
 
 
 void Vendedor::eliminarSuscriptor(Cliente* cli){
-    suscriptores.erase(cli->getNickname());
+    suscriptores.erase(cli);
 }
 
-void Vendedor::notificarClientes(Promocion* p){
-    std::map<std::string,ISuscripciones*> it;
-    
+void Vendedor::notificarClientes(TNotificacion* noti){
+    for(ISuscripciones* cliente: suscriptores){
+        cliente->agregarNotificacion(noti);
+    }  
 }
