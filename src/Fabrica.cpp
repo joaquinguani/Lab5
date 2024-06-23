@@ -11,6 +11,7 @@
 #include "ContProducto.h"
 
  
+
 Fabrica::Fabrica(){
     //contUsuario* contUsu = new ContUsuario();
     //contProducto* = new ContProducto();
@@ -33,7 +34,7 @@ IContProducto* Fabrica::getIContProducto() {
 ;}
 
 
-// Fabrica::~Fabrica() {
-//     delete contUsuario;
-//     delete contProducto;
-// }
+Fabrica::~Fabrica() {
+    delete contUsuario;
+    delete contProducto;
+}
