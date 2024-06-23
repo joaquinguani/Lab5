@@ -44,6 +44,11 @@ class Vendedor:public Usuario, public ISuscripciones{
            void imprimirProdsConCompraPendDeEnvio();
            void listarProductosEnVenta(); 
            void listarPromocionesVigentes();
+           //ISUSCRIPCIONES DE CLIENTE
+           void agregarNotificacion(TNotificacion*);
+           void consultarNotificaciones();
+           void agregarSuscripcion(Vendedor*);
+           void eliminarSuscripcion(Vendedor*);
 
         //    void setsuscriptores(std::set<std::string>);
         //    bool estaSuscrito(std::string);
