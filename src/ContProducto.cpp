@@ -56,7 +56,7 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::map<std::string, Promocion *>::iterator it;
     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
-        if (it->second->getFechaVenc()->mayoroIgual(fecha)){
+        if (it->second->getFechaVenc()->mayoroIgual(fecha)){ //NO FUNCA PQ SON DE DISTINTO TIPO LAS FECHAS
             promosVigentes.insert(it->second);
             it->second->imprimirPromocion();
             //se podria imprimir aca o afuera recorriendo la lista
@@ -123,10 +123,10 @@ Producto* ContProducto::find(int codigo){
 
 void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
     std::map<int, CompraProd*>::iterator it;
-    std::map<int, CompraProd*> comProd = prod->getCompraProd();
+    std::map<int, CompraProd*> comProd = prod->getCompraProd(); //obtengo el mapa de compraprod
     for(it=comProd.begin(); it != comProd.end(); ++it){
         if(!it->second->getEnviado()){
-            std::string nickCli = it->second->getCompraAsociada()->getClienteAsociado()->getNickname();
+            std::string nickCli = it->second->getCompraAsociada()->getClienteAsociado()->getNickname(); //obtengo el nick del cliente asociado a la compra asociada al compraProd
             int id = it->second->getCompraAsociada()->getId();     
             TFechaActual* fecha = it->second->getCompraAsociada()->getFechaCompra();
             std::cout << "(";

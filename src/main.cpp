@@ -370,7 +370,7 @@ while(e) {
             printf("\nIngrese el codigo del producto que quiere seleccionar\n");
             int prod = leerEntero();
             Producto* produ = contProdu->buscarProducto(prod); 
-            contProdu->imprimirComprasConProdPendiente(produ);//no entiendo bien que imprime
+            contProdu->imprimirComprasConProdPendiente(produ);
             printf("\nIngrese el id de la compra que quiere seleccionar\n");
             int id=leerEntero();
             produ->findCompraProd(id)->setEnviado(true);

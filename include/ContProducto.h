@@ -20,7 +20,7 @@ private:
     ContProducto();
     static ContProducto * instanciaContProd;
     std::set<Compra *> colCompra; //cambie a set
-    std::map<std::string, Promocion *> colPromocion;
+    std::map<std::string, Promocion *> colPromocion; //la clave es el nombre de la promo 
 public:
     //constructor
     static ContProducto* getInstanciaContProd();

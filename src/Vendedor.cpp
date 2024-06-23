@@ -72,6 +72,7 @@ void Vendedor::imprimirProdsConCompraPendDeEnvio(){
     for (it=prods.begin(); it != prods.end(); ++it){
         std::map<int, CompraProd*> comprProd = (*it)->getCompraProd();
         std::map<int, CompraProd*>::iterator itComProd;
+        itComProd = comprProd.begin();
         bool yaImprimio = false;
         while (!yaImprimio || itComProd!=comprProd.end()){
             if(!itComProd->second->getEnviado()){
