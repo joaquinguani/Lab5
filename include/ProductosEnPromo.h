@@ -14,7 +14,8 @@ private:
     Producto  *producto;
 public:
     //constructor
-    ProductosEnPromo(Producto*, int); // y esto?
+    ProductosEnPromo(Producto* prod, int cantMin); // y esto?
+
 
     //metodos de acceso
     int getCantidadMin();

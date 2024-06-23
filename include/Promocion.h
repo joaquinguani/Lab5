@@ -16,7 +16,7 @@ private:
     std::string descripcion;
     TFecha* fechaVenc;
     int descuento;
-    std::set<ProductosEnPromo*> promProductos;
+    std::map<int, ProductosEnPromo*> promProductos; //la clave es el codigo del producto
     std::set<Producto*> productos;
 
 public:
@@ -30,6 +30,7 @@ public:
     TFecha* getFechaVenc();
     int getDescuento();
     std::set<Producto*> getProductos();
+    
 
 
     // Setters

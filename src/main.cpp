@@ -40,7 +40,7 @@ std::string nick;
 std::string Contrasena;
 TFecha* fecha;
 int codigoProducto = 0;
-
+bool booleano = true;//booleano para hacer cualquiera
 bool e = true;
 
 while(e) {
@@ -168,21 +168,19 @@ while(e) {
             break;
             
            case 'd':{ //cosecha me cagaste la vida
-             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
+            printf("\nOpción 'd' seleccionada: Consultar producto.\n");
 
-            contProdu.listarProductos();
+            contProdu->listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
-            int codProd;
-            std::cin.ignore();
-            std::getline(std::cin, codProd);
-            auto iterprodu = contProdu.getProductos().find(codProd);
-            if (iterprodu != contProdu.getProductos().end()){
-                Producto* product = iterprodu->second;
-                Vendedor* vendedor = product->getVendAsociado(); 
-                std::string nickVendAsociado = vendedor->getNickname();
-               printf("Codigo: %d\n Cantidad en stock: %d\n Precio: %d\n Nombre: %s\n Descripcion: %s\n Categoria: %s\n, Nombre del Vendedor:%s\n",  iterprodu->first, iterprodu->second->getStock(), iterprodu->second->getPrecio(),
-                  iterprodu->second->getNombre(), iterprodu->second->getDescripcion(), iterprodu->second->getCategoria(),nickVendAsociado);
-            }   printf("Error: No existe un producto con dicho nombre\n");
+            Producto* prod = NULL;
+            while (prod != NULL){
+                int codProd = leerEntero();
+                prod = contProdu->find(codProd);
+            }
+            prod->imprimirProducto();
+            
+            
+
             break;
          }
         case 'e':{
@@ -212,8 +210,8 @@ while(e) {
             bool seguir=true;
             while(seguir){
                 printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
-                std::string c=leerCadena();
-                Producto* prod=contProdu->buscarproducto(c);
+                int c=leerEntero();
+                Producto* prod=contProdu->buscarProducto(c);
                 printf("\nIngrese la cantidad minima de este producto para aplicar la promocion.\n");
                 int cantmin=leerEntero();
                 p->agregarProdAPromo(prod);
@@ -227,7 +225,8 @@ while(e) {
                 //falta lo de suscripciones lo demas esta creo
             }
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
-            contProdu->colPromocion[nom]=p;
+            contProdu->agregarPromocion(p);
+            vnd->notificarClientes(p);
             break;
         }
         case 'f':{

@@ -108,14 +108,15 @@ void Vendedor::listarProductosEnVenta() {
         for (const auto& prod : productos) {
             std::cout << "Producto: " << prod->getNombre() << std::endl;
         }
-    }}
+    }
+}
 
 void Vendedor::listarPromocionesVigentes() {
         for (const auto& promo : colPromocion) {
             if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
-    }
+}
 
 
 void Vendedor::agregarSuscriptor(Cliente* cliente){
@@ -125,4 +126,9 @@ void Vendedor::agregarSuscriptor(Cliente* cliente){
 
 void Vendedor::eliminarSuscriptor(Cliente* cli){
     suscriptores.erase(cli->getNickname());
+}
+
+void Vendedor::notificarClientes(Promocion* p){
+    std::map<std::string,ISuscripciones*> it;
+    
 }

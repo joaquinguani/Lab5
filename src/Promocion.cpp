@@ -60,21 +60,16 @@ void Promocion::agregarProdAPromo(Producto* producto) {
     productos.insert(producto);
 };
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) {
+
+void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) { //no se cual de las dos esta bien
     ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
     promProductos.insert(p);
 };
 
-void Promocion::aplicarDescuento(int idProducto, int descuento) {
-    // Aquí se debe implementar la lógica para aplicar un descuento a un producto específico.
-    // Ejemplo de implementación básica:
-    // for (auto& producto : promproductos) {
-    //     if (producto->getIdProducto() == idProducto) {
-    //         producto->setDescuento(descuento);
-    //         break;
-    //     }
-    // }
-}
+
+void Promocion::agregarProdAPromoCantMin(Producto* producto, int cantMin) {
+    ProductosEnPromo* p = new ProductosEnPromo(producto,cantMin);
+    promProductos[producto->getCodigo()] = p;
 
 void Promocion::devolverDatosProdsPromo(){
     std::set<Producto*>::iterator it;
@@ -95,4 +90,8 @@ void Promocion::imprimirPromocion(){
      getFechaVenc()->imprimirFecha();
      std::cout << std::endl;
      std::cout << "Descuento: " << getDescuento() << "%" << std::endl;
+};
+
+std::map<int, ProductosEnPromo*> Promocion::getPromProductos(){
+    return this->promProductos;
 };

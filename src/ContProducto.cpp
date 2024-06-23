@@ -27,6 +27,33 @@ void ContProducto::insertarProducto(Producto* prod){
 }
 
 
+Promocion* ContProducto::findPromocion(std::string string){
+    return colPromocion[string];
+}
+
+void ContProducto::agregarPromocion(Promocion* promo){
+    std::string nombre = promo->getNombre();
+    colPromocion[nombre] = promo;
+}
+
+std::set<Promocion*> ContProducto::listarPromosVigentes(){
+    std::set<Promocion*> promosVigentes;
+    TFechaActual* fecha;
+    fecha = TFechaActual::getInstanciaFecha();
+    //iterador que vaya por toda la coleccion de promociones
+    std::map<std::string, Promocion *>::iterator it;
+    for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
+        //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
+        if (it->second->getFechaVenc().mayoroIgual(fecha)){
+            promosVigentes.insert(it->second);
+            it->second->imprimirPromocion();
+            //se podria imprimir aca o afuera recorriendo la lista
+            //creo q es mas facil asi, la lista pierde sentido
+         }
+    };
+};
+
+
 int ContProducto::getCodigoProducto(){
     return codigoProducto;
 }
@@ -51,6 +78,10 @@ void ContProducto::listarProductos()  {
     for (auto pair : colProductos) {
         printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
     }
+    std::map<int, Producto *>::iterator it;
+    for (it= colProductos.begin(); it != colProductos.end(); ++it){
+            printf("Código: %d, Producto: %s\n", it->first, it->second->getNombre());
+        }
 };
 
 void ContProducto::listarProductosDisp() {
@@ -113,6 +144,7 @@ void ContProducto::listarProductosDisp(){
     } 
 };
 
+
 std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::set<Promocion*> promosVigentes;
     TFechaActual* fecha;
@@ -129,3 +161,4 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
          }
     };
 };
+
