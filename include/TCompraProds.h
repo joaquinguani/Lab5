@@ -23,4 +23,4 @@ public:
 
 #endif*/
 
-//lo usamos??
+//creo que no lo usamos

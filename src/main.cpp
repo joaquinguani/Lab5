@@ -39,6 +39,8 @@ IContProducto* contProdu = fabrica->getIContProducto();
 //ContProducto* contProdu = ContProducto::getInstanciaContProd();
 //TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
 
+TFechaActual* fechaSist = TFechaActual::getInstanciaFecha(); //la instancia de fecha actual
+
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
@@ -109,7 +111,7 @@ while(e) {
             printf("\nIngresar dia de nacimiento de usuario\n");
             int dia = leerEntero();
 
-            fecha = new TFecha(dia, mes, ano);
+            fecha = new TFecha(dia, mes, ano); 
             if(venOcli == 'a'){
                 printf("\nIngresar ciudad de cliente\n");
                 std::string ciudad = leerCadena();
@@ -234,9 +236,7 @@ while(e) {
                 std::string nom = leerCadena();
                 Promocion* promo = contProdu->buscarPromoPorNombre(nom);
                 promo->devolverDatosProdsPromo();
-                break;
-            }else{   
-            }//???????????????? faltaria algo aca??
+            }
             break;
         }
         case 'g': {
