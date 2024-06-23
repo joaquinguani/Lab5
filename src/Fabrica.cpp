@@ -16,7 +16,7 @@
     //contProducto* = new ContProducto();
 }
 
-Fabrica* Fabrica::getInstance() {
+Fabrica* Fabrica::getInstancia() {
     if (instancia == nullptr) {
         instancia = new Fabrica();
     }
@@ -24,11 +24,11 @@ Fabrica* Fabrica::getInstance() {
 }
 
 IContUsuario* Fabrica::getIContUsuario() {
-    return ContUsuario.getInstancia();
+    return ContUsuario::getInstanciaContUsu();
 };
 
 IContProducto* Fabrica::getIContProducto() {
-    return ContProductos.getInstancia(); //??????? es lo que dice el teorico pero aparece mal!!!!
+    return ContProducto::getInstanciaContProd(); 
 ;}
 
 Fabrica::~Fabrica() {

@@ -14,7 +14,7 @@
 #include <cstdio>
 
 
-class ContProducto {
+class ContProducto : public IContProducto {
 private:
     int codigoProducto;
     std::map<int, Producto *> colProductos; //cambie a col de nuevo jeje
@@ -51,11 +51,7 @@ public:
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
     Promocion* findPromocion(std::string);
-    void agregarPromocion(Promocion* promo)
-
-
-    int getCodigoProducto();
-
+    void agregarPromocion(Promocion* promo);
     void sumarCodigoProducto();
 
     Producto* buscarProdPorNombre(std::string produ);

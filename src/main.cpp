@@ -22,6 +22,7 @@
 #include "TFecha.h"
 #include "Producto.h"
 #include "TFechaActual.h"
+#include "Fabrica.h"
 
 int main(){
 //asigno cosas iniciales, creo controladores e interfaces, agrego colecciones (diccionarios e interfaces)
@@ -31,10 +32,15 @@ std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
 
+//con fabrica
+Fabrica* fabrica = Fabrica::getInstancia();
+IContUsuario* contUsu = fabrica->getIContUsuario();
+IContProducto* contProdu = fabrica->getIContProducto();
 
-ContUsuario* contUsu = ContUsuario::getInstanciaContUsu();
-ContProducto* contProdu = ContProducto::getInstanciaContProd();
-TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
+
+//ContUsuario* contUsu = ContUsuario::getInstanciaContUsu();
+//ContProducto* contProdu = ContProducto::getInstanciaContProd();
+//TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
 
 std::string nick;
 std::string Contrasena;

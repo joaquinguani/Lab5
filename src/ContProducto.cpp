@@ -7,8 +7,17 @@
 #include <string>
 
 
+ContProducto * ContProducto::instanciaContProd = NULL;
+
 ContProducto::ContProducto(){
     codigoProducto = 0;
+};
+
+ContProducto* ContProducto::getInstanciaContProd() {
+    if (instanciaContProd == nullptr) {
+        instanciaContProd = new ContProducto();
+    }
+    return instanciaContProd;
 };
 
 
@@ -61,13 +70,6 @@ int ContProducto::getCodigoProducto(){
 void ContProducto::sumarCodigoProducto(){
     ++codigoProducto;
 }
-
-ContProducto* ContProducto::getInstanciaContProd() {
-    if (instanciaContProd == nullptr) {
-        instanciaContProd = new ContProducto();
-    }
-    return instanciaContProd;
-};
 
 
 Promocion* ContProducto::buscarPromoPorNombre(std::string promo){ //aca decia Usuario*, puse Vendedor*
