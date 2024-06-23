@@ -201,7 +201,7 @@ while(e) {
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion.\n");
             std::string vend;
             vend=leerCadena();
-            Vendedor* vnd=contUsu->buscarPorNombre(vend);
+            Vendedor* vnd=contUsu->buscarVendPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
             Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
             bool seguir=true;
@@ -411,7 +411,7 @@ while(e) {
             while(seguir){
                 printf("\nIngrese el nickname del vendedor al que desea suscribirse.\n");
                 std::string c=leerCadena();
-                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                Vendedor* vnd=contUsu->buscarVendPorNombre(c);
                 cliente->agregarSuscripcion(vnd);
                 vnd->agregarSuscriptor(cliente);
                 printf("\n¿Desea agregar otra suscripcion? (s/n): .\n");
@@ -446,7 +446,7 @@ while(e) {
             while(seguir){
                 printf("\nIngrese el nickname del vendedor al que desea desuscribirse.\n");
                 std::string c=leerCadena();
-                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                Vendedor* vnd=contUsu->buscarVendPorNombre(c);
                 cliente->eliminarSuscripcion(vnd);
                 vnd->eliminarSuscriptor(cliente);
                 printf("\n¿Desea eliminar otra suscripcion? (s/n): .\n");

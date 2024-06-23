@@ -39,7 +39,7 @@ public:
     virtual std::map<std::string, Vendedor*> getColVendedores()=0;
     virtual Cliente* buscarClientePorNombre(std::string cli)=0;
     virtual Vendedor* buscarVendPorNombre(std::string vend)=0;
-
+    virtual Usuario* buscarPorNombre(std::string)=0;
     virtual ~IContUsuario(){}; //destructor 
 };
 
