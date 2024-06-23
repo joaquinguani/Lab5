@@ -221,6 +221,7 @@ while(e) {
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
+                seguir = !(respuesta == 'n' || respuesta == 'N');
                 //falta lo de suscripciones lo demas esta creo
             }
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
@@ -239,9 +240,9 @@ while(e) {
                 Promocion* promo = contProdu->buscarPromoPorNombre(nom);
                 promo->devolverDatosProdsPromo();
                 break;
-            }else{
-                break;
+            }else{   
             }
+            break;
         }
         case 'g': {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");

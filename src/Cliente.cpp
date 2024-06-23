@@ -81,9 +81,9 @@ void Cliente::agregarCompra(Compra* compra){
 
 
 
-// bool esVendedor(){
-//     return false;
-// };
+bool Cliente::esVendedor(){
+    return false;
+};
 
 std::map<std::string,Vendedor*> Cliente::getColSuscripciones(){
     return this->colSuscripciones;
@@ -110,3 +110,4 @@ void Cliente::consultarNotificaciones(){
         std::cout << std::endl;
     }
 }
+

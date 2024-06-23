@@ -5,13 +5,13 @@
 #include <string>
 #include <vector>
 #include <memory>
-//#include <sstream>
+#include <sstream>
 #include "Producto.h"
 
 class ProductosEnPromo{
 private:
     int cantidadMin;
-    Producto  *producto;
+    Producto* producto;
 public:
     //constructor
     ProductosEnPromo(Producto* prod, int cantMin); // y esto?

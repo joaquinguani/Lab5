@@ -16,6 +16,9 @@ std::map<int, Producto*> ContProducto::getColProductos() {
     return this->colProductos;
 };
 
+int ContProducto::getCodigoProducto(){
+    return codigoProducto;
+}
 
 std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;

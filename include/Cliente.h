@@ -6,13 +6,14 @@
 #include <vector>
 #include <memory>
 #include <sstream>
+#include <stack>
 #include "Usuario.h"
-//#include "ISuscripciones.h"
+#include "ISuscripciones.h"
 #include "TDireccion.h"
 #include "TNotificacion.h"
 #include "DataCliente.h"
 #include "TFecha.h"
-#include <stack>
+
 
 class Cliente:public Usuario,public ISuscripciones {
     private: 
@@ -36,8 +37,8 @@ class Cliente:public Usuario,public ISuscripciones {
         std::map<std::string,Vendedor*> getColSuscripciones();
 
         // Setters
-        void setCiudad();
-        void setDireccion();
+        // void setCiudad();
+        // void setDireccion();
         
         void agregarSuscripcion(Vendedor* vendedor);
         void listarComprasRealizadas();
@@ -45,10 +46,10 @@ class Cliente:public Usuario,public ISuscripciones {
 
         // Métodos
         
-        bool esVendedor() const override { return false; };
+        virtual bool esVendedor();
         void eliminarSuscripcion(Vendedor* vnd);
         void consultarNotificaciones();
-        void notificar(TNotificacion);
+        // void notificar(TNotificacion);
         void agregarCompra(Compra* compra);
 };
 

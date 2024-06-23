@@ -23,7 +23,7 @@ std::map<std::string, Usuario *> ContUsuario::getUsuarios(){
 }
 
 int ContUsuario::getCantComen(){
-        return cantComen
+        return cantComen;
 }
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){
@@ -82,7 +82,7 @@ void ContUsuario::imprimirVendedores(){
 };
 
 Vendedor* ContUsuario::buscarVendPorNombre(std::string vend){ //aca decia Usuario*, puse Vendedor*
-        return ColVendedores[vend];
+        return colVendedores[vend];
 };
 
 Cliente* ContUsuario::buscarClientePorNombre(std::string cli){ //aca decia Usuario*, puse Cliente*
