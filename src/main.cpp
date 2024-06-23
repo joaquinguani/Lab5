@@ -11,13 +11,10 @@
 #include "DataCliente.h"
 #include "DataVendedor.h"
 #include "ContProducto.h"
-
 #include "ContUsuario.h"
 #include "leer.h"
 #include "Compra.h"
-
 #include "ContProducto.h"
-
 #include "ContUsuario.h"
 #include "TFecha.h"
 #include "Producto.h"
@@ -101,7 +98,6 @@ while(e) {
             //std::getline(std::cin, Contrasena);
             printf("\nIngresar ano de nacimiento de usuario\n");
             int ano = leerEntero();
-            
             printf("\nIngresar mes de nacimiento de usuario\n");
             int mes = leerEntero();
             printf("\nIngresar dia de nacimiento de usuario\n");
@@ -125,7 +121,6 @@ while(e) {
                 DataVendedor* data = new DataVendedor(nick,Contrasena,*fecha,RUT);
                 contUsu->ingresarDatosVendedor(*data);
             }
-        
             break;
         }
         case 'b':{
@@ -142,11 +137,10 @@ while(e) {
             contUsu->imprimirVendedores();
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend = leerCadena();
-            std::map<std::string,Vendedor *>::iterator iter; //dynamic cast o nah?
+            std::map<std::string,Vendedor *>::iterator iter; 
             if (contUsu->findVend(nickVend) == NULL) {
                 printf("\nError: No existe un vendedor con dicho nickname\n");
             } else {
-        
                 char catProd = 'z';
                 printf("\nIngrese el nombre del producto:\n");
                 std::string nomProd = leerCadena();
@@ -157,19 +151,17 @@ while(e) {
                 printf("\nIngrese la descripcion del producto:\n");
                 std::string descProd = leerCadena();
                 while (catProd != 'c' && catProd != 'b' && catProd != 'a'){
-                printf("\nPresione la tecla correspondiente a la categoria es ropa, electrodomesticos, otros:\n");
-                printf("\na: ropa\nb: electrodomestrico\nc: otros");
-                catProd = leerUnaTecla();
+                    printf("\nPresione la tecla correspondiente a la categoria es ropa, electrodomesticos, otros:\n");
+                    printf("\na: ropa\nb: electrodomestrico\nc: otros");
+                    catProd = leerUnaTecla();
                 }
                 Producto* nuevoProd = new Producto(stockProd, precioProd, nomProd, descProd, catProd);
                 contProdu->insertarProducto(nuevoProd);
-            };
-        };   
+            }
             break;
-            
-           case 'd':{ //cosecha me cagaste la vida
+        } 
+            case 'd':{ //cosecha me cagaste la vida
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
-
             contProdu->listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
             Producto* prod = NULL;
@@ -178,11 +170,8 @@ while(e) {
                 prod = contProdu->find(codProd);
             }
             prod->imprimirProducto();
-            
-            
-
             break;
-         }
+        }
         case 'e':{
             printf("\nOpción 'e' seleccionada: Crear promoción.\n");
             std::string nom;
@@ -242,7 +231,7 @@ while(e) {
                 promo->devolverDatosProdsPromo();
                 break;
             }else{   
-            }
+            }//???????????????? faltaria algo aca??
             break;
         }
         case 'g': {
@@ -360,7 +349,7 @@ while(e) {
         }
             break;
         case 'j':
-          printf("\nOpción 'j' seleccionada: Enviar producto.\n");
+            printf("\nOpción 'j' seleccionada: Enviar producto.\n");
             contUsu->imprimirVendedores(); //solo los nicknames
             printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
             std::string vend;
@@ -439,7 +428,6 @@ while(e) {
             }
             // Consultar y listar notificaciones del cliente
             cliente->consultarNotificaciones();
-
             break;
         };
         case 'n':
@@ -462,7 +450,6 @@ while(e) {
                 seguir = (respuesta == 's' || respuesta == 'S');
                 //falta lo de suscripciones lo demas esta creo
             };
-
             break;
         case 'o':
             printf("\nOpción 'o' seleccionada: Modificar fecha.\n");

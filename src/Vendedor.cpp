@@ -39,7 +39,7 @@ void Vendedor::imprimirUsuario(){
 }
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
-    productos[nuevoProducto->getCodigo()] = nuevoProducto; //es set o map al final??
+    productos.insert(nuevoProducto); //lo cambiaron a set 
 };
 
 
