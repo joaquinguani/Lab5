@@ -22,13 +22,13 @@ class Usuario{
         Usuario(std::string,std::string,TFecha);
         void agregarComen(Comentario *);
         virtual~Usuario();
-            virtual bool esVendedor() const { return false; };
             virtual void imprimirUsuario();
             void imprimirFecha();
             std::string getNickname();
             virtual bool esVendedor();
-            virtual void sacarComentario(int)= 0;
-            virtual void notificar(TNotificacion)=0;
+            // virtual std::set<TComentario> ListarComentarios();
+            // virtual void sacarComentario(int)= 0;
+            // virtual void notificar(TNotificacion)=0;
             std::string getnickname();
             void setnickname(std::string);
             std::string getcontrasena();

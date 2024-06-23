@@ -23,7 +23,7 @@ std::map<std::string, Usuario *> ContUsuario::getUsuarios(){
 }
 
 int ContUsuario::getCantComen(){
-        return cantComen
+        return cantComen;
 }
 
 void ContUsuario::ingresarDatosCliente(DataCliente data){

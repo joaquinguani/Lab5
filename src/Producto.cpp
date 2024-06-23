@@ -4,7 +4,6 @@
 #include <set>
 #include "Producto.h"
 //#include "TCategoria.h"
-#include "Producto.h"
 
 Producto::Producto( int stk, int pre, std::string nom, std::string desc, char cat){
     ContProducto* contProdu = ContProducto::getInstanciaContProd();
@@ -21,6 +20,8 @@ Producto::Producto( int stk, int pre, std::string nom, std::string desc, char ca
 int Producto::getCodigo() {
     return this->codigo;
 };
+
+Producto::~Producto(){}
 
 int Producto::getStock() {
     return this->stock;
