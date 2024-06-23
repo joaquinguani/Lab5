@@ -7,7 +7,6 @@
 #include <memory>
 #include <map>
 #include "TFecha.h"
-#include "TCodNomProd.h"
 #include "Producto.h"
 #include "Compra.h"
 #include "Promocion.h"

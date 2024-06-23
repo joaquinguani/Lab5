@@ -24,4 +24,4 @@ public:
 #endif
 */
 
-//lo usamos?
+//lo usamos? creo que no, seria de consultar promocion
