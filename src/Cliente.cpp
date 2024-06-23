@@ -113,7 +113,7 @@ void Cliente::consultarNotificaciones(){
         std::cout << "Promoción: " << noti->getNomPromocion() << std::endl;
         std::cout << "Productos: ";
         for ( auto producto : noti->getProductos()) {
-            std::cout << producto.getNombre() << " ";
+            std::cout << producto->getNombre() << " ";
         }
         std::cout << std::endl;
     }
