@@ -16,20 +16,22 @@
 //     //contProducto* = new ContProducto();
 // }
 
-// Fabrica* Fabrica::getInstance() {
-//     if (instancia == nullptr) {
-//         instancia = new Fabrica();
-//     }
-//     return instancia;
-// }
 
-// IContUsuario* Fabrica::getIContUsuario() {
-//     return ContUsuario.getInstancia();
-// };
+Fabrica* Fabrica::getInstancia() {
+    if (instancia == nullptr) {
+        instancia = new Fabrica();
+    }
+    return instancia;
+}
 
-// IContProducto* Fabrica::getIContProducto() {
-//     return ContProductos.getInstancia(); //??????? es lo que dice el teorico pero aparece mal!!!!
-// ;}
+IContUsuario* Fabrica::getIContUsuario() {
+    return ContUsuario::getInstanciaContUsu();
+};
+
+IContProducto* Fabrica::getIContProducto() {
+    return ContProducto::getInstanciaContProd(); 
+;}
+
 
 // Fabrica::~Fabrica() {
 //     delete contUsuario;

@@ -17,7 +17,7 @@
 #include "DataUsuario.h"
 
 
-class ContUsuario:public IContUsuario {
+class ContUsuario : public IContUsuario {
 private:
     ContUsuario() = default;
     static ContUsuario * instanciaContUsu;

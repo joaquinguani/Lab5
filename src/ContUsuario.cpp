@@ -2,6 +2,8 @@
 #include "DataCliente.h"
 #include "DataVendedor.h" //puse estos includes que faltaban
 
+ContUsuario* ContUsuario::instanciaContUsu = NULL;
+
 ContUsuario::ContUsuario(){
         cantComen = 0;
 };
