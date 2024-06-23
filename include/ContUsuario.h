@@ -70,7 +70,7 @@ public:
     std::map<std::string, Cliente*> getColClientes();
     std::map<std::string, Vendedor*> getColVendedores();
     Cliente* buscarClientePorNombre(std::string cli);
-    Vendedor* buscarPorNombre(std::string vend);
+    Vendedor* buscarVendPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
     

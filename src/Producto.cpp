@@ -38,9 +38,9 @@ std::string Producto::getDescripcion() {
     return this->descripcion;
 };
 
-TCategoria Producto::getCategoria() {
-    return this->categoria;
-};
+// TCategoria Producto::getCategoria() {
+//     return this->categoria; **NI IDEA QUE ERA ESTO**
+// };
 
 Vendedor* Producto::getVendAsociado() {
     return this->vendAsociado;
