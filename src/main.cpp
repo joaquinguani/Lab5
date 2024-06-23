@@ -364,9 +364,7 @@ while(e) {
             printf("\nOpción 'j' seleccionada: Enviar producto.\n");
             contUsu->imprimirVendedores(); //solo los nicknames
             printf("\nIngrese el nombre del vendedor que quiere seleccionar\n");
-            std::string vend;
-            std::cin.ignore();
-            std::getline(std::cin, vend);   
+            std::string vend=leerCadena();  
             Vendedor* vnd=contUsu->buscarVendPorNombre(vend);
             vnd->imprimirProdsConCompraPendDeEnvio();
             printf("\nIngrese el codigo del producto que quiere seleccionar\n");
@@ -487,7 +485,8 @@ while(e) {
             break;
         }
     }
-    break;}
+    break;
+    }
     case 'b':{
         std::system("cls");
         printf(" --CASOS DE PRUEBA--\n\n");
