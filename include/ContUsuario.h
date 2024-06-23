@@ -71,8 +71,6 @@ public:
 
     virtual ~ContUsuario(){}; //destructor 
 
-    // void seleccionarCliente(Cliente cliente);
-    // std::set<std::string> listarNombreDeUsuarios();
     // void eliminarSuscripciones();
     // void listarNicknamesVendedores();
     

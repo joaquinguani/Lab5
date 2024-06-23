@@ -12,15 +12,15 @@ class TNotificacion {
 private:
     std::string nickVend;
     std::string nomPromocion;
-    std::set<Producto> prodNoti;
+    std::set<Producto*> prodNoti;
 public:
     //constructor
-    TNotificacion(std::string, std::string,  std::set<Producto>);
+    TNotificacion(std::string, std::string,  std::set<Producto*>);
 
     //getters
     std::string getNickVend();
     std::string getNomPromocion();
-    std::set<Producto> getProductos();
+    std::set<Producto*> getProductos();
 };
 
 

@@ -7,14 +7,22 @@
 #include <memory>
 #include "Cliente.h"
 #include "TNotificacion.h"
-
+#include "Vendedor.h"
 
 class ISuscripciones{
     public: 
-        // virtual void notificar(TNotificacion);
+        //CLIENTE
+        virtual void agregarNotificacion(TNotificacion*)=0;
+        virtual void consultarNotificaciones()=0;
+        virtual void agregarSuscripcion(Vendedor*)=0;
+        virtual void eliminarSuscripcion(Vendedor*)=0;
+        //VENDEDOR
+        virtual void notificarClientes(TNotificacion*)=0;
+        virtual void agregarSuscriptor(Cliente*)=0;
+        virtual void eliminarSuscriptor(Cliente*)=0;
+        // CREADOR Y DESTRUCTOR
         ISuscripciones();
         virtual ~ISuscripciones(){};
-        virtual void agregarSuscriptor(Cliente* cliente);
 };
 
 #endif
