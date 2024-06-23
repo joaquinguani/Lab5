@@ -56,7 +56,7 @@ class Cliente:public Usuario,public ISuscripciones {
         //ISUSCRIPCIONES VENDEDOR
         void notificarClientes(TNotificacion*);
         void agregarSuscriptor(Cliente*);
-        void eliminarSuscriptor(Cliente*)
+        void eliminarSuscriptor(Cliente*);
 };
 
 
