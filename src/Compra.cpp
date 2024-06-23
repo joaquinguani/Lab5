@@ -9,7 +9,7 @@ Compra::Compra(TFechaActual* f, int monto){
 };
 
 //getters
-TFechaActual* Compra::getFecha(){
+TFechaActual* Compra::getFechaCompra(){
     return this->fecha;
 };
 

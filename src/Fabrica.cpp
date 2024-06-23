@@ -8,9 +8,20 @@
 #include <set>
 #include "Fabrica.h"
 #include "ContUsuario.h"
-#include "ContProductos.h"
+#include "ContProducto.h"
 
+ 
+ Fabrica::Fabrica(){
+    //contUsuario* contUsu = new ContUsuario();
+    //contProducto* = new ContProducto();
+}
 
+Fabrica* Fabrica::getInstance() {
+    if (instancia == nullptr) {
+        instancia = new Fabrica();
+    }
+    return instancia;
+}
 
 IContUsuario* Fabrica::getIContUsuario() {
     return ContUsuario.getInstancia();
@@ -19,3 +30,8 @@ IContUsuario* Fabrica::getIContUsuario() {
 IContProducto* Fabrica::getIContProducto() {
     return ContProductos.getInstancia(); //??????? es lo que dice el teorico pero aparece mal!!!!
 ;}
+
+Fabrica::~Fabrica() {
+    delete contUsuario;
+    delete contProducto;
+}

@@ -58,6 +58,7 @@ void Vendedor::imprimirProdsVendedorCodNom(){
         }
 }
 
+
 void imprimirDatosVend(){
     
 }
@@ -111,7 +112,7 @@ void Vendedor::listarProductosEnVenta() {
 }
 
 void Vendedor::listarPromocionesVigentes() {
-        for (const auto& promo : promociones) {
+        for (const auto& promo : colPromocion) {
             if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }

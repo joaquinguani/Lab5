@@ -32,8 +32,9 @@ class Cliente:public Usuario,public ISuscripciones {
         std::string getCiudad();
         virtual void imprimirUsuario();
         void imprimirDireccion();
-        //std::set<TNotificacion> getNotificaciones();
+        std::set<TNotificacion> getNotificaciones();
         std::map<std::string,Vendedor*> getColSuscripciones();
+        std::set<Compra*> getCompras(); 
 
         // Setters
         void setCiudad();

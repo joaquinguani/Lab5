@@ -31,6 +31,7 @@ std::map<std::string,Vendedor *> vendedores;
   //std::map<std::string,Cliente *> clientes;
 std::map<std::string,Vendedor *>::iterator iter;
 
+
 ContUsuario* contUsu = ContUsuario::getInstanciaContUsu();
 ContProducto* contProdu = ContProducto::getInstanciaContProd();
 TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
@@ -241,7 +242,7 @@ while(e) {
                 break;
             }else{
                 break;
-            }
+            } 
         }
         case 'g': {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");

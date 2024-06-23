@@ -29,7 +29,7 @@ public:
 
 
     // Getters
-    TFechaActual* getFecha();
+    TFechaActual* getFechaCompra();
     float getMontoFinal();
     std::map<int,Producto*> getProductos();
     int getId();

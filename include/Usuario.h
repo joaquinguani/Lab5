@@ -27,7 +27,6 @@ class Usuario{
             void imprimirFecha();
             std::string getNickname();
             virtual bool esVendedor();
-            virtual std::set<TComentario> ListarComentarios();
             virtual void sacarComentario(int)= 0;
             virtual void notificar(TNotificacion)=0;
             std::string getnickname();
