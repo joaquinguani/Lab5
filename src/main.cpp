@@ -273,10 +273,12 @@ while(e) {
                             if (cantP <= iterProd->second->getStock()) {
                                 CompraProd* compraP = new CompraProd(cantP, false, iterProd->second);
                                 comprasPro[codP]= compraP; 
-                                iterProd->second->ingresarCompraProd(compraP); 
-                                compra->asociarCompraProd(compraP, codP); 
+                                iterProd->second->ingresarCompraProd(compraP); //asociar de prod a compraProd
+                                compra->asociarCompraProd(compraP, codP); //asociar de Compra a compraProd
                                 compraP->setCompraAsociada(compra); 
-                                int precio = iterProd->second->getPrecio();
+                                int idCompra = compra->getId();
+                                iterProd->second->asociarCompraProd(compraP, idCompra); //asociar de Producto a compraProd
+                                int precio = iterProd->second->getPrecio(); 
                                 precio = compra->aplicarDescuento(precio, cantP, codP, iterProd->second);
                                 compra->sumarAlMonto(precio);
                                 iterProd->second->setStock(iterProd->second->getStock()-cantP); //actualizo el stock del producto
@@ -294,7 +296,7 @@ while(e) {
                 if (a == 0) {
                     Cliente* cli=contUsu->buscarClientePorNombre(nickCliente);
                     compra->asociarCliente(cli);
-                    iterC->second->agregarCompra(compra); //asocio el cliente con la compra
+                    cli->agregarCompra(compra); //asocio el cliente con la compra
                 } 
             }
             break;
