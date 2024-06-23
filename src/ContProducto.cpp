@@ -26,6 +26,7 @@ void ContProducto::insertarProducto(Producto* prod){
     colProductos[codigoo] = prod;
 }
 
+
 Promocion* ContProducto::findPromocion(std::string string){
     return colPromocion[string];
 }
@@ -43,7 +44,7 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::map<std::string, Promocion *>::iterator it;
     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
-        if (it->second->getFechaVenc().mayoroIgual(fecha)){
+        if (it->second->getFechaVenc()->mayoroIgual(fecha)){
             promosVigentes.insert(it->second);
             it->second->imprimirPromocion();
             //se podria imprimir aca o afuera recorriendo la lista
@@ -51,6 +52,7 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
          }
     };
 };
+
 
 int ContProducto::getCodigoProducto(){
     return codigoProducto;
@@ -76,6 +78,10 @@ void ContProducto::listarProductos()  {
     for (auto pair : colProductos) {
         printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
     }
+    std::map<int, Producto *>::iterator it;
+    for (it= colProductos.begin(); it != colProductos.end(); ++it){
+            printf("Código: %d, Producto: %s\n", it->first, it->second->getNombre());
+        }
 };
 
 void ContProducto::listarProductosDisp() {
@@ -99,7 +105,7 @@ Producto* ContProducto::buscarProducto(int clave){
 
 
 void ContProducto::listarProductosDisp(Vendedor* vendedor) {
-    for ( auto pair : colProducto) {
+    for ( auto pair : colProductos) {
         if (pair.second->getStock() > 0 && pair.second->getVendAsociado() == vendedor) {
             printf("Código: %d, Producto: %s\n", pair.first, pair.second->getNombre());
         }
@@ -107,11 +113,11 @@ void ContProducto::listarProductosDisp(Vendedor* vendedor) {
 };
 
 bool ContProducto::estaProd(int codigoProd){
-    return Productos[codigoProd] !=NULL;
+    return colProductos[codigoProd] !=NULL;
 };
 
 Producto* ContProducto::find(int codigo){
-    return Productos[codigo]
+    return colProductos[codigo];
 };
 
 void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
@@ -121,7 +127,7 @@ void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
         if(!it->second->getEnviado()){
             std::string nickCli = it->second->getCompraAsociada()->getClienteAsociado()->getNickname();
             int id = it->second->getCompraAsociada()->getId();     
-            TFecha* fecha = it->second->getCompraAsociada()->getFecha();
+            TFechaActual* fecha = it->second->getCompraAsociada()->getFechaCompra();
             std::cout << "(";
             std::cout << nickCli << "," << id << ","; 
             fecha->imprimirFecha();
@@ -131,10 +137,28 @@ void ContProducto::imprimirComprasConProdPendiente(Producto* prod){
 };
 
 void ContProducto::listarProductosDisp(){
-    for (auto it = this->Productos.begin(); it != this->Productos.end(); it++) {
+    for (auto it = this->colProductos.begin(); it != this->colProductos.end(); it++) {
         if (it->second->getStock() > 0){
             it->second->imprimirProducto();
         }
     } 
 };
+
+
+// std::set<Promocion*> ContProducto::listarPromosVigentes(){  YA ESTA ARRIBA
+//     std::set<Promocion*> promosVigentes;
+//     TFechaActual* fecha;
+//     fecha = TFechaActual::getInstanciaFecha();
+//     //iterador que vaya por toda la coleccion de promociones
+//     std::map<std::string, Promocion *>::iterator it;
+//     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
+//         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
+//         if (it->second->getFechaVenc()->mayoroIgual(fecha)){
+//             promosVigentes.insert(it->second);
+//             it->second->imprimirPromocion();
+//             //se podria imprimir aca o afuera recorriendo la lista
+//             //creo q es mas facil asi, la lista pierde sentido
+//          }
+//     };
+// };
 

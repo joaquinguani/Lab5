@@ -1,4 +1,4 @@
-/*#ifndef ICONTPRODUCTO
+#ifndef ICONTPRODUCTO
 #define ICONTPRODUCTO
 #include <iostream>
 #include <set>
@@ -25,4 +25,4 @@ public:
     virtual ~IContProducto(){}; //destructor
 };
 
-#endif*/
+#endif

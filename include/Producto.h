@@ -41,7 +41,7 @@ public:
     float getPrecio();
     std::string getNombre();
     std::string getDescripcion();
-    TCategoria getCategoria();
+    char getCategoria();
 
     Vendedor* getVendAsociado();
     Promocion* getPromo();
@@ -57,7 +57,7 @@ public:
     void setNombre(std::string nom);
     void setPromo(Promocion* promo);
     void setDescripcion(std::string desc);
-    void setCategoria(TCategoria cat);
+    void setCategoria(char cat);
     Vendedor* setVendAsociado();
     
 

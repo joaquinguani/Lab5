@@ -19,7 +19,7 @@
 
 class ContUsuario:public IContUsuario {
 private:
-    ContUsuario();
+    ContUsuario() = default;
     static ContUsuario * instanciaContUsu;
 
     std::map<int, Comentario *> colComentario;
@@ -54,6 +54,7 @@ public:
     
     void imprimirVendedores();
     void imprimirClientes();
+    
     std::map<std::string, Usuario *> getUsuarios(); // ESTO TE DEVUELVE UNA COPIA, SOLO SIRVE PARA VER SI HAY COSAS, NO PARA AGREGAR NI SACAR!!(soy el pelado jeje)
     void seleccionarCliente(Cliente cliente);
     std::set<std::string> listarNombreDeUsuarios();
@@ -69,7 +70,7 @@ public:
     std::map<std::string, Cliente*> getColClientes();
     std::map<std::string, Vendedor*> getColVendedores();
     Cliente* buscarClientePorNombre(std::string cli);
-    Vendedor* buscarPorNombre(std::string vend);
+    Vendedor* buscarVendPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
     

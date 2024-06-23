@@ -14,10 +14,11 @@ class Promocion {
 private:
     std::string nombre;
     std::string descripcion;
-    TFecha fechaVenc;
+    TFecha* fechaVenc;
     int descuento;
     std::map<int, ProductosEnPromo*> promProductos; //la clave es el codigo del producto
     std::set<Producto*> productos;
+    Vendedor* vendedor; //tiene que ser relacionada a un vendedor no?
 
 public:
     // Constructor
@@ -27,16 +28,17 @@ public:
 
     std::string getNombre();
     std::string getDescripcion(); 
-    TFecha getFechaVenc();
+    TFecha* getFechaVenc();
     int getDescuento();
     std::set<Producto*> getProductos();
+    std::map<int, ProductosEnPromo*> getPromProductos();
     
 
 
     // Setters
     void setNombre(const std::string& nom);
     void setDescripcion(const std::string& desc);
-    void setFechaVenc(const TFecha& fVenc);
+    void setFechaVenc(TFecha* fVenc);
     void setDescuento(int descu);
 
     // Métodos

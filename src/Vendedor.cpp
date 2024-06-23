@@ -1,5 +1,7 @@
 #include <iostream> // Para std::cin y std::getline
 #include "Vendedor.h"
+#include "TFechaActual.h"
+
 
 
 Vendedor::Vendedor(std::string nickname ,std::string contrasena,TFecha fecha, std::string RUT): Usuario(nickname, contrasena, fecha){
@@ -37,7 +39,7 @@ void Vendedor::imprimirUsuario(){
 }
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
-    productos[nuevoProducto->getCodigo()] = nuevoProducto; 
+    productos[nuevoProducto->getCodigo()] = nuevoProducto; //es set o map al final??
 };
 
 
@@ -57,6 +59,7 @@ void Vendedor::imprimirProdsVendedorCodNom(){
                 (*it)->imprimirProductoCodNom(); //segun chatgpt va asi el it
         }
 }
+
 
 void imprimirDatosVend(){
     
@@ -110,9 +113,11 @@ void Vendedor::listarProductosEnVenta() {
     }
 }
 
-void Vendedor::listarPromocionesVigentes() {
+void Vendedor::listarPromocionesVigentes() { ///en ContProducto hay una funcion muy parecida pero en general
         for (const auto& promo : promociones) {
-            if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
+            TFechaActual* fecha;
+            fecha = TFechaActual::getInstanciaFecha();
+            if (promo->getFechaVenc()->mayoroIgual(fecha))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
 }
