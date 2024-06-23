@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "TCodNomProd.h"
 #include "TFecha.h"
 #include "Producto.h"
 #include "Compra.h"
