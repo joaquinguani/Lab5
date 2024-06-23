@@ -70,6 +70,7 @@ void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) { //no 
 void Promocion::agregarProdAPromoCantMin(Producto* producto, int cantMin) {
     ProductosEnPromo* p = new ProductosEnPromo(producto,cantMin);
     promProductos[producto->getCodigo()] = p;
+}
 
 void Promocion::devolverDatosProdsPromo(){
     std::set<Producto*>::iterator it;
