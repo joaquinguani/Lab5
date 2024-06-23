@@ -56,23 +56,25 @@ public:
     void imprimirClientes();
     
     std::map<std::string, Usuario *> getUsuarios(); // ESTO TE DEVUELVE UNA COPIA, SOLO SIRVE PARA VER SI HAY COSAS, NO PARA AGREGAR NI SACAR!!(soy el pelado jeje)
-    void seleccionarCliente(Cliente cliente);
-    std::set<std::string> listarNombreDeUsuarios();
-    std::set<std::string> listarComDeUsuarios(std::string nombre);
-    void eliminarComentario(int ID);
-    std::set<std::string> listarNicknamesClientes();
+    
+    // void eliminarComentario(int ID);
+    // std::set<std::string> listarNicknamesClientes();
     void listarVendedoresNoSubsXCliente(Cliente* cli);
-    void agregarSuscripcion();
-    std::set<TNotificacion> listarNotificaciones(std::string nickname);
+    // void agregarSuscripcion();
+    // std::set<TNotificacion> listarNotificaciones(std::string nickname);
     void listarVendSuscripto(Cliente* cli);
-    void eliminarSuscripciones();
-    void listarNicknamesVendedores();
+    
     std::map<std::string, Cliente*> getColClientes();
     std::map<std::string, Vendedor*> getColVendedores();
     Cliente* buscarClientePorNombre(std::string cli);
-    Vendedor* buscarPorNombre(std::string vend);
+    Vendedor* buscarVendPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
+
+    // void seleccionarCliente(Cliente cliente);
+    // std::set<std::string> listarNombreDeUsuarios();
+    // void eliminarSuscripciones();
+    // void listarNicknamesVendedores();
     
 };
 

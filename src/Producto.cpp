@@ -4,7 +4,6 @@
 #include <set>
 #include "Producto.h"
 //#include "TCategoria.h"
-#include "Producto.h"
 
 Producto::Producto( int stk, int pre, std::string nom, std::string desc, char cat){
     ContProducto* contProdu = ContProducto::getInstanciaContProd();
@@ -22,6 +21,8 @@ int Producto::getCodigo() {
     return this->codigo;
 };
 
+Producto::~Producto(){}
+
 int Producto::getStock() {
     return this->stock;
 };
@@ -38,9 +39,9 @@ std::string Producto::getDescripcion() {
     return this->descripcion;
 };
 
-TCategoria Producto::getCategoria() {
-    return this->categoria;
-};
+// TCategoria Producto::getCategoria() {
+//     return this->categoria; **NI IDEA QUE ERA ESTO**
+// };
 
 Vendedor* Producto::getVendAsociado() {
     return this->vendAsociado;

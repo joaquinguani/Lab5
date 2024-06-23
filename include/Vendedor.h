@@ -15,8 +15,9 @@
 class Vendedor:public Usuario, public ISuscripciones{
     private:std::string RUT;
         std::map<std::string,ISuscripciones*> suscriptores;
-        void notificar(ISuscripciones *); //en el teorico dice que es privada
+        //void notificar(ISuscripciones *); //en el teorico dice que es privada
         std::set<Producto*> productos;// 
+        std::set<Promocion*> promociones;
         //std::map<std::string, Producto*> productos; //mapa mejor
     public:
     
@@ -30,22 +31,26 @@ class Vendedor:public Usuario, public ISuscripciones{
 
         virtual~Vendedor();
            
-        bool esVendedor() const override { return true; };
+        virtual bool esVendedor();
            
            std::string getRUT();
-           void setRUT(std::string);
            std::set<std::string> getsuscriptores();
-           void setsuscriptores(std::set<std::string>);
-           bool estaSuscrito(std::string);
-           void agregarSuscriptor(Cliente *);
+           
+           virtual void agregarSuscriptor(Cliente *);
            void eliminarSuscriptor(Cliente *);
            void notificarClientes(Promocion* ); 
-           void eliminar(ISuscripciones *);
            void insertarProducto(Producto*);
            void imprimirProdsVendedorCodNom();
            void imprimirProdsConCompraPendDeEnvio();
            void listarProductosEnVenta(); 
            void listarPromocionesVigentes();
+
+        //    void setsuscriptores(std::set<std::string>);
+        //    bool estaSuscrito(std::string);
+        //    void setRUT(std::string);
+        //    void eliminar(ISuscripciones *);
+
+
 };
 
 

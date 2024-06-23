@@ -25,6 +25,9 @@ std::map<int, Producto*> ContProducto::getColProductos() {
     return this->colProductos;
 };
 
+int ContProducto::getCodigoProducto(){
+    return codigoProducto;
+}
 
 std::set<Compra*> ContProducto::getColCompra(){
     return colCompra;
@@ -53,7 +56,7 @@ std::set<Promocion*> ContProducto::listarPromosVigentes(){
     std::map<std::string, Promocion *>::iterator it;
     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
-        if (it->second->getFechaVenc().mayoroIgual(fecha)){
+        if (it->second->getFechaVenc()->mayoroIgual(fecha)){
             promosVigentes.insert(it->second);
             it->second->imprimirPromocion();
             //se podria imprimir aca o afuera recorriendo la lista
@@ -147,20 +150,20 @@ void ContProducto::listarProductosDisp(){
 };
 
 
-std::set<Promocion*> ContProducto::listarPromosVigentes(){
-    std::set<Promocion*> promosVigentes;
-    TFechaActual* fecha;
-    fecha = TFechaActual::getInstanciaFecha();
-    //iterador que vaya por toda la coleccion de promociones
-    std::map<std::string, Promocion *>::iterator it;
-    for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
-        //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
-        if (it->second->getFechaVenc().mayoroIgual(fecha)){
-            promosVigentes.insert(it->second);
-            it->second->imprimirPromocion();
-            //se podria imprimir aca o afuera recorriendo la lista
-            //creo q es mas facil asi, la lista pierde sentido
-         }
-    };
-};
+// std::set<Promocion*> ContProducto::listarPromosVigentes(){  YA ESTA ARRIBA
+//     std::set<Promocion*> promosVigentes;
+//     TFechaActual* fecha;
+//     fecha = TFechaActual::getInstanciaFecha();
+//     //iterador que vaya por toda la coleccion de promociones
+//     std::map<std::string, Promocion *>::iterator it;
+//     for (it= colPromocion.begin(); it != colPromocion.end(); ++it){
+//         //va preguntando si la fechaVenc>TfechaActual, si es asi lo agrega a promos
+//         if (it->second->getFechaVenc()->mayoroIgual(fecha)){
+//             promosVigentes.insert(it->second);
+//             it->second->imprimirPromocion();
+//             //se podria imprimir aca o afuera recorriendo la lista
+//             //creo q es mas facil asi, la lista pierde sentido
+//          }
+//     };
+// };
 

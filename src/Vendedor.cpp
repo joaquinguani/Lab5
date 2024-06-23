@@ -1,5 +1,7 @@
 #include <iostream> // Para std::cin y std::getline
 #include "Vendedor.h"
+#include "TFechaActual.h"
+
 
 
 Vendedor::Vendedor(std::string nickname ,std::string contrasena,TFecha fecha, std::string RUT): Usuario(nickname, contrasena, fecha){
@@ -37,7 +39,7 @@ void Vendedor::imprimirUsuario(){
 }
 
 void Vendedor::insertarProducto(Producto* nuevoProducto){
-    productos[nuevoProducto->getCodigo()] = nuevoProducto; 
+    productos.insert(nuevoProducto); //lo cambiaron a set 
 };
 
 
@@ -111,9 +113,11 @@ void Vendedor::listarProductosEnVenta() {
     }
 }
 
-void Vendedor::listarPromocionesVigentes() {
-        for (const auto& promo : colPromocion) {
-            if (promo->getFechaVencimiento().mayoroIgual(getInstanciaFecha()))
+void Vendedor::listarPromocionesVigentes() { ///en ContProducto hay una funcion muy parecida pero en general
+        for (const auto& promo : promociones) {
+            TFechaActual* fecha;
+            fecha = TFechaActual::getInstanciaFecha();
+            if (promo->getFechaVenc()->mayoroIgual(fecha))
             std::cout << "Promoción: " << promo->getNombre() << ", Descuento: " << promo->getDescuento() << "%" << std::endl;
         }
 }
