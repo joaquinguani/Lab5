@@ -33,12 +33,7 @@ public:
     //otros metodos
     int getCantComen();
     void sumarComentario();
-
-
-
     int sizeCol();
-    
-
     void imprimirUsuarios(); //casos: a,
 
     //funciones del MAPA Usuario
@@ -56,23 +51,14 @@ public:
     void imprimirClientes();
     
     std::map<std::string, Usuario *> getUsuarios(); // ESTO TE DEVUELVE UNA COPIA, SOLO SIRVE PARA VER SI HAY COSAS, NO PARA AGREGAR NI SACAR!!(soy el pelado jeje)
-    
-    // void eliminarComentario(int ID);
-    // std::set<std::string> listarNicknamesClientes();
     void listarVendedoresNoSubsXCliente(Cliente* cli);
-    // void agregarSuscripcion();
-    // std::set<TNotificacion> listarNotificaciones(std::string nickname);
     void listarVendSuscripto(Cliente* cli);
-    
     std::map<std::string, Cliente*> getColClientes();
     std::map<std::string, Vendedor*> getColVendedores();
     Cliente* buscarClientePorNombre(std::string cli);
     Vendedor* buscarVendPorNombre(std::string vend);
 
     virtual ~ContUsuario(){}; //destructor 
-
-    // void eliminarSuscripciones();
-    // void listarNicknamesVendedores();
     
 };
 
