@@ -72,7 +72,7 @@ class Producto {
         void crearComentario(std::string, Usuario*);
         void imprimirComDeProd();
         bool estaComen(int);
-
+        void asociarVendedor(Vendedor* vend);
         //Destructor
         ~Producto();
         

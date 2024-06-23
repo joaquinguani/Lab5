@@ -81,7 +81,6 @@ while(e) {
     printf("n: Eliminar suscripciones\n");
     printf("o: Modificar fecha\n");
     printf("p: Obtener fecha del sistema");
-    printf("s: para ir al estado del mercado antes del anterior cambio\n");
     printf("x: para salir\n");
 
     char tecla = leerUnaTecla();
@@ -137,12 +136,11 @@ while(e) {
             contUsu->imprimirUsuarios();
             printf("\nPresione cualquier tecla para ir al menu\n");
             leerUnaTecla();
-            //std::getline(std::cin,Contrasena);
             break;
         }
         case 'c':{
             printf("\nOpción 'c' seleccionada: Alta de producto.\n");
-            contUsu->imprimirVendedores();
+            contUsu->imprimirVendedores();//detalle
             printf("\nIngrese el nickname del vendedor que desea seleccionar.\n");
             std::string nickVend = leerCadena();
             std::map<std::string,Vendedor *>::iterator iter; 
@@ -164,11 +162,14 @@ while(e) {
                     catProd = leerUnaTecla();
                 }
                 Producto* nuevoProd = new Producto(stockProd, precioProd, nomProd, descProd, catProd);
+                Vendedor* vend=contUsu->buscarVendPorNombre(nickVend);
+                vend->agregarProducto(nuevoProd);
+                nuevoProd->asociarVendedor(vend);
                 contProdu->insertarProducto(nuevoProd);
             }
             break;
         } 
-            case 'd':{ //cosecha me cagaste la vida
+            case 'd':{ 
             printf("\nOpción 'd' seleccionada: Consultar producto.\n");
             contProdu->listarProductos();
             printf("\nIngrese el codigo del producto a seleccionar:\n");
@@ -188,11 +189,12 @@ while(e) {
             std::string descrip;
             std::cout << "Ingrese la descripción de la promoción: ";
             descrip=leerCadena();
-            int d,m,a;
-            std::cout << "Ingrese la fecha de vencimiento (día mes anio): ";
-            d=leerEntero();
-            m=leerEntero();
-            a=leerEntero();
+            printf("\nIngresar anio de nacimiento de usuario\n");
+            int a = leerEntero();
+            printf("\nIngresar mes de nacimiento de usuario\n");
+            int m = leerEntero();
+            printf("\nIngresar dia de nacimiento de usuario\n");
+            int d = leerEntero();
             TFecha* fech=new TFecha(d,m,a);
             int descu;
             std::cout << "Ingrese el porcentaje de descuento que se va a aplicar en la promocion ";
@@ -204,6 +206,8 @@ while(e) {
             Vendedor* vnd=contUsu->buscarVendPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
             Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
+            vnd->agregarPromocion(p);
+            p->asociarVendedor(vnd);
             bool seguir=true;
             while(seguir){
                 printf("\nIngrese el codigo de un producto que desea agregar a la promocion.\n");
@@ -241,14 +245,15 @@ while(e) {
         }
         case 'g': {
             printf("\nOpción 'g' seleccionada: Realizar compra.\n");
-            contUsu->imprimirClientes();
+            contUsu->imprimirClientes();//detalle
             printf("\nIngrese el nickname del cliente que desea seleccionar.\n");
             std::string nickCliente = leerCadena();
             auto iterC = contUsu->getColClientes().find(nickCliente);
             if (iterC == contUsu->getColClientes().end()) {
                 printf("\nError: No existe un cliente con dicho nickname\n");
             } else {
-                Compra* compra = new Compra(fechaSist, 0); 
+                static int idCompra = 0;
+                Compra* compra = new Compra(fechaSist, 0, ++idCompra);
                 contProdu->listarProductosDisp(); 
                 printf("\nIngrese 0 si desea agregar productos a la compra, de lo contrario ingrese otro numero\n");
                 int agregar = leerEntero();
@@ -287,6 +292,8 @@ while(e) {
                 printf("/nPresiona 0 para confirmar la compra/n");
                 int a = leerEntero();
                 if (a == 0) {
+                    Cliente* cli=contUsu->buscarClientePorNombre(nickCliente);
+                    compra->asociarCliente(cli);
                     iterC->second->agregarCompra(compra); //asocio el cliente con la compra
                 } 
             }
@@ -418,12 +425,10 @@ while(e) {
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
-                //falta lo de suscripciones lo demas esta creo
             };
             break;
         case 'm':{
             printf("\nOpción 'm' seleccionada: Consulta de notificaciones.\n");
-
             printf("\nIngrese el nombre del Cliente que quiere seleccionar\n");
             std::string cli=leerCadena();
             Cliente* cliente = dynamic_cast<Cliente*>(contUsu->buscarPorNombre(cli));
@@ -453,7 +458,6 @@ while(e) {
                 char respuesta;
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
-                //falta lo de suscripciones lo demas esta creo
             };
             break;
         case 'o':
@@ -473,10 +477,6 @@ while(e) {
             printf("\nOpcion 'p' seleccionada:Obtener fecha del sistema");
             printf("\nLa fecha actual del sistema es");
             fechaSist->imprimirFecha();
-            break;
-        case 's':
-            printf("\nOpción 's' seleccionada: Volver al estado anterior del mercado.\n");
-            // Aquí iría el código para volver al estado anterior del mercado
             break;
         case 'x':{
             break;
