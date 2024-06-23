@@ -29,6 +29,7 @@ public:
     //getters
     std::map<int, Producto*> getColProductos();
     std::set<Compra*> getColCompra();
+    std::map<std::string, Promocion *> getcolPromocion();
     int getCodigoProducto();
 
     //mapaProducto
@@ -51,7 +52,7 @@ public:
     Producto* buscarProducto(int clave);
     Promocion* buscarPromoPorNombre(std::string promo);
     Promocion* findPromocion(std::string);
-    void agregarPromocion(Promocion* promo)
+    void agregarPromocion(Promocion* promo);
 
 
     int getCodigoProducto();

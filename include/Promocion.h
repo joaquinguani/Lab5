@@ -18,6 +18,7 @@ private:
     int descuento;
     std::map<int, ProductosEnPromo*> promProductos; //la clave es el codigo del producto
     std::set<Producto*> productos;
+    Vendedor* vendedor; //tiene que ser relacionada a un vendedor no?
 
 public:
     // Constructor
@@ -30,6 +31,7 @@ public:
     TFecha* getFechaVenc();
     int getDescuento();
     std::set<Producto*> getProductos();
+    std::map<int, ProductosEnPromo*> getPromProductos();
     
 
 

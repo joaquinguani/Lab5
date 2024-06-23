@@ -61,15 +61,15 @@ void Promocion::agregarProdAPromo(Producto* producto) {
 };
 
 
-void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) { //no se cual de las dos esta bien
-    ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
-    promProductos.insert(p);
-};
-
+// void Promocion::agregarProdAPromoCantMin(Producto* producto,int cantMin) { //no se cual de las dos esta bien
+//     ProductosEnPromo* p=new ProductosEnPromo(producto,cantMin);
+//     promProductos.insert(p);
+// };
+//la de abajo creo que es
 
 void Promocion::agregarProdAPromoCantMin(Producto* producto, int cantMin) {
     ProductosEnPromo* p = new ProductosEnPromo(producto,cantMin);
-    promProductos[producto->getCodigo()] = p;
+    promProductos[producto->getCodigo()] = p;}
 
 void Promocion::devolverDatosProdsPromo(){
     std::set<Producto*>::iterator it;
