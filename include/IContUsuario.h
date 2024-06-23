@@ -23,14 +23,8 @@ public:
     //otros metodos
     int getCantComen();
     void sumarComentario();
-
-
-
     int sizeCol();
-    
-
-    void imprimirUsuarios(); //casos: a,
-
+        void imprimirUsuarios(); //casos: a,
     //funciones del MAPA Usuario
     Usuario* find(std::string);
     bool estaUsuario(std::string); 

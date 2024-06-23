@@ -43,19 +43,11 @@ private:
     static Fabrica* instancia;
     IContUsuario* contUsuario;
     IContProducto* contProducto;
-
     Fabrica();
-
 public:
-    static Fabrica* getInstance();
-
-    IContUsuario* getIContUsuario(); /*{
-        return contUsuario;
-    }*/
-
-    IContProducto* getIContProducto(); /*{
-        return contProducto;
-    }*/
+    static Fabrica* getInstancia();
+    IContUsuario* getIContUsuario();
+    IContProducto* getIContProducto();
 
     ~Fabrica();
 };
