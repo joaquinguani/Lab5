@@ -6,7 +6,7 @@
 #include <memory>
 #include "Producto.h"
 
-TNotificacion::TNotificacion(std::string nickVend, std::string nomPromocion,  std::set<Producto> prodNoti){ //que ondis 
+TNotificacion::TNotificacion(std::string nickVend, std::string nomPromocion,  std::set<Producto*> prodNoti){
 
 };
 
@@ -18,6 +18,6 @@ std::string TNotificacion::getNomPromocion(){
     return this->nomPromocion;
 };
 
-std::set<Producto> TNotificacion::getProductos(){
+std::set<Producto*> TNotificacion::getProductos(){
     return this->prodNoti;
 };

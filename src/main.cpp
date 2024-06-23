@@ -222,7 +222,8 @@ while(e) {
             }
             //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
             contProdu->agregarPromocion(p);
-            vnd->notificarClientes(p);
+            TNotificacion* notificacion=new TNotificacion(vend,p->getNombre(),p->getProductos());
+            vnd->notificarClientes(notificacion);
             break;
         }
         case 'f':{
