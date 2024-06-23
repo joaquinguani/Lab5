@@ -39,6 +39,8 @@ IContProducto* contProdu = fabrica->getIContProducto();
 //ContProducto* contProdu = ContProducto::getInstanciaContProd();
 //TFechaActual* fechaSist= TFechaActual::getInstanciaFecha();
 
+TFechaActual* fechaSist = TFechaActual::getInstanciaFecha(); //la instancia de fecha actual
+
 std::string nick;
 std::string Contrasena;
 TFecha* fecha;
@@ -109,7 +111,7 @@ while(e) {
             printf("\nIngresar dia de nacimiento de usuario\n");
             int dia = leerEntero();
 
-            fecha = new TFecha(dia, mes, ano);
+            fecha = new TFecha(dia, mes, ano); 
             if(venOcli == 'a'){
                 printf("\nIngresar ciudad de cliente\n");
                 std::string ciudad = leerCadena();
@@ -199,7 +201,7 @@ while(e) {
             printf("\nIngrese el nombre del vendedor al que quiere asignar la promocion.\n");
             std::string vend;
             vend=leerCadena();
-            Vendedor* vnd=contUsu->buscarPorNombre(vend);
+            Vendedor* vnd=contUsu->buscarVendPorNombre(vend);
             vnd->imprimirProdsVendedorCodNom();
             Promocion* p=new Promocion(nom,descrip,fech,descu); //creamos la promo y ahora pedimos que liste por codigo los productos a agregar
             bool seguir=true;
@@ -218,11 +220,10 @@ while(e) {
                 respuesta=leerUnaTecla();
                 seguir = (respuesta == 's' || respuesta == 'S');
                 seguir = !(respuesta == 'n' || respuesta == 'N');
-                //falta lo de suscripciones lo demas esta creo
-            }
-            //damos de alta la promocion, para eso la almacenamos en el set de todas las promociones
+            };
             contProdu->agregarPromocion(p);
-            vnd->notificarClientes(p);
+            TNotificacion* notificacion=new TNotificacion(vend,p->getNombre(),p->getProductos());
+            vnd->notificarClientes(notificacion);
             break;
         }
         case 'f':{
@@ -235,9 +236,7 @@ while(e) {
                 std::string nom = leerCadena();
                 Promocion* promo = contProdu->buscarPromoPorNombre(nom);
                 promo->devolverDatosProdsPromo();
-                break;
-            }else{   
-            }//???????????????? faltaria algo aca??
+            }
             break;
         }
         case 'g': {
@@ -412,7 +411,7 @@ while(e) {
             while(seguir){
                 printf("\nIngrese el nickname del vendedor al que desea suscribirse.\n");
                 std::string c=leerCadena();
-                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                Vendedor* vnd=contUsu->buscarVendPorNombre(c);
                 cliente->agregarSuscripcion(vnd);
                 vnd->agregarSuscriptor(cliente);
                 printf("\n¿Desea agregar otra suscripcion? (s/n): .\n");
@@ -447,7 +446,7 @@ while(e) {
             while(seguir){
                 printf("\nIngrese el nickname del vendedor al que desea desuscribirse.\n");
                 std::string c=leerCadena();
-                Vendedor* vnd=contUsu->buscarPorNombre(c);
+                Vendedor* vnd=contUsu->buscarVendPorNombre(c);
                 cliente->eliminarSuscripcion(vnd);
                 vnd->eliminarSuscriptor(cliente);
                 printf("\n¿Desea eliminar otra suscripcion? (s/n): .\n");

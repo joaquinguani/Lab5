@@ -119,3 +119,6 @@ void Cliente::consultarNotificaciones(){
     }
 }
 
+void Cliente::agregarNotificacion(TNotificacion* noti){
+    notificaciones.push(noti);
+}

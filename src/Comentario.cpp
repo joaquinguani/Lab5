@@ -5,7 +5,7 @@
 
 
 
-Comentario::Comentario(std::string txt){
+Comentario::Comentario(std::string txt){ //error de puntero a fecha
     texto = txt;
     TFechaActual* fechaAct = TFechaActual::getInstanciaFecha();
     int dia = fechaAct->getDia();

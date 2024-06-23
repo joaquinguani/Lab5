@@ -12,7 +12,6 @@
 class TFecha {
     private:
         int Dia, Mes, Anio;
-         //destructor
 
     public:
         ~TFecha();

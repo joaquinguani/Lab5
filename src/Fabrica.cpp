@@ -11,7 +11,8 @@
 #include "ContProducto.h"
 
  
- Fabrica::Fabrica(){
+
+Fabrica::Fabrica(){
     //contUsuario* contUsu = new ContUsuario();
     //contProducto* = new ContProducto();
 }
