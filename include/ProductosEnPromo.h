@@ -16,6 +16,7 @@ public:
     //constructor
     ProductosEnPromo(Producto* prod, int cantMin); // y esto?
 
+
     //metodos de acceso
     int getCantidadMin();
 

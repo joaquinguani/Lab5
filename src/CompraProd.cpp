@@ -22,9 +22,9 @@ Compra* CompraProd::getCompraAsociada(){
     return compraAsociada;
 };
 
-/*Producto* CompraProd::getProducto(){
+Producto* CompraProd::getProducto(){
     return this->producto;
-};*/
+};
 
 void CompraProd::setCantidad(int cant){
     cantidad = cant;

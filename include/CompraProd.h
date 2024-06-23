@@ -20,15 +20,17 @@ public:
     //constructor
     CompraProd(int, bool, Producto*); 
 
-    //metodos de acceso
+    //getters
     int getCantidad();
     bool getEnviado();
-    //Producto* getProducto();
+    Producto* getProducto();
     Compra* getCompraAsociada();
-    void setCompraAsociada(Compra* compra);
 
+    //setters
+    void setCompraAsociada(Compra* compra);
     void setCantidad(int cant);
     void setEnviado(bool env);
+    
     void imprimirCompraProd();
 
     //destructor

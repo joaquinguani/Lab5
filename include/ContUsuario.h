@@ -19,7 +19,7 @@
 
 class ContUsuario:public IContUsuario {
 private:
-    ContUsuario();
+    ContUsuario() = default;
     static ContUsuario * instanciaContUsu;
 
     std::map<int, Comentario *> colComentario;
@@ -54,6 +54,7 @@ public:
     
     void imprimirVendedores();
     void imprimirClientes();
+    
     std::map<std::string, Usuario *> getUsuarios(); // ESTO TE DEVUELVE UNA COPIA, SOLO SIRVE PARA VER SI HAY COSAS, NO PARA AGREGAR NI SACAR!!(soy el pelado jeje)
     
     // void eliminarComentario(int ID);

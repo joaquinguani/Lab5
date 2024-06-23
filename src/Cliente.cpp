@@ -29,6 +29,12 @@ std::string Cliente::getCiudad() {
 TDireccion Cliente::getDireccion() {
     return this->direccion;
 };
+
+std::set<Compra*> Cliente::getCompras(){
+    return compras;
+}; 
+
+
 /*
 void Cliente::setDireccion():direccion(direccion){
 
@@ -61,12 +67,14 @@ void Cliente::imprimirDireccion(){
 void Cliente::listarComprasRealizadas() {
         for ( auto& compra : compras) {
             std::cout << "Fecha de compra: ";
-            compra->getFecha().imprimirFecha(); 
+            compra->getFechaCompra()->imprimirFecha(); //no entiendo que pinta con el tipo de fechsa
             std::cout << "Monto final: " << compra->getMontoFinal() << std::endl;
             std::cout << "Productos comprados:" << std::endl;
-            for (const auto& compraProd : compra->getCompraProducto()) {
-                Producto* producto = compraProd->getProducto();
-                int cantidad = compraProd->getCantidad();
+            std::map<int, CompraProd*> compraProd = compra->getCompraProducto();
+            std::map<int, CompraProd*>::iterator it;
+            for (it= compraProd.begin(); it != compraProd.end(); ++it) {
+                Producto* producto = it->second->getProducto();
+                int cantidad = it->second->getCantidad();
                 std::cout << " - Producto: " << producto->getNombre() << ", Código: " << producto->getCodigo() << ", Cantidad: " << cantidad << std::endl;
             }
         }

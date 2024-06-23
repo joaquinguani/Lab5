@@ -15,8 +15,9 @@
 class Vendedor:public Usuario, public ISuscripciones{
     private:std::string RUT;
         std::map<std::string,ISuscripciones*> suscriptores;
-        //virtual void notificar(ISuscripciones *); //en el teorico dice que es privada
+        //void notificar(ISuscripciones *); //en el teorico dice que es privada
         std::set<Producto*> productos;// 
+        std::set<Promocion*> promociones;
         //std::map<std::string, Producto*> productos; //mapa mejor
     public:
     
