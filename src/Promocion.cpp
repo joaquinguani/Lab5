@@ -96,3 +96,7 @@ void Promocion::imprimirPromocion(){
 std::map<int, ProductosEnPromo*> Promocion::getPromProductos(){
     return this->promProductos;
 };
+
+void Promocion::asociarVendedor(Vendedor* vend){
+    vendedorAsociado=vend;
+}

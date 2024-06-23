@@ -18,7 +18,7 @@ private:
     int descuento;
     std::map<int, ProductosEnPromo*> promProductos; //la clave es el codigo del producto
     std::set<Producto*> productos;
-    Vendedor* vendedor; //tiene que ser relacionada a un vendedor no?
+    Vendedor* vendedorAsociado; //tiene que ser relacionada a un vendedor no?
 
 public:
     // Constructor
@@ -47,6 +47,7 @@ public:
     void aplicarDescuento(int idProducto, int descuento);
     void devolverDatosProdsPromo();
     void imprimirPromocion();
+    void asociarVendedor(Vendedor* vend);
 };
 
 

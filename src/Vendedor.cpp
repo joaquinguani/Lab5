@@ -137,3 +137,11 @@ void Vendedor::notificarClientes(TNotificacion* noti){
         cliente->agregarNotificacion(noti);
     }  
 }
+
+void Vendedor::agregarProducto(Producto* prod){
+    productos.insert(prod);
+}
+
+void Vendedor::agregarPromocion(Promocion*p){
+    promociones.insert(p);
+}

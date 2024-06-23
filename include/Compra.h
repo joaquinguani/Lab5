@@ -25,7 +25,7 @@ private:
     
 public:
     // Constructor
-    Compra(TFechaActual* f, int monto);
+    Compra(TFechaActual* f, int monto, int id);
 
 
     // Getters
@@ -46,6 +46,7 @@ public:
     void sumarAlMonto(int pre);
     void asociarCompraProd(CompraProd* cp, int cod);
     void imprimirCompraCompleto();
+    void asociarCliente(Cliente* cli);
 };
 
 #endif

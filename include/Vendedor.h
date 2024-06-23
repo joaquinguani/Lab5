@@ -26,6 +26,7 @@ class Vendedor:public Usuario, public ISuscripciones{
         virtual void imprimirUsuario();
         std::string getRut();
         std::set<Producto*> getProductos();
+        void agregarProducto(Producto* p);
 
 
 
@@ -44,12 +45,12 @@ class Vendedor:public Usuario, public ISuscripciones{
            void imprimirProdsConCompraPendDeEnvio();
            void listarProductosEnVenta(); 
            void listarPromocionesVigentes();
+           void agregarPromocion(Promocion*p);
            //ISUSCRIPCIONES DE CLIENTE
            void agregarNotificacion(TNotificacion*);
            void consultarNotificaciones();
            void agregarSuscripcion(Vendedor*);
            void eliminarSuscripcion(Vendedor*);
-
         //    void setsuscriptores(std::set<std::string>);
         //    bool estaSuscrito(std::string);
         //    void setRUT(std::string);

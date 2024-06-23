@@ -3,9 +3,10 @@
 #include "TFecha.h"
 
 
-Compra::Compra(TFechaActual* f, int monto){
+Compra::Compra(TFechaActual* f, int monto, int id){
     this->fecha = f;
     this->MontoFinal = monto;
+    this->id= id;
 };
 
 //getters
@@ -77,3 +78,7 @@ void Compra::imprimirCompraCompleto(){
         compraPro[codP]->imprimirCompraProd();
     }
 };
+
+void Compra::asociarCliente(Cliente* cli){
+    clienteAsociado=cli;
+}

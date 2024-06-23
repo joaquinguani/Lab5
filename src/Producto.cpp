@@ -159,3 +159,7 @@ void Producto::eliminarRefComen(int ID){
 void Producto::ingresarCompraProd(CompraProd* compraP){
     this->compraProd[this->getCodigo()] = compraP;
 };
+
+void Producto::asociarVendedor(Vendedor* vend){
+    vendAsociado=vend;
+}
